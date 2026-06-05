@@ -57,21 +57,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(
 .shot .frame .pin b{display:block;font-size:13px}.shot .frame .pin span{font-size:11px;color:var(--muted)}
 
 /* HERO LIVE-DEMO SHOWCASE */
-.showcase{position:relative;margin:54px auto 0;max-width:1000px}
+.showcase{position:relative;margin:54px auto 0;max-width:1120px}
 .sc-glow{position:absolute;left:-3%;right:-3%;top:-4%;bottom:6%;z-index:0;pointer-events:none;filter:blur(26px);opacity:.9;background:radial-gradient(48% 60% at 42% 32%,rgba(110,135,255,.20),transparent 72%),radial-gradient(42% 52% at 78% 72%,rgba(255,150,180,.16),transparent 72%)}
 .sc-frame{position:relative;z-index:1;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 50px 120px -40px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.06);transform:perspective(1500px);transition:transform .3s cubic-bezier(.16,1,.3,1);will-change:transform}
 .sc-bar{height:44px;background:#f5f5f7;border-bottom:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:8px;padding:0 16px}
 .sc-bar i{width:11px;height:11px;border-radius:50%;background:#d8d8dd;flex:0 0 auto}
 .sc-url{margin-left:12px;font-size:12.5px;color:#86868b;background:#fff;border-radius:8px;padding:5px 14px;border:1px solid rgba(0,0,0,.06)}
 .sc-badge{margin-left:auto;font-size:11px;color:var(--blue);font-weight:600;font-style:normal}
-.sc-view{position:relative;height:540px;overflow:hidden;background:#fff}
-.sc-view iframe{position:absolute;top:0;left:0;width:1320px;height:1120px;border:0;transform:scale(.757);transform-origin:top left;pointer-events:none;transition:opacity .25s ease}
+.sc-stage{display:flex;height:600px;background:#fff}.sc-view{position:relative;width:660px;height:600px;overflow:hidden;background:#fff;flex:none}
+.sc-view iframe{position:absolute;top:0;left:0;width:1320px;height:1200px;border:0;transform:scale(.5);transform-origin:top left;pointer-events:none;transition:opacity .25s ease}
+.sc-chat{flex:1;min-width:0;display:flex;flex-direction:column;background:linear-gradient(180deg,#fbfbfd,#f3f3f6);border-left:1px solid #ececf0}
+.sc-cc-head{display:flex;align-items:center;gap:11px;padding:15px 18px;background:#fff;border-bottom:1px solid #eee}
+.sc-cc-ava{width:40px;height:40px;border-radius:50%;background:#1d1d1f;color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.sc-cc-id b{display:block;font-size:15px;line-height:1.2}.sc-cc-id i{font-style:normal;color:#22a559;font-size:12px;font-weight:600}
+.sc-cc-body{flex:1;overflow:hidden;padding:20px;display:flex;flex-direction:column;gap:11px;justify-content:flex-end}
+.sc-cc-foot{padding:13px 18px;font-size:12.5px;color:#8a8a8f;border-top:1px solid #eee;background:#fff}
+.sc-m{max-width:88%;line-height:1.42;font-size:15px;padding:11px 15px;border-radius:16px}
+.sc-m.bot{align-self:flex-start;background:#fff;border:1px solid #eaeaee;border-bottom-left-radius:5px}
+.sc-m.user{align-self:flex-end;background:#1d1d1f;color:#fff;border-bottom-right-radius:5px}
+.sc-slots{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.sc-slots b{border:1px solid #1d1d1f;border-radius:11px;padding:8px 12px;font-size:13px;font-weight:700}
+.sc-typ{display:inline-flex;gap:5px;padding:3px 0}.sc-typ i{width:7px;height:7px;border-radius:50%;background:#c2c2c8;animation:megct 1s infinite}.sc-typ i:nth-child(2){animation-delay:.16s}.sc-typ i:nth-child(3){animation-delay:.32s}
+@keyframes megct{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
 .sc-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px;position:relative;z-index:1}
 .sc-pills button{font-family:var(--f);font-size:14px;padding:8px 16px;border-radius:980px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .sc-pills button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .sc-pills button:hover{color:var(--ink)}
 .sc-hint{text-align:center;font-size:12.5px;color:rgba(0,0,0,.4);margin-top:14px;position:relative;z-index:1}
-@media(max-width:1040px){.sc-view{height:430px}.sc-view iframe{transform:scale(.58)}}
+@media(max-width:1040px){.sc-stage{flex-direction:column;height:auto}.sc-view{width:100%;height:300px}.sc-view iframe{transform:scale(.5)}.sc-chat{min-height:340px}}
 
 /* SECTION base */
 section{padding:120px 0}
@@ -185,7 +197,7 @@ footer a:hover{color:var(--blue)}
     <div class="sc-glow"></div>
     <div class="sc-frame" id="scFrame">
       <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl">estetica-lumiere.it</span><em class="sc-badge">demo dal vivo</em></div>
-      <div class="sc-view"><iframe id="scIframe" src="demos/beauty/premium/index.html" title="Demo dal vivo" loading="lazy" scrolling="no"></iframe></div>
+      <div class="sc-stage"><div class="sc-view"><iframe id="scIframe" src="demos/beauty/premium/index.html?nochat=1" title="Demo dal vivo" loading="lazy" scrolling="no"></iframe></div><aside class="sc-chat"><div class="sc-cc-head"><span class="sc-cc-ava" id="scAva">EL</span><div class="sc-cc-id"><b id="scBiz">Estetica Lumière</b><i>● Assistente · online</i></div></div><div class="sc-cc-body" id="scBody"></div><div class="sc-cc-foot">L'assistente prenota da solo ✨</div></aside></div>
     </div>
     <div class="sc-pills" id="scPills">
       <button data-s="beauty" data-u="estetica-lumiere.it" class="on">Estetica</button>
@@ -371,18 +383,51 @@ footer a:hover{color:var(--blue)}
 })();
 /* Hero live-demo showcase: 3D tilt + auto-cycling real demos */
 (function(){
-  var sc=document.getElementById('showcase'),frame=document.getElementById('scFrame'),ifr=document.getElementById('scIframe'),url=document.getElementById('scUrl'),pills=document.getElementById('scPills');
-  if(!sc||!frame||!ifr||!pills) return;
+  var sc=document.getElementById('showcase'),frame=document.getElementById('scFrame'),ifr=document.getElementById('scIframe'),url=document.getElementById('scUrl'),pills=document.getElementById('scPills'),body=document.getElementById('scBody'),bizEl=document.getElementById('scBiz'),avaEl=document.getElementById('scAva');
+  if(!sc||!frame||!ifr||!pills||!body) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce){
-    sc.addEventListener('pointermove',function(e){var b=sc.getBoundingClientRect();var px=(e.clientX-b.left)/b.width-0.5,py=(e.clientY-b.top)/b.height-0.5;frame.style.transform='perspective(1500px) rotateY('+(px*5).toFixed(2)+'deg) rotateX('+(-py*4).toFixed(2)+'deg)';});
-    sc.addEventListener('pointerleave',function(){frame.style.transform='perspective(1500px) rotateY(0deg) rotateX(0deg)';});
+    sc.addEventListener('pointermove',function(e){var b=sc.getBoundingClientRect();var px=(e.clientX-b.left)/b.width-0.5,py=(e.clientY-b.top)/b.height-0.5;frame.style.transform='perspective(1600px) rotateY('+(px*3.4).toFixed(2)+'deg) rotateX('+(-py*2.4).toFixed(2)+'deg)';});
+    sc.addEventListener('pointerleave',function(){frame.style.transform='perspective(1600px) rotateY(0deg) rotateX(0deg)';});
+  }
+  var CFG={
+    beauty:{biz:'Estetica Lumière',ava:'EL',kind:'svc',ask:'Vorrei un trattamento viso, sabato',svc:'il trattamento viso',day:'sabato',slots:['10:30','14:00','16:30'],emo:'\u{1F486}'},
+    barber:{biz:'Atelier Barber',ava:'AB',kind:'svc',ask:'Taglio e barba per venerdì',svc:'taglio + barba',day:'venerdì',slots:['11:00','15:30','18:00'],emo:'\u{1F488}'},
+    restaurant:{biz:'Trattoria del Borgo',ava:'TB',kind:'tab',ask:'Siamo in 4, sabato sera',party:4,day:'sabato sera',slots:['20:00','20:30','21:15'],emo:'\u{1F37D}'},
+    fitness:{biz:'Move Studio',ava:'MS',kind:'svc',ask:'Una lezione di prova, lunedì',svc:'la lezione di prova',day:'lunedì',slots:['10:00','18:00','19:30'],emo:'\u{1F4AA}'},
+    hotel:{biz:'Hotel Belvedere',ava:'HB',kind:'room',ask:'Una camera per il weekend, in 2',day:'questo weekend',slots:['check-in 14:00','check-in 15:00'],emo:'\u{1F6CE}'},
+    retail:{biz:'Boutique Aura',ava:'BA',kind:'svc',ask:'Un appuntamento sabato',svc:"l'appuntamento in boutique",day:'sabato',slots:['11:00','16:00','17:30'],emo:'\u{1F6CD}'}
+  };
+  var token=0;
+  function add(cls,html){var d=document.createElement('div');d.className='sc-m '+cls;d.innerHTML=html;body.appendChild(d);return d;}
+  function wait(ms,t){return new Promise(function(r){setTimeout(function(){r(t===token);},ms);});}
+  async function bot(t,text,ms){if(t!==token)return false;var x=document.createElement('div');x.className='sc-m bot';x.innerHTML='<span class="sc-typ"><i></i><i></i><i></i></span>';body.appendChild(x);var ok=await wait(ms||Math.min(1400,560+text.length*12),t);if(!ok){x.remove();return false;}x.innerHTML=text;return true;}
+  async function usr(t,text){if(t!==token)return false;add('user',text);return await wait(760,t);}
+  function S(c){return '<div class="sc-slots">'+c.slots.map(function(s){return '<b>'+s+'</b>';}).join('')+'</div>';}
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+  async function play(sector){
+    var t=++token,c=CFG[sector]||CFG.beauty,last=c.slots[c.slots.length-1];
+    bizEl.textContent=c.biz;avaEl.textContent=c.ava;body.innerHTML='';
+    if(!await wait(1300,t))return;
+    if(!await bot(t,"Ciao! \u{1F44B} Sono l'assistente per le prenotazioni.",1050))return;
+    if(!await wait(300,t))return;
+    if(!await usr(t,c.ask))return;
+    var conf;
+    if(c.kind==='tab'){if(!await bot(t,'Per un <b>tavolo da '+c.party+'</b> '+c.day+' ho:'+S(c),1300))return;conf='Tavolo da '+c.party+' prenotato '+c.day+' alle '+last;}
+    else if(c.kind==='room'){if(!await bot(t,'Per una <b>camera matrimoniale</b> '+c.day+" c'è disponibilità:"+S(c),1300))return;conf='Camera prenotata '+c.day+', '+c.slots[0];}
+    else{if(!await bot(t,'Per '+c.svc+' '+c.day+' ho questi orari:'+S(c),1300))return;conf=cap(c.svc)+' prenotato '+c.day+' alle '+last;}
+    if(!await wait(950,t))return;
+    if(!await usr(t,(c.kind==='room'?c.slots[0]:'Le '+last)+', grazie'))return;
+    if(!await bot(t,'Fatto ✅ '+conf+'. '+c.emo,1250))return;
+    await bot(t,'Ti mando il promemoria su WhatsApp. A presto! ✨',1100);
   }
   var btns=Array.prototype.slice.call(pills.querySelectorAll('button')),i=0,timer;
   function show(idx){var b=btns[idx];if(!b)return;for(var k=0;k<btns.length;k++)btns[k].classList.remove('on');b.classList.add('on');
-    ifr.style.opacity='0';setTimeout(function(){ifr.src='demos/'+b.getAttribute('data-s')+'/premium/index.html';url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';},200);i=idx;}
-  for(var k=0;k<btns.length;k++){(function(idx){btns[idx].addEventListener('click',function(){show(idx);clearInterval(timer);});})(k);}
-  timer=setInterval(function(){if(document.hidden)return;show((i+1)%btns.length);},16000);
+    var s=b.getAttribute('data-s');ifr.style.opacity='0';
+    setTimeout(function(){ifr.src='demos/'+s+'/premium/index.html?nochat=1';if(url)url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';play(s);},220);i=idx;}
+  for(var k=0;k<btns.length;k++){(function(idx){btns[idx].addEventListener('click',function(){show(idx);clearInterval(timer);timer=setInterval(function(){if(!document.hidden)show((i+1)%btns.length);},15000);});})(k);}
+  play('beauty');
+  timer=setInterval(function(){if(!document.hidden)show((i+1)%btns.length);},15000);
 })();
 (function(){var d=document,w=window;var rev=d.querySelectorAll('.reveal');
 function all(){for(var i=0;i<rev.length;i++)rev[i].classList.add('in');}

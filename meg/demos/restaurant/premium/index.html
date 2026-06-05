@@ -656,7 +656,9 @@ section{padding:140px 0;position:relative}
 
 
 
-<!--MEGAUTO-START--><script>window.MEGAUTO={"business": "Trattoria del Borgo", "wa": "https://wa.me/393758711390", "ask": "Avete un tavolo per 2 sabato sera?", "svc": "un tavolo per 2", "day": "sabato", "emo": "🍽️", "slots": ["20:00", "20:30", "21:15"]};</script>
+
+
+<!--MEGAUTO-START--><!-- SCHEDA DATI ATTIVITA' (il cliente la compila all'acquisto: orari, slot, capienza) --><script>window.MEG_BOOK={"kind": "tables", "day": "sabato sera", "emo": "🍽️", "hours": "Mar–Dom 19:00–23:30", "tables": {"2": 4, "4": 3, "6": 2}, "party": 4, "slots": ["20:00", "20:30", "21:15"], "demo_user": "Siamo in 4, sabato sera", "wa": "https://wa.me/393758711390"};</script>
 <style id="megauto-css">
 .chat-msg{max-width:84%;line-height:1.45;font-size:14px}
 .chat-msg.bot{align-self:flex-start;background:var(--surface,#f2f2f5);color:var(--ink,#1d1d1f);border-radius:16px 16px 16px 5px;padding:11px 14px}
@@ -671,83 +673,103 @@ section{padding:140px 0;position:relative}
 .chat-slot{border:1px solid var(--accent,#1d1d1f);color:var(--accent,#1d1d1f);background:transparent;border-radius:12px;padding:9px 13px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
 .chat-slot:hover{background:var(--accent,#1d1d1f);color:var(--bg,#fff)}
 .chat-wa{display:inline-block;font-weight:700;text-decoration:underline}
-/* --- quando il demo e' nella finestra hero (iframe): chat in ALTO, tutta visibile e piu' grande --- */
 .meg-embed .chat-fab{display:none!important}
-.meg-embed .chat-panel{top:40px!important;bottom:auto!important;right:40px!important;left:auto!important;height:534px!important;max-height:534px!important;width:392px!important;max-width:392px!important;border-radius:20px!important;box-shadow:0 30px 70px rgba(0,0,0,.30)!important}
-.meg-embed .chat-head{padding:18px 20px!important}
-.meg-embed .chat-body{padding:22px!important;gap:14px!important}
+.meg-embed .chat-panel{top:30px!important;bottom:auto!important;right:34px!important;left:auto!important;height:402px!important;max-height:402px!important;width:384px!important;max-width:384px!important;border-radius:20px!important;box-shadow:0 30px 70px rgba(0,0,0,.30)!important}
+/* accorcia l'hero del demo quando e' nella finestra, cosi' il titolo non viene tagliato */
+.meg-embed .hero,.meg-embed header.hero{min-height:560px!important;max-height:560px!important;height:560px!important}
+.meg-embed .hero-bg-photo,.meg-embed .hero-bg,.meg-embed .hero-glow{min-height:560px!important;height:560px!important}
+.meg-embed .chat-head{padding:16px 18px!important}
+.meg-embed .chat-body{padding:20px!important;gap:13px!important}
 .meg-embed .chat-msg{font-size:15.5px!important;max-width:86%!important;padding:11px 15px!important}
-.meg-embed .chat-slot,.meg-embed .chat-quick button{font-size:15px!important;padding:11px 16px!important}
-.meg-embed .chat-foot{padding:14px!important}
+.meg-embed .chat-slot,.meg-embed .chat-quick button{font-size:14.5px!important;padding:10px 15px!important}
+.meg-embed .chat-foot{padding:13px!important}
+.meg-nochat .chat-fab,.meg-nochat .chat-panel{display:none!important}
 </style>
 <script>
 (function(){
-  var P=window.MEGAUTO||{};
+  var B=window.MEG_BOOK||{};
   var fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel'),
       body=document.getElementById('chatBody'),closeb=document.getElementById('chatClose'),
       input=document.getElementById('chatInput'),send=document.getElementById('chatSend');
   if(!fab||!panel||!body)return;
   var opened=false,autoDone=false,started=false;
-  var slots=P.slots||['10:30','14:00','16:30'];
   function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
   function bub(cls,html){var d=document.createElement('div');d.className='chat-msg '+cls;d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;return d;}
-  function wa(){return '<a class="chat-wa" target="_blank" rel="noopener" href="'+(P.wa||'#')+'">WhatsApp</a>';}
+  function wa(){return '<a class="chat-wa" target="_blank" rel="noopener" href="'+(B.wa||'#')+'">WhatsApp</a>';}
   function clq(){body.querySelectorAll('.chat-quick').forEach(function(x){x.remove();});}
-  async function bot(text,ms){
-    var t=document.createElement('div');t.className='chat-msg bot';
-    t.innerHTML='<span class="chat-typing"><i></i><i></i><i></i></span>';
-    body.appendChild(t);body.scrollTop=body.scrollHeight;
-    await sleep(ms||Math.min(1500,560+text.length*14));
-    t.remove();bub('bot',esc(text).replace(/\n/g,'<br>').replace(/\[wa\]/g,wa()));
-  }
-  async function usr(text){
-    if(input){input.value='';for(var i=0;i<text.length;i++){input.value+=text[i];await sleep(24);}await sleep(240);input.value='';}
-    bub('user',esc(text));
-  }
-  function showSlots(cb){
-    var w=document.createElement('div');w.className='chat-quick';
-    slots.forEach(function(s){var b=document.createElement('button');b.className='chat-slot';b.textContent=s;if(cb)b.onclick=function(){clq();cb(s);};w.appendChild(b);});
-    body.appendChild(w);body.scrollTop=body.scrollHeight;
-  }
+  function slots(){return B.slots||['10:30','14:00','16:30'];}
+  function matchTable(p){var s=Object.keys(B.tables||{}).map(Number).sort(function(a,b){return a-b});for(var i=0;i<s.length;i++){if(s[i]>=p)return s[i];}return s.length?s[s.length-1]:p;}
+  async function bot(t,ms){var x=document.createElement('div');x.className='chat-msg bot';x.innerHTML='<span class="chat-typing"><i></i><i></i><i></i></span>';body.appendChild(x);body.scrollTop=body.scrollHeight;await sleep(ms||Math.min(1500,560+t.length*13));x.remove();bub('bot',esc(t).replace(/\n/g,'<br>').replace(/\[wa\]/g,wa()));}
+  async function usr(t){if(input){input.value='';for(var i=0;i<t.length;i++){input.value+=t[i];await sleep(22);}await sleep(220);input.value='';}bub('user',esc(t));}
+  function chips(opts,cb){var w=document.createElement('div');w.className='chat-quick';opts.forEach(function(o){var b=document.createElement('button');b.className='chat-slot';b.textContent=o;b.onclick=function(){clq();cb(o);};w.appendChild(b);});body.appendChild(w);body.scrollTop=body.scrollHeight;}
   function openP(){panel.classList.add('open');opened=true;}
   function closeP(){panel.classList.remove('open');opened=false;}
 
+  // ---------- conferma per tipo ----------
+  function confirmLine(slot,extra){
+    if(B.kind==='tables')return 'Fatto ✅ Tavolo da '+extra+' prenotato '+B.day+' alle '+slot+'. '+(B.emo||'');
+    if(B.kind==='rooms')return 'Fatto ✅ '+extra+' prenotata '+B.day+', '+slot+'. '+(B.emo||'');
+    return 'Fatto ✅ '+(extra||'appuntamento')+' prenotato '+B.day+' alle '+slot+'. '+(B.emo||'');
+  }
+  // ---------- AUTO-DEMO (recita da solo, data-driven) ----------
   async function playAuto(){
     if(autoDone)return;autoDone=true;started=true;openP();body.innerHTML='';
-    await bot("Ciao! \U0001f44b Sono l'assistente di "+(P.business||'noi')+". Posso fissarti un appuntamento in pochi secondi.",1150);
-    await sleep(450);
-    await usr(P.ask);
-    await bot('Perfetto! Per '+P.svc+' '+P.day+' ho questi orari liberi:',1250);
-    showSlots(null);
-    await sleep(1000);
-    await usr('Le '+slots[slots.length-1]+', grazie');
-    await bot('Fatto! Ti ho prenotato '+P.day+' alle '+slots[slots.length-1]+' per '+P.svc+'. '+(P.emo||'✅'),1250);
+    await bot("Ciao! \U0001f44b Sono l'assistente per le prenotazioni. "+introQ(),1150);
+    await sleep(420);
+    if(B.kind==='tables'){
+      await usr(B.demo_user); var t=matchTable(B.party);
+      await bot('Per un tavolo da '+t+' '+B.day+' ho questi orari liberi:',1250);
+      var arr=slots(); chips(arr,null); await sleep(950);
+      await usr('Le '+arr[arr.length-1]); await bot(confirmLine(arr[arr.length-1],t),1200);
+    } else if(B.kind==='rooms'){
+      await usr(B.demo_user); var rk=Object.keys(B.rooms||{'Camera':1})[0];
+      await bot('Per una '+rk+' '+B.day+' ho disponibilità. Check-in:',1250);
+      var arr=slots(); chips(arr,null); await sleep(950);
+      await usr(arr[0]); await bot(confirmLine(arr[0],rk),1200);
+    } else {
+      await usr(B.demo_user);
+      await bot('Per '+(B.pick||'l\'appuntamento')+' '+B.day+' ho questi orari:',1250);
+      var arr=slots(); chips(arr,null); await sleep(950);
+      await usr('Le '+arr[arr.length-1]); await bot(confirmLine(arr[arr.length-1],B.pick),1200);
+    }
     await bot('Ti mando il promemoria su [wa]. A presto! ✨',1050);
   }
-  async function bookFlow(){
-    await bot('Perfetto! Per '+P.svc+' '+P.day+' ho questi orari:',1000);
-    showSlots(async function(s){
-      await usr('Le '+s);
-      await bot('Fatto ✅ prenotato '+P.day+' alle '+s+' per '+P.svc+'. '+(P.emo||''),1050);
-      await bot('Ti aspetto! Vuoi il promemoria su [wa]?',850);
-    });
+  function introQ(){
+    if(B.kind==='tables')return 'Per quante persone e quando?';
+    if(B.kind==='rooms')return 'Per quante persone e quante notti?';
+    return 'Quale servizio e quando?';
   }
-  async function route(msg){
-    var m=(msg||'').toLowerCase();
-    if(/pren|appunt|posto|book|tavol|taglio|camera|tagliand|consulen|sopralluog|prova|lezione/.test(m)){await bookFlow();return;}
-    if(/prezz|cost|quant|orari|apert|info|dove/.test(m)){await bot('Te lo dico subito su [wa] (orari, prezzi e disponibilità), oppure prenoto io adesso \U0001f447',1100);showSlots(async function(s){await usr('Le '+s);await bot('Prenotato '+P.day+' alle '+s+'! '+(P.emo||'✅'),1000);});return;}
-    await bot('Ti rispondo al volo su [wa] \U0001f4ac — oppure ti prenoto adesso:',1000);
-    var w=document.createElement('div');w.className='chat-quick';var b=document.createElement('button');b.textContent='Prenota '+P.svc;b.onclick=function(){clq();bookFlow();};w.appendChild(b);body.appendChild(w);
+  // ---------- INTERATTIVO (visitatore vero, sulla scheda dati) ----------
+  async function flowTables(p){
+    var t=matchTable(p);
+    await bot('Per un tavolo da '+t+' '+B.day+' ho:',1000);
+    chips(slots(),async function(s){await usr('Le '+s);await bot(confirmLine(s,t),1000);await bot('Vuoi il promemoria su [wa]?',850);});
+  }
+  async function flowRooms(rk){
+    await bot('Per una '+rk+' '+B.day+' ho disponibilità. Check-in:',1000);
+    chips(slots(),async function(s){await usr(s);await bot(confirmLine(s,rk),1000);await bot('Vuoi il promemoria su [wa]?',850);});
+  }
+  async function flowService(svc){
+    await bot('Per '+svc+' '+B.day+' ho:',1000);
+    chips(slots(),async function(s){await usr('Le '+s);await bot(confirmLine(s,svc),1000);await bot('Vuoi il promemoria su [wa]?',850);});
   }
   function startInteractive(){
     if(started)return;started=true;body.innerHTML='';
-    bub('bot',"Ciao! \U0001f44b Sono l'assistente di "+(P.business||'noi')+'. Posso fissarti un appuntamento — dimmi pure cosa ti serve.');
-    var w=document.createElement('div');w.className='chat-quick';
-    [['Prenota '+P.svc,bookFlow],['Orari & prezzi',function(){route('orari')}]].forEach(function(p){
-      var b=document.createElement('button');b.textContent=p[0];b.onclick=function(){clq();if(p[0].indexOf('Prenota')===0)usr(p[0]).then(p[1]);else p[1]();};w.appendChild(b);
-    });
-    body.appendChild(w);
+    bub('bot',"Ciao! \U0001f44b Sono l'assistente per le prenotazioni. "+introQ());
+    if(B.kind==='tables'){ chips(['2','3','4','5','6+'].map(function(n){return n+' persone';}),function(o){var p=parseInt(o,10)||2;usr(o);flowTables(p);}); }
+    else if(B.kind==='rooms'){ chips(Object.keys(B.rooms||{'Matrimoniale':1}),function(o){usr(o);flowRooms(o);}); }
+    else { chips((B.services||['Appuntamento']),function(o){usr(o);flowService(o);}); }
+    var h=document.createElement('div');h.className='chat-msg bot';h.style.opacity='.7';h.style.fontSize='12.5px';h.textContent='Orari: '+(B.hours||'—');body.appendChild(h);
+  }
+  async function route(msg){
+    var m=(msg||'').toLowerCase(), n=(m.match(/\d+/)||[])[0];
+    if(B.kind==='tables'&&(n||/persone|tavol|pren/.test(m))){await flowTables(parseInt(n,10)||2);return;}
+    if(B.kind==='rooms'&&/camera|notte|pren|suite|matrimon/.test(m)){await flowRooms(Object.keys(B.rooms||{'Matrimoniale':1})[0]);return;}
+    if(/pren|appunt|posto|book|prova|taglio|servizio|consulen|tagliand|sopralluog/.test(m)){await flowService(B.pick||'l\'appuntamento');return;}
+    if(/orari|apert|quando/.test(m)){await bot('Siamo aperti: '+(B.hours||'—')+'. Vuoi che prenoti adesso?',1000);return;}
+    await bot('Ti rispondo al volo su [wa] \U0001f4ac, oppure prenoto adesso:',1000);
+    chips([B.kind==='tables'?'Prenota un tavolo':(B.kind==='rooms'?'Prenota una camera':'Prenota')],function(){ if(B.kind==='tables')flowTables(2); else if(B.kind==='rooms')flowRooms(Object.keys(B.rooms||{'X':1})[0]); else flowService(B.pick||'appuntamento'); });
   }
   function sendNow(){var v=(input.value||'').trim();if(!v)return;input.value='';bub('user',esc(v));route(v);}
 
@@ -757,10 +779,8 @@ section{padding:140px 0;position:relative}
   if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')sendNow();});
 
   var embedded=false;try{embedded=window.self!==window.top;}catch(e){embedded=true;}
-  if(embedded||P.force||/[?&]demo=1/.test(location.search)){
-    try{document.body.classList.add('meg-embed');}catch(e){}
-    setTimeout(playAuto,1700);
-  }
+  if(/[?&]nochat=1/.test(location.search)){try{document.body.classList.add('meg-nochat');}catch(e){}}
+  else if(embedded||B.force||/[?&]demo=1/.test(location.search)){try{document.body.classList.add('meg-embed');}catch(e){}setTimeout(playAuto,1700);}
 })();
 </script>
 <!--MEGAUTO-END-->
