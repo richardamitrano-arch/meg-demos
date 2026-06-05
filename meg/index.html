@@ -185,7 +185,7 @@ footer a:hover{color:var(--blue)}
     <div class="sc-glow"></div>
     <div class="sc-frame" id="scFrame">
       <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl">estetica-lumiere.it</span><em class="sc-badge">demo dal vivo</em></div>
-      <div class="sc-view"><iframe id="scIframe" src="demos/beauty/standard/index.html" title="Demo dal vivo" loading="lazy" scrolling="no"></iframe></div>
+      <div class="sc-view"><iframe id="scIframe" src="demos/beauty/premium/index.html" title="Demo dal vivo" loading="lazy" scrolling="no"></iframe></div>
     </div>
     <div class="sc-pills" id="scPills">
       <button data-s="beauty" data-u="estetica-lumiere.it" class="on">Estetica</button>
@@ -380,9 +380,9 @@ footer a:hover{color:var(--blue)}
   }
   var btns=Array.prototype.slice.call(pills.querySelectorAll('button')),i=0,timer;
   function show(idx){var b=btns[idx];if(!b)return;for(var k=0;k<btns.length;k++)btns[k].classList.remove('on');b.classList.add('on');
-    ifr.style.opacity='0';setTimeout(function(){ifr.src='demos/'+b.getAttribute('data-s')+'/standard/index.html';url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';},200);i=idx;}
+    ifr.style.opacity='0';setTimeout(function(){ifr.src='demos/'+b.getAttribute('data-s')+'/premium/index.html';url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';},200);i=idx;}
   for(var k=0;k<btns.length;k++){(function(idx){btns[idx].addEventListener('click',function(){show(idx);clearInterval(timer);});})(k);}
-  timer=setInterval(function(){if(document.hidden)return;show((i+1)%btns.length);},6500);
+  timer=setInterval(function(){if(document.hidden)return;show((i+1)%btns.length);},16000);
 })();
 (function(){var d=document,w=window;var rev=d.querySelectorAll('.reveal');
 function all(){for(var i=0;i<rev.length;i++)rev[i].classList.add('in');}
