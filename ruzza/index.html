@@ -3,336 +3,273 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ruzza Watch Store · Cantello (VA) · Orologeria · Édition Premium</title>
+<title>Ruzza Watch Store · Cantello (VA) · Orologeria</title>
 <meta name="description" content="Vendita, riparazione e valutazione di orologi nuovi, usati e vintage — con la competenza di chi li conosce davvero.">
-<meta property="og:title" content="Ruzza Watch Store — Édition Premium">
+<meta property="og:title" content="Ruzza Watch Store">
 <meta property="og:description" content="Vendita, riparazione e valutazione di orologi nuovi, usati e vintage — con la competenza di chi li conosce davvero.">
 <meta property="og:type" content="website">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700;900&family=Manrope:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f6f3ec;
-  --surface:#ffffff;
-  --ink:#161922;
-  --muted:#6a6456;
-  --accent:#9c7b33;
-  --accent-soft:rgba(156,123,51,0.12);
-  --line:rgba(0,0,0,.08);
-  --line-dark:rgba(255,255,255,.10);
-}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-html,body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-weight:400}
+html,body{font-family:'Manrope',system-ui,sans-serif;background:#f6f3ec;color:#161922;line-height:1.55;-webkit-font-smoothing:antialiased}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.display{font-family:'Cormorant Garamond',serif;text-transform:none;letter-spacing:-0.02em;font-weight:600;color:#161922}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%;height:auto}
-::selection{background:var(--accent);color:var(--bg)}
+::selection{background:#9c7b33;color:#f6f3ec}
 
-.wrap{max-width:1600px;margin:0 auto;padding:0 48px}
-@media(max-width:900px){.wrap{padding:0 24px}}
+/* Header */
+header{position:sticky;top:0;background:#f6f3ecf0;backdrop-filter:blur(14px);border-bottom:1px solid rgba(156,123,51,0.12);z-index:10;padding:18px 0}
+header .container{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:900;color:#161922;letter-spacing:-0.03em}
+.brand em{color:#9c7b33;font-style:normal}
+nav a{margin-left:24px;font-size:14px;color:#6a6456;font-weight:500;transition:color 180ms}
+nav a:hover{color:#9c7b33}
 
-/* Editorial type */
-.serif,h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:-.03em;line-height:.95}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
-.italic{font-style:italic;font-weight:300}
-.huge{font-size:clamp(80px,14vw,220px);line-height:.84;letter-spacing:-.055em;font-weight:300}
-.huge em{font-style:italic;font-weight:300}
-.big{font-size:clamp(48px,8vw,120px);line-height:.9;letter-spacing:-.04em;font-weight:300}
-.big em{font-style:italic}
-.med{font-size:clamp(28px,4vw,52px);line-height:1.05;letter-spacing:-.025em;font-weight:300}
+/* Buttons */
+.btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform 120ms,filter 160ms,background 200ms;letter-spacing:0.02em}
+.btn-primary{background:#9c7b33;color:#f6f3ec}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#161922;border:1.5px solid #9c7b33;margin-left:10px}
+.btn-ghost:hover{background:#9c7b33;color:#f6f3ec}
 
-/* ─────── NAV ─────── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 48px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(180deg,rgba(0,0,0,.50),rgba(0,0,0,0));
-  transition:background .3s,padding .3s}
-.nav.scrolled{background:var(--bg);border-bottom:1px solid var(--line);padding:18px 48px}
-.nav.scrolled,.nav.scrolled a,.nav.scrolled .nav-logo{color:var(--ink)}
-.nav,.nav a,.nav-logo{color:#fff}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:-.04em}
-.nav-logo em{font-style:italic;font-weight:300;color:var(--accent)}
-.nav-c{display:flex;align-items:center;gap:36px}
-.nav-c a{font-size:13px;font-weight:500;letter-spacing:.04em;position:relative;padding-bottom:3px;transition:color .2s}
-.nav-c a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:currentColor;transition:width .35s cubic-bezier(.22,1,.36,1)}
-.nav-c a:hover::after{width:100%}
-.nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:999px;
-  background:var(--accent);color:var(--bg)!important;font-size:13px;font-weight:600;letter-spacing:.02em;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px var(--accent-soft)}
-@media(max-width:780px){.nav-c a:not(.nav-cta){display:none}.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}}
+/* Hero — variant-specific */
+.hero{padding:80px 0 100px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(48px,7vw,96px);line-height:0.96;margin-bottom:24px;max-width:920px}
+.hero .lead{font-size:20px;color:#6a6456;max-width:580px;margin-bottom:32px;line-height:1.6}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hero-bg-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:.5;filter:saturate(1.06)}
+.hero-bg-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#f6f3ec7a,#f6f3ecad 50%,#f6f3ecec)}
+.hero:has(.hero-bg-photo){min-height:58vh;display:flex;align-items:center}
+.hero .container{position:relative;z-index:1;width:100%}
 
-/* ─────── HERO CINEMATIC ─────── */
-.hero{position:relative;min-height:100vh;color:#fff;
-  display:flex;align-items:flex-end;overflow:hidden;background:#0a0a0a}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img,.hero-bg .hero-svg{width:100%;height:100%;object-fit:cover;
-  filter:brightness(.55) contrast(1.05) saturate(.95)}
-.hero-bg::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.65) 100%)}
-.hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='.85'/></svg>")}
-.hero-inner{position:relative;z-index:2;padding:140px 0 80px;width:100%}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-start;
-  margin-bottom:auto;padding-bottom:24vh;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:rgba(255,255,255,.65)}
-.hero-top div{display:flex;flex-direction:column;gap:6px}
-.hero-top span:last-child{color:#fff;font-size:13px;letter-spacing:.18em;font-weight:500}
-.hero-h1{color:#fff;margin-bottom:34px}
-.hero-h1 em{color:var(--accent);font-style:italic;font-weight:300}
-.hero-sub{font-size:clamp(18px,1.6vw,22px);max-width:640px;color:rgba(255,255,255,.78);
-  font-weight:300;line-height:1.55;margin-bottom:48px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero-ctas .btn-line{margin-left:16px;font-size:12px;letter-spacing:.18em;color:rgba(255,255,255,.65);
-  text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
-.hero-ctas .btn-line::before{content:'';width:32px;height:1px;background:rgba(255,255,255,.4)}
-.hero-scroll{position:absolute;left:48px;bottom:32px;z-index:2;
-  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);
-  display:flex;align-items:center;gap:12px;animation:scrollPulse 2.5s ease-in-out infinite}
-.hero-scroll::after{content:'';width:1px;height:42px;background:rgba(255,255,255,.4);transform-origin:top}
-@keyframes scrollPulse{0%,100%{opacity:.55}50%{opacity:.95}}
+/* Hero: magazine-overlay (beauty) */
+.hero.var-magazine-overlay{background:linear-gradient(180deg,rgba(156,123,51,0.12),transparent 70%)}
+.hero.var-magazine-overlay h1 em{color:#9c7b33;font-style:italic}
 
-/* Premium pill button — magnetic */
-.btn-prem{display:inline-flex;align-items:center;gap:14px;
-  padding:18px 32px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.02em;
-  background:var(--accent);color:var(--bg);border:none;cursor:pointer;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,background .2s;
-  position:relative;overflow:hidden;font-family:inherit}
-.btn-prem::after{content:'→';font-size:18px;font-weight:400;transition:transform .35s cubic-bezier(.22,1,.36,1)}
-.btn-prem:hover{transform:translateY(-3px);box-shadow:0 18px 50px var(--accent-soft)}
-.btn-prem:hover::after{transform:translateX(6px)}
-.btn-prem-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.32)}
-.btn-prem-ghost:hover{background:rgba(255,255,255,.05);border-color:#fff}
+/* Hero: centered-stats-band (barber) */
+.hero.var-centered-stats-band{text-align:center;background:radial-gradient(ellipse at center top,rgba(156,123,51,0.12),transparent 60%)}
+.hero.var-centered-stats-band .stats-band{display:flex;justify-content:center;gap:48px;margin-top:48px;border-top:1px solid rgba(156,123,51,0.12);padding-top:32px}
+.stats-band div{text-align:center}
+.stats-band b{display:block;font-size:42px;color:#9c7b33;font-family:'Cormorant Garamond',serif;line-height:1;font-weight:900}
+.stats-band span{font-size:11px;color:#6a6456;text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;display:block}
 
-/* ─────── SECTIONS ─────── */
-section{padding:140px 0;position:relative}
-@media(max-width:780px){section{padding:80px 0}}
-.section-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--muted);margin-bottom:48px;
-  display:flex;align-items:center;gap:18px}
-.section-num::after{content:'';flex:1;height:1px;background:var(--line)}
-.section-num em{font-style:italic;color:var(--ink)}
+/* Hero: cover-photo-quote (restaurant) */
+.hero.var-cover-photo-quote{background:#ffffff;padding:0;min-height:560px;display:flex;align-items:center;position:relative}
+.hero.var-cover-photo-quote::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(156,123,51,0.12),transparent 50%);pointer-events:none}
+.hero.var-cover-photo-quote .container{position:relative;z-index:1}
+.hero.var-cover-photo-quote h1::before{content:'"';display:block;font-size:120px;color:#9c7b33;line-height:0.4;margin-bottom:20px;font-family:'Cormorant Garamond',serif}
 
-/* ─────── MANIFESTO ─────── */
-.manifesto{background:var(--surface);padding:160px 0}
-.manifesto-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,84px);
-  line-height:1.05;letter-spacing:-.03em;font-weight:300;max-width:1100px}
-.manifesto-quote em{font-style:italic;color:var(--accent)}
-.manifesto-attr{margin-top:48px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+/* Hero: diagonal-stats (fitness) */
+.hero.var-diagonal-stats{background:linear-gradient(108deg,#ffffff 60%,rgba(156,123,51,0.12) 60%)}
+.hero.var-diagonal-stats h1{color:#161922}
 
-/* ─────── STATS BAND ─────── */
-.stats-band-prem{padding:60px 0;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stats-band-prem .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-.stat-prem{padding:8px 0}
-.stat-prem-value{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;color:var(--accent);
-  line-height:1;letter-spacing:-.04em;display:block}
-.stat-prem-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block}
-@media(max-width:780px){.stats-band-prem .wrap{grid-template-columns:1fr 1fr;gap:32px 24px}}
+/* Hero: split-left-image (dental, local_service) */
+.hero.var-split-left-image .container{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero.var-split-left-image .hero-photo{aspect-ratio:4/5;background:rgba(156,123,51,0.12);border-radius:24px;background-size:cover;background-position:center}
+@media (max-width:900px){.hero.var-split-left-image .container{grid-template-columns:1fr}}
 
-/* ─────── SERVICES — per-row signature image ─────── */
-.svc-prem{display:flex;flex-direction:column}
-.svc-row{display:grid;grid-template-columns:80px 1.1fr 1fr 220px;gap:48px;
-  padding:48px 0;border-top:1px solid var(--line);align-items:center;
-  transition:padding-left .35s cubic-bezier(.22,1,.36,1)}
-.svc-row:last-child{border-bottom:1px solid var(--line)}
-.svc-row:hover{padding-left:24px}
-.svc-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--accent);letter-spacing:.06em}
-.svc-text h3{font-size:clamp(28px,3vw,40px);margin-bottom:14px;line-height:1.0}
-.svc-text h3 em{font-style:italic;color:var(--accent)}
-.svc-text p{font-size:15.5px;color:var(--muted);line-height:1.65;max-width:520px}
-.svc-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);font-weight:300;letter-spacing:-.01em}
-.svc-photo{aspect-ratio:4/3;border-radius:0;overflow:hidden;background:var(--accent-soft);
-  position:relative}
-.svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
-.svc-row:hover .svc-photo img{transform:scale(1.06)}
-@media(max-width:980px){
-  .svc-row{grid-template-columns:1fr;gap:24px;padding:36px 0}
-  .svc-num{order:0}.svc-photo{order:1;aspect-ratio:16/10}.svc-text{order:2}.svc-price{order:3}
-}
+/* Hero: centered-credentials (medical, professional) */
+.hero.var-centered-credentials{text-align:center;padding:100px 0 80px}
+.hero.var-centered-credentials .credentials{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:36px;color:#6a6456;font-size:13px;text-transform:uppercase;letter-spacing:0.12em}
+.hero.var-centered-credentials .credentials span{padding:6px 16px;border:1px solid rgba(156,123,51,0.12);border-radius:999px}
 
-/* ─────── PROCESS TIMELINE ─────── */
-.process{background:var(--surface)}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.process-step{background:var(--surface);padding:56px 36px;position:relative;min-height:280px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  transition:background .3s}
-.process-step:hover{background:var(--bg)}
-.process-step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--accent);
-  line-height:1;letter-spacing:-.04em;margin-bottom:24px}
-.process-step h3{font-size:22px;margin-bottom:14px;line-height:1.1;font-weight:400}
-.process-step p{font-size:14.5px;color:var(--muted);line-height:1.6}
-@media(max-width:780px){.process-grid{grid-template-columns:1fr;gap:1px}}
+/* Hero: industrial-banner (construction) */
+.hero.var-industrial-banner{background:repeating-linear-gradient(45deg,#ffffff,#ffffff 60px,#f6f3ec 60px,#f6f3ec 120px);padding:120px 0 100px}
 
-/* ─────── GALLERY EDITORIAL ─────── */
-.gallery-prem{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;grid-auto-rows:160px}
-.gallery-prem .gp-card{position:relative;overflow:hidden;background:var(--accent-soft)}
-.gallery-prem .gp-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
-.gallery-prem .gp-card:hover img{transform:scale(1.07)}
-.gallery-prem .gp-card:nth-child(1){grid-column:span 8;grid-row:span 2}
-.gallery-prem .gp-card:nth-child(2){grid-column:span 4;grid-row:span 1}
-.gallery-prem .gp-card:nth-child(3){grid-column:span 4;grid-row:span 1}
-.gallery-prem .gp-card:nth-child(4){grid-column:span 4;grid-row:span 1}
-.gallery-prem .gp-card:nth-child(5){grid-column:span 4;grid-row:span 1}
-.gallery-prem .gp-card:nth-child(6){grid-column:span 4;grid-row:span 1}
-.gp-card-label{position:absolute;bottom:18px;left:18px;color:#fff;
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  background:rgba(0,0,0,.55);padding:6px 12px;backdrop-filter:blur(8px)}
-@media(max-width:980px){.gallery-prem{grid-template-columns:1fr 1fr;grid-auto-rows:200px}.gallery-prem .gp-card{grid-column:span 1!important;grid-row:span 1!important}}
+/* Hero: full-bleed-photo (hotel) */
+.hero.var-full-bleed-photo{padding:0;min-height:640px;background:rgba(156,123,51,0.12);display:flex;align-items:flex-end;position:relative}
+.hero.var-full-bleed-photo .container{padding-bottom:80px;position:relative;z-index:1}
+.hero.var-full-bleed-photo h1{color:#161922}
 
-/* ─────── TESTIMONIALS magazine ─────── */
-.testimonial-prem{background:var(--surface);padding:160px 0}
-.testimonial-prem .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
-.testi-card{padding:0}
-.testi-stars{color:var(--accent);font-size:14px;letter-spacing:4px;margin-bottom:24px}
-.testi-quote{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4;letter-spacing:-.01em;
-  font-weight:300;margin-bottom:32px;color:var(--ink)}
-.testi-quote em{font-style:italic}
-.testi-attr{font-size:13px;letter-spacing:.04em;color:var(--muted);font-weight:500}
-.testi-attr strong{color:var(--ink);font-weight:600}
-@media(max-width:980px){.testimonial-prem .wrap{grid-template-columns:1fr;gap:64px}}
+/* Hero: split-product-showcase (retail) */
+.hero.var-split-product-showcase .container{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero.var-split-product-showcase .hero-photo{aspect-ratio:1;border-radius:50%;background:rgba(156,123,51,0.12);background-size:cover}
+@media (max-width:900px){.hero.var-split-product-showcase .container{grid-template-columns:1fr}}
 
-/* ─────── OFFER BAND ─────── */
-.offer-prem{padding:120px 0;background:var(--bg)}
-.offer-prem-inner{border:1px solid var(--line);border-radius:0;padding:72px;display:grid;
-  grid-template-columns:1fr auto;gap:48px;align-items:center;
-  background:linear-gradient(135deg,var(--accent-soft),transparent 70%)}
-.offer-prem .eyebrow{margin-bottom:20px}
-.offer-prem h2{margin-bottom:18px}
-.offer-prem p{font-size:17px;color:var(--muted);line-height:1.6;max-width:560px}
-@media(max-width:780px){.offer-prem-inner{grid-template-columns:1fr;padding:40px 28px;gap:32px}}
+/* Hero: diagonal-bands (automotive) */
+.hero.var-diagonal-bands{background:linear-gradient(135deg,#ffffff 50%,rgba(156,123,51,0.12) 50%);padding:120px 0}
 
-/* ─────── FAQ ─────── */
-.faq-prem{background:var(--surface)}
-.faq-prem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
-  background:var(--line);border:1px solid var(--line);margin-top:64px}
-.faq-item{background:var(--surface);padding:44px;transition:background .3s}
-.faq-item:hover{background:var(--bg)}
-.faq-item-q{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;line-height:1.2;
-  margin-bottom:16px;letter-spacing:-.01em}
-.faq-item-a{font-size:15px;color:var(--muted);line-height:1.65}
-@media(max-width:780px){.faq-prem-grid{grid-template-columns:1fr}.faq-item{padding:32px 28px}}
+/* Sections */
+section{padding:90px 0;border-top:1px solid rgba(156,123,51,0.12)}
+section h2{font-size:clamp(36px,5vw,64px);margin-bottom:14px;letter-spacing:-0.02em}
+section .lead-sub{color:#6a6456;font-size:17px;max-width:560px;margin-bottom:48px;line-height:1.6}
 
-/* ─────── TEAM ─────── */
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:64px}
-.team-photo{aspect-ratio:3/4;overflow:hidden;background:var(--accent-soft);margin-bottom:24px;position:relative}
-.team-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35);transition:transform .7s cubic-bezier(.22,1,.36,1),filter .5s}
-.team-card:hover .team-photo img{transform:scale(1.05);filter:grayscale(0)}
-.team-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:-.02em;margin-bottom:6px;line-height:1}
-.team-role{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
-.team-bio{font-size:14.5px;color:var(--muted);line-height:1.6}
-@media(max-width:900px){.team-grid{grid-template-columns:1fr;gap:48px;max-width:440px}}
+/* Services — numbered-list-italic (beauty) */
+.services-numbered-list-italic .service-row{display:grid;grid-template-columns:60px 2fr 3fr 40px;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid rgba(156,123,51,0.12);transition:padding-left 240ms}
+.services-numbered-list-italic .service-row:hover{padding-left:12px}
+.services-numbered-list-italic .service-num{font-family:'Cormorant Garamond',serif;font-size:14px;color:#9c7b33;font-style:italic}
+.services-numbered-list-italic .service-name{font-size:24px;font-style:italic;font-weight:400;text-transform:none;letter-spacing:-0.01em}
+.services-numbered-list-italic .service-price{color:#6a6456;font-size:13px;margin-top:4px}
+.services-numbered-list-italic .service-desc{color:#6a6456;font-size:14.5px;line-height:1.6}
+.services-numbered-list-italic .service-arrow{color:#9c7b33;font-size:22px;text-align:right;opacity:0.6}
 
-/* ─────── BEFORE / AFTER ─────── */
-.ba-wrap{margin-top:64px;display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
-.ba-slider{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;user-select:none;background:var(--accent-soft)}
-.ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.ba-after{clip-path:inset(0 0 0 50%)}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;pointer-events:none;box-shadow:0 0 24px rgba(0,0,0,.45);z-index:3}
-.ba-handle::after{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700}
-.ba-tag{position:absolute;top:16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);padding:6px 13px;backdrop-filter:blur(8px);z-index:2}
-.ba-tag-before{left:16px}.ba-tag-after{right:16px}
-@media(max-width:780px){.ba-wrap{grid-template-columns:1fr}}
+/* Services — split-table (barber, automotive) */
+.services-split-table .service-row{display:grid;grid-template-columns:1fr 100px;gap:20px;padding:22px 0;border-bottom:1px dashed rgba(156,123,51,0.12)}
+.services-split-table .service-name{font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+.services-split-table .service-num{display:none}
+.services-split-table .service-desc{color:#6a6456;font-size:14px;margin-top:4px}
+.services-split-table .service-price{font-weight:700;color:#9c7b33;text-align:right;font-size:18px;font-family:'Cormorant Garamond',serif}
+.services-split-table .service-arrow{display:none}
 
-/* ─────── CONTACT page ─────── */
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
-  border:1px solid var(--line);margin-top:64px}
-.contact-card{background:var(--surface);padding:52px 40px;transition:background .3s}
-.contact-card:hover{background:var(--bg)}
-.contact-card .eyebrow{margin-bottom:18px}
-.contact-card-value{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:-.02em;line-height:1.2;word-break:break-word}
-.contact-card-value a{transition:color .2s}.contact-card-value a:hover{color:var(--accent)}
-@media(max-width:780px){.contact-grid{grid-template-columns:1fr}}
+/* Services — menu-table-dotted (restaurant) */
+.services-menu-table-dotted .service-row{display:grid;grid-template-columns:1fr auto;gap:14px;padding:20px 0;align-items:end;position:relative}
+.services-menu-table-dotted .service-row::after{content:'.....................';color:#6a6456;position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:14px;letter-spacing:6px;opacity:0.4;z-index:0}
+.services-menu-table-dotted .service-name{font-size:22px;font-style:italic;background:#ffffff;padding-right:14px;z-index:1;position:relative;font-weight:400}
+.services-menu-table-dotted .service-price{background:#ffffff;padding-left:14px;color:#9c7b33;font-weight:700;font-size:18px;z-index:1;position:relative;font-family:'Cormorant Garamond',serif}
+.services-menu-table-dotted .service-num,.services-menu-table-dotted .service-arrow{display:none}
+.services-menu-table-dotted .service-desc{grid-column:1/-1;color:#6a6456;font-size:13.5px;font-style:italic;margin-top:-8px}
 
-/* ─────── INNER PAGE HERO (compact) ─────── */
-.hero.compact{min-height:62vh}
-.hero.compact .hero-top{padding-bottom:14vh}
-.hero.compact .hero-inner{padding:120px 0 64px}
+/* Services — card-grid-3x2, card-grid-2x3, icon-card-grid (fitness, retail, dental, local_service) */
+.services-card-grid-3x2,.services-card-grid-2x3,.services-icon-card-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.services-card-grid-3x2 .service-row,.services-card-grid-2x3 .service-row,.services-icon-card-grid .service-row{display:block;padding:32px 26px;background:#ffffff;border:1px solid rgba(156,123,51,0.12);border-radius:14px;transition:transform 200ms,border-color 200ms}
+.services-card-grid-3x2 .service-row:hover,.services-card-grid-2x3 .service-row:hover,.services-icon-card-grid .service-row:hover{transform:translateY(-4px);border-color:#9c7b33}
+.services-card-grid-3x2 .service-num,.services-card-grid-2x3 .service-num,.services-icon-card-grid .service-num{display:inline-block;color:#9c7b33;font-family:'Cormorant Garamond',serif;font-size:14px;margin-bottom:14px;letter-spacing:0.05em}
+.services-card-grid-3x2 .service-name,.services-card-grid-2x3 .service-name,.services-icon-card-grid .service-name{font-size:20px;margin-bottom:10px}
+.services-card-grid-3x2 .service-desc,.services-card-grid-2x3 .service-desc,.services-icon-card-grid .service-desc{color:#6a6456;font-size:14.5px;line-height:1.6;margin-bottom:14px}
+.services-card-grid-3x2 .service-price,.services-card-grid-2x3 .service-price,.services-icon-card-grid .service-price{font-weight:700;color:#9c7b33;font-size:15px}
+.services-card-grid-3x2 .service-arrow,.services-card-grid-2x3 .service-arrow,.services-icon-card-grid .service-arrow{display:none}
 
-/* ─────── CTA FINAL ─────── */
-.cta-final-prem{background:var(--ink);color:#fff;padding:180px 0;position:relative;overflow:hidden}
-.cta-final-prem::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:120vw;aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle,var(--accent-soft),transparent 60%);
-  pointer-events:none;opacity:.45;animation:ctaPulse 9s ease-in-out infinite alternate}
-@keyframes ctaPulse{0%{transform:translate(-50%,-50%) scale(.9)}100%{transform:translate(-50%,-50%) scale(1.1)}}
-.cta-final-prem .wrap{position:relative;z-index:1;text-align:center}
-.cta-final-prem h2{color:#fff;margin-bottom:32px}
-.cta-final-prem h2 em{color:var(--accent);font-style:italic}
-.cta-final-prem p{font-size:20px;color:rgba(255,255,255,.72);max-width:640px;margin:0 auto 56px;line-height:1.55;font-weight:300}
-.cta-final-prem .btn-prem{font-size:16px;padding:22px 40px}
+/* Services — numbered-block (medical, professional) */
+.services-numbered-block .service-row{display:grid;grid-template-columns:80px 1fr;gap:26px;padding:28px 0;border-top:1px solid rgba(156,123,51,0.12)}
+.services-numbered-block .service-num{font-family:'Cormorant Garamond',serif;font-size:32px;color:#9c7b33;font-weight:300}
+.services-numbered-block .service-name{font-size:22px;margin-bottom:8px;letter-spacing:-0.01em}
+.services-numbered-block .service-desc{color:#6a6456;font-size:15px;line-height:1.65}
+.services-numbered-block .service-price{color:#9c7b33;font-weight:600;margin-top:10px;display:inline-block}
+.services-numbered-block .service-arrow{display:none}
 
-/* ─────── FOOTER ─────── */
-.footer-prem{padding:72px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-.footer-prem .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.footer-prem-brand{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ink);letter-spacing:-.03em;font-weight:300}
-.footer-prem-brand em{font-style:italic;color:var(--accent)}
-.footer-prem-links{display:flex;gap:32px;font-size:12.5px}
-.footer-prem-links a{color:var(--muted);transition:color .2s}.footer-prem-links a:hover{color:var(--ink)}
-.footer-prem-credit{margin-top:8px;font-size:11.5px;letter-spacing:.04em}
+/* Services — numbered-bars (construction) */
+.services-numbered-bars .service-row{display:grid;grid-template-columns:60px 1fr 100px;gap:24px;padding:24px 0;border-bottom:2px solid #9c7b33;align-items:center}
+.services-numbered-bars .service-num{background:#9c7b33;color:#f6f3ec;text-align:center;padding:10px 0;font-weight:900;font-family:'Cormorant Garamond',serif}
+.services-numbered-bars .service-name{font-size:22px;letter-spacing:0.02em}
+.services-numbered-bars .service-desc{color:#6a6456;font-size:13.5px;margin-top:4px}
+.services-numbered-bars .service-price{color:#9c7b33;font-weight:700;font-family:'Cormorant Garamond',serif}
+.services-numbered-bars .service-arrow{display:none}
 
-/* ─────── REVEAL animations ─────── */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
-.reveal.in{opacity:1;transform:none}
-.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}.reveal-d4{transition-delay:.48s}
+/* Services — elegant-list (hotel) */
+.services-elegant-list .service-row{display:block;padding:36px 0;border-bottom:1px solid rgba(156,123,51,0.12);text-align:center}
+.services-elegant-list .service-num{display:block;color:#9c7b33;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin-bottom:8px;font-weight:400}
+.services-elegant-list .service-name{font-size:32px;letter-spacing:-0.02em;margin-bottom:8px;font-weight:400;font-style:italic}
+.services-elegant-list .service-desc{color:#6a6456;font-size:15px;max-width:560px;margin:0 auto 12px;line-height:1.7}
+.services-elegant-list .service-price{display:inline-block;color:#9c7b33;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:0.12em}
+.services-elegant-list .service-arrow{display:none}
 
-/* Hero stagger animation on load */
-.hero-h1,.hero-sub,.hero-ctas,.hero-top{opacity:0;animation:heroIn 1.1s cubic-bezier(.22,1,.36,1) forwards}
-.hero-top{animation-delay:.15s}
-.hero-h1{animation-delay:.35s}
-.hero-sub{animation-delay:.55s}
-.hero-ctas{animation-delay:.75s}
-@keyframes heroIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+/* Gallery variants */
+.gallery-asymmetric-mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:140px;gap:14px}
+.gallery-asymmetric-mosaic .ed-card:nth-child(1){grid-column:span 4;grid-row:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(2){grid-column:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(3){grid-column:span 2;grid-row:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(4){grid-column:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(5){grid-column:span 2}
 
-/* Sticky scroll indicator */
-.scroll-indicator{position:fixed;left:48px;top:50%;transform:translateY(-50%);z-index:50;
-  display:none;flex-direction:column;gap:18px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted)}
-.scroll-indicator span{display:flex;align-items:center;gap:14px;cursor:pointer;transition:color .25s}
-.scroll-indicator span::before{content:'';width:18px;height:1px;background:var(--muted);transition:width .35s,background .25s}
-.scroll-indicator span.active::before,.scroll-indicator span:hover::before{width:42px;background:var(--accent)}
-.scroll-indicator span.active,.scroll-indicator span:hover{color:var(--accent)}
-@media(max-width:1180px){.scroll-indicator{display:none}}
+.gallery-stacked-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gallery-stacked-mosaic .ed-card{aspect-ratio:1}
+.gallery-stacked-mosaic .ed-card:nth-child(odd){aspect-ratio:4/5}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px}
+.gallery-side-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.gallery-side-grid .ed-card{aspect-ratio:1}
 
-/* ─────── CHAT WIDGET ─────── */
-.chat-fab{position:fixed;bottom:26px;right:26px;z-index:200;width:62px;height:62px;border-radius:50%;background:var(--accent);color:var(--bg);border:none;cursor:pointer;box-shadow:0 16px 44px var(--accent-soft);display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
-.chat-fab:hover{transform:scale(1.08)}
-.chat-fab svg{width:27px;height:27px}
-.chat-fab::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);animation:chatPulse 2.4s ease-out infinite;pointer-events:none}
-@keyframes chatPulse{0%{transform:scale(1);opacity:.65}100%{transform:scale(1.55);opacity:0}}
-.chat-panel{position:fixed;bottom:104px;right:26px;z-index:201;width:362px;max-width:calc(100vw - 36px);height:524px;max-height:calc(100vh - 150px);background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 34px 90px rgba(0,0,0,.30);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(20px) scale(.96);pointer-events:none;transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
-.chat-panel.open{opacity:1;transform:none;pointer-events:auto}
-.chat-head{padding:18px 20px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px}
-.chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px}
-.chat-head b{font-size:15px;display:block;line-height:1.2}
-.chat-head .chat-status{font-size:11px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:6px;margin-top:2px}
-.chat-head .chat-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#3ddc84}
-.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:24px;cursor:pointer;line-height:1}
-.chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
-.chat-msg{max-width:84%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:chatIn .3s ease}
-@keyframes chatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.chat-msg.bot{background:var(--surface);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
-.chat-msg.user{background:var(--accent);color:var(--bg);align-self:flex-end;border-bottom-right-radius:4px}
-.chat-quick{display:flex;flex-wrap:wrap;gap:8px}
-.chat-quick button{background:none;border:1px solid var(--accent);color:var(--accent);padding:8px 14px;border-radius:999px;font-size:13px;cursor:pointer;transition:background .2s,color .2s;font-family:inherit}
-.chat-quick button:hover{background:var(--accent);color:var(--bg)}
-.chat-foot{padding:14px;border-top:1px solid var(--line);display:flex;gap:8px;background:var(--surface)}
-.chat-foot input{flex:1;border:1px solid var(--line);border-radius:999px;padding:11px 16px;font-size:14px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none}
-.chat-foot input:focus{border-color:var(--accent)}
-.chat-foot button{background:var(--accent);color:var(--bg);border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:17px;flex-shrink:0}
-.chat-wa{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:#25d366;color:#fff!important;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none}
-@media(max-width:480px){.chat-panel{bottom:90px;right:14px;height:68vh}.chat-fab{bottom:16px;right:16px}}
+.gallery-side-grid-tall{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.gallery-side-grid-tall .ed-card{aspect-ratio:3/4}
+
+.gallery-horizontal-strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory}
+.gallery-horizontal-strip .ed-card{flex:0 0 320px;aspect-ratio:3/4;scroll-snap-align:start}
+
+.gallery-soft-rounded-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.gallery-soft-rounded-grid .ed-card{aspect-ratio:4/5;border-radius:24px}
+
+.ed-card{position:relative;overflow:hidden;border-radius:8px;background:rgba(156,123,51,0.12);transition:transform 240ms}
+.ed-card:hover{transform:scale(1.015)}
+.ed-card img,.ed-card .ed-bg-svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.ed-content{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;z-index:1}
+.ed-cat{font-size:10.5px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.8}
+.ed-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;margin-top:4px;text-transform:none}
+
+/* Reviews band */
+.reviews{background:#ffffff;padding:60px 0}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.review{padding:28px 26px;border:1px solid rgba(156,123,51,0.12);border-radius:14px;background:#f6f3ec}
+.review .stars{color:#9c7b33;letter-spacing:2px;margin-bottom:14px}
+.review p{font-size:15px;line-height:1.65;margin-bottom:16px;color:#161922}
+.review cite{color:#6a6456;font-size:13px;font-style:normal;font-weight:600}
+
+/* Final CTA */
+.cta-final{padding:100px 0;background:linear-gradient(135deg,rgba(156,123,51,0.12),transparent);text-align:center}
+.cta-final h2{margin-bottom:14px;font-size:clamp(40px,5vw,72px)}
+.cta-final p{font-size:18px;color:#6a6456;margin-bottom:32px}
+
+/* Footer */
+footer{padding:48px 0;border-top:1px solid rgba(156,123,51,0.12);color:#6a6456;font-size:13.5px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+footer a{color:#9c7b33}
 
 /* Mobile sticky CTA */
-.mobile-sticky{display:none}
-@media(max-width:780px){
-  .mobile-sticky{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--bg);
-    padding:14px 16px;gap:10px;border-top:1px solid var(--line);z-index:90}
-  .mobile-sticky .btn-prem{flex:1;justify-content:center;padding:14px 20px;font-size:14px}
+.sticky-cta{display:none}
+@media (max-width:768px){
+  nav{display:none}
+  .hero{padding:60px 0 70px}
+  section{padding:60px 0}
+  .gallery-asymmetric-mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
+  .gallery-asymmetric-mosaic .ed-card{grid-column:span 1!important;grid-row:span 1!important}
+  .gallery-side-grid-tall{grid-template-columns:1fr 1fr}
+  .sticky-cta{display:flex;position:fixed;bottom:0;left:0;right:0;background:#ffffff;padding:14px;gap:8px;border-top:1px solid rgba(156,123,51,0.12);z-index:100}
+  .sticky-cta .btn{flex:1;text-align:center;padding:14px 18px;font-size:14px}
   body{padding-bottom:80px}
 }
+
+/* — Scroll reveal — */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.22s}.reveal-d3{transition-delay:.34s}
+
+/* — Hero ambient glow — */
+.hero-glow{position:absolute;top:-15%;left:50%;transform:translateX(-50%);width:min(860px,130%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(156,123,51,0.12),transparent 65%);pointer-events:none;z-index:0;animation:ambientPulse 7s ease-in-out infinite alternate}
+.hero .container{position:relative;z-index:1}
+@keyframes ambientPulse{0%{opacity:.5;transform:translateX(-50%) scale(1)}100%{opacity:1;transform:translateX(-50%) scale(1.13)}}
+
+/* — Spring buttons — */
+.btn{transition:transform .32s cubic-bezier(.34,1.56,.64,1),filter .2s,box-shadow .32s}
+.btn-primary:hover{filter:brightness(1.09);transform:translateY(-3px) scale(1.04);box-shadow:0 14px 42px rgba(156,123,51,0.12)}
+.btn-ghost:hover{transform:translateY(-2px)}
+
+/* — Card spring hover — */
+.services-card-grid-3x2 .service-row,.services-card-grid-2x3 .service-row,.services-icon-card-grid .service-row{transition:transform .4s cubic-bezier(.34,1.56,.64,1),border-color .2s,box-shadow .4s}
+.services-card-grid-3x2 .service-row:hover,.services-card-grid-2x3 .service-row:hover,.services-icon-card-grid .service-row:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 24px 60px rgba(156,123,51,0.12);border-color:#9c7b33}
+
+/* — Gallery inner zoom — */
+.ed-card img{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.ed-card:hover img{transform:scale(1.09)}
+
+/* — Review lift — */
+.review{transition:transform .38s cubic-bezier(.34,1.56,.64,1),box-shadow .38s,border-color .2s}
+.review:hover{transform:translateY(-5px);box-shadow:0 20px 52px rgba(156,123,51,0.12);border-color:#9c7b33}
+
+/* — Stats strip — */
+.stats-strip{padding:44px 0;border-top:1px solid rgba(156,123,51,0.12);border-bottom:1px solid rgba(156,123,51,0.12);background:#ffffff}
+.stats-strip .container{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;align-items:center}
+.stat{text-align:center;padding:8px 16px}
+.stat-value{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,80px);font-weight:900;color:#9c7b33;line-height:1;display:block}
+.stat-label{font-size:11px;color:#6a6456;text-transform:uppercase;letter-spacing:.14em;margin-top:5px;display:block}
+
+/* — Nav CTA — */
+.nav-cta{margin-left:16px;padding:10px 22px!important;font-size:13px!important;line-height:1}
+
+/* — Scrollbar — */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#f6f3ec}::-webkit-scrollbar-thumb{background:#9c7b33;border-radius:99px}
+
+/* — Foto-categoria per servizio: card uniformi (override layout liste) — */
+.services-numbered-list-italic,.services-split-table,.services-menu-table-dotted,.services-numbered-block,.services-numbered-bars,.services-elegant-list,.services-card-grid-3x2,.services-card-grid-2x3,.services-icon-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.service-row{display:flex!important;flex-direction:column;align-items:stretch;gap:6px;padding:0 0 24px!important;background:#ffffff;border:1px solid rgba(156,123,51,0.12)!important;border-radius:16px;overflow:hidden;text-align:left;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s,border-color .2s}
+.service-row:hover{transform:translateY(-6px);box-shadow:0 22px 56px rgba(156,123,51,0.12);border-color:#9c7b33;padding-left:0!important}
+.service-row::before,.service-row::after{display:none!important}
+.service-photo{order:-1;width:100%;aspect-ratio:16/10;overflow:hidden;background:rgba(156,123,51,0.12);margin-bottom:16px;padding:0!important}
+.service-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.service-row:hover .service-photo img{transform:scale(1.06)}
+.service-row>*{padding-left:24px;padding-right:24px}
+.service-row>.service-num{padding-top:4px;color:#9c7b33!important;background:none!important;display:block;font-style:normal;text-align:left;font-size:13px;letter-spacing:.05em}
+.service-row .service-name{font-size:20px!important;font-style:normal!important;text-transform:none!important;background:none!important;position:static!important;letter-spacing:-.01em;margin-bottom:4px}
+.service-row .service-price{position:static!important;background:none!important;color:#9c7b33!important;font-size:14px;text-align:left;margin-bottom:6px}
+.service-row .service-desc{position:static!important;background:none!important;color:#6a6456;font-size:14.5px;line-height:1.6;font-style:normal!important;grid-column:auto!important;margin-top:0}
+.service-row .service-arrow{display:none!important}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Ruzza Watch Store", "description": "Vendita, riparazione e valutazione di orologi nuovi, usati e vintage — con la competenza di chi li conosce davvero.", "address": {"@type": "PostalAddress", "addressLocality": "Cantello (VA)", "addressCountry": "IT"}, "telephone": "0332 412785", "email": "info@ruzzawatchstore.it"}</script>
 
@@ -350,278 +287,166 @@ section{padding:140px 0;position:relative}
 @media(max-width:780px){.mobile-cta{display:block}.v64-faq-grid{grid-template-columns:1fr}.v64-offer .v64-box{padding:34px 24px}}
 </style>
 
+
+<style id="v66-premium-polish-css">
+.v66-trust-bar{padding:22px 20px;background:#08080a;color:#fff;border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)}
+.v66-trust-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.v66-trust-grid div{border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:15px;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.02))}.v66-trust-grid b{display:block;font-size:14px}.v66-trust-grid span{display:block;margin-top:4px;color:rgba(255,255,255,.58);font-size:11px;text-transform:uppercase;letter-spacing:.13em}
+.v66-conversion-strip{padding:72px 20px;background:radial-gradient(circle at 85% 20%,rgba(215,180,106,.20),transparent 34%),linear-gradient(135deg,#0a0a0a,#16120c);color:#fff}.v66-conversion-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.v66-conversion-inner h2{font-size:clamp(34px,5vw,72px);line-height:.9;letter-spacing:-.05em;margin:0}.v66-conversion-inner p{color:rgba(255,255,255,.70);font-size:18px;max-width:640px}.v66-conversion-inner a{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:999px;background:#fff;color:#0a0a0a;font-weight:900;text-decoration:none;box-shadow:0 20px 70px rgba(255,255,255,.12)}
+@media(max-width:780px){.v66-trust-grid,.v66-conversion-inner{grid-template-columns:1fr}.v66-conversion-inner a{width:100%}}
+</style>
+
+
+<style id="v80-motion-css">
+body{text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:'kern' 1,'liga' 1,'calt' 1}
+h1,h2,h3,.huge,.big,.serif{font-optical-sizing:auto}
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+[data-reveal].v80-in{opacity:1;transform:none}
+nav{transition:background .45s ease,backdrop-filter .45s ease,padding .45s ease,box-shadow .45s ease}
+nav.v80-scrolled{mix-blend-mode:normal!important;background:rgba(12,12,14,.62);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);box-shadow:0 1px 0 rgba(255,255,255,.07),0 24px 60px -28px rgba(0,0,0,.65);color:#fff;padding-top:15px;padding-bottom:15px}
+nav.v80-scrolled .logo,nav.v80-scrolled .nav-c a{color:#fff}
+.hero{position:relative}
+.v80-aura{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 90% at 80% 0%,rgba(224,196,128,.15),transparent 42%),radial-gradient(100% 80% at 4% 100%,rgba(118,140,210,.12),transparent 52%)}
+.hero-image-wrap{z-index:0}
+.hero-meta,.hero-main,.hero-foot{position:relative;z-index:2}
+.hero-image-wrap img{transition:transform .2s linear,filter .8s ease}
+.rev{box-shadow:0 1px 2px rgba(10,10,10,.04),0 14px 34px -20px rgba(10,10,10,.22);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease}
+.rev:hover{transform:translateY(-7px);box-shadow:0 26px 70px -26px rgba(10,10,10,.38)}
+.ed-card{box-shadow:0 34px 70px -38px rgba(0,0,0,.62)}
+.service-row{transition:padding .45s cubic-bezier(.16,1,.3,1),background .45s ease}
+.service-row:hover{background:linear-gradient(90deg,rgba(10,10,10,.03),transparent 55%)}
+.pill{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
+.pill:hover{transform:translateY(-3px);box-shadow:0 24px 64px -20px rgba(0,0,0,.45)}
+.pill .pill-arrow{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.pill:hover .pill-arrow{transform:rotate(45deg)}
+.v80-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:10000;background:linear-gradient(90deg,#e0c480,#caa24a);box-shadow:0 0 14px rgba(224,196,128,.55);transition:width .12s linear;pointer-events:none}
+::selection{background:rgba(224,196,128,.32)}
+html{scrollbar-color:rgba(10,10,10,.42) transparent}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:rgba(10,10,10,.26);border-radius:999px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:rgba(10,10,10,.5);background-clip:content-box}
+a:focus-visible,button:focus-visible{outline:2px solid rgba(224,196,128,.85);outline-offset:3px;border-radius:6px}
+[id]{scroll-margin-top:88px}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}.hero-image-wrap img{transform:none!important}html{scroll-behavior:auto}}
+</style>
+
 <style id="meg-light-fix">.demo-banner{position:fixed;top:0;left:0;right:0;z-index:300;background:#14110d;color:#e8dcc4;text-align:center;font:600 11px/1 Manrope,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px}#topnav{top:34px}footer,.footer{background:#16120d!important;color:#e8dcc4!important}footer a,.footer a{color:#e8dcc4!important}@media(max-width:600px){.demo-banner{font-size:9px;letter-spacing:.06em;padding:8px}#topnav{top:30px}}</style><style id="meg-colors">:root{--accent:#1a1a1a!important;--accent-soft:#1a1a1a2e!important}h1 em,h2 em,.big em,.manifesto em,.section-num{color:#c0a060!important}</style></head>
 <body>
 <div class="demo-banner">Anteprima dimostrativa · Demo non ufficiale</div>
+<header><div class="container">
+<div class="brand">RWS<em>·</em>Ruzza Watch Store</div>
+<nav><a href="#servizi">Servizi</a><a href="#galleria">Galleria</a><a href="#recensioni">Recensioni</a><a href="#contatti">Contatti</a><a class="btn btn-primary nav-cta" href="https://wa.me/0332412785">WhatsApp</a></nav>
+</div></header>
 
-<nav class="nav" id="topnav">
-  <div class="nav-logo">RWS<em>·</em> Ruzza Watch Store</div>
-  <div class="nav-c">
-    <a href="#manifesto">Manifesto</a>
-    <a href="#servizi">Servizi</a>
-    <a href="#metodo">Metodo</a>
-    <a href="#galleria">Galleria</a>
-    <a href="#contatti">Contatti</a>
-    <a href="https://wa.me/0332412785" class="nav-cta">WhatsApp →</a>
-  </div>
-</nav>
+<section class="hero var-split-left-image"><div class="hero-glow"></div><div class="container">
+        <div>
+          <h1>Ruzza Watch Store</h1>
+          <p class="lead">Vendita, riparazione e valutazione di orologi nuovi, usati e vintage — con la competenza di chi li conosce davvero.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/0332412785">Scrivici ora</a><a class="btn btn-ghost" href="#contatti">Contatti</a></div>
+        </div>
+        <div class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1400&q=85&fit=crop')"></div></div></section>
+<div class="stats-strip"><div class="container"><div class="stat"><span class="stat-value" data-target="4.7" data-suffix="">0</span><span class="stat-label">Recensioni Google</span></div></div></div>
+<section id="servizi"><div class="container">
+<h2 class="reveal">Servizi</h2>
+<p class="lead-sub reveal reveal-d1">Tutto pensato e personalizzato. Niente sorprese sul prezzo.</p>
+<div class="services-icon-card-grid reveal reveal-d2"><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&q=85&fit=crop" alt="Vendita orologi nuovi" loading="lazy"></div><span class="service-num">01</span><div><h3 class="service-name">Vendita orologi nuovi</h3><div class="service-price">su richiesta</div></div><p class="service-desc">Modelli selezionati delle migliori marche, con garanzia ufficiale.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1495704907664-81f74a7efd9b?w=900&q=85&fit=crop" alt="Orologi usati e vintage" loading="lazy"></div><span class="service-num">02</span><div><h3 class="service-name">Orologi usati e vintage</h3><div class="service-price">su richiesta</div></div><p class="service-desc">Pezzi revisionati e garantiti, controllati uno per uno.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=900&q=85&fit=crop" alt="Riparazione e revisione" loading="lazy"></div><span class="service-num">03</span><div><h3 class="service-name">Riparazione e revisione</h3><div class="service-price">da 60€</div></div><p class="service-desc">Interventi su misura da orologiaio: il tuo orologio torna come nuovo.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=900&q=85&fit=crop" alt="Cambio batteria e cinturini" loading="lazy"></div><span class="service-num">04</span><div><h3 class="service-name">Cambio batteria e cinturini</h3><div class="service-price">da 15€</div></div><p class="service-desc">Servizio rapido in negozio, ampia scelta di cinturini in pelle e acciaio.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=900&q=85&fit=crop" alt="Valutazione e ritiro usato" loading="lazy"></div><span class="service-num">05</span><div><h3 class="service-name">Valutazione e ritiro usato</h3><div class="service-price">gratuita</div></div><p class="service-desc">Stima gratuita del tuo orologio, anche in conto permuta.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=900&q=85&fit=crop" alt="Garanzia e assistenza" loading="lazy"></div><span class="service-num">06</span><div><h3 class="service-name">Garanzia e assistenza</h3><div class="service-price">inclusa</div></div><p class="service-desc">Assistenza post-vendita e garanzia su ogni acquisto.</p><span class="service-arrow">→</span></div></div>
+</div></section>
 
-<aside class="scroll-indicator">
-  <span data-target="hero" class="active">Intro</span>
-  <span data-target="manifesto">Manifesto</span>
-  <span data-target="servizi">Servizi</span>
-  <span data-target="metodo">Metodo</span>
-  <span data-target="galleria">Galleria</span>
-  <span data-target="contatti">Contatti</span>
-</aside>
+<section id="galleria"><div class="container">
+<h2 class="reveal">Galleria</h2>
+<p class="lead-sub reveal reveal-d1">Lavori reali, atmosfere, dettagli.</p>
+<div class="gallery-soft-rounded-grid reveal reveal-d2"><div class="ed-card"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1400&q=85&fit=crop" alt="Vetrina" loading="lazy"><div class="ed-content"><h3 class="ed-title">Vetrina</h3></div></div><div class="ed-card"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=900&q=85&fit=crop" alt="Marche" loading="lazy"><div class="ed-content"><h3 class="ed-title">Marche</h3></div></div><div class="ed-card"><img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=900&q=85&fit=crop" alt="Riparazioni" loading="lazy"><div class="ed-content"><h3 class="ed-title">Riparazioni</h3></div></div><div class="ed-card"><img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=900&q=85&fit=crop" alt="Dettagli" loading="lazy"><div class="ed-content"><h3 class="ed-title">Dettagli</h3></div></div></div>
+</div></section>
 
-<section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1400&q=85&fit=crop" alt="Ruzza Watch Store">
-  </div>
-  <div class="hero-grain"></div>
-  <div class="hero-inner wrap">
-    <div class="hero-top">
-      <div><span>Orologeria</span><span>Ruzza Watch Store</span></div>
-      <div><span>Cantello (VA)</span></div>
-    </div>
-    <h1 class="hero-h1 huge">Ruzza Watch <em>Store</em></h1>
-    <p class="hero-sub">Vendita, riparazione e valutazione di orologi nuovi, usati e vintage — con la competenza di chi li conosce davvero.</p>
-    <div class="hero-ctas">
-      <a href="https://wa.me/0332412785" class="btn-prem">Scrivici su WhatsApp</a>
-      <a href="#servizi" class="btn-prem btn-prem-ghost">Esplora i servizi</a>
-    </div>
-  </div>
-  <div class="hero-scroll">Scroll</div>
-</section>
 
-<section class="manifesto" id="manifesto">
-  <div class="wrap">
-    <div class="section-num reveal">— <em>Manifesto</em></div>
-    <h2 class="manifesto-quote reveal reveal-d1">Non vendiamo orologi. <em>Custodiamo il tempo</em>, e la fiducia di chi ce lo affida.</h2>
-    <div class="manifesto-attr reveal reveal-d2">Ruzza Watch Store · Cantello (VA)</div>
-  </div>
-</section>
 
-<div class="stats-band-prem"><div class="wrap"><div class="stat-prem reveal reveal-d0"><span class="stat-prem-value" data-target="4.7" data-suffix="">0</span><span class="stat-prem-label">Recensioni Google</span></div></div></div>
 
-<section id="servizi">
-  <div class="wrap">
-    <div class="section-num reveal">— <em>Servizi</em></div>
-    <h2 class="big reveal" style="margin-bottom:32px">Quello che facciamo,<br><em>fatto come si deve.</em></h2>
-    <p class="reveal reveal-d1" style="font-size:18px;color:var(--muted);max-width:580px;line-height:1.6;margin-bottom:80px">Sei servizi pensati, non sei voci accozzate. Ognuno ha il suo perché, il suo tempo, il suo prezzo onesto.</p>
-    <div class="svc-prem"><div class="svc-row reveal">
-            <div class="svc-num">01</div>
-            <div class="svc-text"><h3>Vendita orologi nuovi</h3><p>Modelli selezionati delle migliori marche, con garanzia ufficiale.</p></div>
-            <div class="svc-price">su richiesta</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&q=85&fit=crop" alt="Vendita orologi nuovi" loading="lazy"></div>
-        </div><div class="svc-row reveal">
-            <div class="svc-num">02</div>
-            <div class="svc-text"><h3>Orologi usati e vintage</h3><p>Pezzi revisionati e garantiti, controllati uno per uno.</p></div>
-            <div class="svc-price">su richiesta</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1495704907664-81f74a7efd9b?w=900&q=85&fit=crop" alt="Orologi usati e vintage" loading="lazy"></div>
-        </div><div class="svc-row reveal">
-            <div class="svc-num">03</div>
-            <div class="svc-text"><h3>Riparazione e revisione</h3><p>Interventi su misura da orologiaio: il tuo orologio torna come nuovo.</p></div>
-            <div class="svc-price">da 60€</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=900&q=85&fit=crop" alt="Riparazione e revisione" loading="lazy"></div>
-        </div><div class="svc-row reveal">
-            <div class="svc-num">04</div>
-            <div class="svc-text"><h3>Cambio batteria e cinturini</h3><p>Servizio rapido in negozio, ampia scelta di cinturini in pelle e acciaio.</p></div>
-            <div class="svc-price">da 15€</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=900&q=85&fit=crop" alt="Cambio batteria e cinturini" loading="lazy"></div>
-        </div><div class="svc-row reveal">
-            <div class="svc-num">05</div>
-            <div class="svc-text"><h3>Valutazione e ritiro usato</h3><p>Stima gratuita del tuo orologio, anche in conto permuta.</p></div>
-            <div class="svc-price">gratuita</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=900&q=85&fit=crop" alt="Valutazione e ritiro usato" loading="lazy"></div>
-        </div><div class="svc-row reveal">
-            <div class="svc-num">06</div>
-            <div class="svc-text"><h3>Garanzia e assistenza</h3><p>Assistenza post-vendita e garanzia su ogni acquisto.</p></div>
-            <div class="svc-price">inclusa</div>
-            <div class="svc-photo"><img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=900&q=85&fit=crop" alt="Garanzia e assistenza" loading="lazy"></div>
-        </div></div>
-  </div>
-</section>
-
-<section class="process" id="metodo">
-  <div class="wrap">
-    <div class="section-num reveal">— <em>Metodo</em></div>
-    <h2 class="big reveal" style="margin-bottom:80px">Come lavoriamo,<br><em>passo dopo passo.</em></h2>
-  </div>
-  <div class="process-grid"><div class="process-step reveal reveal-d1"><div class="process-step-num">01</div><div><h3>Scelta</h3><p>Ti aiutiamo a trovare l&#x27;orologio giusto: stile, budget, occasione. Nuovo o usato garantito.</p></div></div><div class="process-step reveal reveal-d2"><div class="process-step-num">02</div><div><h3>Verifica</h3><p>Ogni usato passa il controllo del nostro orologiaio: meccanica, autenticita, condizioni.</p></div></div><div class="process-step reveal reveal-d3"><div class="process-step-num">03</div><div><h3>Garanzia</h3><p>Acquisti con garanzia scritta. Riparazioni e revisioni le facciamo internamente.</p></div></div><div class="process-step reveal reveal-d4"><div class="process-step-num">04</div><div><h3>Assistenza</h3><p>Cambio batteria, cinturini, revisioni: restiamo il tuo riferimento nel tempo.</p></div></div></div>
-</section>
-
-<section id="galleria">
-  <div class="wrap">
-    <div class="section-num reveal">— <em>Galleria</em></div>
-    <h2 class="big reveal" style="margin-bottom:80px">Lavori veri,<br><em>nessuna scenografia.</em></h2>
-    <div class="gallery-prem"><div class="gp-card reveal"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1400&q=85&fit=crop" alt="Ambiente" loading="lazy"><div class="gp-card-label">Ambiente</div></div><div class="gp-card reveal"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=900&q=85&fit=crop" alt="Lavori" loading="lazy"><div class="gp-card-label">Lavori</div></div><div class="gp-card reveal"><img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=900&q=85&fit=crop" alt="Dettagli" loading="lazy"><div class="gp-card-label">Dettagli</div></div><div class="gp-card reveal"><img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=900&q=85&fit=crop" alt="Atmosfera" loading="lazy"><div class="gp-card-label">Atmosfera</div></div></div>
+<section class="v64-extra-section">
+  <div class="v64-wrap">
+    <h2>Perché scegliere Ruzza Watch Store</h2>
+    <p>Professionalità, cura del cliente e un contatto diretto e veloce. Scrivici su WhatsApp o chiama: ti rispondiamo in poche ore e fissiamo il prossimo passo, senza impegno.</p>
   </div>
 </section>
 
 
+<section class="v66-trust-bar" aria-label="V66 premium trust bar"><div class="v66-trust-grid"><div><b>Perfetto su telefono</b><span>veloce e leggibile</span></div><div><b>Contatto rapido</b><span>WhatsApp ed email</span></div><div><b>Sempre aggiornabile</b><span>foto e testi tuoi</span></div><div><b>Online in pochi giorni</b><span>pronto all'uso</span></div></div></section>
 
+<section id="contatti" class="cta-final"><div class="container">
+<h2 class="reveal">Pronto a iniziare?</h2>
+<p class="reveal reveal-d1">Scrivici su WhatsApp o chiama. Rispondiamo entro poche ore.</p>
+<div class="reveal reveal-d2"><a class="btn btn-primary" href="https://wa.me/0332412785">WhatsApp</a> <a class="btn btn-ghost" href="mailto:info@ruzzawatchstore.it">Email</a></div>
+</div></section>
 
+<section class="meg-hours" style="padding:64px 20px;text-align:center;background:var(--surface);border-top:1px solid var(--line,rgba(0,0,0,.08))"><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px">Orari di apertura</div><div style="font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--ink);font-family:inherit">Lunedì - Venerdì: 9:00 - 19:00, Sabato: 9:00 - 13:00, Domenica: chiuso</div></section><footer><div class="container">
+<div>© Ruzza Watch Store · Cantello (VA)</div>
+<div>Sito di MEG Web Studio · <a href="/privacy">Privacy</a></div>
+</div></footer>
 
-<section class="offer-prem" id="offerta">
-  <div class="wrap">
-    <div class="offer-prem-inner reveal">
-      <div>
-        <div class="eyebrow">Offerta</div>
-        <h2 class="med">Primo contatto senza impegno</h2>
-        <p>Scrivici per raccontarci cosa cerchi: ti rispondiamo entro poche ore con disponibilità reale e un&#x27;idea chiara dei prossimi passi. Nessun obbligo, nessuna pressione.</p>
-      </div>
-      <a href="https://wa.me/0332412785" class="btn-prem">Richiedi ora</a>
-    </div>
-  </div>
-</section>
-
-<section class="faq-prem" id="faq">
-  <div class="wrap">
-    <div class="section-num reveal">— <em>Domande</em></div>
-    <h2 class="big reveal">Le risposte<br><em>che cerchi.</em></h2>
-    <div class="faq-prem-grid"><div class="faq-item reveal reveal-d1"><div class="faq-item-q">Come posso prenotare o contattarvi?</div><div class="faq-item-a">Il modo più rapido è WhatsApp: scrivi e ti rispondiamo entro poche ore, in orario di apertura. Niente bot, niente attese al telefono.</div></div><div class="faq-item reveal reveal-d2"><div class="faq-item-q">Quanto costa il primo contatto?</div><div class="faq-item-a">Il primo contatto è sempre gratuito e senza impegno. Ti diciamo con chiarezza cosa serve e quanto costa prima di iniziare.</div></div><div class="faq-item reveal reveal-d1"><div class="faq-item-q">In quanto tempo siete disponibili?</div><div class="faq-item-a">Dipende dal periodo, ma cerchiamo sempre di proporti l&#x27;appuntamento più vicino possibile. Scrivici e ti diamo disponibilità reale.</div></div><div class="faq-item reveal reveal-d2"><div class="faq-item-q">Dove vi trovate?</div><div class="faq-item-a">Siamo a Cantello (VA), facili da raggiungere. Ti mandiamo indicazioni precise quando fissiamo l&#x27;appuntamento.</div></div></div>
-  </div>
-</section>
-
-<section class="cta-final-prem" id="contatti">
-  <div class="wrap">
-    <div class="section-num reveal" style="justify-content:center;color:rgba(255,255,255,.55)">— <em style="color:#fff">Iniziamo</em> —</div>
-    <h2 class="huge reveal reveal-d1" style="margin-bottom:32px">Pronto<br><em>quando lo sei tu.</em></h2>
-    <p class="reveal reveal-d2">Scrivici su WhatsApp, rispondiamo entro poche ore. Nessun bot, nessuna segreteria, nessuna fretta.</p>
-    <div class="reveal reveal-d3" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://wa.me/0332412785" class="btn-prem">Scrivici ora</a>
-      <a href="mailto:info@ruzzawatchstore.it" class="btn-prem btn-prem-ghost">Email</a>
-    </div>
-  </div>
-</section>
-
-<section class="meg-hours" style="padding:64px 20px;text-align:center;background:var(--surface);border-top:1px solid var(--line,rgba(0,0,0,.08))"><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px">Orari di apertura</div><div style="font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--ink);font-family:inherit">Lunedì - Venerdì: 9:00 - 19:00, Sabato: 9:00 - 13:00, Domenica: chiuso</div></section><footer class="footer-prem">
-  <div class="wrap">
-    <div>
-      <div class="footer-prem-brand">RWS<em>·</em> Ruzza Watch Store</div>
-      <div class="footer-prem-credit">© 2026 Ruzza Watch Store · Cantello (VA)</div>
-    </div>
-    <div class="footer-prem-links">
-      <a href="#servizi">Servizi</a>
-      <a href="#metodo">Metodo</a>
-      <a href="#galleria">Galleria</a>
-      <a href="#contatti">Contatti</a>
-      <a href="/privacy">Privacy</a>
-    </div>
-  </div>
-</footer>
-
-
-<button class="chat-fab" id="chatFab" aria-label="Apri chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button><div class="chat-panel" id="chatPanel"><div class="chat-head"><div class="chat-avatar">RWS</div><div><b>Ruzza Watch Store</b><span class="chat-status">Assistente · online</span></div><button class="chat-close" id="chatClose" aria-label="Chiudi">&times;</button></div><div class="chat-body" id="chatBody"></div><div class="chat-foot"><input id="chatInput" type="text" placeholder="Scrivi un messaggio…"><button id="chatSend" aria-label="Invia">&rarr;</button></div></div><script>window.MEG_CHAT={"business": "Ruzza Watch Store", "token": "", "api": "", "demo": true, "wa": "https://wa.me/0332412785"};</script><script>
+<div class="sticky-cta"><a class="btn btn-primary" href="https://wa.me/0332412785">WhatsApp</a><a class="btn btn-ghost" href="#contatti">Contatti</a></div>
+<script>
 (function(){
-  var cfg=window.MEG_CHAT||{};
-  var fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel');
-  if(!fab||!panel)return;
-  var body=document.getElementById('chatBody'),closeb=document.getElementById('chatClose');
-  var input=document.getElementById('chatInput'),send=document.getElementById('chatSend');
-  var sess="web-"+Math.random().toString(36).slice(2)+"-"+Date.now();
-  var endpoint=(cfg.api||"")+"/booking/"+(cfg.token||"")+"/chat";
-  var busy=false;
-  function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-  function add(cls,text){var d=document.createElement("div");d.className="chat-msg "+cls;d.innerHTML=esc(text).replace(/\n/g,"<br>");body.appendChild(d);body.scrollTop=body.scrollHeight;return d}
-  function typing(){var d=document.createElement("div");d.className="chat-msg bot";d.textContent="…";body.appendChild(d);body.scrollTop=body.scrollHeight;return d}
-  function waFallback(){
-    if(!cfg.wa)return;
-    add("bot",'Nel frattempo puoi scriverci direttamente: <a class="chat-wa" target="_blank" rel="noopener" href="'+cfg.wa+'">Scrivici su WhatsApp</a>');
+  var r=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    r.forEach(function(el){io.observe(el)});
+  }else{r.forEach(function(el){el.classList.add('in')})}
+  var st=document.querySelectorAll('.stat-value[data-target]');
+  if(st.length&&'IntersectionObserver' in window){
+    function cUp(el){
+      var t=parseFloat(el.dataset.target),sf=el.dataset.suffix||'',fl=t%1!==0,d=1300,s=null;
+      (function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),ea=1-Math.pow(1-p,3);
+        el.textContent=(fl?(ea*t).toFixed(1):Math.round(ea*t))+sf;if(p<1)requestAnimationFrame(step)})(performance.now())}
+    var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cUp(e.target);sio.unobserve(e.target)}})},{threshold:.5});
+    st.forEach(function(s){sio.observe(s)})
   }
-  function post(msg){
-    if(busy)return;busy=true;if(input)input.disabled=true;
-    var t=typing();
-    fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:msg,session_key:sess,demo:!!cfg.demo})})
-      .then(function(r){return r.json()})
-      .then(function(d){t.remove();busy=false;if(input){input.disabled=false;input.focus()}add("bot",(d&&d.reply)||"Non ho capito, puoi ripetere?")})
-      .catch(function(){t.remove();busy=false;if(input)input.disabled=false;add("bot","Le prenotazioni non sono raggiungibili in questo momento. Riprova tra poco.");waFallback()});
-  }
-  var started=false,opened=false;
-  function open(){
-    panel.classList.add("open");opened=true;
-    if(started)return;started=true;
-    if(!cfg.token){add("bot","Le prenotazioni online non sono ancora attive su questo sito.");if(input)input.disabled=true;return}
-    add("bot","Ciao! Sono l'assistente di "+(cfg.business||"noi")+". Posso aiutarti a prenotare un appuntamento: scrivi qui sotto o tocca il pulsante.");
-    if(cfg.demo){add("bot","Questa è un'anteprima demo: puoi provare il flusso, ma nessuna prenotazione reale verrà salvata.")}
-    var w=document.createElement("div");w.className="chat-quick";
-    var b=document.createElement("button");b.textContent="Prenota un appuntamento";
-    b.onclick=function(){w.remove();add("user","Prenota un appuntamento");post("prenota")};
-    w.appendChild(b);body.appendChild(w);body.scrollTop=body.scrollHeight;
-  }
-  function close(){panel.classList.remove("open");opened=false}
-  fab.onclick=function(){opened?close():open()};
-  if(closeb)closeb.onclick=close;
-  function userSend(){var v=(input.value||"").trim();if(!v||!cfg.token)return;add("user",v);input.value="";post(v)}
-  if(send)send.onclick=userSend;
-  if(input)input.addEventListener("keydown",function(e){if(e.key==="Enter")userSend()});
 })();
 </script>
 
-<script>
+<script id="v80-motion-js">
 (function(){
-  // Scroll reveal
-  var r=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});},{threshold:.12});
-    r.forEach(function(el){io.observe(el)});
-  }else{r.forEach(function(el){el.classList.add('in')})}
-
-  // Nav scroll state
-  var nv=document.getElementById('topnav');
-  if(nv){window.addEventListener('scroll',function(){
-    if(window.scrollY>80)nv.classList.add('scrolled');else nv.classList.remove('scrolled');
-  },{passive:true})}
-
-  // Stat counters
-  var st=document.querySelectorAll('.stat-prem-value[data-target]');
-  if(st.length&&'IntersectionObserver' in window){
-    function cUp(el){
-      var t=parseFloat(el.dataset.target),sf=el.dataset.suffix||'',fl=t%1!==0,d=1600,s=null;
-      (function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),ea=1-Math.pow(1-p,3);
-        el.textContent=(fl?(ea*t).toFixed(1):Math.round(ea*t))+sf;if(p<1)requestAnimationFrame(step)})(performance.now())}
-    var sio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){cUp(en.target);sio.unobserve(en.target)}});},{threshold:.5});
-    st.forEach(function(s){sio.observe(s)});
-  }
-
-  // Scroll indicator section tracking
-  var inds=document.querySelectorAll('.scroll-indicator span');
-  var secs=Array.prototype.map.call(inds,function(s){return document.getElementById(s.dataset.target)});
-  inds.forEach(function(s){s.addEventListener('click',function(){
-    var el=document.getElementById(s.dataset.target);if(el)el.scrollIntoView({behavior:'smooth'});
-  })});
-  function syncInd(){
-    var y=window.scrollY+window.innerHeight*.4;
-    var idx=0;
-    for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)idx=i}
-    inds.forEach(function(s,i){s.classList.toggle('active',i===idx)})
-  }
-  window.addEventListener('scroll',syncInd,{passive:true});syncInd();
-
-  // Hero parallax (subtle)
-  var heroBg=document.querySelector('.hero-bg');
-  if(heroBg){window.addEventListener('scroll',function(){
-    var y=window.scrollY;
-    if(y<window.innerHeight)heroBg.style.transform='translateY('+(y*.32)+'px)';
-  },{passive:true})}
-
-  // Before/After draggable sliders
-  document.querySelectorAll('.ba-slider').forEach(function(sl){
-    var after=sl.querySelector('.ba-after'),handle=sl.querySelector('.ba-handle'),drag=false;
-    function setPos(x){
-      var rect=sl.getBoundingClientRect();
-      var pct=Math.max(2,Math.min(98,((x-rect.left)/rect.width)*100));
-      after.style.clipPath='inset(0 0 0 '+pct+'%)';handle.style.left=pct+'%';
-    }
-    sl.addEventListener('mousedown',function(ev){drag=true;setPos(ev.clientX)});
-    window.addEventListener('mousemove',function(ev){if(drag)setPos(ev.clientX)});
-    window.addEventListener('mouseup',function(){drag=false});
-    sl.addEventListener('touchstart',function(ev){drag=true;setPos(ev.touches[0].clientX)},{passive:true});
-    sl.addEventListener('touchmove',function(ev){if(drag)setPos(ev.touches[0].clientX)},{passive:true});
-    sl.addEventListener('touchend',function(){drag=false});
+  function ready(fn){ if(document.readyState!=='loading'){fn();}else{document.addEventListener('DOMContentLoaded',fn);} }
+  ready(function(){
+    try{
+      var d=document, w=window;
+      var bar=d.createElement('div'); bar.className='v80-progress'; d.body.appendChild(bar);
+      var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nodes=[];
+      if(!reduce){
+        var sel='section,.sec-head,.service-row,.ed-card,.rev,.review,.faq-item,.trust-item,.promo-block,.contact-cell,.v66-trust-grid>div';
+        try{ nodes=Array.prototype.slice.call(d.querySelectorAll(sel)); }catch(e){ nodes=[]; }
+        nodes=nodes.filter(function(n){ try{return !n.classList.contains('hero') && !n.closest('[data-aos],.reveal,.aos-init');}catch(e){return true;} });
+        nodes.forEach(function(n){
+          var p=n.parentNode||d.body; if(p.__v80i==null) p.__v80i=0;
+          n.style.transitionDelay=Math.min((p.__v80i++)*70,420)+'ms';
+          n.setAttribute('data-reveal','');
+        });
+        var revealAll=function(){ for(var i=0;i<nodes.length;i++) nodes[i].classList.add('v80-in'); };
+        var safety=setTimeout(revealAll,2600);
+        var vh=w.innerHeight||800;
+        nodes.forEach(function(n){ try{ if(n.getBoundingClientRect().top<vh*0.9) n.classList.add('v80-in'); }catch(e){} });
+        if('IntersectionObserver' in w){
+          try{
+            var io=new IntersectionObserver(function(ents){
+              ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('v80-in'); io.unobserve(en.target);} });
+            },{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+            nodes.forEach(function(n){ if(!n.classList.contains('v80-in')) io.observe(n); });
+          }catch(e){ revealAll(); clearTimeout(safety); }
+        }else{ revealAll(); clearTimeout(safety); }
+      }
+      var nav=d.querySelector('nav'), hero=d.querySelector('.hero'), himg=d.querySelector('.hero-image-wrap img');
+      if(hero && !hero.querySelector('.v80-aura')){ var aura=d.createElement('div'); aura.className='v80-aura'; hero.insertBefore(aura, hero.firstChild); }
+      var trig=hero?Math.min(hero.offsetHeight*0.55,520):80, ticking=false;
+      function onScroll(){
+        var y=w.pageYOffset||d.documentElement.scrollTop||0;
+        var h=(d.documentElement.scrollHeight-w.innerHeight)||1;
+        bar.style.width=Math.max(0,Math.min(100,(y/h)*100))+'%';
+        if(nav){ if(y>trig) nav.classList.add('v80-scrolled'); else nav.classList.remove('v80-scrolled'); }
+        if(!reduce && himg && y<(w.innerHeight||900)*1.3) himg.style.transform='translate3d(0,'+(y*0.15)+'px,0) scale(1.06)';
+      }
+      w.addEventListener('scroll',function(){ if(!ticking){ w.requestAnimationFrame(function(){onScroll();ticking=false;}); ticking=true; } },{passive:true});
+      onScroll();
+    }catch(e){ try{ var ns=document.querySelectorAll('[data-reveal]'); for(var i=0;i<ns.length;i++) ns[i].classList.add('v80-in'); }catch(_){} }
   });
 })();
 </script>
+
 </body></html>
