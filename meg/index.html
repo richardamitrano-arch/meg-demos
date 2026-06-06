@@ -288,6 +288,40 @@ footer a:hover{color:var(--blue)}
 .dash-feats li{display:flex;gap:11px;align-items:flex-start;font-size:16px;color:#1a1a1a}
 .dash-feats svg{flex:none;width:22px;height:22px;margin-top:1px}
 @media(max-width:900px){.dash{grid-template-columns:1fr;gap:36px}.dash-copy{text-align:center;order:2}.dash-phone{order:1}.dash-copy p{margin-left:auto;margin-right:auto}.dash-feats{max-width:380px;margin-left:auto;margin-right:auto}.dash-feats li{text-align:left}}
+
+/* WHATSAPP — automazione (esclusiva Care Pro) */
+.wahero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.wa-copy .kicker{color:#16a34a}
+.wa-copy h2{font-size:clamp(32px,4.4vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1.04;margin:10px 0 0}
+.wa-copy p{font-size:18px;line-height:1.55;color:var(--muted);margin:20px 0 22px;max-width:520px}
+.wa-feats{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:11px;font-size:16px;color:#1a1a1a}
+.wa-feats li{display:flex;gap:10px;align-items:flex-start}
+.wak{color:#16a34a;font-weight:800;flex:none}
+.wa-phone{display:flex;justify-content:flex-end}
+.waphone{width:300px;background:#1d1d1f;border-radius:46px;padding:11px;box-shadow:0 50px 120px -34px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.06)}
+.wa-screen{position:relative;height:606px;border-radius:36px;overflow:hidden;background:#ece5dd;display:flex;flex-direction:column;font-family:-apple-system,Segoe UI,Roboto,var(--f)}
+.wa-screen::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:118px;height:25px;background:#1d1d1f;border-radius:0 0 16px 16px;z-index:30}
+.wa-head{background:#075e54;color:#fff;padding:40px 13px 11px;display:flex;align-items:center;gap:9px}
+.wa-head .bk{font-size:22px;line-height:1;opacity:.9}
+.wa-av{width:36px;height:36px;border-radius:50%;background:#0b8a78;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none}
+.wa-ht b{font-size:15px;display:block;line-height:1.15}
+.wa-ht span{font-size:11px;color:#bfe8df}
+.wa-msgs{flex:1;overflow-y:auto;scrollbar-width:none;padding:14px 11px;display:flex;flex-direction:column;gap:8px;transition:opacity .45s}
+.wa-msgs::-webkit-scrollbar{display:none}
+.wa-msg{max-width:80%;padding:7px 10px 5px;border-radius:9px;font-size:13.5px;line-height:1.34;box-shadow:0 1px .5px rgba(0,0,0,.13);opacity:0;transform:translateY(7px) scale(.97);transition:opacity .3s,transform .3s}
+.wa-msg.show{opacity:1;transform:none}
+.wa-in{align-self:flex-start;background:#fff;color:#111b21;border-top-left-radius:2px}
+.wa-out{align-self:flex-end;background:#d9fdd3;color:#111b21;border-top-right-radius:2px}
+.wa-time{display:block;text-align:right;font-size:10px;color:#667781;margin-top:2px}
+.wa-tick{color:#53bdeb;font-weight:700}
+.wa-typing{align-self:flex-start;background:#fff;border-radius:9px;padding:11px 13px;display:flex;gap:4px;box-shadow:0 1px .5px rgba(0,0,0,.13)}
+.wa-typing i{width:6px;height:6px;border-radius:50%;background:#9aa0a6;display:block;animation:waBlink 1.2s infinite}
+.wa-typing i:nth-child(2){animation-delay:.18s}.wa-typing i:nth-child(3){animation-delay:.36s}
+@keyframes waBlink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.wa-inp{background:#f0f0f0;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.wa-inp .ib{flex:1;background:#fff;border-radius:18px;padding:8px 13px;font-size:12.5px;color:#9aa0a6}
+.wa-inp .sb{width:34px;height:34px;border-radius:50%;background:#075e54;color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px}
+@media(max-width:980px){.wahero{grid-template-columns:1fr;gap:34px}.wa-copy{text-align:center;order:2}.wa-phone{order:1;justify-content:center}.wa-copy p,.wa-feats{margin-left:auto;margin-right:auto}.wa-feats{max-width:380px}.wa-feats li{text-align:left}}
 </style>
 </head>
 <body>
@@ -445,6 +479,26 @@ footer a:hover{color:var(--blue)}
   <p class="sc-hint" style="margin-top:28px">Tutti i piani: disdici quando vuoi · rinnovo solo con il tuo consenso</p>
 </div></section>
 
+<section id="whatsapp"><div class="wrap-wide"><div class="wahero">
+  <div class="wa-copy reveal">
+    <span class="kicker">Esclusiva Care Pro</span>
+    <h2>Il tuo WhatsApp<br>lavora da solo.</h2>
+    <p>I clienti scrivono al tuo numero e il bot <b>risponde e prenota all'istante</b> &mdash; servizi, orari, tavoli. Giorno e notte, mentre tu sei al lavoro. Tu non fai nulla.</p>
+    <ul class="wa-feats">
+      <li><span class="wak">&#10003;</span> Risponde in pochi secondi, <b>24 ore su 24</b></li>
+      <li><span class="wak">&#10003;</span> Prenota da solo e ti avvisa</li>
+      <li><span class="wak">&#10003;</span> Quando vuoi rispondi a mano: il bot si fa da parte</li>
+    </ul>
+    <a class="link" href="#care">Disponibile con Care Pro <span class="chev">&rarr;</span></a>
+  </div>
+  <div class="wa-phone reveal">
+    <div class="waphone"><div class="wa-screen">
+      <div class="wa-head"><span class="bk">&#8249;</span><div class="wa-av">AB</div><div class="wa-ht"><b>Atelier Barber</b><span>online</span></div></div>
+      <div class="wa-msgs" id="wamsgs"></div>
+      <div class="wa-inp"><div class="ib">Messaggio</div><div class="sb">&#10148;</div></div>
+    </div></div>
+  </div>
+</div></div></section>
 <section id="stagioni" class="alt"><div class="wrap-wide">
   <div class="sec-title reveal"><h2>Il tuo sito vive<br>ogni stagione.</h2><p>A ogni festa cambia look e propone l'offerta giusta — ci pensiamo noi. <b>Clicca un esempio</b> e vedi il sito vestito a festa.</p></div>
   <div class="fest">
@@ -776,6 +830,49 @@ window.MEG_VETRINA = {
  var seen=false;
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}})},{threshold:.25});
  io.observe(screen);
+})();
+</script>
+
+<script>
+(function(){
+ var box=document.getElementById('wamsgs'); if(!box) return;
+ function s(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ var CONV=[
+  {side:'out',t:"Ciao! Avete posto sabato per un taglio?",tm:"21:04"},
+  {side:'in', t:"Ciao! &#128522; S&igrave;, sabato ho liberi:<br>10:00 &middot; 11:30 &middot; 16:00",tm:"21:04"},
+  {side:'out',t:"Alle 11:30 perfetto",tm:"21:05"},
+  {side:'in', t:"Ottimo! A che nome lo prenoto?",tm:"21:05"},
+  {side:'out',t:"Marco",tm:"21:05"},
+  {side:'in', t:"Fatto &#9989; Taglio confermato sabato alle 11:30. Ti aspettiamo!",tm:"21:05"}
+ ];
+ function bubble(m){
+   var d=document.createElement('div');
+   d.className='wa-msg '+(m.side==='out'?'wa-out':'wa-in');
+   var tick=(m.side==='out')?" <span class='wa-tick'>&#10003;&#10003;</span>":"";
+   d.innerHTML=m.t+"<span class='wa-time'>"+m.tm+tick+"</span>";
+   box.appendChild(d); box.scrollTop=box.scrollHeight;
+   requestAnimationFrame(function(){d.classList.add('show')});
+ }
+ function typing(){
+   var d=document.createElement('div'); d.className='wa-typing'; d.innerHTML="<i></i><i></i><i></i>";
+   box.appendChild(d); box.scrollTop=box.scrollHeight; return d;
+ }
+ async function run(){
+   while(true){
+     box.innerHTML=''; box.style.opacity=1;
+     for(var i=0;i<CONV.length;i++){
+       var m=CONV[i];
+       if(m.side==='in'){ var ti=typing(); await s(1150); ti.remove(); }
+       else { await s(i?750:350); }
+       bubble(m); await s(m.side==='in'?1050:550);
+     }
+     await s(2900);
+     box.style.opacity=0; await s(600);
+   }
+ }
+ var seen=false;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}})},{threshold:.25});
+ io.observe(box);
 })();
 </script>
 </body>
