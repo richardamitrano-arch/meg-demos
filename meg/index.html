@@ -185,30 +185,45 @@ footer a:hover{color:var(--blue)}
 #cookie-bar span{max-width:760px}#cookie-bar a{color:#7ab8ff;text-decoration:underline}
 #cookie-bar button{background:#fff;color:#1d1d1f;border:0;border-radius:980px;padding:10px 24px;font-weight:700;cursor:pointer;font:inherit;white-space:nowrap}
 
-/* FOMO — il cliente sceglie chi ha il sito */
+.fomo-copy p{margin-left:auto;margin-right:auto}}
+
+/* FOMO — vera Google Maps: il cliente sceglie chi ha il sito */
 .fomo{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .fomo-copy .kicker{color:var(--blue)}
 .fomo-copy h2{font-size:clamp(34px,4.6vw,62px);font-weight:600;letter-spacing:-.03em;line-height:1.03;margin:10px 0 0}
 .fomo-copy p{font-size:19px;line-height:1.55;color:var(--muted);margin:22px 0 26px;max-width:520px}
 .fomo-phone{display:flex;justify-content:center}
 .ph{width:300px;background:#1d1d1f;border-radius:46px;padding:11px;box-shadow:0 50px 120px -34px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.06)}
-.ph-screen{position:relative;height:606px;background:#eef0f3;border-radius:36px;overflow:hidden;font-size:14px}
-.ph-screen::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#1d1d1f;border-radius:0 0 16px 16px;z-index:5}
-.ph-map{height:150px;background:linear-gradient(135deg,#cfe3d0,#dfe7ef 60%,#cdd9e6);position:relative}
-.ph-map::after{content:"📍";position:absolute;top:78px;left:54%;font-size:24px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
-.ph-search{margin:-20px 16px 0;position:relative;z-index:4;background:#fff;border-radius:13px;padding:12px 14px;box-shadow:0 10px 26px -10px rgba(0,0,0,.25);font-weight:600;color:#333;display:flex;gap:8px;align-items:center}
-.ph-search span{font-weight:500;color:#666;overflow:hidden;white-space:nowrap;border-right:2px solid #0071e3;animation:fomoType 6.5s steps(18) infinite}
-.ph-list{padding:16px 14px;display:flex;flex-direction:column;gap:11px}
-.ph-card{display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #e6e6ec;border-radius:14px;padding:11px}
-.ph-ic{width:46px;height:46px;border-radius:11px;background:#d8d8de;background-size:cover;background-position:center;display:grid;place-items:center;font-weight:800;color:#8a8a90;flex:none}
-.ph-tx b{display:block;font-size:14.5px;color:#1d1d1f}.ph-tx span{font-size:12.5px;color:#8a8a90}
-.ph-card.dead{opacity:.55}.ph-card.dead .ph-tx span{color:#c0392b}
-.ph-card.win{border-color:#0071e3}.ph-card.win .ph-tx i{font-style:normal;color:#0071e3;font-weight:700}
-.ph-card.win{animation:fomoWin 6.5s ease-in-out infinite}
-.ph-cursor{position:absolute;left:210px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.18);border:2px solid rgba(0,0,0,.4);z-index:8;animation:fomoCursor 6.5s ease-in-out infinite}
-@keyframes fomoType{0%{width:0}30%,100%{width:118px}}
-@keyframes fomoCursor{0%,30%{top:250px;opacity:0}38%,52%{top:250px;opacity:1}68%{top:343px;opacity:1}73%{top:343px;transform:scale(.78)}78%,94%{top:343px;transform:scale(1)}100%{top:343px;opacity:0}}
-@keyframes fomoWin{0%,60%{box-shadow:0 0 0 0 rgba(0,113,227,0)}72%{box-shadow:0 0 0 4px rgba(0,113,227,.18);transform:translateY(-2px)}100%{box-shadow:0 0 0 4px rgba(0,113,227,.18);transform:translateY(-2px)}}
+.ph-screen{position:relative;height:606px;background:#e9ebee;border-radius:36px;overflow:hidden;font-family:Roboto,var(--f);font-size:14px}
+.ph-screen::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:118px;height:25px;background:#1d1d1f;border-radius:0 0 16px 16px;z-index:30}
+.gmap{position:absolute;inset:0;background:#e8eaed}
+.gpins{position:absolute;inset:0;z-index:2}
+.gpin{position:absolute;width:16px;height:16px;transform:translate(-50%,-100%) scale(0);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.gpin.show{transform:translate(-50%,-100%) scale(1)}
+.gpin::after{content:"";display:block;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#9aa0a6;border:2px solid #fff;box-shadow:0 3px 7px rgba(0,0,0,.3)}
+.gpin.win::after{background:#ea4335;width:20px;height:20px}
+.gsearch{position:absolute;top:46px;left:12px;right:12px;height:46px;background:#fff;border-radius:24px;box-shadow:0 2px 12px rgba(0,0,0,.2);display:flex;align-items:center;gap:11px;padding:0 16px;z-index:20}
+.gsearch svg{width:18px;height:18px;flex:none}
+.gq{flex:1;color:#202124;white-space:nowrap;overflow:hidden;font-size:14px}
+.gq::after{content:"|";color:#1a73e8;animation:gblink 1s steps(1) infinite}
+@keyframes gblink{50%{opacity:0}}
+.gsheet{position:absolute;left:0;right:0;bottom:0;height:60%;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -8px 26px rgba(0,0,0,.13);z-index:15;overflow:hidden}
+.grip{width:38px;height:4px;background:#dadce0;border-radius:2px;margin:9px auto 6px}
+.ghdr{font-size:12px;color:#5f6368;padding:2px 16px 8px;font-weight:500}
+.glist{padding:0}
+.gcard{padding:12px 16px;border-top:1px solid #f1f1f3;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s,background .3s}
+.gcard.show{opacity:1;transform:none}
+.gname{font-size:15px;font-weight:600;color:#202124}
+.gmeta{font-size:12.5px;color:#5f6368;margin-top:2px}.gmeta .st{color:#e8a33d}
+.gacts{display:flex;gap:7px;margin-top:10px;align-items:center}
+.gpill{font-size:11.5px;border:1px solid #dadce0;border-radius:15px;padding:6px 11px;color:#1a73e8;white-space:nowrap}
+.gpill.call{color:#1a73e8}
+.gcard.win{background:#e8f0fe}
+.gcard.win .gpill.site{background:#1a73e8;color:#fff;border-color:#1a73e8;font-weight:600}
+.gno{font-size:11.5px;color:#d93025;font-weight:600;border:1px solid #fadcd9;border-radius:15px;padding:6px 11px;white-space:nowrap}
+.ph-cursor{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(60,64,67,.22);border:2px solid rgba(60,64,67,.5);z-index:25;opacity:0;transition:top .7s cubic-bezier(.4,0,.2,1),left .7s cubic-bezier(.4,0,.2,1),transform .18s,opacity .3s;pointer-events:none}
+.gtip{position:absolute;left:50%;bottom:18px;transform:translateX(-50%) translateY(10px);background:#202124;color:#fff;font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:20px;z-index:28;opacity:0;transition:.35s;box-shadow:0 10px 24px rgba(0,0,0,.3);white-space:nowrap}
+.gtip.show{opacity:1;transform:translateX(-50%)}
 @media(max-width:880px){.fomo{grid-template-columns:1fr;gap:38px}.fomo-copy{text-align:center}.fomo-copy p{margin-left:auto;margin-right:auto}}
 </style>
 </head>
@@ -237,43 +252,45 @@ footer a:hover{color:var(--blue)}
 </div></header>
 
 
-<section id="perche"><div class="wrap-wide">
-  <div class="fomo">
-    <div class="fomo-copy reveal">
-      <span class="kicker">Il 2026</span>
-      <h2>Se non ti trovano,<br>scelgono un altro.</h2>
-      <p>Oggi il cliente cerca su Google prima di decidere. Se non hai un sito, in pochi secondi passa al concorrente che ce l'ha. Esserci non e' piu' un optional: e' la prima impressione che dai.</p>
-      <a class="link" href="#demo">Guarda come ti vede un cliente <span class="chev">&rarr;</span></a>
-    </div>
-    <div class="fomo-phone reveal">
-      <div class="ph"><div class="ph-screen">
-        <div class="ph-map"></div>
-        <div class="ph-search">&#128269; <span>estetista a Varese</span></div>
-        <div class="ph-list">
-          <div class="ph-card dead"><div class="ph-ic">B</div><div class="ph-tx"><b>Bellezza Piu'</b><span>&#9733; 4.6 &middot; Nessun sito web</span></div></div>
-          <div class="ph-card win"><div class="ph-ic" style="background-image:url('landing-sector-assets/estetisti.jpg')"></div><div class="ph-tx"><b>Estetica Lumiere</b><span>&#9733; 4.9 &middot; <i>&#127760; Visita il sito</i></span></div></div>
-          <div class="ph-card dead"><div class="ph-ic">M</div><div class="ph-tx"><b>Mani di Fata</b><span>&#9733; 4.4 &middot; Nessun sito web</span></div></div>
-        </div>
-        <div class="ph-cursor"></div>
-      </div></div>
-    </div>
+
+<section id="perche"><div class="wrap-wide"><div class="fomo">
+  <div class="fomo-copy reveal">
+    <span class="kicker">Il 2026</span>
+    <h2>Se non ti trovano,<br>scelgono un altro.</h2>
+    <p>Il cliente ti cerca su <b>Google Maps</b> prima di scegliere. Se non hai un sito, in pochi secondi tocca il concorrente che ce l'ha. Esserci non e' piu' un optional: e' la prima impressione.</p>
+    <a class="link" href="#demo">Guarda come ti vede un cliente <span class="chev">&rarr;</span></a>
   </div>
-</div></section>
+  <div class="fomo-phone reveal">
+    <div class="ph" id="gmaps"><div class="ph-screen">
+      <div class="gmap"><svg width="100%" height="100%" viewBox="0 0 278 606" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="278" height="606" fill="#e8eaed"/>
+        <rect x="150" y="0" width="60" height="606" fill="#cfe8d4"/>
+        <rect x="0" y="380" width="278" height="60" fill="#aadaff"/>
+        <g stroke="#ffffff" stroke-width="9"><path d="M0 120 H278"/><path d="M0 260 H278"/><path d="M90 0 V606"/><path d="M210 0 V606"/></g>
+        <g stroke="#f4f4f6" stroke-width="4"><path d="M0 60 H278"/><path d="M0 190 H278"/><path d="M40 0 V606"/><path d="M150 0 V606"/></g>
+      </svg><div class="gpins"></div></div>
+      <div class="gsearch"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#5f6368" stroke-width="2"/><path d="M21 21l-4-4" stroke="#5f6368" stroke-width="2" stroke-linecap="round"/></svg><span class="gq"></span></div>
+      <div class="gsheet"><div class="grip"></div><div class="ghdr">Risultati nelle vicinanze</div><div class="glist"></div></div>
+      <div class="ph-cursor"></div>
+      <div class="gtip">Sceglie chi ha il sito &#10003;</div>
+    </div></div>
+  </div>
+</div></div></section>
 <section id="demo" class="alt"><div class="wrap-wide">
   <div class="sec-title reveal">
     <h2>Scegli un settore.<br>Apri subito i due demo.</h2>
     <p>Per ogni categoria, due siti reali: <b>Standard</b> e <b>Premium AI</b> — con la chat appuntamenti dentro al Premium.</p>
   </div>
   <div class="cats">
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/estetisti.jpg')"></div><div class="body"><h3>Beauty & Estetica</h3><p>Trattamenti, prenotazioni, gift card.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/beauty/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/beauty/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/barber.jpg')"></div><div class="body"><h3>Barber & Parrucchieri</h3><p>Listino, slot, prenotazione rapida.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/barber/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/barber/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/ristoranti.jpg')"></div><div class="body"><h3>Ristoranti & Bar</h3><p>Menu, atmosfera, prenota tavolo.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/restaurant/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/restaurant/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/palestre.jpg')"></div><div class="body"><h3>Fitness</h3><p>Percorsi, prova, follow-up.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/fitness/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/fitness/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/studi.jpg')"></div><div class="body"><h3>Studi professionali</h3><p>Servizi, credibilità, appuntamenti.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/professional/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/professional/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/officine.jpg')"></div><div class="body"><h3>Officine & Auto</h3><p>Tagliando, gomme, preventivo.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/automotive/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/automotive/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/negozi.jpg')"></div><div class="body"><h3>Negozi & Boutique</h3><p>Collezioni, disponibilità, novità.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/retail/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/retail/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/hotel.jpg')"></div><div class="body"><h3>B&B & Hotel</h3><p>Camere, servizi, richiesta date.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/hotel/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/hotel/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
-    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/edilizia.jpg')"></div><div class="body"><h3>Edilizia & Artigiani</h3><p>Lavori, sopralluogo, preventivo.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/construction/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/construction/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/estetisti.jpg')"></div><div class="body"><h3>Beauty & Estetica</h3><p>Trattamenti, prenotazioni, gift card.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/beauty/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/beauty/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/barber.jpg')"></div><div class="body"><h3>Barber & Parrucchieri</h3><p>Listino, slot, prenotazione rapida.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/barber/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/barber/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/ristoranti.jpg')"></div><div class="body"><h3>Ristoranti & Bar</h3><p>Menu, atmosfera, prenota tavolo.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/restaurant/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/restaurant/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/palestre.jpg')"></div><div class="body"><h3>Fitness</h3><p>Percorsi, prova, follow-up.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/fitness/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/fitness/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/studi.jpg')"></div><div class="body"><h3>Studi professionali</h3><p>Servizi, credibilità, appuntamenti.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/professional/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/professional/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/officine.jpg')"></div><div class="body"><h3>Officine & Auto</h3><p>Tagliando, gomme, preventivo.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/automotive/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/automotive/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/negozi.jpg')"></div><div class="body"><h3>Negozi & Boutique</h3><p>Collezioni, disponibilità, novità.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/retail/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/retail/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/hotel.jpg')"></div><div class="body"><h3>B&B & Hotel</h3><p>Camere, servizi, richiesta date.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/hotel/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/hotel/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
+    <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/edilizia.jpg')"></div><div class="body"><h3>Edilizia & Artigiani</h3><p>Lavori, sopralluogo, preventivo.</p><div class="acts"><a class="btn btn-line btn-sm" href="/demos/construction/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="/demos/construction/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
   </div>
 </div></section>
 
@@ -333,14 +350,14 @@ footer a:hover{color:var(--blue)}
 <section id="stagioni" class="alt"><div class="wrap-wide">
   <div class="sec-title reveal"><h2>Il tuo sito vive<br>ogni stagione.</h2><p>A ogni festa cambia look e propone l'offerta giusta — ci pensiamo noi. <b>Clicca un esempio</b> e vedi il sito vestito a festa.</p></div>
   <div class="fest">
-    <a class="fest-c reveal" href="demos/festive/natale/" target="_blank"><span class="fe">🎄</span><h3>Natale</h3><p>Auguri in homepage, orari festivi e gift card in evidenza.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/san-valentino/" target="_blank"><span class="fe">❤️</span><h3>San Valentino</h3><p>Pacchetto coppia e "prenota la sorpresa".</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/festa-mamma/" target="_blank"><span class="fe">🌸</span><h3>Festa della Mamma</h3><p>Promo dedicata e idea regalo.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/estate/" target="_blank"><span class="fe">☀️</span><h3>Estate</h3><p>Orari estivi, novità di stagione e promo.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/black-friday/" target="_blank"><span class="fe">🛍️</span><h3>Black Friday</h3><p>Offerta lampo con conto alla rovescia.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/halloween/" target="_blank"><span class="fe">🎃</span><h3>Halloween</h3><p>Look a tema e promo della serata.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/saldi/" target="_blank"><span class="fe">🎁</span><h3>Saldi & Fine anno</h3><p>Vetrina saldi e ultimi posti disponibili.</p><span class="fv">Vedi l'esempio →</span></a>
-    <a class="fest-c reveal" href="demos/festive/rientro/" target="_blank"><span class="fe">🍂</span><h3>Rientro</h3><p>Nuova stagione, ripartenza e abbonamenti.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/natale/" target="_blank"><span class="fe">🎄</span><h3>Natale</h3><p>Auguri in homepage, orari festivi e gift card in evidenza.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/san-valentino/" target="_blank"><span class="fe">❤️</span><h3>San Valentino</h3><p>Pacchetto coppia e "prenota la sorpresa".</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/festa-mamma/" target="_blank"><span class="fe">🌸</span><h3>Festa della Mamma</h3><p>Promo dedicata e idea regalo.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/estate/" target="_blank"><span class="fe">☀️</span><h3>Estate</h3><p>Orari estivi, novità di stagione e promo.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/black-friday/" target="_blank"><span class="fe">🛍️</span><h3>Black Friday</h3><p>Offerta lampo con conto alla rovescia.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/halloween/" target="_blank"><span class="fe">🎃</span><h3>Halloween</h3><p>Look a tema e promo della serata.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/saldi/" target="_blank"><span class="fe">🎁</span><h3>Saldi & Fine anno</h3><p>Vetrina saldi e ultimi posti disponibili.</p><span class="fv">Vedi l'esempio →</span></a>
+    <a class="fest-c reveal" href="/demos/festive/rientro/" target="_blank"><span class="fe">🍂</span><h3>Rientro</h3><p>Nuova stagione, ripartenza e abbonamenti.</p><span class="fv">Vedi l'esempio →</span></a>
   </div>
 </div></section>
 
@@ -361,7 +378,7 @@ footer a:hover{color:var(--blue)}
 </div></section>
 <section id="richiesta" class="alt"><div class="wrap">
   <div class="sec-title reveal"><h2>Richiedi la tua demo.</h2><p>Lasciaci due dati: ti prepariamo l'anteprima del sito per la tua attività. Nessun impegno.</p></div>
-  <div class="formwrap reveal"><form class="formcard" method="post" action="https://meg-web-studio-bot-production.up.railway.app/start" enctype="multipart/form-data">
+  <div class="formwrap reveal"><form class="formcard" method="post" action="/start" enctype="multipart/form-data">
     <div class="fields">
       <div class="field full"><label>Nome attività</label><input name="business_name" placeholder="Es. Anna Estetica" required></div>
       <div class="field"><label>Email</label><input type="email" name="email" placeholder="nome@email.it" required></div>
@@ -381,7 +398,7 @@ footer a:hover{color:var(--blue)}
 
 <footer><div class="wrap-wide foot-in">
   <span>© MEG Web Studio — Siti professionali per attività locali</span>
-  <span><a href="https://meg-web-studio-bot-production.up.railway.app/privacy">Privacy</a></span>
+  <span><a href="/privacy">Privacy</a></span>
 </div></footer>
 
 <script>
@@ -474,7 +491,7 @@ footer a:hover{color:var(--blue)}
   var btns=Array.prototype.slice.call(pills.querySelectorAll('button')),i=0,timer;
   function show(idx){var b=btns[idx];if(!b)return;for(var k=0;k<btns.length;k++)btns[k].classList.remove('on');b.classList.add('on');
     var s=b.getAttribute('data-s');ifr.style.opacity='0';
-    setTimeout(function(){ifr.src='demos/'+s+'/premium/index.html?nochat=1';if(url)url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';play(s);},220);i=idx;}
+    setTimeout(function(){ifr.src='/demos/'+s+'/premium/index.html?nochat=1';if(url)url.textContent=b.getAttribute('data-u');ifr.style.opacity='1';play(s);},220);i=idx;}
   for(var k=0;k<btns.length;k++){(function(idx){btns[idx].addEventListener('click',function(){show(idx);clearInterval(timer);timer=setInterval(function(){if(!document.hidden)show((i+1)%btns.length);},15000);});})(k);}
   play('beauty');
   timer=setInterval(function(){if(!document.hidden)show((i+1)%btns.length);},15000);
@@ -511,5 +528,45 @@ try{fetch('https://ipwho.is/?fields=country_code').then(function(r){return r.jso
 addEventListener('load',function(){var v=document.querySelector('.sc-video');if(!v)return;function go(){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:1800}):setTimeout(go,900);});
 </script>
 <script>(function(){try{if(localStorage.getItem('meg_cookie_ok'))return;}catch(e){}var b=document.createElement('div');b.id='cookie-bar';b.innerHTML='<span>Usiamo solo <b>cookie tecnici essenziali</b> e la posizione approssimativa (via IP) per mostrarti i prezzi nella valuta giusta. Nessun tracciamento pubblicitario. <a href="https://meg-web-studio-bot-production.up.railway.app/privacy" target="_blank" rel="noopener">Privacy</a> &middot; <a href="termini.html" target="_blank">Termini</a></span><button>Ho capito</button>';b.querySelector('button').onclick=function(){try{localStorage.setItem('meg_cookie_ok','1')}catch(e){}b.remove()};document.body.appendChild(b);})();</script>
+
+<script>
+(function(){
+ var ph=document.getElementById('gmaps'); if(!ph) return;
+ var qEl=ph.querySelector('.gq'), list=ph.querySelector('.glist'), pins=ph.querySelector('.gpins'),
+     cur=ph.querySelector('.ph-cursor'), tip=ph.querySelector('.gtip'), screen=ph.querySelector('.ph-screen');
+ var D=[
+  {q:"estetista a Varese", win:{n:"Estetica Lumiere",c:"Centro estetico",r:"4,9",v:"127"}, dead:[{n:"Bellezza Piu",c:"Estetista",r:"4,6"},{n:"Mani di Fata",c:"Nail bar",r:"4,4"}], pins:[[120,150],[200,210],[60,300]]},
+  {q:"ristorante a Como", win:{n:"Trattoria del Borgo",c:"Ristorante",r:"4,8",v:"203"}, dead:[{n:"Da Mario",c:"Trattoria",r:"4,3"},{n:"Osteria 12",c:"Cucina italiana",r:"4,1"}], pins:[[100,170],[190,140],[70,280]]},
+  {q:"barbiere a Milano", win:{n:"Atelier Barber",c:"Barbiere",r:"4,9",v:"168"}, dead:[{n:"Taglio Veloce",c:"Barbiere",r:"4,2"},{n:"Hair Point",c:"Parrucchiere",r:"4,0"}], pins:[[130,160],[210,230],[55,290]]},
+  {q:"officina a Bergamo", win:{n:"Autofficina Rapida",c:"Officina auto",r:"4,8",v:"96"}, dead:[{n:"Gomme Express",c:"Pneumatici",r:"4,3"},{n:"Meccanico OK",c:"Officina",r:"3,9"}], pins:[[110,150],[195,200],[65,310]]}
+ ];
+ function s(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+ async function type(q){qEl.textContent='';for(var i=0;i<q.length;i++){qEl.textContent+=q[i];await s(48)}}
+ function deadCard(o){return '<div class="gcard"><div class="gname">'+esc(o.n)+'</div><div class="gmeta"><span class="st">&#9733;</span> '+o.r+' &middot; '+esc(o.c)+'</div><div class="gacts"><span class="gpill">Indicazioni</span><span class="gpill call">Chiama</span><span class="gno">Nessun sito</span></div></div>'}
+ function winCard(o){return '<div class="gcard win"><div class="gname">'+esc(o.n)+'</div><div class="gmeta"><span class="st">&#9733;</span> '+o.r+' ('+o.v+') &middot; '+esc(o.c)+'</div><div class="gacts"><span class="gpill">Indicazioni</span><span class="gpill site">&#127760; Sito web</span><span class="gpill call">Chiama</span></div></div>'}
+ async function moveCur(el){var sb=screen.getBoundingClientRect(),b=el.getBoundingClientRect();cur.style.opacity=1;cur.style.left=(b.left-sb.left+b.width/2-13)+'px';cur.style.top=(b.top-sb.top+b.height/2-13)+'px';}
+ async function run(){var i=0;
+  while(true){var d=D[i%D.length];
+   list.innerHTML='';pins.innerHTML='';tip.classList.remove('show');cur.style.opacity=0;cur.style.transform='';
+   await type(d.q); await s(420);
+   var order=[d.dead[0], d.win, d.dead[1]];
+   list.innerHTML=deadCard(order[0])+winCard(order[1])+deadCard(order[2]);
+   var cards=list.querySelectorAll('.gcard');
+   d.pins.forEach(function(p,k){var el=document.createElement('div');el.className='gpin'+(k==1?' win':'');el.style.left=p[0]+'px';el.style.top=p[1]+'px';pins.appendChild(el);});
+   for(var k=0;k<cards.length;k++){await s(230);cards[k].classList.add('show');pins.children[k]&&pins.children[k].classList.add('show');}
+   await s(700);
+   var siteBtn=list.querySelector('.win .site'); await moveCur(siteBtn); await s(750);
+   cur.style.transform='scale(.78)'; await s(180); cur.style.transform='scale(1)';
+   tip.classList.add('show'); await s(2300);
+   for(var k=0;k<cards.length;k++){cards[k].classList.remove('show');} tip.classList.remove('show'); cur.style.opacity=0;
+   await s(650); i++;
+  }
+ }
+ var seen=false;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}})},{threshold:.25});
+ io.observe(ph);
+})();
+</script>
 </body>
 </html>
