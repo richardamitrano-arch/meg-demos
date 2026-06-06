@@ -118,6 +118,7 @@ section{padding:120px 0}
 
 /* PRICING */
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;max-width:1040px;margin:0 auto}
+#prezzi .prices{grid-template-columns:repeat(2,1fr);max-width:720px}
 .price{background:#fff;border-radius:24px;padding:34px 30px;box-shadow:0 0 0 1px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
 .price:hover{transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(0,0,0,.25)}
 .price.feat-card{box-shadow:0 0 0 2px var(--blue)}
@@ -203,7 +204,7 @@ footer a:hover{color:var(--blue)}
 <section id="demo" class="alt"><div class="wrap-wide">
   <div class="sec-title reveal">
     <h2>Scegli un settore.<br>Apri subito i due demo.</h2>
-    <p>Per ogni categoria, due siti reali: <b>Standard</b> e <b>Premium AI</b> — con la chat appuntamenti dentro al Premium. Non immagini finte: i siti veri.</p>
+    <p>Per ogni categoria, due siti reali: <b>Standard</b> e <b>Premium AI</b> — con la chat appuntamenti dentro al Premium.</p>
   </div>
   <div class="cats">
     <div class="cat reveal"><div class="ph" style="background-image:url('/landing-sector-assets/estetisti.jpg')"></div><div class="body"><h3>Beauty & Estetica</h3><p>Trattamenti, prenotazioni, gift card.</p><div class="acts"><a class="btn btn-line btn-sm" href="demos/beauty/standard/" target="_blank">Standard</a><a class="btn btn-sm prem" href="demos/beauty/premium/" target="_blank">Premium AI<span class="chip">chat</span></a></div></div></div>
@@ -237,9 +238,6 @@ footer a:hover{color:var(--blue)}
     <div class="price feat-card reveal"><span class="tag">Consigliato</span><div class="pname">Premium AI</div><div class="amt">299€</div><div class="per">una tantum · dominio incluso 1° anno</div>
       <ul><li><span class="ck">✓</span> Sito avanzato + dominio business</li><li><span class="ck">✓</span> Prenotazioni e chat appuntamenti</li><li><span class="ck">✓</span> Conferme e promemoria automatici</li><li><span class="ck">✓</span> Dashboard del titolare</li></ul>
       <a class="btn" href="#richiesta">Richiedi Premium AI</a></div>
-    <div class="price reveal"><div class="pname">Care</div><div class="amt">da 49€</div><div class="per">al mese · disdici quando vuoi</div>
-      <ul><li><span class="ck">✓</span> Aggiornamenti e modifiche ogni mese</li><li><span class="ck">✓</span> Immagini social e promo del mese</li><li><span class="ck">✓</span> Campagne stagionali</li><li><span class="ck">✓</span> Rinnovo solo con il tuo consenso</li></ul>
-      <a class="btn btn-line" href="#care">Scopri Care</a></div>
   </div>
 </div></section>
 
@@ -271,7 +269,7 @@ footer a:hover{color:var(--blue)}
       </ul>
       <a class="btn btn-line" href="#richiesta">Attiva Care Pro</a></div>
   </div>
-  <p class="sc-hint" style="margin-top:28px">Tutti i piani: disdici quando vuoi · rinnovo solo con il tuo consenso · in Svizzera 59 / 109 / 179 CHF</p>
+  <p class="sc-hint" style="margin-top:28px">Tutti i piani: disdici quando vuoi · rinnovo solo con il tuo consenso</p>
 </div></section>
 
 <section id="stagioni" class="alt"><div class="wrap-wide">
@@ -423,6 +421,17 @@ function all(){for(var i=0;i<rev.length;i++)rev[i].classList.add('in');}
 if(w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches){all();return;}
 if('IntersectionObserver' in w){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 for(var i=0;i<rev.length;i++)io.observe(rev[i]);setTimeout(all,2600);}else{all();}})();
+</script>
+<script>
+/* Svizzera -> prezzi in CHF automatici (timezone/lingua, nessuna API esterna) */
+(function(){var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+var L=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
+if(!(/Zurich/i.test(tz)||/(de|fr|it|rm)-CH/i.test(L)))return;
+var P=[['199€','239 CHF'],['299€','359 CHF'],['149€','179 CHF'],['89€','109 CHF'],['49€','59 CHF']];
+var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],t;
+while(t=w.nextNode())a.push(t);
+a.forEach(function(n){var v=n.nodeValue;if(v.indexOf('€')<0)return;for(var i=0;i<P.length;i++)v=v.split(P[i][0]).join(P[i][1]);if(v!==n.nodeValue)n.nodeValue=v;});
+})();
 </script>
 </body>
 </html>
