@@ -657,6 +657,7 @@ section{padding:140px 0;position:relative}
 
 
 
+
 <!--MEGAUTO-START--><!-- SCHEDA DATI ATTIVITA' (il cliente la compila all'acquisto: orari, slot, capienza) --><script>window.MEG_BOOK={"kind": "service", "day": "venerdì", "emo": "💈", "hours": "Mar–Sab 9:30–19:30", "operators": 3, "services": ["Taglio (30′)", "Taglio + barba (45′)", "Barba (20′)"], "pick": "Taglio + barba (45′)", "slots": ["11:00", "15:30", "18:00"], "demo_user": "Taglio e barba, venerdì", "wa": "https://wa.me/393758711390"};</script>
 <style id="megauto-css">
 .chat-msg{max-width:84%;line-height:1.45;font-size:14px}
@@ -714,7 +715,7 @@ section{padding:140px 0;position:relative}
   // ---------- AUTO-DEMO (recita da solo, data-driven) ----------
   async function playAuto(){
     if(autoDone)return;autoDone=true;started=true;openP();body.innerHTML='';
-    await bot("Ciao! \U0001f44b Sono l'assistente per le prenotazioni. "+introQ(),1150);
+    await bot("Ciao! Sono l'assistente per le prenotazioni. "+introQ(),1150);
     await sleep(420);
     if(B.kind==='tables'){
       await usr(B.demo_user); var t=matchTable(B.party);
@@ -755,7 +756,7 @@ section{padding:140px 0;position:relative}
   }
   function startInteractive(){
     if(started)return;started=true;body.innerHTML='';
-    bub('bot',"Ciao! \U0001f44b Sono l'assistente per le prenotazioni. "+introQ());
+    bub('bot',"Ciao! Sono l'assistente per le prenotazioni. "+introQ());
     if(B.kind==='tables'){ chips(['2','3','4','5','6+'].map(function(n){return n+' persone';}),function(o){var p=parseInt(o,10)||2;usr(o);flowTables(p);}); }
     else if(B.kind==='rooms'){ chips(Object.keys(B.rooms||{'Matrimoniale':1}),function(o){usr(o);flowRooms(o);}); }
     else { chips((B.services||['Appuntamento']),function(o){usr(o);flowService(o);}); }
@@ -767,7 +768,7 @@ section{padding:140px 0;position:relative}
     if(B.kind==='rooms'&&/camera|notte|pren|suite|matrimon/.test(m)){await flowRooms(Object.keys(B.rooms||{'Matrimoniale':1})[0]);return;}
     if(/pren|appunt|posto|book|prova|taglio|servizio|consulen|tagliand|sopralluog/.test(m)){await flowService(B.pick||'l\'appuntamento');return;}
     if(/orari|apert|quando/.test(m)){await bot('Siamo aperti: '+(B.hours||'—')+'. Vuoi che prenoti adesso?',1000);return;}
-    await bot('Ti rispondo al volo su [wa] \U0001f4ac, oppure prenoto adesso:',1000);
+    await bot('Ti rispondo al volo su [wa], oppure prenoto adesso:',1000);
     chips([B.kind==='tables'?'Prenota un tavolo':(B.kind==='rooms'?'Prenota una camera':'Prenota')],function(){ if(B.kind==='tables')flowTables(2); else if(B.kind==='rooms')flowRooms(Object.keys(B.rooms||{'X':1})[0]); else flowService(B.pick||'appuntamento'); });
   }
   function sendNow(){var v=(input.value||'').trim();if(!v)return;input.value='';bub('user',esc(v));route(v);}
