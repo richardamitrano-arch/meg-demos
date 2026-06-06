@@ -423,14 +423,24 @@ if('IntersectionObserver' in w){var io=new IntersectionObserver(function(es){es.
 for(var i=0;i<rev.length;i++)io.observe(rev[i]);setTimeout(all,2600);}else{all();}})();
 </script>
 <script>
-/* Svizzera -> prezzi in CHF automatici (timezone/lingua, nessuna API esterna) */
-(function(){var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
-var L=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
-if(!(/Zurich/i.test(tz)||/(de|fr|it|rm)-CH/i.test(L)))return;
+/* Svizzera -> prezzi in CHF automatici. Geo-IP autorevole (prende anche il Ticino
+   col cellulare in italiano) + fuso/lingua come scorciatoia istantanea. */
+(function(){
 var P=[['199€','239 CHF'],['299€','359 CHF'],['149€','179 CHF'],['89€','109 CHF'],['49€','59 CHF']];
-var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],t;
-while(t=w.nextNode())a.push(t);
-a.forEach(function(n){var v=n.nodeValue;if(v.indexOf('€')<0)return;for(var i=0;i<P.length;i++)v=v.split(P[i][0]).join(P[i][1]);if(v!==n.nodeValue)n.nodeValue=v;});
+var done=false;
+function toCHF(){if(done)return;done=true;
+ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],t;
+ while(t=w.nextNode())a.push(t);
+ a.forEach(function(n){var v=n.nodeValue;if(v.indexOf('€')<0)return;for(var i=0;i<P.length;i++)v=v.split(P[i][0]).join(P[i][1]);if(v!==n.nodeValue)n.nodeValue=v;});
+}
+/* 1) scorciatoia istantanea: device già svizzero (niente sfarfallio) */
+var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+var L=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
+if(/Zurich|Bern|Geneva/i.test(tz)||/(de|fr|it|rm)-CH/i.test(L)){toCHF();return;}
+/* 2) geo-IP: l'IP del Ticino e' svizzero anche col telefono in italiano */
+try{fetch('https://ipwho.is/?fields=country_code').then(function(r){return r.json();}).then(function(d){if(d&&d.country_code==='CH')toCHF();}).catch(function(){
+  fetch('https://ipapi.co/country/').then(function(r){return r.text();}).then(function(c){if((c||'').trim()==='CH')toCHF();}).catch(function(){});
+});}catch(e){}
 })();
 </script>
 </body>
