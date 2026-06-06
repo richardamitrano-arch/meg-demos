@@ -253,6 +253,41 @@ footer a:hover{color:var(--blue)}
 .vt-mini b{font-size:14px;color:#0a0a0a;display:block;line-height:1.2}
 .vt-mini span{font-size:12.5px;color:var(--muted)}
 @media(max-width:760px){.vt-card{grid-template-columns:1fr}.vt-info{padding:26px 24px}.vt-mini{min-width:140px}}
+
+/* DASHBOARD TITOLARE — mockup animato */
+.dash{display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:center}
+.dash-phone{display:flex;justify-content:center}
+.dboard-phone{width:300px;background:#1d1d1f;border-radius:46px;padding:11px;box-shadow:0 50px 120px -34px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.06)}
+.dboard-screen{position:relative;height:606px;background:#0e0e12;border-radius:36px;overflow:hidden;color:#f3efe8;font-family:var(--f)}
+.dboard-screen::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:118px;height:25px;background:#1d1d1f;border-radius:0 0 16px 16px;z-index:30}
+.dbh{padding:44px 18px 10px;display:flex;justify-content:space-between;align-items:baseline}
+.dbh b{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.dbh span{font-size:12px;color:#9a948b}
+.dkpi{display:flex;gap:8px;padding:4px 16px 12px}
+.dkpi div{flex:1;background:#17171c;border:1px solid #26262e;border-radius:12px;padding:9px 10px}
+.dkpi b{display:block;font-size:18px;color:#fff;line-height:1}
+.dkpi span{display:block;margin-top:4px;font-size:9.5px;color:#9a948b;text-transform:uppercase;letter-spacing:.08em}
+.dbk-list{padding:2px 14px;display:flex;flex-direction:column;gap:9px}
+.dbk{background:#17171c;border:1px solid #26262e;border-radius:14px;padding:11px 13px;opacity:0;transform:translateY(-10px);transition:opacity .4s,transform .4s,border-color .3s,box-shadow .3s}
+.dbk.show{opacity:1;transform:none}
+.dbk.new{border-color:#ff8a00;box-shadow:0 0 0 1px rgba(255,138,0,.45),0 12px 30px -16px rgba(255,138,0,.5)}
+.dbk .r1{display:flex;justify-content:space-between;align-items:center}
+.dbk .nm{font-weight:600;font-size:14.5px}
+.dbk .tm{font-size:13px;color:#ffb066;font-weight:600}
+.dbk .meta{font-size:12px;color:#9a948b;margin-top:3px}
+.dstatus{margin-top:9px}
+.dassign{display:inline-block;background:#ff8a00;color:#141414;font-weight:700;font-size:12px;padding:6px 13px;border-radius:999px}
+.dassigned{display:inline-block;color:#65d46e;font-weight:700;font-size:12.5px}
+.dtoast{position:absolute;left:50%;top:48px;transform:translateX(-50%) translateY(-12px);background:#202026;border:1px solid #36363f;color:#fff;font-size:12.5px;font-weight:600;padding:8px 15px;border-radius:999px;opacity:0;transition:.35s;z-index:20;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.dtoast.show{opacity:1;transform:translateX(-50%)}
+.dcursor{position:absolute;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.65);opacity:0;transition:top .6s cubic-bezier(.4,0,.2,1),left .6s cubic-bezier(.4,0,.2,1),transform .15s,opacity .3s;z-index:25;pointer-events:none}
+.dash-copy .kicker{color:var(--blue)}
+.dash-copy h2{font-size:clamp(32px,4.4vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1.04;margin:10px 0 0}
+.dash-copy p{font-size:18px;line-height:1.55;color:var(--muted);margin:20px 0 22px;max-width:520px}
+.dash-feats{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:12px}
+.dash-feats li{display:flex;gap:11px;align-items:flex-start;font-size:16px;color:#1a1a1a}
+.dash-feats svg{flex:none;width:22px;height:22px;margin-top:1px}
+@media(max-width:900px){.dash{grid-template-columns:1fr;gap:36px}.dash-copy{text-align:center;order:2}.dash-phone{order:1}.dash-copy p{margin-left:auto;margin-right:auto}.dash-feats{max-width:380px;margin-left:auto;margin-right:auto}.dash-feats li{text-align:left}}
 </style>
 </head>
 <body>
@@ -339,6 +374,33 @@ footer a:hover{color:var(--blue)}
   </div>
 </div></section>
 
+<section id="gestione" class="alt"><div class="wrap-wide"><div class="dash">
+  <div class="dash-phone reveal">
+    <div class="dboard-phone"><div class="dboard-screen">
+      <div class="dbh"><b>Agenda</b><span>Oggi</span></div>
+      <div class="dkpi">
+        <div><b id="dk1">3</b><span>Prenotazioni</span></div>
+        <div><b id="dk2">8</b><span>Coperti</span></div>
+        <div><b id="dk3">9</b><span>Tavoli</span></div>
+      </div>
+      <div class="dbk-list" id="dblist"></div>
+      <div class="dtoast" id="dtoast"></div>
+      <div class="dcursor" id="dcursor"></div>
+    </div></div>
+  </div>
+  <div class="dash-copy reveal">
+    <span class="kicker">La dashboard del titolare</span>
+    <h2>La tua attivita',<br>in tasca.</h2>
+    <p>Prenotazioni in tempo reale, tavoli assegnati con un tap, clienti aggiunti al volo. Dal computer o dall'iPhone, ovunque tu sia.</p>
+    <ul class="dash-feats">
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vedi le prenotazioni del giorno in tempo reale</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Assegna o cambia tavolo con un tocco</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Aggiungi un cliente al volo (walk-in)</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Modifica orari e servizi da solo, quando vuoi</li>
+    </ul>
+    <a class="link" href="#richiesta">Richiedi la demo <span class="chev">&rarr;</span></a>
+  </div>
+</div></div></section>
 <section id="prezzi" class="alt"><div class="wrap-wide">
   <div class="sec-title reveal"><h2>Semplice e trasparente.</h2><p>Nessun costo nascosto. Parti come vuoi, fai l'upgrade quando vuoi.</p></div>
   <div class="prices">
@@ -658,6 +720,61 @@ window.MEG_VETRINA = {
     h += '</div>';
   }
   stage.innerHTML = h;
+})();
+</script>
+
+<script>
+(function(){
+ var ph=document.getElementById('dblist'); if(!ph) return;
+ var screen=document.querySelector('.dboard-screen'), toast=document.getElementById('dtoast'),
+     cur=document.getElementById('dcursor'), k1=document.getElementById('dk1'), k2=document.getElementById('dk2'), k3=document.getElementById('dk3');
+ function s(ms){return new Promise(function(r){setTimeout(r,ms)})}
+ function card(o,isNew){
+   var st = o.tbl ? ("<span class='dassigned'>&#10003; Tavolo da "+o.tbl+"</span>") : "<span class='dassign'>Assegna tavolo</span>";
+   return "<div class='dbk"+(isNew?' new':'')+"'><div class='r1'><span class='nm'>"+o.nm+"</span><span class='tm'>"+o.tm+"</span></div>"
+        + "<div class='meta'>"+o.party+" persone</div><div class='dstatus'>"+st+"</div></div>";
+ }
+ function kpis(list){var cov=0;list.forEach(function(o){cov+=o.party});k1.textContent=list.length;k2.textContent=cov;}
+ async function showAll(){var cs=ph.querySelectorAll('.dbk');for(var i=0;i<cs.length;i++){await s(140);cs[i].classList.add('show')}}
+ async function toastMsg(t){toast.innerHTML=t;toast.classList.add('show');await s(1500);toast.classList.remove('show');await s(250)}
+ async function moveCur(el){var sb=screen.getBoundingClientRect(),b=el.getBoundingClientRect();cur.style.opacity=1;cur.style.left=(b.left-sb.left+b.width/2-12)+'px';cur.style.top=(b.top-sb.top+b.height/2-12)+'px';}
+ var SEED=[{tm:"19:30",nm:"Bianchi",party:2,tbl:2},{tm:"20:00",nm:"Rossi",party:4,tbl:4},{tm:"20:30",nm:"Greco",party:2,tbl:2}];
+ var INCOMING={tm:"21:00",nm:"Ferrari",party:4,tbl:null};
+ var WALK={tm:"ora",nm:"Walk-in",party:2,tbl:2};
+ async function run(){
+  while(true){
+   var list=SEED.slice();
+   ph.innerHTML=list.map(function(o){return card(o,false)}).join(''); kpis(list);
+   await showAll(); await s(1300);
+   // nuova prenotazione dal sito
+   await toastMsg("&#128276; Nuova prenotazione");
+   list.unshift(JSON.parse(JSON.stringify(INCOMING)));
+   ph.innerHTML=card(list[0],true)+list.slice(1).map(function(o){return card(o,false)}).join('');
+   var cs=ph.querySelectorAll('.dbk'); for(var i=0;i<cs.length;i++) cs[i].classList.add('show');
+   kpis(list); await s(800);
+   // assegna tavolo (cursore tap)
+   var btn=ph.querySelector('.dbk.new .dassign');
+   if(btn){ await moveCur(btn); await s(700); cur.style.transform='scale(.78)'; await s(170); cur.style.transform='scale(1)'; }
+   list[0].tbl=4;
+   ph.innerHTML=list.map(function(o,ix){return card(o,false)}).join('');
+   for(var j=0;j<ph.children.length;j++) ph.children[j].classList.add('show');
+   cur.style.opacity=0;
+   await toastMsg("&#10003; Tavolo da 4 assegnato");
+   await s(900);
+   // walk-in
+   await toastMsg("&#10133; Walk-in aggiunto");
+   list.unshift(WALK);
+   ph.innerHTML=list.map(function(o){return card(o,false)}).join('');
+   for(var w=0;w<ph.children.length;w++) ph.children[w].classList.add('show');
+   kpis(list); await s(2400);
+   // fade & reset
+   var all=ph.querySelectorAll('.dbk'); for(var a=0;a<all.length;a++) all[a].classList.remove('show');
+   await s(650);
+  }
+ }
+ var seen=false;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}})},{threshold:.25});
+ io.observe(screen);
 })();
 </script>
 </body>
