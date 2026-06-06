@@ -57,7 +57,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(
 .shot .frame .pin b{display:block;font-size:13px}.shot .frame .pin span{font-size:11px;color:var(--muted)}
 
 /* HERO LIVE-DEMO SHOWCASE */
-.showcase{position:relative;margin:54px auto 0;max-width:1120px}
+.showcase{position:relative;margin:54px auto 0;max-width:1120px}.sc-video{display:block;width:100%;height:auto;border-radius:14px}
 .sc-glow{position:absolute;left:-3%;right:-3%;top:-4%;bottom:6%;z-index:0;pointer-events:none;filter:blur(26px);opacity:.9;background:radial-gradient(48% 60% at 42% 32%,rgba(110,135,255,.20),transparent 72%),radial-gradient(42% 52% at 78% 72%,rgba(255,150,180,.16),transparent 72%)}
 .sc-frame{position:relative;z-index:1;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 50px 120px -40px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.06);transform:perspective(1500px);transition:transform .3s cubic-bezier(.16,1,.3,1);will-change:transform}
 .sc-bar{height:44px;background:#f5f5f7;border-bottom:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:8px;padding:0 16px}
@@ -195,19 +195,8 @@ footer a:hover{color:var(--blue)}
   </div>
   <div class="showcase reveal" id="showcase">
     <div class="sc-glow"></div>
-    <div class="sc-frame" id="scFrame">
-      <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl">estetica-lumiere.it</span><em class="sc-badge">demo dal vivo</em></div>
-      <div class="sc-stage"><div class="sc-view"><iframe id="scIframe" src="demos/beauty/premium/index.html?nochat=1" title="Demo dal vivo" loading="lazy" scrolling="no"></iframe></div><aside class="sc-chat"><div class="sc-cc-head"><span class="sc-cc-ava" id="scAva">EL</span><div class="sc-cc-id"><b id="scBiz">Estetica Lumière</b><i>● Assistente · online</i></div></div><div class="sc-cc-body" id="scBody"></div><div class="sc-cc-foot">L'assistente prenota da solo ✨</div></aside></div>
-    </div>
-    <div class="sc-pills" id="scPills">
-      <button data-s="beauty" data-u="estetica-lumiere.it" class="on">Estetica</button>
-      <button data-s="barber" data-u="atelier-barber.it">Barbiere</button>
-      <button data-s="restaurant" data-u="trattoria-del-borgo.it">Ristorante</button>
-      <button data-s="fitness" data-u="move-studio.it">Fitness</button>
-      <button data-s="hotel" data-u="hotel-belvedere.it">Hotel</button>
-      <button data-s="retail" data-u="boutique-aura.it">Negozio</button>
-    </div>
-    <p class="sc-hint">Demo reali · cambiano da soli · passa il mouse per inclinare</p>
+    <video class="sc-video" autoplay loop muted playsinline poster="hero_poster.jpg"><source src="hero.mp4" type="video/mp4"></video>
+      <p class="sc-hint">Sito reale · l'assistente prenota da solo ✨</p>
   </div>
 </div></header>
 

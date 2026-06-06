@@ -656,6 +656,7 @@ section{padding:140px 0;position:relative}
 
 
 
+
 <!--MEGAUTO-START--><!-- SCHEDA DATI ATTIVITA' (il cliente la compila all'acquisto: orari, slot, capienza) --><script>window.MEG_BOOK={"kind": "service", "day": "giovedì", "emo": "🔧", "hours": "Lun–Ven 8:00–18:00", "operators": 2, "services": ["Tagliando (90′)", "Cambio gomme (45′)", "Diagnosi (30′)"], "pick": "Tagliando (90′)", "slots": ["08:30", "10:00", "15:00"], "demo_user": "Un tagliando, giovedì", "wa": "https://wa.me/393758711390"};</script>
 <style id="megauto-css">
 .chat-msg{max-width:84%;line-height:1.45;font-size:14px}
@@ -777,7 +778,9 @@ section{padding:140px 0;position:relative}
   if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')sendNow();});
 
   var embedded=false;try{embedded=window.self!==window.top;}catch(e){embedded=true;}
+  var film=/[?&]film=1/.test(location.search);
   if(/[?&]nochat=1/.test(location.search)){try{document.body.classList.add('meg-nochat');}catch(e){}}
+  else if(film){setTimeout(playAuto,1500);}
   else if(embedded||B.force||/[?&]demo=1/.test(location.search)){try{document.body.classList.add('meg-embed');}catch(e){}setTimeout(playAuto,1700);}
 })();
 </script>

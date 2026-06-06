@@ -648,6 +648,7 @@ section{padding:140px 0;position:relative}
 
 
 
+
 <!--MEGAUTO-START--><!-- SCHEDA DATI ATTIVITA' (il cliente la compila all'acquisto: orari, slot, capienza) --><script>window.MEG_BOOK={"kind": "service", "day": "sabato", "emo": "🛍️", "hours": "Mar–Sab 10:00–19:30", "operators": 2, "services": ["Personal shopper (30′)", "Prova capi (30′)"], "pick": "Personal shopper (30′)", "slots": ["11:00", "16:00", "17:30"], "demo_user": "Un appuntamento sabato", "wa": "https://wa.me/393758711390"};</script>
 <style id="megauto-css">
 .chat-msg{max-width:84%;line-height:1.45;font-size:14px}
@@ -769,7 +770,9 @@ section{padding:140px 0;position:relative}
   if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')sendNow();});
 
   var embedded=false;try{embedded=window.self!==window.top;}catch(e){embedded=true;}
+  var film=/[?&]film=1/.test(location.search);
   if(/[?&]nochat=1/.test(location.search)){try{document.body.classList.add('meg-nochat');}catch(e){}}
+  else if(film){setTimeout(playAuto,1500);}
   else if(embedded||B.force||/[?&]demo=1/.test(location.search)){try{document.body.classList.add('meg-embed');}catch(e){}setTimeout(playAuto,1700);}
 })();
 </script>

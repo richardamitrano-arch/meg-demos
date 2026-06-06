@@ -656,6 +656,7 @@ section{padding:140px 0;position:relative}
 
 
 
+
 <!--MEGAUTO-START--><!-- SCHEDA DATI ATTIVITA' (il cliente la compila all'acquisto: orari, slot, capienza) --><script>window.MEG_BOOK={"kind": "service", "day": "lunedì", "emo": "💪", "hours": "Lun–Ven 7:00–22:00", "operators": 2, "services": ["Lezione di prova (50′)", "Personal (60′)", "Funzionale (45′)"], "pick": "Lezione di prova (50′)", "slots": ["10:00", "18:00", "19:30"], "demo_user": "Una lezione di prova, lunedì", "wa": "https://wa.me/393758711390"};</script>
 <style id="megauto-css">
 .chat-msg{max-width:84%;line-height:1.45;font-size:14px}
@@ -777,7 +778,9 @@ section{padding:140px 0;position:relative}
   if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')sendNow();});
 
   var embedded=false;try{embedded=window.self!==window.top;}catch(e){embedded=true;}
+  var film=/[?&]film=1/.test(location.search);
   if(/[?&]nochat=1/.test(location.search)){try{document.body.classList.add('meg-nochat');}catch(e){}}
+  else if(film){setTimeout(playAuto,1500);}
   else if(embedded||B.force||/[?&]demo=1/.test(location.search)){try{document.body.classList.add('meg-embed');}catch(e){}setTimeout(playAuto,1700);}
 })();
 </script>
