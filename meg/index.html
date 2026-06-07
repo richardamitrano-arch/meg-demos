@@ -1082,16 +1082,28 @@ window.MEG_VETRINA = {
     var em  = ((f.querySelector('input[name="email"]')||{}).value || '').trim();
     if(!biz || !em){ alert('Inserisci almeno il nome attività e l’email.'); return; }
     var btn = f.querySelector('button[type="submit"]');
+    var oldLabel = btn ? btn.textContent : '';
     if(btn){ btn.disabled = true; btn.textContent = 'Invio in corso…'; }
-    fetch(f.action, { method:'POST', body:new FormData(f), mode:'no-cors' }).then(done).catch(done);
-    function done(){
+    var url = f.action + (f.action.indexOf('?')<0 ? '?' : '&') + 'format=json';
+    fetch(url, { method:'POST', body:new FormData(f), headers:{ 'X-Requested-With':'fetch' } })
+      .then(function(r){ return r.json().catch(function(){ return { ok:false, message:'Risposta non valida dal server.' }; }); })
+      .then(function(res){ if(res && res.ok){ success(res); } else { fail((res && res.message) || 'Invio non riuscito. Riprova tra poco.'); } })
+      .catch(function(){ fail('Connessione non riuscita. Controlla la rete e riprova.'); });
+    function success(res){
       f.innerHTML = '<div style="text-align:center;padding:30px 10px">'
         + '<div style="font-size:52px;line-height:1;margin-bottom:12px">✅</div>'
         + '<h3 style="margin:0 0 8px;font-size:26px;color:#1d1d1f;font-weight:700">Richiesta ricevuta!</h3>'
-        + '<p style="color:#6e6e73;font-size:17px;margin:0 0 20px;line-height:1.5">Grazie'+(biz?(', '+biz.replace(/[<>]/g,'')):'')+'! Abbiamo preso i tuoi dati e prepariamo la tua demo. Ti ricontattiamo a brevissimo. 🚀</p>'
-        + '<a href="https://wa.me/393758711390" target="_blank" rel="noopener" style="display:inline-block;background:#25D366;color:#fff;border-radius:980px;padding:13px 26px;font-weight:600;text-decoration:none;font-size:16px">💬 Scrivici su WhatsApp</a>'
+        + '<p style="color:#6e6e73;font-size:17px;margin:0 0 6px;line-height:1.5">Grazie'+(biz?(', '+biz.replace(/[<>]/g,'')):'')+'! La tua demo sta arrivando nella tua email 📩</p>'
+        + '<p style="color:#86868b;font-size:14px;margin:0">Controlla anche la cartella spam: se non la vedi entro qualche minuto, scrivici pure rispondendo alla mail.</p>'
         + '</div>';
       f.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    function fail(msg){
+      if(btn){ btn.disabled = false; btn.textContent = oldLabel || 'Invia richiesta'; }
+      var box = f.querySelector('.intake-error');
+      if(!box){ box = document.createElement('div'); box.className='intake-error'; box.setAttribute('role','alert'); box.style.cssText='margin:14px 0 0;padding:12px 14px;border-radius:12px;background:#fff2f2;border:1px solid #f3c2c2;color:#b3261e;font-size:14px;text-align:center'; f.appendChild(box); }
+      box.textContent = msg;
+      box.scrollIntoView({behavior:'smooth', block:'center'});
     }
   });
 })();
