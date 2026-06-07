@@ -47,6 +47,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(
 .nav-cart{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;color:var(--ink);opacity:.85}
 .nav-cart:hover{background:rgba(0,0,0,.06);opacity:1;color:var(--ink)}
 .nav-cart svg{width:19px;height:19px}
+.meg-ratebar{display:none;position:fixed;top:0;left:0;right:0;height:36px;z-index:101;background:#f5f5f7;border-bottom:1px solid rgba(0,0,0,.07);align-items:center;justify-content:center;gap:6px;font-size:13px;color:#444;padding:0 16px;text-align:center}
+.meg-ratebar a{color:var(--blue);white-space:nowrap}
+body.rate-on .meg-ratebar{display:flex}
+body.rate-on nav{top:36px}
+.hero h1 .grad{background:linear-gradient(95deg,#6e87ff 0%,#9a6bff 45%,#ff86b0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero .links .btn{height:52px;padding:0 30px;font-size:17px}
+.acq{display:block;text-align:center;margin-top:11px;font-size:13px;color:var(--blue);opacity:.9}.acq:hover{opacity:1}
 
 /* HERO */
 .hero{padding:150px 0 60px;text-align:center}
@@ -338,6 +345,8 @@ footer a:hover{color:var(--blue)}
 </style>
 </head>
 <body>
+<div class="meg-ratebar">💳 Paga a rate i nostri pacchetti, in modo semplice e flessibile. <a href="#prezzi">Scopri &rsaquo;</a></div>
+<script>/* Banner "paga a rate": ACCENDERE (true) solo quando le rate sono attive nel checkout Shopify (Scalapay/Klarna/PayPal in 3 rate) */ var MEG_RATE_ENABLED=false; if(MEG_RATE_ENABLED){document.documentElement&&document.body&&document.body.classList.add('rate-on');}</script>
 
 <nav><div class="wrap-wide nav-in">
   <a class="logo" href="#top">MEG Web Studio</a>
@@ -379,11 +388,11 @@ footer a:hover{color:var(--blue)}
 
 <header class="hero" id="top"><div class="wrap">
   <p class="eyebrow">MEG Web Studio</p>
-  <h1>Il sito che la tua<br>attività merita.</h1>
+  <h1>Il sito che la tua<br>attività <span class="grad">merita.</span></h1>
   <p class="sub">Per barbieri, estetiste, ristoranti e attività di quartiere. Lo creiamo noi — con prenotazioni e chat appuntamenti già dentro.</p>
   <div class="links">
-    <a class="link" href="#demo">Guarda i demo dal vivo <span class="chev">›</span></a>
-    <a class="link" href="#richiesta">Richiedi il tuo <span class="chev">›</span></a>
+    <a class="btn" href="#richiesta">Richiedi il tuo</a>
+    <a class="btn btn-line" href="#demo">Guarda i demo dal vivo</a>
   </div>
   <div class="showcase reveal" id="showcase">
     <div class="sc-glow"></div>
@@ -458,10 +467,10 @@ footer a:hover{color:var(--blue)}
   <div class="prices">
     <div class="price reveal"><div class="pname">Standard</div><div class="amt">199€</div><div class="per">una tantum</div>
       <ul><li><span class="ck">✓</span> Sito professionale su link incluso</li><li><span class="ck">✓</span> Struttura e contenuti per il tuo settore</li><li><span class="ck">✓</span> WhatsApp ed email di contatto</li><li><span class="ck">✓</span> Anteprima Premium AI per 7 giorni</li></ul>
-      <a class="btn btn-line" href="#richiesta">Richiedi Standard</a></div>
+      <a class="btn btn-line" href="#richiesta">Richiedi Standard</a><a class="acq" href="https://meg-web-studio-bot-production.up.railway.app/acquista/starter" target="_blank" rel="noopener">oppure acquista ora &rsaquo;</a></div>
     <div class="price feat-card reveal"><span class="tag">Consigliato</span><div class="pname">Premium AI</div><div class="amt">299€</div><div class="per">una tantum · dominio incluso 1° anno</div>
       <ul><li><span class="ck">✓</span> Sito avanzato + dominio business</li><li><span class="ck">✓</span> Prenotazioni e chat appuntamenti</li><li><span class="ck">✓</span> Conferme e promemoria automatici</li><li><span class="ck">✓</span> Dashboard del titolare</li></ul>
-      <a class="btn" href="#richiesta">Richiedi Premium AI</a></div>
+      <a class="btn" href="#richiesta">Richiedi Premium AI</a><a class="acq" href="https://meg-web-studio-bot-production.up.railway.app/acquista/base" target="_blank" rel="noopener">oppure acquista ora &rsaquo;</a></div>
   </div>
   <p class="sc-hint" style="margin-top:22px">Il dominio del Premium AI è incluso il primo anno; dal secondo una piccola quota di rinnovo annuale, che ti diciamo prima &mdash; nessuna sorpresa.</p>
   <div class="trust reveal" style="display:flex;gap:14px 28px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-size:14.5px;color:var(--muted)">
