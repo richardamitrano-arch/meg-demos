@@ -36,6 +36,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(
 .nav-links a{font-size:13px;color:var(--ink);opacity:.85;transition:opacity .2s}
 .nav-links a:hover{opacity:1;color:var(--blue)}
 @media(max-width:760px){.nav-links{display:none}}
+.nav-item{position:relative;display:inline-flex;align-items:center}
+.nav-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:11px;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s ease;z-index:101}
+.nav-item:hover .nav-drop{opacity:1;visibility:visible}
+.nav-drop-in{background:rgba(255,255,255,.93);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(0,0,0,.08);border-radius:16px;box-shadow:0 24px 60px -22px rgba(0,0,0,.42);padding:12px;min-width:248px}
+.nav-drop-in .nd-h{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 10px 7px}
+.nav-drop-in a{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:8px 10px;border-radius:9px;font-size:13.5px;color:var(--ink);opacity:1}
+.nav-drop-in a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-drop-in a .nd-p{color:var(--muted);font-size:12.5px;font-weight:500}
+.nav-cart{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;color:var(--ink);opacity:.85}
+.nav-cart:hover{background:rgba(0,0,0,.06);opacity:1;color:var(--ink)}
+.nav-cart svg{width:19px;height:19px}
 
 /* HERO */
 .hero{padding:150px 0 60px;text-align:center}
@@ -331,7 +342,38 @@ footer a:hover{color:var(--blue)}
 <nav><div class="wrap-wide nav-in">
   <a class="logo" href="#top">MEG Web Studio</a>
   <div class="nav-links">
-    <a href="#demo">Demo</a><a href="#come">Come funziona</a><a href="#prezzi">Prezzi</a><a href="#care">Care</a><a href="https://meg-web-studio-bot-production.up.railway.app/portale/login" target="_blank" rel="noopener">Area Cliente</a><a class="blue" href="#richiesta">Richiedi il tuo</a>
+    <div class="nav-item"><a href="#demo">Demo</a><div class="nav-drop"><div class="nav-drop-in">
+      <div class="nd-h">Scegli un settore</div>
+      <a href="demos/beauty/premium/" target="_blank">Beauty &amp; Estetica</a>
+      <a href="demos/barber/premium/" target="_blank">Barber &amp; Parrucchieri</a>
+      <a href="demos/restaurant/premium/" target="_blank">Ristoranti &amp; Bar</a>
+      <a href="demos/fitness/premium/" target="_blank">Fitness</a>
+      <a href="demos/automotive/premium/" target="_blank">Officine &amp; Auto</a>
+      <a href="demos/hotel/premium/" target="_blank">B&amp;B &amp; Hotel</a>
+      <a href="#demo">Vedi tutti i settori <span class="nd-p">&rarr;</span></a>
+    </div></div></div>
+    <a href="#come">Come funziona</a>
+    <div class="nav-item"><a href="#prezzi">Prezzi</a><div class="nav-drop"><div class="nav-drop-in">
+      <div class="nd-h">Il tuo sito su misura</div>
+      <a href="#prezzi">Standard <span class="nd-p">199€</span></a>
+      <a href="#prezzi">Premium AI <span class="nd-p">299€</span></a>
+      <a href="#care">Abbonamenti Care <span class="nd-p">da 49€/mese</span></a>
+    </div></div></div>
+    <div class="nav-item"><a href="#care">Care</a><div class="nav-drop"><div class="nav-drop-in">
+      <div class="nd-h">Il sito lavora tutto l'anno</div>
+      <a href="#care">Care Start <span class="nd-p">49€/mese</span></a>
+      <a href="#care">Care Growth <span class="nd-p">89€/mese</span></a>
+      <a href="#care">Care Pro <span class="nd-p">149€/mese</span></a>
+      <a href="#whatsapp">Automazione WhatsApp <span class="nd-p">Care Pro</span></a>
+    </div></div></div>
+    <div class="nav-item"><a href="#faq">Supporto</a><div class="nav-drop"><div class="nav-drop-in">
+      <div class="nd-h">Siamo qui per te</div>
+      <a href="#faq">Domande frequenti</a>
+      <a href="#richiesta">Richiedi assistenza</a>
+      <a href="https://meg-web-studio-bot-production.up.railway.app/portale/login" target="_blank" rel="noopener">Area Cliente</a>
+    </div></div></div>
+    <a class="nav-cart" href="#prezzi" title="Carrello" aria-label="Carrello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="19" cy="20" r="1.4"/><path d="M2 2h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.3L22.5 6H6.2"/></svg></a>
+    <a class="blue" href="#richiesta">Richiedi il tuo</a>
   </div>
 </div></nav>
 
