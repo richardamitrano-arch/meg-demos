@@ -470,8 +470,14 @@ footer a:hover{color:var(--blue)}
 .fullshot .fs-k{font-size:14px;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.9);text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
 .fullshot h2{font-size:clamp(36px,6.2vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.04;margin:12px 0 0;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.5)}
 .fullshot p{font-size:clamp(18px,2.3vw,25px);line-height:1.4;margin:20px auto 0;color:rgba(255,255,255,.95);max-width:660px;text-shadow:0 1px 18px rgba(0,0,0,.55)}
+.fs-owner{background-image:url('img/hero_owner.jpg')}
+.fs-freetime{background-image:url('img/hero_freetime.jpg')}
+@media (min-width:1024px){
+  .fs-owner{background-image:url('img/hero_owner@2x.jpg')}
+  .fs-freetime{background-image:url('img/hero_freetime@2x.jpg')}
+}
 </style>
-<section class="fullshot" style="background-image:url('img/hero_owner.jpg')">
+<section class="fullshot fs-owner">
   <div class="fs-in reveal">
     <span class="fs-k">MEG Web Studio</span>
     <h2>Più clienti,<br>meno pensieri.</h2>
@@ -651,7 +657,7 @@ footer a:hover{color:var(--blue)}
     </div></div>
   </div>
 </div></div></section>
-<section class="fullshot" style="background-image:url('img/hero_freetime.jpg')">
+<section class="fullshot fs-freetime">
   <div class="fs-in reveal">
     <span class="fs-k">Il tuo tempo</span>
     <h2>Tu vivi.<br>Al resto pensiamo noi.</h2>
