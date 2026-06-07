@@ -1069,5 +1069,32 @@ window.MEG_VETRINA = {
  io.observe(box);
 })();
 </script>
+<script>
+/* MEG intake: invia in background, resta sul sito bianco, conferma pulita (no pagina Railway) */
+(function(){
+  var f = document.querySelector('form.formcard');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var consent = f.querySelector('input[name="consent"]');
+    if(consent && !consent.checked){ alert('Per inviare, accetta il trattamento dei dati.'); return; }
+    var biz = ((f.querySelector('input[name="business_name"]')||{}).value || '').trim();
+    var em  = ((f.querySelector('input[name="email"]')||{}).value || '').trim();
+    if(!biz || !em){ alert('Inserisci almeno il nome attività e l’email.'); return; }
+    var btn = f.querySelector('button[type="submit"]');
+    if(btn){ btn.disabled = true; btn.textContent = 'Invio in corso…'; }
+    fetch(f.action, { method:'POST', body:new FormData(f), mode:'no-cors' }).then(done).catch(done);
+    function done(){
+      f.innerHTML = '<div style="text-align:center;padding:30px 10px">'
+        + '<div style="font-size:52px;line-height:1;margin-bottom:12px">✅</div>'
+        + '<h3 style="margin:0 0 8px;font-size:26px;color:#1d1d1f;font-weight:700">Richiesta ricevuta!</h3>'
+        + '<p style="color:#6e6e73;font-size:17px;margin:0 0 20px;line-height:1.5">Grazie'+(biz?(', '+biz.replace(/[<>]/g,'')):'')+'! Abbiamo preso i tuoi dati e prepariamo la tua demo. Ti ricontattiamo a brevissimo. 🚀</p>'
+        + '<a href="https://wa.me/393758711390" target="_blank" rel="noopener" style="display:inline-block;background:#25D366;color:#fff;border-radius:980px;padding:13px 26px;font-weight:600;text-decoration:none;font-size:16px">💬 Scrivici su WhatsApp</a>'
+        + '</div>';
+      f.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+})();
+</script>
 </body>
 </html>
