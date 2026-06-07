@@ -421,6 +421,7 @@ footer a:hover{color:var(--blue)}
       <ul><li><span class="ck">✓</span> Sito avanzato + dominio business</li><li><span class="ck">✓</span> Prenotazioni e chat appuntamenti</li><li><span class="ck">✓</span> Conferme e promemoria automatici</li><li><span class="ck">✓</span> Dashboard del titolare</li></ul>
       <a class="btn" href="#richiesta">Richiedi Premium AI</a></div>
   </div>
+  <p class="sc-hint" style="margin-top:22px">Il dominio del Premium AI è incluso il primo anno; dal secondo una piccola quota di rinnovo annuale, che ti diciamo prima &mdash; nessuna sorpresa.</p>
 </div></section>
 
 <section id="care"><div class="wrap-wide">
@@ -436,33 +437,33 @@ footer a:hover{color:var(--blue)}
       <a class="btn btn-line" href="#richiesta">Attiva Care Start</a></div>
     <div class="price feat-card reveal"><span class="tag">Più scelto</span><div class="pname">Care Growth</div><div class="amt">89€</div><div class="per">al mese · primo mese gratis</div>
       <ul>
-        <li><span class="ck">✓</span> 4 richieste di modifica al mese</li>
-        <li><span class="ck">✓</span> 4 immagini social professionali</li>
+        <li><span class="ck">✓</span> <b>Tutto di Care Start</b>, più:</li>
+        <li><span class="ck">✓</span> 4 richieste di modifica e 4 immagini social al mese</li>
         <li><span class="ck">✓</span> Promo del mese + campagne stagionali</li>
         <li><span class="ck">✓</span> Risposta entro 2 giorni lavorativi</li>
       </ul>
       <a class="btn" href="#richiesta">Attiva Care Growth</a></div>
     <div class="price reveal"><div class="pname">Care Pro</div><div class="amt">149€</div><div class="per">al mese · primo mese gratis</div>
       <ul>
+        <li><span class="ck">✓</span> <b>Tutto di Care Growth</b>, più:</li>
         <li><span class="ck">✓</span> <b>Automazione WhatsApp</b> &mdash; il bot risponde e prenota anche dal tuo WhatsApp</li>
-        <li><span class="ck">✓</span> 8 richieste di modifica al mese</li>
-        <li><span class="ck">✓</span> 8 immagini social professionali</li>
-        <li><span class="ck">✓</span> Priorità + report mensile</li>
-        <li><span class="ck">✓</span> Risposta entro 1–2 giorni lavorativi</li>
+        <li><span class="ck">✓</span> 8 richieste di modifica e 8 immagini social al mese (il doppio)</li>
+        <li><span class="ck">✓</span> Priorità assoluta + report mensile</li>
+        <li><span class="ck">✓</span> Risposta entro 1 giorno lavorativo</li>
       </ul>
       <a class="btn btn-line" href="#richiesta">Attiva Care Pro</a></div>
   </div>
-  <p class="sc-hint" style="margin-top:28px">Tutti i piani: disdici quando vuoi · rinnovo solo con il tuo consenso</p>
+  <p class="sc-hint" style="margin-top:28px">I piani Care curano sito e marketing mese dopo mese. L'Automazione WhatsApp (Care Pro) richiede un sito Premium AI con prenotazioni. Disdici quando vuoi · rinnovo solo con il tuo consenso.</p>
 </div></section>
 
 <section id="gestione" class="alt"><div class="wrap-wide"><div class="dash">
   <div class="dash-phone reveal">
     <div class="dboard-phone"><div class="dboard-screen">
-      <div class="dbh"><b>Agenda</b><span>Oggi</span></div>
+      <div class="dbh"><b>Agenda</b><span id="dbsector">Ristorante · Oggi</span></div>
       <div class="dkpi">
-        <div><b id="dk1">3</b><span>Prenotazioni</span></div>
-        <div><b id="dk2">8</b><span>Coperti</span></div>
-        <div><b id="dk3">9</b><span>Tavoli</span></div>
+        <div><b id="dk1">3</b><span id="dk1l">Prenotazioni</span></div>
+        <div><b id="dk2">8</b><span id="dk2l">Coperti</span></div>
+        <div><b id="dk3">9</b><span id="dk3l">Tavoli</span></div>
       </div>
       <div class="dbk-list" id="dblist"></div>
       <div class="dtoast" id="dtoast"></div>
@@ -472,10 +473,10 @@ footer a:hover{color:var(--blue)}
   <div class="dash-copy reveal">
     <span class="kicker">La dashboard del titolare</span>
     <h2>La tua attivita',<br>in tasca.</h2>
-    <p>Prenotazioni in tempo reale, tavoli assegnati con un tap, clienti aggiunti al volo. Dal computer o dall'iPhone, ovunque tu sia.</p>
+    <p>Prenotazioni e appuntamenti in tempo reale, assegnati alla persona o postazione giusta con un tap, clienti aggiunti al volo. Si adatta al tuo mestiere &mdash; ristorante, estetica, officina, studio. Dal computer o dall'iPhone, ovunque tu sia.</p>
     <ul class="dash-feats">
-      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vedi le prenotazioni del giorno in tempo reale</li>
-      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Assegna o cambia tavolo con un tocco</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vedi prenotazioni e appuntamenti del giorno in tempo reale</li>
+      <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Assegna tavolo, operatore o postazione con un tocco</li>
       <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Aggiungi un cliente al volo (walk-in)</li>
       <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0b6dff"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Modifica orari e servizi da solo, quando vuoi</li>
     </ul>
@@ -680,7 +681,13 @@ try{fetch('https://ipwho.is/?fields=country_code').then(function(r){return r.jso
 </script>
 <script>
 /* perf: il video hero si carica/avvia solo dopo che la pagina e' pronta (LCP veloce, peso iniziale leggero) */
-addEventListener('load',function(){var v=document.querySelector('.sc-video');if(!v)return;function go(){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:1800}):setTimeout(go,900);});
+addEventListener('load',function(){var vids=document.querySelectorAll('.sc-video');if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(function(v){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+    if(e.isIntersecting){if(v.preload!=='auto')v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    else{try{v.pause();}catch(_){}}
+  });},{threshold:.25});
+  vids.forEach(function(v){io.observe(v);});});
 </script>
 <script>(function(){try{if(localStorage.getItem('meg_cookie_ok'))return;}catch(e){}var b=document.createElement('div');b.id='cookie-bar';b.innerHTML='<span>Usiamo solo <b>cookie tecnici essenziali</b> e la posizione approssimativa (via IP) per mostrarti i prezzi nella valuta giusta. Nessun tracciamento pubblicitario. <a href="https://meg-web-studio-bot-production.up.railway.app/privacy" target="_blank" rel="noopener">Privacy</a> &middot; <a href="termini.html" target="_blank">Termini</a></span><button>Ho capito</button>';b.querySelector('button').onclick=function(){try{localStorage.setItem('meg_cookie_ok','1')}catch(e){}b.remove()};document.body.appendChild(b);})();</script>
 
@@ -785,51 +792,72 @@ window.MEG_VETRINA = {
 (function(){
  var ph=document.getElementById('dblist'); if(!ph) return;
  var screen=document.querySelector('.dboard-screen'), toast=document.getElementById('dtoast'),
-     cur=document.getElementById('dcursor'), k1=document.getElementById('dk1'), k2=document.getElementById('dk2'), k3=document.getElementById('dk3');
+     cur=document.getElementById('dcursor'), k1=document.getElementById('dk1'), k2=document.getElementById('dk2'), k3=document.getElementById('dk3'),
+     k1l=document.getElementById('dk1l'), k2l=document.getElementById('dk2l'), k3l=document.getElementById('dk3l'), secEl=document.getElementById('dbsector');
  function s(ms){return new Promise(function(r){setTimeout(r,ms)})}
- function card(o,isNew){
-   var st = o.tbl ? ("<span class='dassigned'>&#10003; Tavolo da "+o.tbl+"</span>") : "<span class='dassign'>Assegna tavolo</span>";
+ // Settori con funzioni REALI del backend: Ristorante = tavoli/coperti (capienza);
+ // Estetica/Gommista/Dentista = assegnazione a operatore/postazione (modulo operatori + servizi).
+ var SECTORS=[
+  {name:"Ristorante", kl:["Prenotazioni","Coperti","Tavoli"], res:9, assign:"Assegna tavolo", k2:"cov",
+   newMsg:"&#128276; Nuova prenotazione", walkMsg:"&#10133; Walk-in aggiunto", okMsg:"&#10003; Tavolo 7 assegnato",
+   seed:[{tm:"19:30",nm:"Bianchi",meta:"2 persone",cov:2,a:"Tavolo 3"},{tm:"20:00",nm:"Rossi",meta:"4 persone",cov:4,a:"Tavolo 5"},{tm:"20:30",nm:"Greco",meta:"2 persone",cov:2,a:"Tavolo 1"}],
+   inc:{tm:"21:00",nm:"Ferrari",meta:"4 persone",cov:4,a:null,to:"Tavolo 7"},
+   walk:{tm:"ora",nm:"Walk-in",meta:"2 persone",cov:2,a:"Tavolo 9"}},
+  {name:"Estetica", kl:["Appuntamenti","Servizi","Operatori"], res:3, assign:"Assegna operatore", k2:"sv",
+   newMsg:"&#128276; Nuovo appuntamento", walkMsg:"&#10133; Cliente aggiunto", okMsg:"&#10003; Assegnato a Marta",
+   seed:[{tm:"10:00",nm:"Sara M.",meta:"Taglio + Piega · 45 min",sv:2,a:"Giulia"},{tm:"11:00",nm:"Elena R.",meta:"Manicure · 40 min",sv:1,a:"Marta"},{tm:"11:30",nm:"Chiara B.",meta:"Colore · 90 min",sv:1,a:"Giulia"}],
+   inc:{tm:"12:30",nm:"Anna V.",meta:"Piega · 30 min",sv:1,a:null,to:"Marta"},
+   walk:{tm:"ora",nm:"Cliente al banco",meta:"Sopracciglia · 15 min",sv:1,a:"Giulia"}},
+  {name:"Gommista", kl:["Appuntamenti","Veicoli","Postazioni"], res:3, assign:"Assegna postazione", k2:"cnt",
+   newMsg:"&#128276; Nuovo appuntamento", walkMsg:"&#10133; Senza appuntamento", okMsg:"&#10003; Ponte 3 assegnato",
+   seed:[{tm:"09:00",nm:"Verdi",meta:"Cambio gomme · 30 min",a:"Ponte 1"},{tm:"09:45",nm:"Conti",meta:"Tagliando · 60 min",a:"Ponte 2"},{tm:"10:30",nm:"Neri",meta:"Equilibratura · 30 min",a:"Ponte 1"}],
+   inc:{tm:"11:00",nm:"Galli",meta:"Cambio gomme · 30 min",a:null,to:"Ponte 3"},
+   walk:{tm:"ora",nm:"Foratura",meta:"Riparazione · 20 min",a:"Ponte 2"}},
+  {name:"Dentista", kl:["Appuntamenti","Pazienti","Poltrone"], res:2, assign:"Assegna poltrona", k2:"cnt",
+   newMsg:"&#128276; Nuovo appuntamento", walkMsg:"&#10133; Urgenza aggiunta", okMsg:"&#10003; Poltrona 2 assegnata",
+   seed:[{tm:"09:00",nm:"Marco T.",meta:"Igiene · 30 min",a:"Poltrona 1"},{tm:"09:30",nm:"Laura P.",meta:"Visita · 20 min",a:"Poltrona 2"},{tm:"10:00",nm:"Davide S.",meta:"Otturazione · 45 min",a:"Poltrona 1"}],
+   inc:{tm:"10:45",nm:"Elisa F.",meta:"Controllo · 20 min",a:null,to:"Poltrona 2"},
+   walk:{tm:"ora",nm:"Urgenza",meta:"Mal di denti · 30 min",a:"Poltrona 1"}}
+ ];
+ function card(o,sec,isNew){
+   var st = o.a ? ("<span class='dassigned'>&#10003; "+o.a+"</span>") : ("<span class='dassign'>"+sec.assign+"</span>");
    return "<div class='dbk"+(isNew?' new':'')+"'><div class='r1'><span class='nm'>"+o.nm+"</span><span class='tm'>"+o.tm+"</span></div>"
-        + "<div class='meta'>"+o.party+" persone</div><div class='dstatus'>"+st+"</div></div>";
+        + "<div class='meta'>"+o.meta+"</div><div class='dstatus'>"+st+"</div></div>";
  }
- function kpis(list){var cov=0;list.forEach(function(o){cov+=o.party});k1.textContent=list.length;k2.textContent=cov;}
+ function kpis(list,sec){
+   var v2=0;
+   if(sec.k2==="cov"){list.forEach(function(o){v2+=(o.cov||0)});}
+   else if(sec.k2==="sv"){list.forEach(function(o){v2+=(o.sv||1)});}
+   else{v2=list.length;}
+   k1.textContent=list.length; k2.textContent=v2; k3.textContent=sec.res;
+ }
+ function setLabels(sec){k1l.textContent=sec.kl[0];k2l.textContent=sec.kl[1];k3l.textContent=sec.kl[2];secEl.textContent=sec.name+" · Oggi";}
+ function render(list,sec,newFirst){ph.innerHTML=list.map(function(o,ix){return card(o,sec,newFirst&&ix===0)}).join('');}
+ function showNow(){for(var j=0;j<ph.children.length;j++) ph.children[j].classList.add('show');}
  async function showAll(){var cs=ph.querySelectorAll('.dbk');for(var i=0;i<cs.length;i++){await s(140);cs[i].classList.add('show')}}
  async function toastMsg(t){toast.innerHTML=t;toast.classList.add('show');await s(1500);toast.classList.remove('show');await s(250)}
  async function moveCur(el){var sb=screen.getBoundingClientRect(),b=el.getBoundingClientRect();cur.style.opacity=1;cur.style.left=(b.left-sb.left+b.width/2-12)+'px';cur.style.top=(b.top-sb.top+b.height/2-12)+'px';}
- var SEED=[{tm:"19:30",nm:"Bianchi",party:2,tbl:2},{tm:"20:00",nm:"Rossi",party:4,tbl:4},{tm:"20:30",nm:"Greco",party:2,tbl:2}];
- var INCOMING={tm:"21:00",nm:"Ferrari",party:4,tbl:null};
- var WALK={tm:"ora",nm:"Walk-in",party:2,tbl:2};
- async function run(){
-  while(true){
-   var list=SEED.slice();
-   ph.innerHTML=list.map(function(o){return card(o,false)}).join(''); kpis(list);
-   await showAll(); await s(1300);
-   // nuova prenotazione dal sito
-   await toastMsg("&#128276; Nuova prenotazione");
-   list.unshift(JSON.parse(JSON.stringify(INCOMING)));
-   ph.innerHTML=card(list[0],true)+list.slice(1).map(function(o){return card(o,false)}).join('');
-   var cs=ph.querySelectorAll('.dbk'); for(var i=0;i<cs.length;i++) cs[i].classList.add('show');
-   kpis(list); await s(800);
-   // assegna tavolo (cursore tap)
+ function clone(o){return JSON.parse(JSON.stringify(o));}
+ async function cycle(sec){
+   setLabels(sec);
+   var list=sec.seed.map(clone);
+   render(list,sec,false); kpis(list,sec);
+   await showAll(); await s(1200);
+   await toastMsg(sec.newMsg);
+   list.unshift(clone(sec.inc));
+   render(list,sec,true); showNow(); kpis(list,sec); await s(800);
    var btn=ph.querySelector('.dbk.new .dassign');
-   if(btn){ await moveCur(btn); await s(700); cur.style.transform='scale(.78)'; await s(170); cur.style.transform='scale(1)'; }
-   list[0].tbl=4;
-   ph.innerHTML=list.map(function(o,ix){return card(o,false)}).join('');
-   for(var j=0;j<ph.children.length;j++) ph.children[j].classList.add('show');
-   cur.style.opacity=0;
-   await toastMsg("&#10003; Tavolo da 4 assegnato");
-   await s(900);
-   // walk-in
-   await toastMsg("&#10133; Walk-in aggiunto");
-   list.unshift(WALK);
-   ph.innerHTML=list.map(function(o){return card(o,false)}).join('');
-   for(var w=0;w<ph.children.length;w++) ph.children[w].classList.add('show');
-   kpis(list); await s(2400);
-   // fade & reset
+   if(btn){ await moveCur(btn); await s(650); cur.style.transform='scale(.78)'; await s(170); cur.style.transform='scale(1)'; }
+   list[0].a=sec.inc.to;
+   render(list,sec,false); showNow(); cur.style.opacity=0;
+   await toastMsg(sec.okMsg); await s(850);
+   await toastMsg(sec.walkMsg);
+   list.unshift(clone(sec.walk));
+   render(list,sec,false); showNow(); kpis(list,sec); await s(2200);
    var all=ph.querySelectorAll('.dbk'); for(var a=0;a<all.length;a++) all[a].classList.remove('show');
-   await s(650);
-  }
+   await s(600);
  }
+ async function run(){var i=0;while(true){await cycle(SECTORS[i%SECTORS.length]); i++;}}
  var seen=false;
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}})},{threshold:.25});
  io.observe(screen);
