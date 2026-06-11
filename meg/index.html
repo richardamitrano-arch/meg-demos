@@ -53,7 +53,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:rgba(
 .nav-links>a,.nav-item>a{display:inline-flex;align-items:center;height:52px;line-height:1}
 .nav-links a{font-size:13px;color:var(--ink);opacity:.85;transition:opacity .2s}
 .nav-links a:hover{opacity:1;color:var(--blue)}
-@media(max-width:760px){.nav-links{display:none}}
+.nav-burger{display:none;width:40px;height:40px;border:none;background:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.nav-burger span{display:block;width:20px;height:1.8px;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+body.m-open .nav-burger span:nth-child(1){transform:translateY(6.8px) rotate(45deg)}
+body.m-open .nav-burger span:nth-child(2){opacity:0}
+body.m-open .nav-burger span:nth-child(3){transform:translateY(-6.8px) rotate(-45deg)}
+.m-menu{display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:99;background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);padding:18px 24px 40px;overflow-y:auto}
+body.rate-on .m-menu{top:88px}
+.m-menu a{display:flex;justify-content:space-between;align-items:center;padding:15px 2px;font-size:17px;font-weight:600;color:var(--ink);border-bottom:1px solid rgba(0,0,0,.07)}
+.m-menu a .nd-p{color:var(--muted);font-size:14px;font-weight:500}
+.m-menu .m-cta{display:flex;justify-content:center;text-align:center;margin-top:22px;padding:14px;border-radius:999px;background:var(--blue);color:#fff;border-bottom:none}
+body.m-open .m-menu{display:block}
+body.m-open{overflow:hidden}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
 .nav-item{position:relative;display:inline-flex;align-items:center}
 .nav-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:11px;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s ease;z-index:101}
 .nav-item:hover .nav-drop{opacity:1;visibility:visible}
@@ -363,7 +375,7 @@ footer a:hover{color:var(--blue)}
 </style>
 </head>
 <body>
-<div class="meg-ratebar">💳 Paga a rate i nostri pacchetti, in modo semplice e flessibile. <a href="#prezzi">Scopri &rsaquo;</a></div>
+<div class="meg-ratebar">💳 Paga a rate i nostri pacchetti, in modo semplice e flessibile. <a href="#rate">Scopri &rsaquo;</a></div>
 <script>/* Banner "paga a rate": ACCENDERE (true) solo quando le rate sono attive nel checkout Shopify (Scalapay/Klarna/PayPal in 3 rate) */ var MEG_RATE_ENABLED=true; if(MEG_RATE_ENABLED){document.documentElement&&document.body&&document.body.classList.add('rate-on');}</script>
 
 <nav><div class="wrap-wide nav-in">
@@ -385,6 +397,7 @@ footer a:hover{color:var(--blue)}
       <a href="#prezzi">Standard <span class="nd-p">199€</span></a>
       <a href="#prezzi">Premium AI <span class="nd-p">299€</span></a>
       <a href="#care">Abbonamenti Care <span class="nd-p">da 49€/mese</span></a>
+      <a href="#rate">Paga a rate <span class="nd-p">Klarna · PayPal</span></a>
     </div></div></div>
     <div class="nav-item"><a href="#care">Care</a><div class="nav-drop"><div class="nav-drop-in">
       <div class="nd-h">Il sito lavora tutto l'anno</div>
@@ -404,7 +417,25 @@ footer a:hover{color:var(--blue)}
     <a class="nav-cart" href="#prezzi" title="Carrello" aria-label="Carrello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="19" cy="20" r="1.4"/><path d="M2 2h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.3L22.5 6H6.2"/></svg></a>
     <a class="blue" href="#richiesta">Richiedi il tuo</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Apri il menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
 </div></nav>
+<div class="m-menu" id="mMenu">
+  <a href="#demo">Demo</a>
+  <a href="#come">Come funziona</a>
+  <a href="#prezzi">Prezzi <span class="nd-p">da 199€</span></a>
+  <a href="#rate">Paga a rate <span class="nd-p">Klarna · PayPal</span></a>
+  <a href="#care">Care <span class="nd-p">da 49€/mese</span></a>
+  <a href="#app">App</a>
+  <a href="#faq">Supporto</a>
+  <a href="https://meg-web-studio-bot-production.up.railway.app/portale/login" target="_blank" rel="noopener">Area Cliente</a>
+  <a class="m-cta" href="#richiesta">Richiedi il tuo</a>
+</div>
+<script>
+(function(){var b=document.getElementById('navBurger'),m=document.getElementById('mMenu');if(!b||!m)return;
+b.addEventListener('click',function(){var on=document.body.classList.toggle('m-open');b.setAttribute('aria-expanded',on?'true':'false');});
+m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.classList.remove('m-open');b.setAttribute('aria-expanded','false');}});
+})();
+</script>
 
 <header class="hero" id="top"><div class="wrap">
   <p class="eyebrow">MEG Web Studio</p>
@@ -427,7 +458,7 @@ footer a:hover{color:var(--blue)}
   <div class="fomo-copy reveal">
     <span class="kicker">Il 2026</span>
     <h2>Se non ti trovano,<br>scelgono un altro.</h2>
-    <p>Il cliente ti cerca su <b>Google Maps</b> prima di scegliere. Se non hai un sito, in pochi secondi tocca il concorrente che ce l'ha. Esserci non e' piu' un optional: e' la prima impressione.</p>
+    <p>Il cliente ti cerca su <b>Google Maps</b> prima di scegliere. Se non hai un sito, in pochi secondi tocca il concorrente che ce l'ha. Esserci non è più un optional: è la prima impressione.</p>
     <a class="link" href="#demo">Guarda come ti vede un cliente <span class="chev">&rarr;</span></a>
   </div>
   <div class="fomo-phone reveal">
@@ -520,6 +551,25 @@ footer a:hover{color:var(--blue)}
     <span style="display:inline-flex;align-items:center;gap:7px">✓ Disdici quando vuoi</span>
     <span style="display:inline-flex;align-items:center;gap:7px">✓ Dati protetti &middot; GDPR</span>
   </div>
+</div></section>
+
+<section id="rate"><div class="wrap-wide">
+  <div class="sec-title reveal"><h2>Paga a rate,<br>senza pensieri.</h2><p>Puoi dividere il pagamento del tuo sito in <b>3 rate</b>, direttamente nel checkout. Scegli come pagare &mdash; il prezzo non cambia.</p></div>
+  <div class="prices" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+    <div class="price reveal">
+      <div class="pname" style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:5px 13px;border-radius:9px;background:#ffb3c7;color:#17120f;font-weight:800;font-size:15px;letter-spacing:-.02em">Klarna.</span>3 rate senza interessi</div>
+      <ul><li><span class="ck">✓</span> 3 rate senza interessi</li><li><span class="ck">✓</span> Nessun costo aggiuntivo se paghi puntuale</li><li><span class="ck">✓</span> Esito immediato, tutto online</li></ul>
+    </div>
+    <div class="price reveal">
+      <div class="pname" style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:5px 13px;border-radius:9px;background:#003087;color:#fff;font-weight:800;font-style:italic;font-size:15px">PayPal</span>Paga in 3 rate</div>
+      <ul><li><span class="ck">✓</span> "Paga in 3 rate" col tuo conto PayPal</li><li><span class="ck">✓</span> Protezione acquisti PayPal inclusa</li><li><span class="ck">✓</span> Senza carta: basta il saldo o il conto</li></ul>
+    </div>
+    <div class="price reveal">
+      <div class="pname" style="display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;justify-content:center;padding:5px 13px;border-radius:9px;background:#0b6dff;color:#fff;font-weight:800;font-size:15px">🔒</span>Carte &amp; wallet</div>
+      <ul><li><span class="ck">✓</span> Visa, Mastercard, American Express</li><li><span class="ck">✓</span> Apple Pay e Google Pay</li><li><span class="ck">✓</span> Checkout sicuro con crittografia SSL</li></ul>
+    </div>
+  </div>
+  <p class="sc-hint" style="margin-top:22px">Le rate si scelgono nell'ultimo passaggio del checkout. Disponibilit&agrave; soggetta ad approvazione del provider (Klarna/PayPal) &middot; pagamenti elaborati su circuito protetto &middot; dati al sicuro, GDPR.</p>
 </div></section>
 
 <section id="care"><div class="wrap-wide">
@@ -648,8 +698,8 @@ footer a:hover{color:var(--blue)}
     </div>
   </div>
   <div class="appbadges reveal">
-    <a class="storebadge" href="#richiesta" aria-label="Scarica su App Store"><svg width="20" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.99-.84.95-2.2 1.68-3.36 1.59-.14-1.11.42-2.29 1.1-3.03.77-.84 2.12-1.46 3.27-1.55.06.34.04.67.04 0zM20.79 17.3c-.57 1.32-.85 1.91-1.59 3.08-1.03 1.63-2.49 3.66-4.29 3.68-1.6.02-2.01-.94-4.18-.93-2.17.01-2.62.95-4.22.93-1.8-.02-3.18-1.85-4.21-3.48-2.89-4.57-3.19-9.93-1.41-12.78 1.27-2.03 3.27-3.22 5.15-3.22 1.92 0 3.12 1.05 4.71 1.05 1.54 0 2.48-1.05 4.7-1.05 1.67 0 3.44.91 4.7 2.48-4.13 2.26-3.46 8.15.84 10.24z"/></svg><span><span class="sb-sm">Scarica su</span><span class="sb-lg">App Store</span></span></a>
-    <a class="storebadge" href="#richiesta" aria-label="Disponibile su Google Play"><svg width="19" height="22" viewBox="0 0 20 22" fill="#fff"><path d="M2 1.5v19c0 .8.9 1.3 1.6.8L19 11.7c.6-.4.6-1.2 0-1.6L3.6.7C2.9.2 2 .7 2 1.5z"/></svg><span><span class="sb-sm">Disponibile su</span><span class="sb-lg">Google Play</span></span></a>
+    <a class="storebadge" href="#richiesta" aria-label="Scarica su App Store"><svg width="20" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.99-.84.95-2.2 1.68-3.36 1.59-.14-1.11.42-2.29 1.1-3.03.77-.84 2.12-1.46 3.27-1.55.06.34.04.67.04 0zM20.79 17.3c-.57 1.32-.85 1.91-1.59 3.08-1.03 1.63-2.49 3.66-4.29 3.68-1.6.02-2.01-.94-4.18-.93-2.17.01-2.62.95-4.22.93-1.8-.02-3.18-1.85-4.21-3.48-2.89-4.57-3.19-9.93-1.41-12.78 1.27-2.03 3.27-3.22 5.15-3.22 1.92 0 3.12 1.05 4.71 1.05 1.54 0 2.48-1.05 4.7-1.05 1.67 0 3.44.91 4.7 2.48-4.13 2.26-3.46 8.15.84 10.24z"/></svg><span><span class="sb-sm">Prossimamente su</span><span class="sb-lg">App Store</span></span></a>
+    <a class="storebadge" href="#richiesta" aria-label="Disponibile su Google Play"><svg width="19" height="22" viewBox="0 0 20 22" fill="#fff"><path d="M2 1.5v19c0 .8.9 1.3 1.6.8L19 11.7c.6-.4.6-1.2 0-1.6L3.6.7C2.9.2 2 .7 2 1.5z"/></svg><span><span class="sb-sm">Prossimamente su</span><span class="sb-lg">Google Play</span></span></a>
   </div>
   <p class="sc-hint" style="margin-top:20px">In arrivo su App Store e Google Play &middot; accesso riservato ai clienti (login).</p>
 </div></section>
@@ -851,14 +901,14 @@ function toCHF(){if(done)return;done=true;
 var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
 var L=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
 if(/Zurich|Bern|Geneva/i.test(tz)||/(de|fr|it|rm)-CH/i.test(L)){toCHF();return;}
-/* 2) geo-IP: l'IP del Ticino e' svizzero anche col telefono in italiano */
+/* 2) geo-IP: l'IP del Ticino è svizzero anche col telefono in italiano */
 try{fetch('https://ipwho.is/?fields=country_code').then(function(r){return r.json();}).then(function(d){if(d&&d.country_code==='CH')toCHF();}).catch(function(){
   fetch('https://ipapi.co/country/').then(function(r){return r.text();}).then(function(c){if((c||'').trim()==='CH')toCHF();}).catch(function(){});
 });}catch(e){}
 })();
 </script>
 <script>
-/* perf: il video hero si carica/avvia solo dopo che la pagina e' pronta (LCP veloce, peso iniziale leggero) */
+/* perf: il video hero si carica/avvia solo dopo che la pagina è pronta (LCP veloce, peso iniziale leggero) */
 addEventListener('load',function(){var vids=document.querySelectorAll('.sc-video');if(!vids.length)return;
   if(!('IntersectionObserver' in window)){vids.forEach(function(v){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
@@ -914,7 +964,7 @@ window.MEG_VETRINA = {
   // CLIENTI PREMIUM REALI — compila qui all'acquisto: appariranno in vetrina, 1 al giorno a rotazione.
   // forma: {name, sector, city, domain, url, img, desc}
   clients: [],
-  // Esempi (anteprime dei nostri demo premium) finche' non ci sono clienti reali:
+  // Esempi (anteprime dei nostri demo premium) finché non ci sono clienti reali:
   examples: [
     {name:"Estetica Lumière", sector:"Centro estetico", city:"Como", domain:"esteticalumiere.it", url:"demos/beauty/premium/", img:"img/vetrina/beauty.jpg", desc:"Trattamenti viso e corpo, prenotazione online e gift card."},
     {name:"Trattoria del Borgo", sector:"Ristorante", city:"Verona", domain:"trattoriadelborgo.it", url:"demos/restaurant/premium/", img:"img/vetrina/restaurant.jpg", desc:"Cucina del territorio e prenotazione tavoli con conferma istantanea."},
