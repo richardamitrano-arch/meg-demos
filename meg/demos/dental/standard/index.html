@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Dentistico Sorriso · Como · Studio dentistico</title>
+<meta name="description" content="Visite, igiene e trattamenti in un ambiente ordinato e rassicurante.">
+<meta property="og:title" content="Studio Dentistico Sorriso">
+<meta property="og:description" content="Visite, igiene e trattamenti in un ambiente ordinato e rassicurante.">
+<meta property="og:type" content="website">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Source Sans 3',system-ui,sans-serif;background:#f4f8fc;color:#0a1218;line-height:1.55;-webkit-font-smoothing:antialiased}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.display{font-family:'Manrope',serif;text-transform:none;letter-spacing:-0.02em;font-weight:600;color:#0a1218}
+a{color:inherit;text-decoration:none}
+::selection{background:#4a80df;color:#f4f8fc}
+
+/* Header */
+header{position:sticky;top:0;background:#f4f8fcf0;backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,128,223,0.12);z-index:10;padding:18px 0}
+header .container{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-family:'Manrope',serif;font-size:24px;font-weight:900;color:#0a1218;letter-spacing:-0.03em}
+.brand em{color:#4a80df;font-style:normal}
+nav a{margin-left:24px;font-size:14px;color:#5a7080;font-weight:500;transition:color 180ms}
+nav a:hover{color:#4a80df}
+
+/* Buttons */
+.btn{display:inline-block;padding:14px 36px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform 120ms,filter 160ms,background 200ms;letter-spacing:0.02em}
+.btn-primary{background:#4a80df;color:#f4f8fc}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#0a1218;border:1.5px solid #4a80df;margin-left:10px}
+.btn-ghost:hover{background:#4a80df;color:#f4f8fc}
+
+/* Hero — variant-specific */
+.hero{padding:80px 0 100px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(48px,7vw,96px);line-height:0.96;margin-bottom:24px;max-width:920px}
+.hero .lead{font-size:20px;color:#5a7080;max-width:580px;margin-bottom:32px;line-height:1.6}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hero-bg-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:.5;filter:saturate(1.06)}
+.hero-bg-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#f4f8fc7a,#f4f8fcad 50%,#f4f8fcec)}
+.hero:has(.hero-bg-photo){min-height:58vh;display:flex;align-items:center}
+.hero .container{position:relative;z-index:1;width:100%}
+
+/* Hero: magazine-overlay (beauty) */
+.hero.var-magazine-overlay{background:linear-gradient(180deg,rgba(74,128,223,0.12),transparent 70%)}
+.hero.var-magazine-overlay h1 em{color:#4a80df;font-style:italic}
+
+/* Hero: centered-stats-band (barber) */
+.hero.var-centered-stats-band{text-align:center;background:radial-gradient(ellipse at center top,rgba(74,128,223,0.12),transparent 60%)}
+.hero.var-centered-stats-band .stats-band{display:flex;justify-content:center;gap:48px;margin-top:48px;border-top:1px solid rgba(74,128,223,0.12);padding-top:32px}
+.stats-band div{text-align:center}
+.stats-band b{display:block;font-size:42px;color:#4a80df;font-family:'Manrope',serif;line-height:1;font-weight:900}
+.stats-band span{font-size:11px;color:#5a7080;text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;display:block}
+
+/* Hero: cover-photo-quote (restaurant) */
+.hero.var-cover-photo-quote{background:#ffffff;padding:0;min-height:560px;display:flex;align-items:center;position:relative}
+.hero.var-cover-photo-quote::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,128,223,0.12),transparent 50%);pointer-events:none}
+.hero.var-cover-photo-quote .container{position:relative;z-index:1}
+.hero.var-cover-photo-quote h1::before{content:'"';display:block;font-size:120px;color:#4a80df;line-height:0.4;margin-bottom:20px;font-family:'Manrope',serif}
+
+/* Hero: diagonal-stats (fitness) */
+.hero.var-diagonal-stats{background:linear-gradient(108deg,#ffffff 60%,rgba(74,128,223,0.12) 60%)}
+.hero.var-diagonal-stats h1{color:#0a1218}
+
+/* Hero: split-left-image (dental, local_service) */
+.hero.var-split-left-image .container{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero.var-split-left-image .hero-photo{aspect-ratio:4/5;background:rgba(74,128,223,0.12);border-radius:24px;background-size:cover;background-position:center}
+@media (max-width:900px){.hero.var-split-left-image .container{grid-template-columns:1fr}}
+
+/* Hero: centered-credentials (medical, professional) */
+.hero.var-centered-credentials{text-align:center;padding:100px 0 80px}
+.hero.var-centered-credentials .credentials{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:36px;color:#5a7080;font-size:13px;text-transform:uppercase;letter-spacing:0.12em}
+.hero.var-centered-credentials .credentials span{padding:6px 16px;border:1px solid rgba(74,128,223,0.12);border-radius:999px}
+
+/* Hero: industrial-banner (construction) */
+.hero.var-industrial-banner{background:repeating-linear-gradient(45deg,#ffffff,#ffffff 60px,#f4f8fc 60px,#f4f8fc 120px);padding:120px 0 100px}
+
+/* Hero: full-bleed-photo (hotel) */
+.hero.var-full-bleed-photo{padding:0;min-height:640px;background:rgba(74,128,223,0.12);display:flex;align-items:flex-end;position:relative}
+.hero.var-full-bleed-photo .container{padding-bottom:80px;position:relative;z-index:1}
+.hero.var-full-bleed-photo h1{color:#0a1218}
+
+/* Hero: split-product-showcase (retail) */
+.hero.var-split-product-showcase .container{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero.var-split-product-showcase .hero-photo{aspect-ratio:1;border-radius:50%;background:rgba(74,128,223,0.12);background-size:cover}
+@media (max-width:900px){.hero.var-split-product-showcase .container{grid-template-columns:1fr}}
+
+/* Hero: diagonal-bands (automotive) */
+.hero.var-diagonal-bands{background:linear-gradient(135deg,#ffffff 50%,rgba(74,128,223,0.12) 50%);padding:120px 0}
+
+/* Sections */
+section{padding:90px 0;border-top:1px solid rgba(74,128,223,0.12)}
+section h2{font-size:clamp(36px,5vw,64px);margin-bottom:14px;letter-spacing:-0.02em}
+section .lead-sub{color:#5a7080;font-size:17px;max-width:560px;margin-bottom:48px;line-height:1.6}
+
+/* Services — numbered-list-italic (beauty) */
+.services-numbered-list-italic .service-row{display:grid;grid-template-columns:60px 2fr 3fr 40px;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid rgba(74,128,223,0.12);transition:padding-left 240ms}
+.services-numbered-list-italic .service-row:hover{padding-left:12px}
+.services-numbered-list-italic .service-num{font-family:'Manrope',serif;font-size:14px;color:#4a80df;font-style:italic}
+.services-numbered-list-italic .service-name{font-size:24px;font-style:italic;font-weight:400;text-transform:none;letter-spacing:-0.01em}
+.services-numbered-list-italic .service-price{color:#5a7080;font-size:13px;margin-top:4px}
+.services-numbered-list-italic .service-desc{color:#5a7080;font-size:14.5px;line-height:1.6}
+.services-numbered-list-italic .service-arrow{color:#4a80df;font-size:22px;text-align:right;opacity:0.6}
+
+/* Services — split-table (barber, automotive) */
+.services-split-table .service-row{display:grid;grid-template-columns:1fr 100px;gap:20px;padding:22px 0;border-bottom:1px dashed rgba(74,128,223,0.12)}
+.services-split-table .service-name{font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+.services-split-table .service-num{display:none}
+.services-split-table .service-desc{color:#5a7080;font-size:14px;margin-top:4px}
+.services-split-table .service-price{font-weight:700;color:#4a80df;text-align:right;font-size:18px;font-family:'Manrope',serif}
+.services-split-table .service-arrow{display:none}
+
+/* Services — menu-table-dotted (restaurant) */
+.services-menu-table-dotted .service-row{display:grid;grid-template-columns:1fr auto;gap:14px;padding:20px 0;align-items:end;position:relative}
+.services-menu-table-dotted .service-row::after{content:'.....................';color:#5a7080;position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:14px;letter-spacing:6px;opacity:0.4;z-index:0}
+.services-menu-table-dotted .service-name{font-size:22px;font-style:italic;background:#ffffff;padding-right:14px;z-index:1;position:relative;font-weight:400}
+.services-menu-table-dotted .service-price{background:#ffffff;padding-left:14px;color:#4a80df;font-weight:700;font-size:18px;z-index:1;position:relative;font-family:'Manrope',serif}
+.services-menu-table-dotted .service-num,.services-menu-table-dotted .service-arrow{display:none}
+.services-menu-table-dotted .service-desc{grid-column:1/-1;color:#5a7080;font-size:13.5px;font-style:italic;margin-top:-8px}
+
+/* Services — card-grid-3x2, card-grid-2x3, icon-card-grid (fitness, retail, dental, local_service) */
+.services-card-grid-3x2,.services-card-grid-2x3,.services-icon-card-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.services-card-grid-3x2 .service-row,.services-card-grid-2x3 .service-row,.services-icon-card-grid .service-row{display:block;padding:32px 26px;background:#ffffff;border:1px solid rgba(74,128,223,0.12);border-radius:14px;transition:transform 200ms,border-color 200ms}
+.services-card-grid-3x2 .service-row:hover,.services-card-grid-2x3 .service-row:hover,.services-icon-card-grid .service-row:hover{transform:translateY(-4px);border-color:#4a80df}
+.services-card-grid-3x2 .service-num,.services-card-grid-2x3 .service-num,.services-icon-card-grid .service-num{display:inline-block;color:#4a80df;font-family:'Manrope',serif;font-size:14px;margin-bottom:14px;letter-spacing:0.05em}
+.services-card-grid-3x2 .service-name,.services-card-grid-2x3 .service-name,.services-icon-card-grid .service-name{font-size:20px;margin-bottom:10px}
+.services-card-grid-3x2 .service-desc,.services-card-grid-2x3 .service-desc,.services-icon-card-grid .service-desc{color:#5a7080;font-size:14.5px;line-height:1.6;margin-bottom:14px}
+.services-card-grid-3x2 .service-price,.services-card-grid-2x3 .service-price,.services-icon-card-grid .service-price{font-weight:700;color:#4a80df;font-size:15px}
+.services-card-grid-3x2 .service-arrow,.services-card-grid-2x3 .service-arrow,.services-icon-card-grid .service-arrow{display:none}
+
+/* Services — numbered-block (medical, professional) */
+.services-numbered-block .service-row{display:grid;grid-template-columns:80px 1fr;gap:26px;padding:28px 0;border-top:1px solid rgba(74,128,223,0.12)}
+.services-numbered-block .service-num{font-family:'Manrope',serif;font-size:32px;color:#4a80df;font-weight:300}
+.services-numbered-block .service-name{font-size:22px;margin-bottom:8px;letter-spacing:-0.01em}
+.services-numbered-block .service-desc{color:#5a7080;font-size:15px;line-height:1.65}
+.services-numbered-block .service-price{color:#4a80df;font-weight:600;margin-top:10px;display:inline-block}
+.services-numbered-block .service-arrow{display:none}
+
+/* Services — numbered-bars (construction) */
+.services-numbered-bars .service-row{display:grid;grid-template-columns:60px 1fr 100px;gap:24px;padding:24px 0;border-bottom:2px solid #4a80df;align-items:center}
+.services-numbered-bars .service-num{background:#4a80df;color:#f4f8fc;text-align:center;padding:10px 0;font-weight:900;font-family:'Manrope',serif}
+.services-numbered-bars .service-name{font-size:22px;letter-spacing:0.02em}
+.services-numbered-bars .service-desc{color:#5a7080;font-size:13.5px;margin-top:4px}
+.services-numbered-bars .service-price{color:#4a80df;font-weight:700;font-family:'Manrope',serif}
+.services-numbered-bars .service-arrow{display:none}
+
+/* Services — elegant-list (hotel) */
+.services-elegant-list .service-row{display:block;padding:36px 0;border-bottom:1px solid rgba(74,128,223,0.12);text-align:center}
+.services-elegant-list .service-num{display:block;color:#4a80df;font-family:'Manrope',serif;font-style:italic;font-size:16px;margin-bottom:8px;font-weight:400}
+.services-elegant-list .service-name{font-size:32px;letter-spacing:-0.02em;margin-bottom:8px;font-weight:400;font-style:italic}
+.services-elegant-list .service-desc{color:#5a7080;font-size:15px;max-width:560px;margin:0 auto 12px;line-height:1.7}
+.services-elegant-list .service-price{display:inline-block;color:#4a80df;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:0.12em}
+.services-elegant-list .service-arrow{display:none}
+
+/* Gallery variants */
+.gallery-asymmetric-mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:140px;gap:14px}
+.gallery-asymmetric-mosaic .ed-card:nth-child(1){grid-column:span 4;grid-row:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(2){grid-column:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(3){grid-column:span 2;grid-row:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(4){grid-column:span 2}
+.gallery-asymmetric-mosaic .ed-card:nth-child(5){grid-column:span 2}
+
+.gallery-stacked-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gallery-stacked-mosaic .ed-card{aspect-ratio:1}
+.gallery-stacked-mosaic .ed-card:nth-child(odd){aspect-ratio:4/5}
+
+.gallery-side-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.gallery-side-grid .ed-card{aspect-ratio:1}
+
+.gallery-side-grid-tall{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.gallery-side-grid-tall .ed-card{aspect-ratio:3/4}
+
+.gallery-horizontal-strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory}
+.gallery-horizontal-strip .ed-card{flex:0 0 320px;aspect-ratio:3/4;scroll-snap-align:start}
+
+.gallery-soft-rounded-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.gallery-soft-rounded-grid .ed-card{aspect-ratio:4/5;border-radius:24px}
+
+.ed-card{position:relative;overflow:hidden;border-radius:8px;background:rgba(74,128,223,0.12);transition:transform 240ms}
+.ed-card:hover{transform:scale(1.015)}
+.ed-card img,.ed-card .ed-bg-svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.ed-content{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;z-index:1}
+.ed-cat{font-size:10.5px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.8}
+.ed-title{font-family:'Manrope',serif;font-size:20px;font-weight:600;color:#fff;margin-top:4px;text-transform:none}
+
+/* Reviews band */
+.reviews{background:#ffffff;padding:60px 0}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.review{padding:28px 26px;border:1px solid rgba(74,128,223,0.12);border-radius:14px;background:#f4f8fc}
+.review .stars{color:#4a80df;letter-spacing:2px;margin-bottom:14px}
+.review p{font-size:15px;line-height:1.65;margin-bottom:16px;color:#0a1218}
+.review cite{color:#5a7080;font-size:13px;font-style:normal;font-weight:600}
+
+/* Final CTA */
+.cta-final{padding:100px 0;background:linear-gradient(135deg,rgba(74,128,223,0.12),transparent);text-align:center}
+.cta-final h2{margin-bottom:14px;font-size:clamp(40px,5vw,72px)}
+.cta-final p{font-size:18px;color:#5a7080;margin-bottom:32px}
+
+/* Footer */
+footer{padding:48px 0;border-top:1px solid rgba(74,128,223,0.12);color:#5a7080;font-size:13.5px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+footer a{color:#4a80df}
+
+/* Mobile sticky CTA */
+.sticky-cta{display:none}
+@media (max-width:768px){
+  nav{display:none}
+  .hero{padding:60px 0 70px}
+  section{padding:60px 0}
+  .gallery-asymmetric-mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
+  .gallery-asymmetric-mosaic .ed-card{grid-column:span 1!important;grid-row:span 1!important}
+  .gallery-side-grid-tall{grid-template-columns:1fr 1fr}
+  .sticky-cta{display:flex;position:fixed;bottom:0;left:0;right:0;background:#ffffff;padding:14px;gap:8px;border-top:1px solid rgba(74,128,223,0.12);z-index:100}
+  .sticky-cta .btn{flex:1;text-align:center;padding:14px 18px;font-size:14px}
+  body{padding-bottom:80px}
+}
+
+/* — Scroll reveal — */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.22s}.reveal-d3{transition-delay:.34s}
+
+/* — Hero ambient glow — */
+.hero-glow{position:absolute;top:-15%;left:50%;transform:translateX(-50%);width:min(860px,130%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(74,128,223,0.12),transparent 65%);pointer-events:none;z-index:0;animation:ambientPulse 7s ease-in-out infinite alternate}
+.hero .container{position:relative;z-index:1}
+@keyframes ambientPulse{0%{opacity:.5;transform:translateX(-50%) scale(1)}100%{opacity:1;transform:translateX(-50%) scale(1.13)}}
+
+/* — Spring buttons — */
+.btn{transition:transform .32s cubic-bezier(.34,1.56,.64,1),filter .2s,box-shadow .32s}
+.btn-primary:hover{filter:brightness(1.09);transform:translateY(-3px) scale(1.04);box-shadow:0 14px 42px rgba(74,128,223,0.12)}
+.btn-ghost:hover{transform:translateY(-2px)}
+
+/* — Card spring hover — */
+.services-card-grid-3x2 .service-row,.services-card-grid-2x3 .service-row,.services-icon-card-grid .service-row{transition:transform .4s cubic-bezier(.34,1.56,.64,1),border-color .2s,box-shadow .4s}
+.services-card-grid-3x2 .service-row:hover,.services-card-grid-2x3 .service-row:hover,.services-icon-card-grid .service-row:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 24px 60px rgba(74,128,223,0.12);border-color:#4a80df}
+
+/* — Gallery inner zoom — */
+.ed-card img{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.ed-card:hover img{transform:scale(1.09)}
+
+/* — Review lift — */
+.review{transition:transform .38s cubic-bezier(.34,1.56,.64,1),box-shadow .38s,border-color .2s}
+.review:hover{transform:translateY(-5px);box-shadow:0 20px 52px rgba(74,128,223,0.12);border-color:#4a80df}
+
+/* — Stats strip — */
+.stats-strip{padding:44px 0;border-top:1px solid rgba(74,128,223,0.12);border-bottom:1px solid rgba(74,128,223,0.12);background:#ffffff}
+.stats-strip .container{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;align-items:center}
+.stat{text-align:center;padding:8px 16px}
+.stat-value{font-family:'Manrope',serif;font-size:clamp(44px,6vw,80px);font-weight:900;color:#4a80df;line-height:1;display:block}
+.stat-label{font-size:11px;color:#5a7080;text-transform:uppercase;letter-spacing:.14em;margin-top:5px;display:block}
+
+/* — Nav CTA — */
+.nav-cta{margin-left:16px;padding:10px 22px!important;font-size:13px!important;line-height:1}
+
+/* — Scrollbar — */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#f4f8fc}::-webkit-scrollbar-thumb{background:#4a80df;border-radius:99px}
+
+/* — Foto-categoria per servizio: card uniformi (override layout liste) — */
+.services-numbered-list-italic,.services-split-table,.services-menu-table-dotted,.services-numbered-block,.services-numbered-bars,.services-elegant-list,.services-card-grid-3x2,.services-card-grid-2x3,.services-icon-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.service-row{display:flex!important;flex-direction:column;align-items:stretch;gap:6px;padding:0 0 24px!important;background:#ffffff;border:1px solid rgba(74,128,223,0.12)!important;border-radius:16px;overflow:hidden;text-align:left;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s,border-color .2s}
+.service-row:hover{transform:translateY(-6px);box-shadow:0 22px 56px rgba(74,128,223,0.12);border-color:#4a80df;padding-left:0!important}
+.service-row::before,.service-row::after{display:none!important}
+.service-photo{order:-1;width:100%;aspect-ratio:16/10;overflow:hidden;background:rgba(74,128,223,0.12);margin-bottom:16px;padding:0!important}
+.service-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.service-row:hover .service-photo img{transform:scale(1.06)}
+.service-row>*{padding-left:24px;padding-right:24px}
+.service-row>.service-num{padding-top:4px;color:#4a80df!important;background:none!important;display:block;font-style:normal;text-align:left;font-size:13px;letter-spacing:.05em}
+.service-row .service-name{font-size:20px!important;font-style:normal!important;text-transform:none!important;background:none!important;position:static!important;letter-spacing:-.01em;margin-bottom:4px}
+.service-row .service-price{position:static!important;background:none!important;color:#4a80df!important;font-size:14px;text-align:left;margin-bottom:6px}
+.service-row .service-desc{position:static!important;background:none!important;color:#5a7080;font-size:14.5px;line-height:1.6;font-style:normal!important;grid-column:auto!important;margin-top:0}
+.service-row .service-arrow{display:none!important}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Studio Dentistico Sorriso", "description": "Visite, igiene e trattamenti in un ambiente ordinato e rassicurante.", "address": {"@type": "PostalAddress", "addressLocality": "Como", "addressCountry": "IT"}, "telephone": "+390310000000", "email": "info@esempio.it"}</script>
+
+<style id="v64-qa-enrichment-css">
+.v64-offer,.v64-faq,.v64-extra-section{padding:72px 24px;background:transparent;color:inherit}
+.v64-offer .v64-box{max-width:1100px;margin:auto;border-radius:28px;background:rgba(128,128,128,.10);color:inherit;border:1px solid rgba(128,128,128,.18);padding:54px;display:grid;gap:18px}
+.v64-offer h2,.v64-faq h2{font-size:clamp(34px,5vw,72px);line-height:.92;letter-spacing:-.04em;margin:0 0 18px}
+.v64-offer p,.v64-faq p,.v64-extra-section p{font-size:17px;line-height:1.65;color:inherit;opacity:.82}
+.v64-faq .v64-wrap,.v64-extra-section .v64-wrap{max-width:1100px;margin:auto}
+.v64-faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.faq-item{border:1px solid rgba(128,128,128,.2);border-radius:22px;padding:24px;background:rgba(128,128,128,.06)}
+.faq-item b{display:block;font-size:18px;margin-bottom:8px}
+.mobile-cta{display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:9999}
+.mobile-cta a{display:flex;align-items:center;justify-content:center;border-radius:999px;background:#0a0a0a;color:#fff;padding:16px 20px;font-weight:800;box-shadow:0 18px 55px rgba(0,0,0,.25)}
+@media(max-width:780px){.mobile-cta{display:block}.v64-faq-grid{grid-template-columns:1fr}.v64-offer .v64-box{padding:34px 24px}}
+</style>
+
+
+<style id="v66-premium-polish-css">
+.v66-trust-bar{padding:22px 20px;background:transparent;color:inherit;border-top:1px solid rgba(128,128,128,.18);border-bottom:1px solid rgba(128,128,128,.18)}
+.v66-trust-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.v66-trust-grid div{border:1px solid rgba(128,128,128,.18);border-radius:18px;padding:15px;background:rgba(128,128,128,.06)}.v66-trust-grid b{display:block;font-size:14px}.v66-trust-grid span{display:block;margin-top:4px;color:inherit;opacity:.6;font-size:11px;text-transform:uppercase;letter-spacing:.13em}
+.v66-conversion-strip{padding:72px 20px;background:radial-gradient(circle at 85% 20%,rgba(215,180,106,.20),transparent 34%),linear-gradient(135deg,#0a0a0a,#16120c);color:#fff}.v66-conversion-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.v66-conversion-inner h2{font-size:clamp(34px,5vw,72px);line-height:.9;letter-spacing:-.05em;margin:0}.v66-conversion-inner p{color:rgba(255,255,255,.70);font-size:18px;max-width:640px}.v66-conversion-inner a{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:999px;background:#fff;color:#0a0a0a;font-weight:900;text-decoration:none;box-shadow:0 20px 70px rgba(255,255,255,.12)}
+@media(max-width:780px){.v66-trust-grid,.v66-conversion-inner{grid-template-columns:1fr}.v66-conversion-inner a{width:100%}}
+</style>
+
+
+<style id="v80-motion-css">
+body{text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:'kern' 1,'liga' 1,'calt' 1}
+h1,h2,h3,.huge,.big,.serif{font-optical-sizing:auto}
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+[data-reveal].v80-in{opacity:1;transform:none}
+nav{transition:background .45s ease,backdrop-filter .45s ease,padding .45s ease,box-shadow .45s ease}
+nav.v80-scrolled{mix-blend-mode:normal!important;background:rgba(12,12,14,.62);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);box-shadow:0 1px 0 rgba(255,255,255,.07),0 24px 60px -28px rgba(0,0,0,.65);color:#fff;padding-top:15px;padding-bottom:15px}
+nav.v80-scrolled .logo,nav.v80-scrolled .nav-c a{color:#fff}
+.hero{position:relative}
+.v80-aura{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 90% at 80% 0%,rgba(224,196,128,.15),transparent 42%),radial-gradient(100% 80% at 4% 100%,rgba(118,140,210,.12),transparent 52%)}
+.hero-image-wrap{z-index:0}
+.hero-meta,.hero-main,.hero-foot{position:relative;z-index:2}
+.hero-image-wrap img{transition:transform .2s linear,filter .8s ease}
+.rev{box-shadow:0 1px 2px rgba(10,10,10,.04),0 14px 34px -20px rgba(10,10,10,.22);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease}
+.rev:hover{transform:translateY(-7px);box-shadow:0 26px 70px -26px rgba(10,10,10,.38)}
+.ed-card{box-shadow:0 34px 70px -38px rgba(0,0,0,.62)}
+.service-row{transition:padding .45s cubic-bezier(.16,1,.3,1),background .45s ease}
+.service-row:hover{background:linear-gradient(90deg,rgba(10,10,10,.03),transparent 55%)}
+.pill{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
+.pill:hover{transform:translateY(-3px);box-shadow:0 24px 64px -20px rgba(0,0,0,.45)}
+.pill .pill-arrow{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.pill:hover .pill-arrow{transform:rotate(45deg)}
+.v80-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:10000;background:linear-gradient(90deg,#e0c480,#caa24a);box-shadow:0 0 14px rgba(224,196,128,.55);transition:width .12s linear;pointer-events:none}
+::selection{background:rgba(224,196,128,.32)}
+html{scrollbar-color:rgba(10,10,10,.42) transparent}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:rgba(10,10,10,.26);border-radius:999px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:rgba(10,10,10,.5);background-clip:content-box}
+a:focus-visible,button:focus-visible{outline:2px solid rgba(224,196,128,.85);outline-offset:3px;border-radius:6px}
+[id]{scroll-margin-top:88px}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}.hero-image-wrap img{transform:none!important}html{scroll-behavior:auto}}
+</style>
+
+</head>
+<body>
+<div class="demo-banner">Demo grafica non ufficiale · Anteprima dimostrativa non ufficiale</div>
+<header><div class="container">
+<div class="brand">ST<em>·</em>Studio Dentistico Sorriso</div>
+<nav><a href="#servizi">Servizi</a><a href="#galleria">Galleria</a><a href="#recensioni">Recensioni</a><a href="#contatti">Contatti</a><a class="btn btn-primary nav-cta" href="https://wa.me/390310000000">WhatsApp</a></nav>
+</div></header>
+
+<section class="hero var-split-left-image"><div class="hero-glow"></div><div class="container">
+        <div>
+          <h1>Studio Dentistico Sorriso</h1>
+          <p class="lead">Visite, igiene e trattamenti in un ambiente ordinato e rassicurante.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/390310000000">Scrivici ora</a><a class="btn btn-ghost" href="#contatti">Contatti</a></div>
+        </div>
+        <div class="hero-photo" style="background-image:url('../../../assets/photos/dental/0.jpg')"></div></div></section>
+
+<section id="servizi"><div class="container">
+<h2 class="reveal">Servizi</h2>
+<p class="lead-sub reveal reveal-d1">Tutto pensato e personalizzato. Niente sorprese sul prezzo.</p>
+<div class="services-icon-card-grid reveal reveal-d2"><div class="service-row"><div class="service-photo"><img src="../../../assets/photos/dental/0.jpg" alt="Prima visita" loading="lazy"></div><span class="service-num">01</span><div><h3 class="service-name">Prima visita</h3><div class="service-price">su richiesta</div></div><p class="service-desc">Valutazione iniziale e indicazioni chiare.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="../../../assets/photos/dental/1.jpg" alt="Igiene dentale" loading="lazy"></div><span class="service-num">02</span><div><h3 class="service-name">Igiene dentale</h3><div class="service-price">da 70€</div></div><p class="service-desc">Pulizia professionale e consigli di prevenzione.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="../../../assets/photos/dental/2.jpg" alt="Sbiancamento" loading="lazy"></div><span class="service-num">03</span><div><h3 class="service-name">Sbiancamento</h3><div class="service-price">su richiesta</div></div><p class="service-desc">Trattamento estetico per un sorriso più luminoso.</p><span class="service-arrow">→</span></div><div class="service-row"><div class="service-photo"><img src="../../../assets/photos/dental/3.jpg" alt="Conservativa" loading="lazy"></div><span class="service-num">04</span><div><h3 class="service-name">Conservativa</h3><div class="service-price">su richiesta</div></div><p class="service-desc">Cura di carie e ricostruzioni con approccio preciso.</p><span class="service-arrow">→</span></div></div>
+</div></section>
+
+<section id="galleria"><div class="container">
+<h2 class="reveal">Galleria</h2>
+<p class="lead-sub reveal reveal-d1">Lavori reali, atmosfere, dettagli.</p>
+<div class="gallery-soft-rounded-grid reveal reveal-d2"><div class="ed-card"><img src="../../../assets/photos/dental/0.jpg" alt="Studio" loading="lazy"><div class="ed-content"><h3 class="ed-title">Studio</h3></div></div><div class="ed-card"><img src="../../../assets/photos/dental/1.jpg" alt="Sorriso" loading="lazy"><div class="ed-content"><h3 class="ed-title">Sorriso</h3></div></div><div class="ed-card"><img src="../../../assets/photos/dental/2.jpg" alt="Igiene" loading="lazy"><div class="ed-content"><h3 class="ed-title">Igiene</h3></div></div><div class="ed-card"><img src="../../../assets/photos/dental/3.jpg" alt="Tecnologia" loading="lazy"><div class="ed-content"><h3 class="ed-title">Tecnologia</h3></div></div></div>
+</div></section>
+
+<section id="recensioni" class="reviews"><div class="container">
+<h2 class="reveal">Cosa dicono i clienti</h2>
+<div class="reviews-grid reveal reveal-d1"><div class="review"><div class="stars">★★★★★</div><p>Studio moderno e personale che mette subito a proprio agio. Spiegazioni chiare e nessuna sorpresa.</p><cite>— Elena V., Milano</cite></div><div class="review"><div class="stars">★★★★★</div><p>Finalmente un dentista che non fa paura. Approccio delicato e strumentazione all&#x27;avanguardia.</p><cite>— Marco S., Varese</cite></div><div class="review"><div class="stars">★★★★★</div><p>Portati anche i miei figli — gestiscono bene anche i pazienti più piccoli. Ambiente rassicurante.</p><cite>— Paola R., Como</cite></div></div>
+</div></section>
+
+
+<section class="v64-extra-section">
+  <div class="v64-wrap">
+    <h2>Perché scegliere Studio Dentistico Sorriso</h2>
+    <p>Professionalità, cura del cliente e un contatto diretto e veloce. Scrivici su WhatsApp o chiama: ti rispondiamo in poche ore e fissiamo il prossimo passo, senza impegno.</p>
+  </div>
+</section>
+
+
+<section class="v66-trust-bar" aria-label="V66 premium trust bar"><div class="v66-trust-grid"><div><b>Perfetto su telefono</b><span>veloce e leggibile</span></div><div><b>Contatto rapido</b><span>WhatsApp ed email</span></div><div><b>Sempre aggiornabile</b><span>foto e testi tuoi</span></div><div><b>Online in pochi giorni</b><span>pronto all'uso</span></div></div></section>
+
+<section id="contatti" class="cta-final"><div class="container">
+<h2 class="reveal">Pronto a iniziare?</h2>
+<p class="reveal reveal-d1">Scrivici su WhatsApp o chiama. Rispondiamo entro poche ore.</p>
+<div class="reveal reveal-d2"><a class="btn btn-primary" href="https://wa.me/390310000000">WhatsApp</a> <a class="btn btn-ghost" href="tel:+390310000000">📞 Chiama</a> <a class="btn btn-ghost" href="mailto:info@esempio.it">Email</a></div>
+</div></section>
+
+<footer><div class="container">
+<div>© Studio Dentistico Sorriso · Como</div>
+<div>Sito di MEG Web Studio · <a href="/privacy">Privacy</a></div>
+</div></footer>
+
+<div class="sticky-cta"><a class="btn btn-primary" href="https://wa.me/390310000000">WhatsApp</a><a class="btn btn-ghost" href="tel:+390310000000">Chiama</a></div>
+<script>
+(function(){
+  var r=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    r.forEach(function(el){io.observe(el)});
+  }else{r.forEach(function(el){el.classList.add('in')})}
+  var st=document.querySelectorAll('.stat-value[data-target]');
+  if(st.length&&'IntersectionObserver' in window){
+    function cUp(el){
+      var t=parseFloat(el.dataset.target),sf=el.dataset.suffix||'',fl=t%1!==0,d=1300,s=null;
+      (function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),ea=1-Math.pow(1-p,3);
+        el.textContent=(fl?(ea*t).toFixed(1):Math.round(ea*t))+sf;if(p<1)requestAnimationFrame(step)})()}
+    var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cUp(e.target);sio.unobserve(e.target)}})},{threshold:.5});
+    st.forEach(function(s){sio.observe(s)})
+  }
+})();
+</script>
+
+<script id="v80-motion-js">
+(function(){
+  function ready(fn){ if(document.readyState!=='loading'){fn();}else{document.addEventListener('DOMContentLoaded',fn);} }
+  ready(function(){
+    try{
+      var d=document, w=window;
+      var bar=d.createElement('div'); bar.className='v80-progress'; d.body.appendChild(bar);
+      var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nodes=[];
+      if(!reduce){
+        var sel='section,.sec-head,.service-row,.ed-card,.rev,.review,.faq-item,.trust-item,.promo-block,.contact-cell,.v66-trust-grid>div';
+        try{ nodes=Array.prototype.slice.call(d.querySelectorAll(sel)); }catch(e){ nodes=[]; }
+        nodes=nodes.filter(function(n){ try{return !n.classList.contains('hero') && !n.closest('[data-aos],.reveal,.aos-init');}catch(e){return true;} });
+        nodes.forEach(function(n){
+          var p=n.parentNode||d.body; if(p.__v80i==null) p.__v80i=0;
+          n.style.transitionDelay=Math.min((p.__v80i++)*70,420)+'ms';
+          n.setAttribute('data-reveal','');
+        });
+        var revealAll=function(){ for(var i=0;i<nodes.length;i++) nodes[i].classList.add('v80-in'); };
+        var safety=setTimeout(revealAll,2600);
+        var vh=w.innerHeight||800;
+        nodes.forEach(function(n){ try{ if(n.getBoundingClientRect().top<vh*0.9) n.classList.add('v80-in'); }catch(e){} });
+        if('IntersectionObserver' in w){
+          try{
+            var io=new IntersectionObserver(function(ents){
+              ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('v80-in'); io.unobserve(en.target);} });
+            },{threshold:0.1,rootMargin:'0px 0px -6% 0px'});
+            nodes.forEach(function(n){ if(!n.classList.contains('v80-in')) io.observe(n); });
+          }catch(e){ revealAll(); clearTimeout(safety); }
+        }else{ revealAll(); clearTimeout(safety); }
+      }
+      var nav=d.querySelector('nav'), hero=d.querySelector('.hero'), himg=d.querySelector('.hero-image-wrap img');
+      if(hero && !hero.querySelector('.v80-aura')){ var aura=d.createElement('div'); aura.className='v80-aura'; hero.insertBefore(aura, hero.firstChild); }
+      var trig=hero?Math.min(hero.offsetHeight*0.55,520):80, ticking=false;
+      function onScroll(){
+        var y=w.pageYOffset||d.documentElement.scrollTop||0;
+        var h=(d.documentElement.scrollHeight-w.innerHeight)||1;
+        bar.style.width=Math.max(0,Math.min(100,(y/h)*100))+'%';
+        if(nav){ if(y>trig) nav.classList.add('v80-scrolled'); else nav.classList.remove('v80-scrolled'); }
+        if(!reduce && himg && y<(w.innerHeight||900)*1.3) himg.style.transform='translate3d(0,'+(y*0.15)+'px,0) scale(1.06)';
+      }
+      w.addEventListener('scroll',function(){ if(!ticking){ w.requestAnimationFrame(function(){onScroll();ticking=false;}); ticking=true; } },{passive:true});
+      onScroll();
+    }catch(e){ try{ var ns=document.querySelectorAll('[data-reveal]'); for(var i=0;i<ns.length;i++) ns[i].classList.add('v80-in'); }catch(_){} }
+  });
+})();
+</script>
+
+</body></html>
