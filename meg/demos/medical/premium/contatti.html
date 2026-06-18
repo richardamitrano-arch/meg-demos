@@ -2,27 +2,28 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Poliambulatorio Salus · Como · Studio professionale · Contatti</title>
-<meta name="description" content="Servizi spiegati bene, contatto rapido e percorso ordinato per nuovi clienti.">
+<title>Poliambulatorio Salus · Como · Studio medico · Contatti</title>
+<meta name="description" content="Visite, esami e percorsi di cura spiegati con chiarezza, su appuntamento.">
 <meta property="og:title" content="Poliambulatorio Salus — Édition Premium">
-<meta property="og:description" content="Servizi spiegati bene, contatto rapido e percorso ordinato per nuovi clienti.">
+<meta property="og:description" content="Visite, esami e percorsi di cura spiegati con chiarezza, su appuntamento.">
 <meta property="og:type" content="website">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f5f6f8;
+  --bg:#f7f6f1;
   --surface:#ffffff;
-  --ink:#0d1421;
-  --muted:#5a6878;
-  --accent:#1d2d57;
-  --accent-soft:rgba(29,45,87,0.12);
+  --ink:#0d1f15;
+  --muted:#5a7268;
+  --accent:#2d6a57;
+  --accent-soft:rgba(45,106,87,0.12);
   --line:rgba(0,0,0,.08);
   --line-dark:rgba(255,255,255,.10);
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-html,body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-weight:400}
+html,body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-weight:400}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 ::selection{background:var(--accent);color:var(--bg)}
@@ -31,7 +32,7 @@ img{display:block;max-width:100%;height:auto}
 @media(max-width:900px){.wrap{padding:0 24px}}
 
 /* Editorial type */
-.serif,h1,h2,h3,h4{font-family:'Libre Caslon Text',serif;font-weight:300;letter-spacing:-.03em;line-height:.95}
+.serif,h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:-.03em;line-height:.95}
 .eyebrow{font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
 .italic{font-style:italic;font-weight:300}
 .huge{font-size:clamp(80px,14vw,220px);line-height:.84;letter-spacing:-.055em;font-weight:300}
@@ -48,7 +49,7 @@ img{display:block;max-width:100%;height:auto}
 .nav.scrolled{background:var(--bg);border-bottom:1px solid var(--line);padding:18px 48px}
 .nav.scrolled,.nav.scrolled a,.nav.scrolled .nav-logo{color:var(--ink)}
 .nav,.nav a,.nav-logo{color:#fff}
-.nav-logo{font-family:'Libre Caslon Text',serif;font-size:22px;font-weight:400;letter-spacing:-.04em}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:-.04em}
 .nav-logo em{font-style:italic;font-weight:300;color:var(--accent)}
 .nav-c{display:flex;align-items:center;gap:36px}
 .nav-c a{font-size:13px;font-weight:500;letter-spacing:.04em;position:relative;padding-bottom:3px;transition:color .2s}
@@ -105,14 +106,14 @@ img{display:block;max-width:100%;height:auto}
 /* ─────── SECTIONS ─────── */
 section{padding:140px 0;position:relative}
 @media(max-width:780px){section{padding:80px 0}}
-.section-num{font-family:'Libre Caslon Text',serif;font-size:14px;font-weight:400;color:var(--muted);margin-bottom:48px;
+.section-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--muted);margin-bottom:48px;
   display:flex;align-items:center;gap:18px}
 .section-num::after{content:'';flex:1;height:1px;background:var(--line)}
 .section-num em{font-style:italic;color:var(--ink)}
 
 /* ─────── MANIFESTO ─────── */
 .manifesto{background:var(--surface);padding:160px 0}
-.manifesto-quote{font-family:'Libre Caslon Text',serif;font-size:clamp(36px,5vw,84px);
+.manifesto-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,84px);
   line-height:1.05;letter-spacing:-.03em;font-weight:300;max-width:1100px}
 .manifesto-quote em{font-style:italic;color:var(--accent)}
 .manifesto-attr{margin-top:48px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
@@ -121,7 +122,7 @@ section{padding:140px 0;position:relative}
 .stats-band-prem{padding:60px 0;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stats-band-prem .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
 .stat-prem{padding:8px 0}
-.stat-prem-value{font-family:'Libre Caslon Text',serif;font-size:clamp(50px,7vw,96px);font-weight:300;color:var(--accent);
+.stat-prem-value{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,7vw,96px);font-weight:300;color:var(--accent);
   line-height:1;letter-spacing:-.04em;display:block}
 .stat-prem-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block}
 @media(max-width:780px){.stats-band-prem .wrap{grid-template-columns:1fr 1fr;gap:32px 24px}}
@@ -133,11 +134,11 @@ section{padding:140px 0;position:relative}
   transition:padding-left .35s cubic-bezier(.22,1,.36,1)}
 .svc-row:last-child{border-bottom:1px solid var(--line)}
 .svc-row:hover{padding-left:24px}
-.svc-num{font-family:'Libre Caslon Text',serif;font-size:14px;font-weight:400;color:var(--accent);letter-spacing:.06em}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--accent);letter-spacing:.06em}
 .svc-text h3{font-size:clamp(28px,3vw,40px);margin-bottom:14px;line-height:1.0}
 .svc-text h3 em{font-style:italic;color:var(--accent)}
 .svc-text p{font-size:15.5px;color:var(--muted);line-height:1.65;max-width:520px}
-.svc-price{font-family:'Libre Caslon Text',serif;font-size:22px;color:var(--ink);font-weight:300;letter-spacing:-.01em}
+.svc-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);font-weight:300;letter-spacing:-.01em}
 .svc-photo{aspect-ratio:4/3;border-radius:0;overflow:hidden;background:var(--accent-soft);
   position:relative}
 .svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
@@ -155,7 +156,7 @@ section{padding:140px 0;position:relative}
   display:flex;flex-direction:column;justify-content:space-between;
   transition:background .3s}
 .process-step:hover{background:var(--bg)}
-.process-step-num{font-family:'Libre Caslon Text',serif;font-size:64px;font-weight:300;color:var(--accent);
+.process-step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--accent);
   line-height:1;letter-spacing:-.04em;margin-bottom:24px}
 .process-step h3{font-size:22px;margin-bottom:14px;line-height:1.1;font-weight:400}
 .process-step p{font-size:14.5px;color:var(--muted);line-height:1.6}
@@ -182,7 +183,7 @@ section{padding:140px 0;position:relative}
 .testimonial-prem .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .testi-card{padding:0}
 .testi-stars{color:var(--accent);font-size:14px;letter-spacing:4px;margin-bottom:24px}
-.testi-quote{font-family:'Libre Caslon Text',serif;font-size:22px;line-height:1.4;letter-spacing:-.01em;
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4;letter-spacing:-.01em;
   font-weight:300;margin-bottom:32px;color:var(--ink)}
 .testi-quote em{font-style:italic}
 .testi-attr{font-size:13px;letter-spacing:.04em;color:var(--muted);font-weight:500}
@@ -205,7 +206,7 @@ section{padding:140px 0;position:relative}
   background:var(--line);border:1px solid var(--line);margin-top:64px}
 .faq-item{background:var(--surface);padding:44px;transition:background .3s}
 .faq-item:hover{background:var(--bg)}
-.faq-item-q{font-family:'Libre Caslon Text',serif;font-size:23px;font-weight:400;line-height:1.2;
+.faq-item-q{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;line-height:1.2;
   margin-bottom:16px;letter-spacing:-.01em}
 .faq-item-a{font-size:15px;color:var(--muted);line-height:1.65}
 @media(max-width:780px){.faq-prem-grid{grid-template-columns:1fr}.faq-item{padding:32px 28px}}
@@ -215,7 +216,7 @@ section{padding:140px 0;position:relative}
 .team-photo{aspect-ratio:3/4;overflow:hidden;background:var(--accent-soft);margin-bottom:24px;position:relative}
 .team-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35);transition:transform .7s cubic-bezier(.22,1,.36,1),filter .5s}
 .team-card:hover .team-photo img{transform:scale(1.05);filter:grayscale(0)}
-.team-name{font-family:'Libre Caslon Text',serif;font-size:26px;font-weight:400;letter-spacing:-.02em;margin-bottom:6px;line-height:1}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:-.02em;margin-bottom:6px;line-height:1}
 .team-role{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
 .team-bio{font-size:14.5px;color:var(--muted);line-height:1.6}
 @media(max-width:900px){.team-grid{grid-template-columns:1fr;gap:48px;max-width:440px}}
@@ -237,7 +238,7 @@ section{padding:140px 0;position:relative}
 .contact-card{background:var(--surface);padding:52px 40px;transition:background .3s}
 .contact-card:hover{background:var(--bg)}
 .contact-card .eyebrow{margin-bottom:18px}
-.contact-card-value{font-family:'Libre Caslon Text',serif;font-size:26px;font-weight:300;letter-spacing:-.02em;line-height:1.2;word-break:break-word}
+.contact-card-value{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:-.02em;line-height:1.2;word-break:break-word}
 .contact-card-value a{transition:color .2s}.contact-card-value a:hover{color:var(--accent)}
 @media(max-width:780px){.contact-grid{grid-template-columns:1fr}}
 
@@ -262,19 +263,21 @@ section{padding:140px 0;position:relative}
 /* ─────── FOOTER ─────── */
 .footer-prem{padding:72px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
 .footer-prem .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.footer-prem-brand{font-family:'Libre Caslon Text',serif;font-size:28px;color:var(--ink);letter-spacing:-.03em;font-weight:300}
+.footer-prem-brand{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ink);letter-spacing:-.03em;font-weight:300}
 .footer-prem-brand em{font-style:italic;color:var(--accent)}
 .footer-prem-links{display:flex;gap:32px;font-size:12.5px}
 .footer-prem-links a{color:var(--muted);transition:color .2s}.footer-prem-links a:hover{color:var(--ink)}
 .footer-prem-credit{margin-top:8px;font-size:11.5px;letter-spacing:.04em}
 
 /* ─────── REVEAL animations ─────── */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.js .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}.reveal-d4{transition-delay:.48s}
+/* fail-safe: senza JS o con "riduci animazioni" il contenuto resta sempre visibile */
+@media (prefers-reduced-motion:reduce){.js .reveal,.js .hero-h1,.js .hero-sub,.js .hero-ctas,.js .hero-top{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
 
 /* Hero stagger animation on load */
-.hero-h1,.hero-sub,.hero-ctas,.hero-top{opacity:0;animation:heroIn 1.1s cubic-bezier(.22,1,.36,1) forwards}
+.js .hero-h1,.js .hero-sub,.js .hero-ctas,.js .hero-top{opacity:0;animation:heroIn 1.1s cubic-bezier(.22,1,.36,1) forwards}
 .hero-top{animation-delay:.15s}
 .hero-h1{animation-delay:.35s}
 .hero-sub{animation-delay:.55s}
@@ -305,7 +308,7 @@ section{padding:140px 0;position:relative}
 .chat-panel{position:fixed;bottom:104px;right:26px;z-index:201;width:362px;max-width:calc(100vw - 36px);height:524px;max-height:calc(100vh - 150px);background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 34px 90px rgba(0,0,0,.30);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(20px) scale(.96);pointer-events:none;transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
 .chat-panel.open{opacity:1;transform:none;pointer-events:auto}
 .chat-head{padding:18px 20px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px}
-.chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Libre Caslon Text',serif;font-weight:700;font-size:16px}
+.chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px}
 .chat-head b{font-size:15px;display:block;line-height:1.2}
 .chat-head .chat-status{font-size:11px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:6px;margin-top:2px}
 .chat-head .chat-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#3ddc84}
@@ -326,26 +329,23 @@ section{padding:140px 0;position:relative}
 @media(max-width:480px){.chat-panel{bottom:90px;right:14px;height:68vh}.chat-fab{bottom:16px;right:16px}}
 
 /* Mobile sticky CTA */
-.mobile-sticky{display:none}
+.mobile-sticky{display:none!important}
 @media(max-width:780px){
-  .mobile-sticky{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--bg);
-    padding:14px 16px;gap:10px;border-top:1px solid var(--line);z-index:90}
-  .mobile-sticky .btn-prem{flex:1;justify-content:center;padding:14px 20px;font-size:14px}
-  body{padding-bottom:80px}
+  body{padding-bottom:0}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Poliambulatorio Salus", "description": "Servizi spiegati bene, contatto rapido e percorso ordinato per nuovi clienti.", "address": {"@type": "PostalAddress", "addressLocality": "Como", "addressCountry": "IT"}, "telephone": "+390310000000", "email": "info@esempio.it"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Poliambulatorio Salus", "description": "Visite, esami e percorsi di cura spiegati con chiarezza, su appuntamento.", "address": {"@type": "PostalAddress", "addressLocality": "Como", "addressCountry": "IT"}}</script>
 </head>
 <body>
-<nav class="nav" id="topnav"><div class="nav-logo">PO<em>·</em> Poliambulatorio Salus</div><div class="nav-c"><a href="index.html">Home</a><a href="servizi.html">Servizi</a><a href="chi-siamo.html">Chi siamo</a><a href="contatti.html" style="color:var(--accent)">Contatti</a><a href="https://wa.me/390310000000" class="nav-cta">WhatsApp →</a></div></nav>
+<nav class="nav" id="topnav"><div class="nav-logo">PO<em>·</em> Poliambulatorio Salus</div><div class="nav-c"><a href="index.html">Home</a><a href="servizi.html">Servizi</a><a href="chi-siamo.html">Chi siamo</a><a href="contatti.html" style="color:var(--accent)">Contatti</a><a href="#contatti" class="nav-cta">WhatsApp →</a></div></nav>
 <aside class="scroll-indicator"><span data-target="hero" class="active">Intro</span><span data-target="contatti-info">Contatti</span><span data-target="faq">FAQ</span><span data-target="contatti">Scrivici</span></aside>
-<section class="hero compact" id="hero"><div class="hero-bg"><img src="../../../assets/photos/professional/0.jpg" alt="Poliambulatorio Salus"></div><div class="hero-grain"></div><div class="hero-inner wrap"><div class="hero-top"><div><span>Studio professionale</span><span>Contatti</span></div><div><span>Como</span></div></div><h1 class="hero-h1 huge">Parliamone.<br><em>Senza impegno.</em></h1><p class="hero-sub">Scrivici sul canale che preferisci: rispondiamo entro poche ore.</p><div class="hero-ctas"><a href="https://wa.me/390310000000" class="btn-prem">Scrivici su WhatsApp</a><a href="#contatti-info" class="btn-prem btn-prem-ghost">Come contattarci</a></div></div></section><section id="contatti-info"><div class="wrap"><div class="section-num reveal">— <em>Contatti</em></div><h2 class="big reveal" style="margin-bottom:24px">Parliamone.<br><em>Senza impegno.</em></h2><p class="reveal reveal-d1" style="font-size:18px;color:var(--muted);max-width:560px;line-height:1.6">Scrivici sul canale che preferisci: rispondiamo entro poche ore, in orario di apertura.</p><div class="contact-grid"><div class="contact-card reveal"><div class="eyebrow">WhatsApp</div><div class="contact-card-value"><a href="https://wa.me/390310000000">Scrivici ora →</a></div></div><div class="contact-card reveal reveal-d1"><div class="eyebrow">Telefono</div><div class="contact-card-value"><a href="tel:+390310000000">+390310000000</a></div></div><div class="contact-card reveal reveal-d2"><div class="eyebrow">Email</div><div class="contact-card-value"><a href="mailto:info@esempio.it">info@esempio.it</a></div></div><div class="contact-card reveal reveal-d3"><div class="eyebrow">Dove siamo</div><div class="contact-card-value">Como</div></div></div></div></section><section class="faq-prem" id="faq"><div class="wrap"><div class="section-num reveal">— <em>Domande</em></div><h2 class="big reveal">Le risposte<br><em>che cerchi.</em></h2><div class="faq-prem-grid"><div class="faq-item reveal reveal-d1"><div class="faq-item-q">Serve appuntamento?</div><div class="faq-item-a">Sì, consigliato.</div></div><div class="faq-item reveal reveal-d2"><div class="faq-item-q">Posso inviare documenti?</div><div class="faq-item-a">Sì, se richiesti.</div></div><div class="faq-item reveal reveal-d1"><div class="faq-item-q">Fate preventivi?</div><div class="faq-item-a">Sì, dopo una prima valutazione.</div></div></div></div></section><section class="cta-final-prem" id="contatti"><div class="wrap"><div class="section-num reveal" style="justify-content:center;color:rgba(255,255,255,.55)">— <em style="color:#fff">Iniziamo</em> —</div><h2 class="huge reveal reveal-d1" style="margin-bottom:32px">Pronto<br><em>quando lo sei tu.</em></h2><p class="reveal reveal-d2">Scrivici su WhatsApp, rispondiamo entro poche ore. Nessun bot, nessuna segreteria, nessuna fretta.</p><div class="reveal reveal-d3" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a href="https://wa.me/390310000000" class="btn-prem">Scrivici ora</a><a href="mailto:info@esempio.it" class="btn-prem btn-prem-ghost">Email</a></div></div></section>
+<section class="hero compact" id="hero"><div class="hero-bg"><img src="https://megwebstudio.com/meg/assets/photos/medical/0.jpg" alt="Poliambulatorio Salus"></div><div class="hero-grain"></div><div class="hero-inner wrap"><div class="hero-top"><div><span>Studio medico</span><span>Contatti</span></div><div><span>Como</span></div></div><h1 class="hero-h1 huge">Parliamone.<br><em>Senza impegno.</em></h1><p class="hero-sub">Scrivici sul canale che preferisci: rispondiamo entro poche ore.</p><div class="hero-ctas"><a href="#contatti" class="btn-prem">Scrivici su WhatsApp</a><a href="#contatti-info" class="btn-prem btn-prem-ghost">Come contattarci</a></div></div></section><section id="contatti-info"><div class="wrap"><div class="section-num reveal">— <em>Contatti</em></div><h2 class="big reveal" style="margin-bottom:24px">Parliamone.<br><em>Senza impegno.</em></h2><p class="reveal reveal-d1" style="font-size:18px;color:var(--muted);max-width:560px;line-height:1.6">Scrivici sul canale che preferisci: rispondiamo entro poche ore, in orario di apertura.</p><div class="contact-grid"><div class="contact-card reveal"><div class="eyebrow">WhatsApp</div><div class="contact-card-value"><a href="#contatti">Scrivici ora →</a></div></div><div class="contact-card reveal reveal-d3"><div class="eyebrow">Dove siamo</div><div class="contact-card-value">Como</div></div></div></div></section><section class="faq-prem" id="faq"><div class="wrap"><div class="section-num reveal">— <em>Domande</em></div><h2 class="big reveal">Le risposte<br><em>che cerchi.</em></h2><div class="faq-prem-grid"><div class="faq-item reveal reveal-d1"><div class="faq-item-q">Come prenoto?</div><div class="faq-item-a">Scrivici su WhatsApp o chiamaci: fissiamo la visita.</div></div><div class="faq-item reveal reveal-d2"><div class="faq-item-q">Fate visite specialistiche?</div><div class="faq-item-a">Sì, su appuntamento.</div></div><div class="faq-item reveal reveal-d1"><div class="faq-item-q">Rilasciate certificati?</div><div class="faq-item-a">Sì, su richiesta.</div></div></div></div></section><section class="cta-final-prem" id="contatti"><div class="wrap"><div class="section-num reveal" style="justify-content:center;color:rgba(255,255,255,.55)">— <em style="color:#fff">Iniziamo</em> —</div><h2 class="huge reveal reveal-d1" style="margin-bottom:32px">Pronto<br><em>quando lo sei tu.</em></h2><p class="reveal reveal-d2">Scrivici su WhatsApp, rispondiamo entro poche ore. Nessun bot, nessuna segreteria, nessuna fretta.</p><div class="reveal reveal-d3" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a href="#contatti" class="btn-prem">Scrivici ora</a></div></div></section>
 <footer class="footer-prem"><div class="wrap"><div><div class="footer-prem-brand">PO<em>·</em> Poliambulatorio Salus</div><div class="footer-prem-credit">© 2026 Poliambulatorio Salus · Como</div></div><div class="footer-prem-links"><a href="index.html">Home</a><a href="servizi.html">Servizi</a><a href="chi-siamo.html">Chi siamo</a><a href="contatti.html">Contatti</a><a href="/privacy">Privacy</a></div></div></footer>
 <div class="mobile-sticky mobile-cta">
-  <a href="https://wa.me/390310000000" class="btn-prem">WhatsApp</a>
+  <a href="#contatti" class="btn-prem">WhatsApp</a>
   <a href="contatti.html" class="btn-prem btn-prem-ghost" style="border-color:var(--ink);color:var(--ink)">Contatti</a>
 </div>
-<button class="chat-fab" id="chatFab" aria-label="Apri chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button><div class="chat-panel" id="chatPanel"><div class="chat-head"><div class="chat-avatar">PO</div><div><b>Poliambulatorio Salus</b><span class="chat-status">Assistente · online</span></div><button class="chat-close" id="chatClose" aria-label="Chiudi">&times;</button></div><div class="chat-body" id="chatBody"></div><div class="chat-foot"><input id="chatInput" type="text" placeholder="Scrivi un messaggio…"><button id="chatSend" aria-label="Invia">&rarr;</button></div></div><script>window.MEG_CHAT={"business": "Poliambulatorio Salus", "token": "", "api": "", "demo": true, "wa": "https://wa.me/390310000000"};</script><script>
+<button class="chat-fab" id="chatFab" aria-label="Apri chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button><div class="chat-panel" id="chatPanel"><div class="chat-head"><div class="chat-avatar">PO</div><div><b>Poliambulatorio Salus</b><span class="chat-status">Assistente · online</span></div><button class="chat-close" id="chatClose" aria-label="Chiudi">&times;</button></div><div class="chat-body" id="chatBody"></div><div class="chat-foot"><input id="chatInput" type="text" placeholder="Scrivi un messaggio…"><button id="chatSend" aria-label="Invia">&rarr;</button></div></div><script>window.MEG_CHAT={"business": "Poliambulatorio Salus", "token": "", "api": "", "demo": true, "wa": "#contatti"};</script><script>
 (function(){
   var cfg=window.MEG_CHAT||{};
   var fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel');
