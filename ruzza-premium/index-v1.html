@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0ea">
+  <title>Ruzza Orologi | Concept Experience</title>
+  <meta name="description" content="Concept digitale premium per Ruzza Orologi Milano.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0c0c0c;
+      --paper: #f2f0ea;
+      --muted: #817e76;
+      --line: rgba(12, 12, 12, .14);
+      --blue: #3853af;
+      --gold: #a77d2d;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--blue); color: white; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+      opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      height: 82px;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 clamp(20px, 4vw, 64px);
+      border-bottom: 1px solid transparent;
+      transition: background .4s, border-color .4s, height .4s;
+    }
+
+    .nav.scrolled {
+      height: 66px;
+      background: rgba(242, 240, 234, .82);
+      border-color: var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav__mark {
+      justify-self: center;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+
+    .nav__mark span { font-weight: 300; }
+    .nav__left, .nav__right { display: flex; align-items: center; gap: 24px; }
+    .nav__right { justify-self: end; }
+    .nav__link { font-size: 12px; text-transform: uppercase; letter-spacing: .11em; }
+    .nav__dot { width: 7px; height: 7px; border-radius: 50%; background: #31a766; box-shadow: 0 0 0 5px rgba(49,167,102,.1); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 24px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      transition: color .3s, background .3s, transform .3s var(--ease);
+    }
+
+    .pill:hover { color: white; background: var(--ink); transform: translateY(-2px); }
+    .pill--light { border-color: rgba(255,255,255,.5); color: white; }
+    .pill--light:hover { color: var(--ink); background: white; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 118px 24px 64px;
+      overflow: hidden;
+    }
+
+    .hero__orb {
+      position: absolute;
+      width: min(72vw, 980px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 32%, rgba(255,255,255,.95), transparent 24%),
+        radial-gradient(circle at 50% 50%, #e1d9c8 0, #c7b590 48%, #6c5937 100%);
+      filter: blur(.2px);
+      opacity: .42;
+      transform: translateY(10%);
+    }
+
+    .hero__halo {
+      position: absolute;
+      width: min(62vw, 820px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(12,12,12,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 80px rgba(255,255,255,.08), 0 0 0 160px rgba(255,255,255,.05);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      width: min(1380px, 100%);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Instrument Serif", serif;
+      font-size: clamp(76px, 13.3vw, 210px);
+      line-height: .74;
+      letter-spacing: -.065em;
+      font-weight: 400;
+    }
+
+    .hero h1 em { font-weight: 400; color: white; text-shadow: 0 1px 30px rgba(0,0,0,.12); }
+
+    .hero__watch-wrap {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      top: 52%;
+      width: clamp(330px, 39vw, 610px);
+      transform: translate(-50%, -43%);
+      perspective: 1200px;
+      pointer-events: none;
+    }
+
+    .hero__watch {
+      width: 100%;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 50px 35px rgba(43,35,20,.25));
+      transform: rotate(-8deg) rotateY(-8deg);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(-8px) rotate(-8deg) rotateY(-8deg); }
+      50% { transform: translateY(12px) rotate(-4deg) rotateY(8deg); }
+    }
+
+    .hero__bottom {
+      position: absolute;
+      z-index: 6;
+      bottom: 40px;
+      left: clamp(20px, 4vw, 64px);
+      right: clamp(20px, 4vw, 64px);
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+    }
+
+    .hero__copy { max-width: 340px; font-size: 14px; line-height: 1.55; }
+    .scroll-cue { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .scroll-cue::before { content: ""; width: 48px; height: 1px; background: var(--ink); }
+
+    .manifesto {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 120px 24px;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    .manifesto__inner { width: min(1200px, 100%); }
+    .manifesto h2 {
+      margin: 0;
+      font-family: "Instrument Serif", serif;
+      font-size: clamp(54px, 9vw, 142px);
+      font-weight: 400;
+      line-height: .92;
+      letter-spacing: -.045em;
+    }
+
+    .manifesto h2 span { display: block; color: #6f6f6f; }
+    .manifesto__meta {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.22);
+      color: #aaa;
+    }
+
+    .experience { position: relative; height: 420vh; background: #e9e6df; }
+    .experience__sticky {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .experience__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.95), transparent 22%),
+        linear-gradient(135deg, #d8d3c8, #f8f7f3);
+    }
+
+    .experience__rings {
+      position: absolute;
+      width: min(78vw, 920px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.13);
+      box-shadow: 0 0 0 8vw rgba(255,255,255,.1), 0 0 0 16vw rgba(255,255,255,.08);
+      transform: scale(var(--ring-scale, .7));
+    }
+
+    .watch-stage {
+      position: relative;
+      z-index: 3;
+      width: clamp(360px, 50vw, 760px);
+      perspective: 1100px;
+    }
+
+    .watch-stage img {
+      width: 100%;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 55px 35px rgba(0,0,0,.22));
+      transform: translate3d(var(--watch-x, 0), var(--watch-y, 0), 0) rotateX(var(--watch-rx, 0deg)) rotateY(var(--watch-ry, 0deg)) rotateZ(var(--watch-rz, 0deg)) scale(var(--watch-scale, 1));
+      transition: opacity .45s var(--ease);
+      will-change: transform;
+    }
+
+    .chapter {
+      position: absolute;
+      z-index: 5;
+      width: min(370px, calc(100% - 48px));
+      opacity: var(--chapter-opacity, 0);
+      transform: translateY(calc((1 - var(--chapter-opacity, 0)) * 34px));
+      pointer-events: none;
+    }
+
+    .chapter--1 { left: 6vw; top: 20%; }
+    .chapter--2 { right: 6vw; bottom: 17%; }
+    .chapter--3 { left: 6vw; bottom: 15%; }
+    .chapter__num { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .chapter h3 { margin: 14px 0; font: 400 clamp(45px, 5vw, 76px)/.9 "Instrument Serif", serif; letter-spacing: -.035em; }
+    .chapter p { max-width: 310px; color: #5f5c55; font-size: 14px; line-height: 1.6; }
+
+    .variant-name {
+      position: absolute;
+      z-index: 2;
+      right: 4vw;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-size: clamp(70px, 11vw, 170px);
+      line-height: .8;
+      letter-spacing: -.06em;
+      font-family: "Instrument Serif", serif;
+      color: rgba(0,0,0,.06);
+    }
+
+    .collection { padding: 150px clamp(20px, 4vw, 64px); background: #111; color: white; }
+    .collection__head {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 70px;
+    }
+
+    .collection h2 { margin: 0; font: 400 clamp(64px, 9vw, 140px)/.82 "Instrument Serif", serif; letter-spacing: -.055em; }
+    .collection__intro { max-width: 420px; justify-self: end; color: #999; font-size: 14px; line-height: 1.7; }
+    .products { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+
+    .product {
+      position: relative;
+      grid-column: span 4;
+      min-height: 620px;
+      overflow: hidden;
+      background: #f4f3ef;
+      color: var(--ink);
+      border-radius: 2px;
+    }
+
+    .product:nth-child(2) { margin-top: 90px; }
+    .product__image { width: 100%; height: 74%; object-fit: cover; transition: transform .9s var(--ease); }
+    .product:hover .product__image { transform: scale(1.06); }
+    .product__info { position: absolute; inset: auto 0 0; padding: 25px; background: linear-gradient(transparent, #f4f3ef 25%); }
+    .product__type { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
+    .product h3 { margin: 10px 0 6px; font-size: 17px; font-weight: 500; letter-spacing: -.02em; }
+    .product__price { font-size: 13px; }
+    .product__arrow { position: absolute; right: 25px; bottom: 25px; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
+
+    .story {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      background: #080808;
+      color: white;
+    }
+
+    .story__visual { position: relative; min-height: 720px; overflow: hidden; }
+    .story__visual img { width: 100%; height: 100%; object-fit: cover; object-position: 58% center; filter: saturate(.75) contrast(1.08); }
+    .story__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 55%, #080808); }
+    .story__copy { display: flex; flex-direction: column; justify-content: center; padding: 80px clamp(30px, 7vw, 120px); }
+    .story__copy h2 { margin: 15px 0 28px; font: 400 clamp(58px, 7vw, 110px)/.85 "Instrument Serif", serif; letter-spacing: -.05em; }
+    .story__copy p { color: #aaa; font-size: 15px; line-height: 1.8; max-width: 470px; }
+
+    .final {
+      position: relative;
+      min-height: 86svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 100px 24px;
+      overflow: hidden;
+    }
+
+    .final::before {
+      content: "";
+      position: absolute;
+      width: 800px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,83,175,.25), transparent 65%);
+      filter: blur(30px);
+    }
+
+    .final__inner { position: relative; z-index: 2; }
+    .final h2 { margin: 0 0 30px; font: 400 clamp(68px, 11vw, 170px)/.78 "Instrument Serif", serif; letter-spacing: -.065em; }
+    .final p { color: var(--muted); margin: 0 auto 32px; max-width: 500px; line-height: 1.7; }
+
+    footer {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 30px;
+      padding: 40px clamp(20px, 4vw, 64px);
+      border-top: 1px solid var(--line);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    footer img { width: 120px; filter: grayscale(1); }
+    footer div:last-child { justify-self: end; }
+
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .nav__left { display: none; }
+      .nav__mark { justify-self: start; }
+      .nav__right .nav__link, .nav__dot { display: none; }
+      .hero__content { position: absolute; top: 126px; padding: 0 18px; }
+      .hero h1 { font-size: clamp(58px, 16vw, 102px); line-height: .8; }
+      .hero__watch-wrap { width: min(96vw, 530px); top: 59%; }
+      .hero__orb { width: 120vw; }
+      .hero__bottom { bottom: 24px; }
+      .hero__copy { max-width: 240px; font-size: 12px; }
+      .manifesto__meta, .collection__head { grid-template-columns: 1fr; }
+      .collection__intro { justify-self: start; }
+      .product { grid-column: span 6; min-height: 540px; }
+      .product:last-child { display: none; }
+      .story { grid-template-columns: 1fr; }
+      .story__visual { min-height: 65svh; }
+      .story__visual::after { background: linear-gradient(0deg, #080808, transparent 45%); }
+      .story__copy { padding-top: 20px; }
+      footer { grid-template-columns: 1fr 1fr; }
+      footer img { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .pill { min-height: 40px; padding: 0 17px; font-size: 10px; }
+      .scroll-cue { display: none; }
+      .experience { height: 360vh; }
+      .watch-stage { width: 118vw; }
+      .chapter { padding: 18px; background: rgba(242,240,234,.78); backdrop-filter: blur(12px); }
+      .chapter--1, .chapter--2, .chapter--3 { left: 16px; right: auto; top: auto; bottom: 22px; }
+      .chapter h3 { font-size: 48px; }
+      .variant-name { display: none; }
+      .collection { padding-top: 100px; }
+      .products { display: block; }
+      .product { min-height: 530px; margin: 0 0 18px !important; }
+      .product:last-child { display: block; }
+      footer { grid-template-columns: 1fr; }
+      footer div:last-child { justify-self: start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav__left">
+      <a class="nav__link" href="#collection">Orologi</a>
+      <a class="nav__link" href="#story">La storia</a>
+    </div>
+    <a class="nav__mark" href="#top">RUZZA <span>OROLOGI</span></a>
+    <div class="nav__right">
+      <span class="nav__dot"></span>
+      <a class="nav__link" href="https://ruzzaorologi.com/pages/contact">Milano, IT</a>
+      <a class="pill" href="https://ruzzaorologi.com/collections/orologi">Collezione</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero__orb"></div>
+      <div class="hero__halo"></div>
+      <div class="hero__content">
+        <p class="eyebrow">Milano · Dal 2017</p>
+        <h1>Il tempo<br><em>secondo Ruzza.</em></h1>
+      </div>
+      <div class="hero__watch-wrap">
+        <img class="hero__watch" src="assets/watch-01.png" alt="Ruzza Watch con quadrante oro">
+      </div>
+      <div class="hero__bottom">
+        <div class="hero__copy">Orologi scelti, controllati e raccontati con l'energia di chi ha trasformato una passione in un punto di riferimento.</div>
+        <div class="scroll-cue">Scopri l'esperienza</div>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <div class="manifesto__inner reveal">
+        <p class="eyebrow">Non il solito rivenditore</p>
+        <h2>Il lusso deve avere carattere.<span>E una storia da raccontare.</span></h2>
+        <div class="manifesto__meta">
+          <p>Dal cuore di Milano, una selezione in continua evoluzione di segnatempo iconici, contemporanei e da collezione.</p>
+          <p>Autenticità, controllo pre-vendita e un rapporto diretto: nessuna distanza tra chi ama gli orologi e chi li vende.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="experience__sticky">
+        <div class="experience__bg"></div>
+        <div class="experience__rings"></div>
+        <div class="variant-name">Ruzza Watch</div>
+        <div class="watch-stage">
+          <img id="scrollWatch" src="assets/watch-01.png" alt="Ruzza Watch interattivo">
+        </div>
+
+        <article class="chapter chapter--1" data-chapter="1">
+          <span class="chapter__num">01 · Presenza</span>
+          <h3>Una forma che non passa inosservata.</h3>
+          <p>Geometrie nette, cassa monocromatica e un quadrante capace di cambiare completamente personalità.</p>
+        </article>
+
+        <article class="chapter chapter--2" data-chapter="2">
+          <span class="chapter__num">02 · Materia</span>
+          <h3>Leggero al polso. Forte nello stile.</h3>
+          <p>Un oggetto quotidiano progettato per essere riconoscibile al primo sguardo, senza bisogno di presentazioni.</p>
+        </article>
+
+        <article class="chapter chapter--3" data-chapter="3">
+          <span class="chapter__num">03 · Carattere</span>
+          <h3>Il tuo colore. Il tuo tempo.</h3>
+          <p>Dal total black ai quadranti più luminosi: ogni variante racconta un modo diverso di stare sulla scena.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="collection" id="collection">
+      <div class="collection__head reveal">
+        <div>
+          <p class="eyebrow">Ultimi arrivi</p>
+          <h2>Icone,<br>senza tempo.</h2>
+        </div>
+        <div class="collection__intro">
+          Una selezione aggiornata di orologi certificati e controllati prima della vendita. Ogni pezzo ha una provenienza, una condizione e una storia precise.
+        </div>
+      </div>
+
+      <div class="products">
+        <a class="product reveal" href="https://ruzzaorologi.com/products/rolex-explorer-ii-42mm-226570-black-dial-like-new-2024">
+          <img class="product__image" src="https://ruzzaorologi.com/cdn/shop/files/IMG_3830_3d25df0c-782e-4bfa-b46e-cd098e0781b2_720x.jpg?v=1780935577" alt="Rolex Explorer II">
+          <div class="product__info">
+            <div class="product__type">Rolex · 2024</div>
+            <h3>Explorer II 42mm Black Dial</h3>
+            <div class="product__price">€9.700</div>
+            <span class="product__arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="product reveal" href="https://ruzzaorologi.com/products/rolex-submariner-date-126618lb-41mm-2021-blue-dial">
+          <img class="product__image" src="https://ruzzaorologi.com/cdn/shop/files/IMG_3748_720x.jpg?v=1780933183" alt="Rolex Submariner">
+          <div class="product__info">
+            <div class="product__type">Rolex · 2021</div>
+            <h3>Submariner Date Blue Dial</h3>
+            <div class="product__price">€35.000</div>
+            <span class="product__arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="product reveal" href="https://ruzzaorologi.com/products/patek-philippe-nautilus-5712-r-2017-full-set-thailandia">
+          <img class="product__image" src="https://ruzzaorologi.com/cdn/shop/files/IMG_3820_d4abfe50-1281-4f7a-adbb-bccaf1ce6f4b_720x.jpg?v=1780930739" alt="Patek Philippe Nautilus">
+          <div class="product__info">
+            <div class="product__type">Patek Philippe · 2017</div>
+            <h3>Nautilus 5712/R Full Set</h3>
+            <div class="product__price">€110.000</div>
+            <span class="product__arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story__visual">
+        <img src="assets/store.png" alt="Lorenzo Ruzza con la collezione Ruzza Watch">
+      </div>
+      <div class="story__copy reveal">
+        <p class="eyebrow">Una storia italiana</p>
+        <h2>Da zero,<br>fino a qui.</h2>
+        <p>Lorenzo Ruzza ha iniziato lavorando come fattorino, pizzaiolo, lavagista e webmaster. Nel 2017 apre Ruzza Orologi a Milano. In pochi anni il negozio diventa un riferimento nel mercato degli orologi di lusso.</p>
+        <p>Non una storia costruita a tavolino. Una crescita reale, spinta da competenza, comunicazione diretta e un'identità impossibile da confondere.</p>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="final__inner reveal">
+        <p class="eyebrow">Via Cesare Battisti 8 · Milano</p>
+        <h2>Il prossimo<br>è il tuo.</h2>
+        <p>Acquista, vendi o richiedi una valutazione. Il team Ruzza risponde direttamente e ti accompagna nella scelta.</p>
+        <a class="pill" href="https://wa.me/393319689707">Parla con Ruzza</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 Ruzza Orologi SRL</div>
+    <img src="assets/logo.png" alt="Ruzza Orologi">
+    <div><a href="https://ruzzaorologi.com">Shop ufficiale ↗</a></div>
+  </footer>
+
+  <script>
+    const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+    const map = (value, inMin, inMax, outMin, outMax) =>
+      outMin + (outMax - outMin) * clamp((value - inMin) / (inMax - inMin));
+
+    const nav = document.querySelector("#nav");
+    const experience = document.querySelector(".experience");
+    const sticky = document.querySelector(".experience__sticky");
+    const watch = document.querySelector("#scrollWatch");
+    const chapters = [...document.querySelectorAll(".chapter")];
+    const watchSources = [
+      "assets/watch-01.png",
+      "assets/watch-02.png",
+      "assets/watch-03.png",
+      "assets/watch-04.png"
+    ];
+    let currentWatch = 0;
+    let ticking = false;
+
+    watchSources.forEach(src => {
+      const image = new Image();
+      image.src = src;
+    });
+
+    function chapterOpacity(progress, center) {
+      const distance = Math.abs(progress - center);
+      return clamp(1 - distance / .13);
+    }
+
+    function update() {
+      ticking = false;
+      nav.classList.toggle("scrolled", window.scrollY > 24);
+
+      const rect = experience.getBoundingClientRect();
+      const travel = experience.offsetHeight - window.innerHeight;
+      const progress = clamp(-rect.top / travel);
+
+      const rotateY = map(progress, 0, 1, -24, 26);
+      const rotateX = Math.sin(progress * Math.PI * 2) * 7;
+      const rotateZ = map(progress, 0, 1, -8, 8);
+      const scale = 1 + Math.sin(progress * Math.PI) * .16;
+      const x = Math.sin(progress * Math.PI * 2) * 8;
+      const y = Math.cos(progress * Math.PI * 2) * 2;
+
+      sticky.style.setProperty("--watch-ry", `${rotateY}deg`);
+      sticky.style.setProperty("--watch-rx", `${rotateX}deg`);
+      sticky.style.setProperty("--watch-rz", `${rotateZ}deg`);
+      sticky.style.setProperty("--watch-scale", scale.toFixed(3));
+      sticky.style.setProperty("--watch-x", `${x}vw`);
+      sticky.style.setProperty("--watch-y", `${y}vh`);
+      sticky.style.setProperty("--ring-scale", (.7 + progress * .65).toFixed(3));
+      sticky.style.setProperty("--mx", `${35 + progress * 35}%`);
+      sticky.style.setProperty("--my", `${30 + Math.sin(progress * Math.PI) * 35}%`);
+
+      chapters[0].style.setProperty("--chapter-opacity", chapterOpacity(progress, .18));
+      chapters[1].style.setProperty("--chapter-opacity", chapterOpacity(progress, .49));
+      chapters[2].style.setProperty("--chapter-opacity", chapterOpacity(progress, .79));
+
+      const nextWatch = Math.min(3, Math.floor(progress * 4));
+      if (nextWatch !== currentWatch) {
+        currentWatch = nextWatch;
+        watch.style.opacity = "0";
+        window.setTimeout(() => {
+          watch.src = watchSources[currentWatch];
+          watch.style.opacity = "1";
+        }, 180);
+      }
+    }
+
+    function requestUpdate() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: .14 });
+
+    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    update();
+  </script>
+</body>
+</html>
