@@ -191,6 +191,7 @@ section{padding:120px 0}
 /* FORM */
 .formwrap{max-width:720px;margin:0 auto}
 .formcard{background:#fff;border-radius:24px;padding:36px;box-shadow:0 0 0 1px rgba(0,0,0,.07)}
+.formcard .honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
 .field label{font-size:13px;color:var(--muted)}
@@ -393,6 +394,7 @@ footer a:hover{color:var(--blue)}
   ]
 }
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <div class="meg-ratebar">💳 Paga a rate i nostri pacchetti, in modo semplice e flessibile. <a href="#rate">Scopri &rsaquo;</a></div>
@@ -786,6 +788,9 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
 <section id="richiesta" class="alt"><div class="wrap">
   <div class="sec-title reveal"><h2>Richiedi la tua demo.</h2><p>Lasciaci due dati: ti prepariamo l'anteprima del sito per la tua attività. Nessun impegno.</p></div>
   <div class="formwrap reveal"><form class="formcard" method="post" action="https://pay.megwebstudio.com/start" enctype="multipart/form-data">
+    <input class="honeypot" type="text" name="company_website" tabindex="-1" autocomplete="off" value="" aria-hidden="true">
+    <input type="hidden" name="form_started_at" value="">
+    <input type="hidden" name="form_start_signature" value="">
     <div class="fields">
       <div class="field full"><label>Nome attività</label><input name="business_name" placeholder="Es. Anna Estetica" required></div>
       <div class="field"><label>Email</label><input type="email" name="email" placeholder="nome@email.it" required></div>
@@ -799,6 +804,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field full"><label>Note (facoltativo)</label><textarea name="notes" placeholder="Raccontaci la tua attività, cosa offri, lo stile che ti piace…"></textarea></div>
     </div>
     <label class="consent"><input type="checkbox" name="consent" value="yes" required> Acconsento al trattamento dei dati per essere ricontattato riguardo alla mia richiesta.</label>
+    <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__" data-action="meg_intake" data-theme="light"></div>
     <button class="btn" style="width:100%;height:52px" type="submit">Invia la richiesta</button>
   </form></div>
 </div></section>
@@ -1160,6 +1166,13 @@ window.MEG_VETRINA = {
 (function(){
   var f = document.querySelector('form.formcard');
   if(!f) return;
+  var started = f.querySelector('input[name="form_started_at"]');
+  var startSignature = f.querySelector('input[name="form_start_signature"]');
+  var formTokenReady = false;
+  fetch('https://pay.megwebstudio.com/start/form-token', {method:'GET', mode:'cors', cache:'no-store', credentials:'omit'})
+    .then(function(r){ if(!r.ok) throw new Error('token'); return r.json(); })
+    .then(function(t){ if(!t || !t.ok || !t.started_at || !t.signature) throw new Error('token'); started.value=String(t.started_at); startSignature.value=String(t.signature); formTokenReady=true; })
+    .catch(function(){ formTokenReady=false; });
   f.addEventListener('submit', function(e){
     e.preventDefault();
     var consent = f.querySelector('input[name="consent"]');
@@ -1167,6 +1180,12 @@ window.MEG_VETRINA = {
     var biz = ((f.querySelector('input[name="business_name"]')||{}).value || '').trim();
     var em  = ((f.querySelector('input[name="email"]')||{}).value || '').trim();
     if(!biz || !em){ alert('Inserisci almeno il nome attività e l’email.'); return; }
+    if(!formTokenReady || !started.value || !startSignature.value){ fail('La verifica di sicurezza non è pronta. Ricarica la pagina e riprova.'); return; }
+    var widget = f.querySelector('.cf-turnstile');
+    var siteKey = widget ? (widget.getAttribute('data-sitekey') || '') : '';
+    if(!siteKey || siteKey.indexOf('__TURNSTILE_') === 0){ fail('Verifica anti-bot non configurata. Riprova più tardi.'); return; }
+    var turnstileToken = f.querySelector('input[name="cf-turnstile-response"]');
+    if(!turnstileToken || !turnstileToken.value){ fail('Completa la verifica anti-bot prima di inviare.'); return; }
     var btn = f.querySelector('button[type="submit"]');
     var oldLabel = btn ? btn.textContent : '';
     if(btn){ btn.disabled = true; btn.textContent = 'Invio in corso…'; }
@@ -1179,8 +1198,8 @@ window.MEG_VETRINA = {
       f.innerHTML = '<div style="text-align:center;padding:30px 10px">'
         + '<div style="font-size:52px;line-height:1;margin-bottom:12px">✅</div>'
         + '<h3 style="margin:0 0 8px;font-size:26px;color:#1d1d1f;font-weight:700">Richiesta ricevuta!</h3>'
-        + '<p style="color:#6e6e73;font-size:17px;margin:0 0 6px;line-height:1.5">Grazie'+(biz?(', '+biz.replace(/[<>]/g,'')):'')+'! La tua demo sta arrivando nella tua email 📩</p>'
-        + '<p style="color:#86868b;font-size:14px;margin:0">Controlla anche la cartella spam: se non la vedi entro qualche minuto, scrivici pure rispondendo alla mail.</p>'
+        + '<p style="color:#6e6e73;font-size:17px;margin:0 0 6px;line-height:1.5">Grazie'+(biz?(', '+biz.replace(/[<>]/g,'')):'')+'! Controlliamo la richiesta e prepariamo la demo.</p>'
+        + '<p style="color:#86868b;font-size:14px;margin:0">Riceverai l’email solo quando la demo avrà superato i controlli di qualità.</p>'
         + '</div>';
       f.scrollIntoView({behavior:'smooth', block:'center'});
     }
