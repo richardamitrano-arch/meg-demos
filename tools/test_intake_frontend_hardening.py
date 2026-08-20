@@ -12,7 +12,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = [ROOT / "index.html", ROOT / "en" / "index.html", ROOT / "de" / "index.html"]
+PAGES = [
+    ROOT / "index.html",
+    ROOT / "meg" / "index.html",
+    ROOT / "en" / "index.html",
+    ROOT / "de" / "index.html",
+]
 deployment_ready = "--deployment-ready" in sys.argv
 failures = []
 
