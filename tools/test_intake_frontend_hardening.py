@@ -35,6 +35,12 @@ for page in PAGES:
         "Turnstile widget": 'class="cf-turnstile"' in html and 'data-action="meg_intake"' in html,
         "Turnstile script": "challenges.cloudflare.com/turnstile/v0/api.js" in html,
         "client token gate": 'input[name="cf-turnstile-response"]' in html,
+        "session attribution": (
+            "meg_session_attribution" in html
+            and "utm_campaign" in html
+            and "landing_url" in html
+            and "session_referrer" in html
+        ),
         "truthful success copy": "demo is on its way" not in html and "Demo ist auf dem Weg" not in html,
     }
     if deployment_ready:
@@ -44,5 +50,5 @@ for page in PAGES:
         if not ok:
             failures.append(f"{page.relative_to(ROOT)}: {label}")
 
-print(f"\n{sum(1 for _ in PAGES) * (7 if deployment_ready else 6) - len(failures)} passed, {len(failures)} failed")
+print(f"\n{sum(1 for _ in PAGES) * (8 if deployment_ready else 7) - len(failures)} passed, {len(failures)} failed")
 raise SystemExit(1 if failures else 0)

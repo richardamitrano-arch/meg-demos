@@ -1168,6 +1168,18 @@ window.MEG_VETRINA = {
   if(!f) return;
   var started = f.querySelector('input[name="form_started_at"]');
   var startSignature = f.querySelector('input[name="form_start_signature"]');
+  var attributionNames = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid','msclkid'];
+  var sessionAttribution = {};
+  try { sessionAttribution = JSON.parse(sessionStorage.getItem('meg_session_attribution') || '{}') || {}; } catch(_e) { sessionAttribution = {}; }
+  var currentParams = new URLSearchParams(window.location.search || '');
+  attributionNames.forEach(function(name){ if(!sessionAttribution[name] && currentParams.get(name)){ sessionAttribution[name] = currentParams.get(name).slice(0,160); } });
+  if(!sessionAttribution.landing_url) sessionAttribution.landing_url = window.location.href.slice(0,800);
+  if(!sessionAttribution.session_referrer && document.referrer) sessionAttribution.session_referrer = document.referrer.slice(0,800);
+  try { sessionStorage.setItem('meg_session_attribution', JSON.stringify(sessionAttribution)); } catch(_e) {}
+  attributionNames.concat(['landing_url','session_referrer']).forEach(function(name){
+    if(!sessionAttribution[name]) return;
+    var input = document.createElement('input'); input.type = 'hidden'; input.name = name; input.value = sessionAttribution[name]; f.appendChild(input);
+  });
   var formTokenReady = false;
   fetch('https://pay.megwebstudio.com/start/form-token', {method:'GET', mode:'cors', cache:'no-store', credentials:'omit'})
     .then(function(r){ if(!r.ok) throw new Error('token'); return r.json(); })
