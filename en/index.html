@@ -564,10 +564,10 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
   <div class="prices">
     <div class="price reveal"><div class="pname">Standard</div><div class="amt">199€</div><div class="per">one-time payment</div>
       <ul><li><span class="ck">✓</span> Professional website on an included link</li><li><span class="ck">✓</span> Structure and content for your industry</li><li><span class="ck">✓</span> WhatsApp and email contact</li><li><span class="ck">✓</span> 7-day Premium AI preview</li></ul>
-      <a class="btn btn-line" href="#richiesta">Request Standard</a><a class="acq" href="https://pay.megwebstudio.com/acquista/starter" target="_blank" rel="noopener">or buy now &rsaquo;</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="starter">Request Standard</a><a class="acq" href="#richiesta" data-package="starter">or buy now &rsaquo;</a></div>
     <div class="price feat-card reveal"><span class="tag">Recommended</span><div class="pname">Premium AI</div><div class="amt">299€</div><div class="per">one-time payment · domain included 1st year</div>
       <ul><li><span class="ck">✓</span> Advanced website + business domain</li><li><span class="ck">✓</span> Bookings and appointment chat</li><li><span class="ck">✓</span> Automatic confirmations and reminders</li><li><span class="ck">✓</span> Owner dashboard</li></ul>
-      <a class="btn" href="#richiesta">Request Premium AI</a><a class="acq" href="https://pay.megwebstudio.com/acquista/base" target="_blank" rel="noopener">or buy now &rsaquo;</a></div>
+      <a class="btn" href="#richiesta" data-package="premium_ai">Request Premium AI</a><a class="acq" href="#richiesta" data-package="premium_ai">or buy now &rsaquo;</a></div>
   </div>
   <p class="sc-hint" style="margin-top:22px">The Premium AI domain is included for the first year; from the second there&#39;s a small annual renewal fee, which we tell you about upfront &mdash; no surprises.</p>
   <div class="trust reveal" style="display:flex;gap:14px 28px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-size:14.5px;color:var(--muted)">
@@ -1226,6 +1226,23 @@ window.MEG_VETRINA = {
       box.textContent = msg;
       box.scrollIntoView({behavior:'smooth', block:'center'});
     }
+  });
+})();
+</script>
+<script>
+/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo */
+(function(){
+  var sel = document.querySelector('form.formcard select[name="package"]');
+  if(!sel) return;
+  function pick(v){
+    for(var i = 0; i < sel.options.length; i++){
+      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return; }
+    }
+  }
+  try { pick(new URLSearchParams(window.location.search || '').get('pacchetto')); } catch(_e) {}
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-package]') : null;
+    if(a) pick(a.getAttribute('data-package'));
   });
 })();
 </script>

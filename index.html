@@ -564,10 +564,10 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
   <div class="prices">
     <div class="price reveal"><div class="pname">Standard</div><div class="amt">199€</div><div class="per">una tantum</div>
       <ul><li><span class="ck">✓</span> Sito professionale su link incluso</li><li><span class="ck">✓</span> Struttura e contenuti per il tuo settore</li><li><span class="ck">✓</span> WhatsApp ed email di contatto</li><li><span class="ck">✓</span> Anteprima Premium AI per 7 giorni</li></ul>
-      <a class="btn btn-line" href="#richiesta">Richiedi Standard</a><a class="acq" href="https://pay.megwebstudio.com/acquista/starter" target="_blank" rel="noopener">oppure acquista ora &rsaquo;</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="starter">Richiedi Standard</a><a class="acq" href="#richiesta" data-package="starter">oppure acquista ora &rsaquo;</a></div>
     <div class="price feat-card reveal"><span class="tag">Consigliato</span><div class="pname">Premium AI</div><div class="amt">299€</div><div class="per">una tantum · dominio incluso 1° anno</div>
       <ul><li><span class="ck">✓</span> Sito avanzato + dominio business</li><li><span class="ck">✓</span> Prenotazioni e chat appuntamenti</li><li><span class="ck">✓</span> Conferme e promemoria automatici</li><li><span class="ck">✓</span> Dashboard del titolare</li></ul>
-      <a class="btn" href="#richiesta">Richiedi Premium AI</a><a class="acq" href="https://pay.megwebstudio.com/acquista/base" target="_blank" rel="noopener">oppure acquista ora &rsaquo;</a></div>
+      <a class="btn" href="#richiesta" data-package="premium_ai">Richiedi Premium AI</a><a class="acq" href="#richiesta" data-package="premium_ai">oppure acquista ora &rsaquo;</a></div>
   </div>
   <p class="sc-hint" style="margin-top:22px">Il dominio del Premium AI è incluso il primo anno; dal secondo una piccola quota di rinnovo annuale, che ti diciamo prima &mdash; nessuna sorpresa.</p>
   <div class="trust reveal" style="display:flex;gap:14px 28px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-size:14.5px;color:var(--muted)">
@@ -1221,6 +1221,23 @@ window.MEG_VETRINA = {
       box.textContent = msg;
       box.scrollIntoView({behavior:'smooth', block:'center'});
     }
+  });
+})();
+</script>
+<script>
+/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo */
+(function(){
+  var sel = document.querySelector('form.formcard select[name="package"]');
+  if(!sel) return;
+  function pick(v){
+    for(var i = 0; i < sel.options.length; i++){
+      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return; }
+    }
+  }
+  try { pick(new URLSearchParams(window.location.search || '').get('pacchetto')); } catch(_e) {}
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-package]') : null;
+    if(a) pick(a.getAttribute('data-package'));
   });
 })();
 </script>
