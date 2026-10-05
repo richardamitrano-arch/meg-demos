@@ -25,7 +25,7 @@ failures = []
 for page in PAGES:
     html = page.read_text(encoding="utf-8")
     checks = {
-        "honeypot": 'name="company_website"' in html,
+        "honeypot": 'name="mws_hp_field"' in html and 'name="company_website"' not in html,
         "signed form timer": (
             'name="form_started_at"' in html
             and 'name="form_start_signature"' in html
