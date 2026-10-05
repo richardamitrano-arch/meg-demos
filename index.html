@@ -799,6 +799,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field"><label>Settore</label><select name="sector"><option value="">Scegli…</option><option>Beauty & Estetica</option><option>Barber & Parrucchieri</option><option>Ristoranti & Bar</option><option>Fitness</option><option>Studi professionali</option><option>Officine & Auto</option><option>Negozi & Boutique</option><option>B&B & Hotel</option><option>Edilizia & Artigiani</option><option>Altro</option></select></div>
       <div class="field full"><label>Pacchetto di interesse</label><select name="package"><option value="">Scegli…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option><option value="care">Voglio anche un Care</option></select></div>
       <div class="field full"><label>Carica il tuo logo (facoltativo)</label><input type="file" name="logo_file" accept="image/png,image/jpeg,image/svg+xml,application/pdf"><small style="color:var(--muted);font-size:12px">PNG, JPG, SVG o PDF — lo useremo nel tuo sito.</small></div>
+      <div class="field full"><label>Foto della tua attività (facoltativo, fino a 6)</label><input type="file" name="photo_files" multiple accept="image/jpeg,image/png,image/webp"><small style="color:var(--muted);font-size:12px">JPG, PNG o WebP — le useremo nella tua demo.</small></div>
       <div class="field"><label>Codice promo (facoltativo)</label><input name="promo_code" placeholder="es. PROMO DEL MESE"></div>
       <div class="field"><label>Codice amico (facoltativo)</label><input name="referral_code" placeholder="codice di chi ti ha invitato"></div>
       <div class="field full"><label>Note (facoltativo)</label><textarea name="notes" placeholder="Raccontaci la tua attività, cosa offri, lo stile che ti piace…"></textarea></div>
@@ -1161,6 +1162,141 @@ window.MEG_VETRINA = {
  io.observe(box);
 })();
 </script>
+<style>
+/* Demo istantanea: stato dopo l'invio del modulo */
+.dl{text-align:center;padding:30px 10px}
+.dl-icon{font-size:52px;line-height:1;margin-bottom:12px}
+.dl h3{margin:0 0 8px;font-size:26px;color:#1d1d1f;font-weight:700}
+.dl-text{color:#6e6e73;font-size:17px;margin:0 auto 6px;line-height:1.5;max-width:460px}
+.dl-note{color:#86868b;font-size:14px;margin:16px 0 0;line-height:1.5}
+.dl-bar{width:min(260px,80%);height:4px;margin:22px auto 0;border-radius:99px;background:#e8e8ed;overflow:hidden}
+.dl-bar span{display:block;height:100%;width:4%;border-radius:99px;background:var(--blue);transition:width .9s ease}
+.dl .btn{margin-top:20px}
+.photo-note{color:var(--blue);font-size:12px}
+@media (prefers-reduced-motion: reduce){.dl-bar span{transition:none}}
+</style>
+<script>
+/* Demo istantanea: dopo l'invio la pagina aspetta la demo e ne mostra il link appena è pronta;
+   le foto scelte vengono rimpicciolite nel browser prima dell'invio (caricamento più rapido). */
+(function(){
+  var T = {"received": "Richiesta ricevuta!", "thanks": "Grazie!", "thanksName": "Grazie, {name}!", "building": "Stiamo preparando la tua demo: di solito serve circa un minuto.", "stay": "Puoi restare su questa pagina: il link ti arriva anche per email.", "barLabel": "Preparazione della demo", "readyTitle": "La tua demo è pronta", "readyText": "Aprila qui: il link ti arriva anche per email.", "open": "Apri la demo", "later": "Ci serve ancora un po' di tempo: te la mandiamo per email appena è pronta.", "tooMany": "Useremo le prime 6 foto."};
+  var ORIGINS = ['https://pay.megwebstudio.com', 'https://meg-web-studio-bot-production.up.railway.app'];
+  var MAX_PHOTOS = 6;
+  function el(tag, cls, text){ var n = document.createElement(tag); if(cls) n.className = cls; if(text) n.textContent = text; return n; }
+  function safeDemoUrl(u){
+    try { var p = new URL(u); return (ORIGINS.indexOf(p.origin) >= 0 && p.pathname.indexOf('/preview/demo/') === 0) ? p.href : ''; }
+    catch(_e){ return ''; }
+  }
+  function start(f, token, biz){
+    var who = String(biz || '').replace(/[<>]/g, '').trim().slice(0, 80);
+    var thanks = who ? T.thanksName.replace('{name}', who) : T.thanks;
+    f.innerHTML = '';
+    var box = el('div', 'dl'); box.setAttribute('aria-live', 'polite');
+    var head = el('h3', '', T.received);
+    var text = el('p', 'dl-text', thanks + ' ' + T.building);
+    var bar = el('div', 'dl-bar'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-label', T.barLabel);
+    var fill = el('span'); bar.appendChild(fill);
+    var note = el('p', 'dl-note', T.stay);
+    box.appendChild(el('div', 'dl-icon', '✅')); box.appendChild(head); box.appendChild(text); box.appendChild(bar); box.appendChild(note);
+    f.appendChild(box);
+    f.scrollIntoView({behavior:'smooth', block:'center'});
+    var started = Date.now(), done = false, fails = 0;
+    var tick = setInterval(function(){
+      var s = (Date.now() - started) / 1000;
+      fill.style.width = Math.min(92, 4 + 88 * (1 - Math.exp(-s / 40))).toFixed(1) + '%';
+    }, 800);
+    function finish(state, url){
+      if(done) return; done = true; clearInterval(tick);
+      if(state === 'ready'){
+        fill.style.width = '100%';
+        setTimeout(function(){
+          head.textContent = T.readyTitle; text.textContent = thanks + ' ' + T.readyText;
+          if(bar.parentNode) bar.parentNode.removeChild(bar);
+          if(note.parentNode) note.parentNode.removeChild(note);
+          var a = el('a', 'btn', T.open); a.href = url; a.target = '_blank'; a.rel = 'noopener';
+          box.appendChild(a);
+        }, 400);
+      } else {
+        head.textContent = T.received; text.textContent = thanks + ' ' + T.later;
+        if(bar.parentNode) bar.parentNode.removeChild(bar);
+        if(note.parentNode) note.parentNode.removeChild(note);
+      }
+    }
+    var statusUrl = f.action.replace(/\/start(?:[?#].*)?$/, '/start/demo-status');
+    function next(ms){ setTimeout(poll, ms || ((Date.now() - started) < 90000 ? 3000 : 5000)); }
+    function poll(){
+      if(done) return;
+      if(Date.now() - started > 320000){ finish('later'); return; }
+      fetch(statusUrl, {method:'POST', mode:'cors', credentials:'omit', cache:'no-store',
+                        headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'t=' + encodeURIComponent(token)})
+        .then(function(r){
+          if(r.status === 429){ next(10000); return null; }
+          if(!r.ok) throw new Error('status');
+          return r.json();
+        })
+        .then(function(d){
+          if(!d) return;
+          fails = 0;
+          if(d.state === 'ready'){ var u = safeDemoUrl(d.demo_url || ''); finish(u ? 'ready' : 'later', u); }
+          else if(d.state === 'later'){ finish('later'); }
+          else { next(); }
+        })
+        .catch(function(){ fails++; if(fails >= 5){ finish('later'); } else { next(6000); } });
+    }
+    next(2500);
+  }
+  function shrink(file){
+    return new Promise(function(done){
+      var settled = false;
+      function give(v){ if(!settled){ settled = true; done(v); } }
+      var original = {blob:file, name:'foto.jpg'};
+      if(file.size > 40 * 1024 * 1024){ give(null); return; }
+      if(!window.URL || !URL.createObjectURL){ give(original); return; }
+      var url = URL.createObjectURL(file), img = new Image();
+      setTimeout(function(){ give(original); }, 8000);
+      img.onload = function(){
+        try {
+          var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, 1600 / Math.max(w, h));
+          var c = document.createElement('canvas');
+          c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+          var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+          ctx.drawImage(img, 0, 0, c.width, c.height);
+          if(!c.toBlob){ URL.revokeObjectURL(url); give(original); return; }
+          c.toBlob(function(b){ URL.revokeObjectURL(url); give(b && b.size ? {blob:b, name:'foto.jpg'} : original); }, 'image/jpeg', 0.86);
+        } catch(_e){ URL.revokeObjectURL(url); give(original); }
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); give(original); };
+      img.src = url;
+    });
+  }
+  function prepare(f){
+    var fd = new FormData(f);
+    var input = f.querySelector('input[name="photo_files"]');
+    var files = (input && input.files) ? Array.prototype.slice.call(input.files, 0, MAX_PHOTOS) : [];
+    if(!files.length || typeof fd.delete !== 'function' || !window.Promise) return Promise.resolve(fd);
+    // One photo at a time: decoding six phone photos together can exhaust a phone's memory.
+    var list = [];
+    return files.reduce(function(chain, file){
+      return chain.then(function(){ return shrink(file).then(function(x){ list.push(x); }); });
+    }, Promise.resolve()).then(function(){
+      fd.delete('photo_files');
+      list.forEach(function(x, i){ if(x) fd.append('photo_files', x.blob, 'foto-' + (i + 1) + '.jpg'); });
+      return fd;
+    }).catch(function(){ return new FormData(f); });
+  }
+  window.MEGDemoLive = {start:start};
+  window.MEGPhotos = {prepare:prepare};
+  document.addEventListener('change', function(e){
+    var input = e.target;
+    if(!input || input.name !== 'photo_files') return;
+    var hint = input.parentNode && input.parentNode.querySelector('.photo-note');
+    if(input.files && input.files.length > MAX_PHOTOS){
+      if(!hint){ hint = el('small', 'photo-note'); input.parentNode.appendChild(hint); }
+      hint.textContent = T.tooMany;
+    } else if(hint){ hint.parentNode.removeChild(hint); }
+  });
+})();
+</script>
 <script>
 /* MEG intake: invia in background, resta sul sito bianco, conferma pulita (no pagina Railway) */
 (function(){
@@ -1202,11 +1338,13 @@ window.MEG_VETRINA = {
     var oldLabel = btn ? btn.textContent : '';
     if(btn){ btn.disabled = true; btn.textContent = 'Invio in corso…'; }
     var url = f.action + (f.action.indexOf('?')<0 ? '?' : '&') + 'format=json';
-    fetch(url, { method:'POST', body:new FormData(f), headers:{ 'X-Requested-With':'fetch' } })
+    (window.MEGPhotos ? window.MEGPhotos.prepare(f) : Promise.resolve(new FormData(f)))
+      .then(function(body){ return fetch(url, { method:'POST', body:body, headers:{ 'X-Requested-With':'fetch' } }); })
       .then(function(r){ return r.json().catch(function(){ return { ok:false, message:'Risposta non valida dal server.' }; }); })
       .then(function(res){ if(res && res.ok){ success(res); } else { fail((res && res.message) || 'Invio non riuscito. Riprova tra poco.'); } })
       .catch(function(){ fail('Connessione non riuscita. Controlla la rete e riprova.'); });
     function success(res){
+      if(res && res.status_token && window.MEGDemoLive){ window.MEGDemoLive.start(f, res.status_token, biz); return; }
       f.innerHTML = '<div style="text-align:center;padding:30px 10px">'
         + '<div style="font-size:52px;line-height:1;margin-bottom:12px">✅</div>'
         + '<h3 style="margin:0 0 8px;font-size:26px;color:#1d1d1f;font-weight:700">Richiesta ricevuta!</h3>'
