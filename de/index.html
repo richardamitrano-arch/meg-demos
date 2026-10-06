@@ -607,7 +607,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Texte, Öffnungszeiten und Kontakte immer aktuell</li>
         <li><span class="ck">✓</span> Antwort innerhalb von 3 Werktagen</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Care Start aktivieren</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_basic">Care Start aktivieren</a></div>
     <div class="price feat-card reveal"><span class="tag">Am beliebtesten</span><div class="pname">Care Growth</div><div class="amt">89€</div><div class="per">pro Monat · erster Monat gratis</div>
       <ul>
         <li><span class="ck">✓</span> 4 Änderungswünsche pro Monat</li>
@@ -615,7 +615,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Monats-Promo + saisonale Kampagnen</li>
         <li><span class="ck">✓</span> Antwort innerhalb von 2 Werktagen</li>
       </ul>
-      <a class="btn" href="#richiesta">Care Growth aktivieren</a></div>
+      <a class="btn" href="#richiesta" data-package="care_plus">Care Growth aktivieren</a></div>
     <div class="price reveal"><div class="pname">Care Pro</div><div class="amt">149€</div><div class="per">pro Monat · erster Monat gratis</div>
       <ul>
         <li><span class="ck">✓</span> <b>WhatsApp-Automatisierung</b> &mdash; der Bot antwortet und bucht direkt über dein WhatsApp</li>
@@ -625,7 +625,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Höchste Priorität + Monatsreport</li>
         <li><span class="ck">✓</span> Antwort innerhalb von 1 Werktag</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Care Pro aktivieren</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_pro">Care Pro aktivieren</a></div>
   </div>
   <p class="sc-hint" style="margin-top:28px">Die Care-Pläne pflegen Website und Marketing Monat für Monat. Die WhatsApp-Automatisierung (Care Pro) setzt eine Premium-AI-Website mit Buchungen voraus. Jederzeit kündbar · Verlängerung nur mit deiner Zustimmung.</p>
 </div></section>
@@ -797,7 +797,8 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field"><label>Telefon / WhatsApp</label><input name="phone" placeholder="+49 / +41 ..." required></div>
       <div class="field"><label>Stadt</label><input name="city" placeholder="Deine Stadt"></div>
       <div class="field"><label>Branche</label><select name="sector"><option value="">Bitte wählen…</option><option value="Beauty & Estetica">Beauty &amp; Kosmetik</option><option value="Barber & Parrucchieri">Barber &amp; Friseure</option><option value="Ristoranti & Bar">Restaurants &amp; Bars</option><option value="Fitness">Fitness</option><option value="Studi professionali">Kanzleien &amp; Praxen</option><option value="Officine & Auto">Werkstätten &amp; Auto</option><option value="Negozi & Boutique">Läden &amp; Boutiquen</option><option value="B&B & Hotel">B&amp;B &amp; Hotels</option><option value="Edilizia & Artigiani">Bau &amp; Handwerk</option><option value="Altro">Sonstiges</option></select></div>
-      <div class="field full"><label>Gewünschtes Paket</label><select name="package"><option value="">Bitte wählen…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option><option value="care">Ich möchte auch ein Care-Abo</option></select></div>
+      <div class="field full"><label>Gewünschtes Paket</label><select name="package"><option value="">Bitte wählen…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option></select></div>
+      <div class="field full"><label>Care-Abo (optional)</label><select name="monthly_plan"><option value="none">Vorerst kein Care-Abo</option><option value="care_basic">Care Start 49€/Monat — erster Monat gratis</option><option value="care_plus">Care Growth 89€/Monat — erster Monat gratis</option><option value="care_pro">Care Pro 149€/Monat — erster Monat gratis</option></select></div>
       <div class="field full"><label>Lade dein Logo hoch (optional)</label><input type="file" name="logo_file" accept="image/png,image/jpeg,image/webp"><small style="color:var(--muted);font-size:12px">PNG, JPG oder WebP — wir verwenden es auf deiner Website.</small></div>
       <div class="field full"><label>Fotos deines Betriebs (optional, bis zu 6)</label><input type="file" name="photo_files" multiple accept="image/jpeg,image/png,image/webp"><small style="color:var(--muted);font-size:12px">JPG, PNG oder WebP — wir verwenden sie in deiner Demo.</small></div>
       <div class="field"><label>Promo-Code (optional)</label><input name="promo_code" placeholder="z. B. PROMO DEL MESE"></div>
@@ -1368,14 +1369,23 @@ window.MEG_VETRINA = {
 })();
 </script>
 <script>
-/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo */
+/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo.
+   I pulsanti «Attiva Care …» scelgono il piano Care, non il sito. */
 (function(){
-  var sel = document.querySelector('form.formcard select[name="package"]');
-  if(!sel) return;
-  function pick(v){
+  var form = document.querySelector('form.formcard');
+  if(!form) return;
+  function set(sel, v){
+    if(!sel) return false;
     for(var i = 0; i < sel.options.length; i++){
-      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return; }
+      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return true; }
     }
+    return false;
+  }
+  function pick(v){
+    if(!v) return;
+    if(v === 'care') v = 'care_basic';
+    if(v.indexOf('care_') === 0) set(form.querySelector('select[name="monthly_plan"]'), v);
+    else set(form.querySelector('select[name="package"]'), v);
   }
   try { pick(new URLSearchParams(window.location.search || '').get('pacchetto')); } catch(_e) {}
   document.addEventListener('click', function(e){

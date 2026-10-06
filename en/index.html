@@ -607,7 +607,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Texts, hours and contact details kept up to date</li>
         <li><span class="ck">✓</span> Response within 3 working days</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Activate Care Start</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_basic">Activate Care Start</a></div>
     <div class="price feat-card reveal"><span class="tag">Most popular</span><div class="pname">Care Growth</div><div class="amt">89€</div><div class="per">per month · first month free</div>
       <ul>
         <li><span class="ck">✓</span> 4 change requests per month</li>
@@ -615,7 +615,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Monthly promo + seasonal campaigns</li>
         <li><span class="ck">✓</span> Response within 2 working days</li>
       </ul>
-      <a class="btn" href="#richiesta">Activate Care Growth</a></div>
+      <a class="btn" href="#richiesta" data-package="care_plus">Activate Care Growth</a></div>
     <div class="price reveal"><div class="pname">Care Pro</div><div class="amt">149€</div><div class="per">per month · first month free</div>
       <ul>
         <li><span class="ck">✓</span> <b>WhatsApp automation</b> &mdash; the bot replies and takes bookings right from your WhatsApp</li>
@@ -625,7 +625,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Top priority + monthly report</li>
         <li><span class="ck">✓</span> Response within 1 working day</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Activate Care Pro</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_pro">Activate Care Pro</a></div>
   </div>
   <p class="sc-hint" style="margin-top:28px">Care plans look after your website and marketing month after month. WhatsApp automation (Care Pro) requires a Premium AI website with bookings. Cancel anytime · renewal only with your consent.</p>
 </div></section>
@@ -797,7 +797,8 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field"><label>Phone / WhatsApp</label><input name="phone" placeholder="+39 ..." required></div>
       <div class="field"><label>City</label><input name="city" placeholder="Your city"></div>
       <div class="field"><label>Industry</label><select name="sector"><option value="">Choose…</option><option value="Beauty & Estetica">Beauty &amp; Aesthetics</option><option value="Barber & Parrucchieri">Barbers &amp; Hairdressers</option><option value="Ristoranti & Bar">Restaurants &amp; Bars</option><option value="Fitness">Fitness</option><option value="Studi professionali">Professional services</option><option value="Officine & Auto">Garages &amp; Auto</option><option value="Negozi & Boutique">Shops &amp; Boutiques</option><option value="B&B & Hotel">B&amp;Bs &amp; Hotels</option><option value="Edilizia & Artigiani">Construction &amp; Trades</option><option value="Altro">Other</option></select></div>
-      <div class="field full"><label>Package you&#39;re interested in</label><select name="package"><option value="">Choose…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option><option value="care">I also want a Care plan</option></select></div>
+      <div class="field full"><label>Package you&#39;re interested in</label><select name="package"><option value="">Choose…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option></select></div>
+      <div class="field full"><label>Care plan (optional)</label><select name="monthly_plan"><option value="none">No Care for now</option><option value="care_basic">Care Start 49€/month — first month free</option><option value="care_plus">Care Growth 89€/month — first month free</option><option value="care_pro">Care Pro 149€/month — first month free</option></select></div>
       <div class="field full"><label>Upload your logo (optional)</label><input type="file" name="logo_file" accept="image/png,image/jpeg,image/webp"><small style="color:var(--muted);font-size:12px">PNG, JPG or WebP — we&#39;ll use it on your website.</small></div>
       <div class="field full"><label>Photos of your business (optional, up to 6)</label><input type="file" name="photo_files" multiple accept="image/jpeg,image/png,image/webp"><small style="color:var(--muted);font-size:12px">JPG, PNG or WebP — we&#39;ll use them in your demo.</small></div>
       <div class="field"><label>Promo code (optional)</label><input name="promo_code" placeholder="e.g. PROMO DEL MESE"></div>
@@ -1368,14 +1369,23 @@ window.MEG_VETRINA = {
 })();
 </script>
 <script>
-/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo */
+/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo.
+   I pulsanti «Attiva Care …» scelgono il piano Care, non il sito. */
 (function(){
-  var sel = document.querySelector('form.formcard select[name="package"]');
-  if(!sel) return;
-  function pick(v){
+  var form = document.querySelector('form.formcard');
+  if(!form) return;
+  function set(sel, v){
+    if(!sel) return false;
     for(var i = 0; i < sel.options.length; i++){
-      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return; }
+      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return true; }
     }
+    return false;
+  }
+  function pick(v){
+    if(!v) return;
+    if(v === 'care') v = 'care_basic';
+    if(v.indexOf('care_') === 0) set(form.querySelector('select[name="monthly_plan"]'), v);
+    else set(form.querySelector('select[name="package"]'), v);
   }
   try { pick(new URLSearchParams(window.location.search || '').get('pacchetto')); } catch(_e) {}
   document.addEventListener('click', function(e){

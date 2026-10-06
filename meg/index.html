@@ -562,7 +562,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Testi, orari e contatti aggiornati</li>
         <li><span class="ck">✓</span> Risposta entro 3 giorni lavorativi</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Attiva Care Start</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_basic">Attiva Care Start</a></div>
     <div class="price feat-card reveal"><span class="tag">Più scelto</span><div class="pname">Care Growth</div><div class="amt">89€</div><div class="per">al mese · primo mese gratis</div>
       <ul>
         <li><span class="ck">✓</span> 4 richieste di modifica al mese</li>
@@ -570,7 +570,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Promo del mese + campagne stagionali</li>
         <li><span class="ck">✓</span> Risposta entro 2 giorni lavorativi</li>
       </ul>
-      <a class="btn" href="#richiesta">Attiva Care Growth</a></div>
+      <a class="btn" href="#richiesta" data-package="care_plus">Attiva Care Growth</a></div>
     <div class="price reveal"><div class="pname">Care Pro</div><div class="amt">149€</div><div class="per">al mese · primo mese gratis</div>
       <ul>
         <li><span class="ck">✓</span> <b>Automazione WhatsApp</b> &mdash; il bot risponde e prenota anche dal tuo WhatsApp</li>
@@ -580,7 +580,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
         <li><span class="ck">✓</span> Priorità assoluta + report mensile</li>
         <li><span class="ck">✓</span> Risposta entro 1 giorno lavorativo</li>
       </ul>
-      <a class="btn btn-line" href="#richiesta">Attiva Care Pro</a></div>
+      <a class="btn btn-line" href="#richiesta" data-package="care_pro">Attiva Care Pro</a></div>
   </div>
   <p class="sc-hint" style="margin-top:28px">I piani Care curano sito e marketing mese dopo mese. L'Automazione WhatsApp (Care Pro) richiede un sito Premium AI con prenotazioni. Disdici quando vuoi · rinnovo solo con il tuo consenso.</p>
 </div></section>
@@ -752,7 +752,8 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field"><label>Telefono / WhatsApp</label><input name="phone" placeholder="+39 ..." required></div>
       <div class="field"><label>Città</label><input name="city" placeholder="La tua città"></div>
       <div class="field"><label>Settore</label><select name="sector"><option value="">Scegli…</option><option>Beauty & Estetica</option><option>Barber & Parrucchieri</option><option>Ristoranti & Bar</option><option>Fitness</option><option>Studi professionali</option><option>Officine & Auto</option><option>Negozi & Boutique</option><option>B&B & Hotel</option><option>Edilizia & Artigiani</option><option>Altro</option></select></div>
-      <div class="field full"><label>Pacchetto di interesse</label><select name="package"><option value="">Scegli…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option><option value="care">Voglio anche un Care</option></select></div>
+      <div class="field full"><label>Pacchetto di interesse</label><select name="package"><option value="">Scegli…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option></select></div>
+      <div class="field full"><label>Piano Care (facoltativo)</label><select name="monthly_plan"><option value="none">Nessun Care per ora</option><option value="care_basic">Care Start 49€/mese — primo mese gratis</option><option value="care_plus">Care Growth 89€/mese — primo mese gratis</option><option value="care_pro">Care Pro 149€/mese — primo mese gratis</option></select></div>
       <div class="field full"><label>Carica il tuo logo (facoltativo)</label><input type="file" name="logo_file" accept="image/png,image/jpeg,image/webp"><small style="color:var(--muted);font-size:12px">PNG, JPG o WebP — lo useremo nel tuo sito.</small></div>
       <div class="field full"><label>Foto della tua attività (facoltativo, fino a 6)</label><input type="file" name="photo_files" multiple accept="image/jpeg,image/png,image/webp"><small style="color:var(--muted);font-size:12px">JPG, PNG o WebP — le useremo nella tua demo.</small></div>
       <div class="field"><label>Codice promo (facoltativo)</label><input name="promo_code" placeholder="es. PROMO DEL MESE"></div>
@@ -1314,6 +1315,32 @@ window.MEG_VETRINA = {
       box.textContent = msg;
       box.scrollIntoView({behavior:'smooth', block:'center'});
     }
+  });
+})();
+</script>
+<script>
+/* Pacchetto scelto dai pulsanti dei prezzi o da ?pacchetto= (link «Acquista» del bot): niente carrello senza modulo.
+   I pulsanti «Attiva Care …» scelgono il piano Care, non il sito. */
+(function(){
+  var form = document.querySelector('form.formcard');
+  if(!form) return;
+  function set(sel, v){
+    if(!sel) return false;
+    for(var i = 0; i < sel.options.length; i++){
+      if(v && sel.options[i].value === v){ sel.value = v; sel.dispatchEvent(new Event('change', {bubbles:true})); return true; }
+    }
+    return false;
+  }
+  function pick(v){
+    if(!v) return;
+    if(v === 'care') v = 'care_basic';
+    if(v.indexOf('care_') === 0) set(form.querySelector('select[name="monthly_plan"]'), v);
+    else set(form.querySelector('select[name="package"]'), v);
+  }
+  try { pick(new URLSearchParams(window.location.search || '').get('pacchetto')); } catch(_e) {}
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-package]') : null;
+    if(a) pick(a.getAttribute('data-package'));
   });
 })();
 </script>
