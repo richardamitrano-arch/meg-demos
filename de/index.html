@@ -795,6 +795,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
       <div class="field full"><label>Name des Geschäfts</label><input name="business_name" placeholder="z. B. Kosmetikstudio Anna" required></div>
       <div class="field"><label>E-Mail</label><input type="email" name="email" placeholder="name@email.de" required></div>
       <div class="field"><label>Telefon / WhatsApp</label><input name="phone" placeholder="+49 / +41 ..." required></div>
+      <div class="field"><label>Land *</label><select name="country" required data-swiss-hint="Land auswählen (Vorschlag: Schweiz)"><option value="">Land auswählen</option><option value="IT">Italien — EUR</option><option value="CH">Schweiz — CHF</option></select><small style="color:var(--muted);font-size:12px">Das gewählte Land bestimmt Währung und Preis deiner Anfrage.</small></div>
       <div class="field"><label>Stadt</label><input name="city" placeholder="Deine Stadt"></div>
       <div class="field"><label>Branche</label><select name="sector"><option value="">Bitte wählen…</option><option value="Beauty & Estetica">Beauty &amp; Kosmetik</option><option value="Barber & Parrucchieri">Barber &amp; Friseure</option><option value="Ristoranti & Bar">Restaurants &amp; Bars</option><option value="Fitness">Fitness</option><option value="Studi professionali">Kanzleien &amp; Praxen</option><option value="Officine & Auto">Werkstätten &amp; Auto</option><option value="Negozi & Boutique">Läden &amp; Boutiquen</option><option value="B&B & Hotel">B&amp;B &amp; Hotels</option><option value="Edilizia & Artigiani">Bau &amp; Handwerk</option><option value="Altro">Sonstiges</option></select></div>
       <div class="field full"><label>Gewünschtes Paket</label><select name="package"><option value="">Bitte wählen…</option><option value="starter">Standard 199€</option><option value="premium_ai">Premium AI 299€</option></select></div>
@@ -918,24 +919,28 @@ if('IntersectionObserver' in w){var io=new IntersectionObserver(function(es){es.
 for(var i=0;i<rev.length;i++)io.observe(rev[i]);setTimeout(all,2600);}else{all();}})();
 </script>
 <script>
-/* Svizzera -> prezzi in CHF automatici. Geo-IP autorevole (prende anche il Ticino
-   col cellulare in italiano) + fuso/lingua come scorciatoia istantanea. */
+/* Currency follows the explicit request country; browser locale is only a hint. */
 (function(){
-var P=[['199€','239 CHF'],['299€','359 CHF'],['149€','179 CHF'],['89€','109 CHF'],['49€','59 CHF']];
-var done=false;
-function toCHF(){if(done)return;done=true;
- var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],t;
- while(t=w.nextNode())a.push(t);
- a.forEach(function(n){var v=n.nodeValue;if(v.indexOf('€')<0)return;for(var i=0;i<P.length;i++)v=v.split(P[i][0]).join(P[i][1]);if(v!==n.nodeValue)n.nodeValue=v;});
+var P=[['199€','CHF 449'],['299€','CHF 549'],['149€','CHF 179'],['89€','CHF 109'],['49€','CHF 59']];
+var country=document.querySelector('select[name="country"]');
+if(!country)return;
+var originals=[],walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
+while(node=walker.nextNode()){
+ if(/^(SCRIPT|STYLE|TEXTAREA)$/.test(node.parentNode.tagName))continue;
+ if(P.some(function(pair){return node.nodeValue.indexOf(pair[0])>=0;}))originals.push([node,node.nodeValue]);
 }
-/* 1) scorciatoia istantanea: device già svizzero (niente sfarfallio) */
-var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
-var L=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
-if(/Zurich|Bern|Geneva/i.test(tz)||/(de|fr|it|rm)-CH/i.test(L)){toCHF();return;}
-/* 2) geo-IP: l'IP del Ticino è svizzero anche col telefono in italiano */
-try{fetch('https://ipwho.is/?fields=country_code').then(function(r){return r.json();}).then(function(d){if(d&&d.country_code==='CH')toCHF();}).catch(function(){
-  fetch('https://ipapi.co/country/').then(function(r){return r.text();}).then(function(c){if((c||'').trim()==='CH')toCHF();}).catch(function(){});
-});}catch(e){}
+function renderPrices(){
+ var swiss=country.value==='CH';
+ originals.forEach(function(entry){var text=entry[1];if(swiss)P.forEach(function(pair){text=text.split(pair[0]).join(pair[1]);});entry[0].nodeValue=text;});
+ document.documentElement.setAttribute('data-price-country',country.value||'unselected');
+}
+var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(_e){}
+var language=((navigator.languages&&navigator.languages.join(','))||navigator.language||'');
+if(!country.value&&(/Zurich|Bern|Geneva/i.test(tz)||/(de|fr|it|rm)-CH/i.test(language))){
+ country.setAttribute('data-country-hint','CH');
+ var hint=country.getAttribute('data-swiss-hint');if(hint)country.options[0].textContent=hint;
+}
+country.addEventListener('change',renderPrices);renderPrices();
 })();
 </script>
 <script>
