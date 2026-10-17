@@ -381,14 +381,32 @@ footer a:hover{color:var(--blue)}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
+  "@id": "https://megwebstudio.com/#studio",
   "name": "MEG Web Studio",
   "url": "https://megwebstudio.com/",
   "logo": "https://megwebstudio.com/assets/logo.png",
   "image": "https://megwebstudio.com/meg/hero_poster.jpg",
   "description": "Professionelle, maßgeschneiderte Websites für lokale Unternehmen: elegant, schnell, gemacht, um Suchanfragen in Kunden und Buchungen zu verwandeln. In wenigen Tagen online.",
   "email": "info@megwebstudio.com",
-  "areaServed": "IT",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Cantonale 34a",
+    "postalCode": "6928",
+    "addressLocality": "Manno",
+    "addressRegion": "TI",
+    "addressCountry": "CH"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Switzerland"
+    },
+    {
+      "@type": "Country",
+      "name": "Italy"
+    }
+  ],
   "sameAs": [
     "https://www.instagram.com/meg_web_studio/"
   ]
@@ -814,6 +832,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
 
 <footer><div class="wrap-wide foot-in">
   <span>© MEG Web Studio — Professionelle Websites für lokale Unternehmen</span>
+  <span>Via Cantonale 34a, 6928 Manno (TI), Schweiz</span>
   <span><a href="https://pay.megwebstudio.com/privacy">Datenschutz</a></span>
 </div></footer>
 
