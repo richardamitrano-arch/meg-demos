@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hotel Alba · Twelve rooms facing east over the lake</title>
+  <meta name="description" content="Twelve rooms facing east over the lake. Double room with breakfast from 180 € a night.">
+  <meta property="og:title" content="Hotel Alba">
+  <meta property="og:description" content="Twelve rooms facing east over the lake. Double room with breakfast from 180 € a night.">
+  <meta property="og:image" content="media/hero/end.webp">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080d">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preload" href="media/hero/manifest.json" as="fetch" crossorigin>
+  <link rel="stylesheet" href="css/scrub-hero.css">
+  <script src="js/scrub-hero.js" defer></script>
+  <style>
+    .after{max-width:760px}
+    .rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:20px;padding:0;list-style:none}
+    .rooms li{border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:18px}
+    .rooms b{display:block;font-size:19px}
+    .rooms span{display:block;margin-top:6px;opacity:.85}
+    .book p{margin-top:12px}
+    /* visual-qa round 1: nav text measured 4.08:1 over the bright sky.
+       Round 3: a gradient scrim greyed the CTA scrolling under the header, so the header is now a compact solid bar. */
+    .site-header{padding-bottom:14px;background:rgba(7,8,13,.78);-webkit-backdrop-filter:saturate(160%) blur(14px);backdrop-filter:saturate(160%) blur(14px)}
+    .after .rooms li{margin:0}
+    /* launch-qa: header links measured 35-48 x 23-39 px; give them 44 px tap areas */
+    .site-header a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;justify-content:center}  /* the template's ".after li + li" margin pushed the second card down by 12 px */
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">Hotel Alba</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#rooms">Rooms</a>
+      <a href="#book">Book</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="scrub" data-scrub data-manifest="media/hero/manifest.json"
+             data-focus="0.5 0.5" style="--scrub-length: 400vh" aria-labelledby="hero-title">
+      <div class="scrub__stage">
+        <picture class="scrub__poster">
+          <source media="(prefers-reduced-motion: reduce) and (orientation: portrait)" srcset="media/hero/end-portrait.webp">
+          <source media="(prefers-reduced-motion: reduce)" srcset="media/hero/end.webp">
+          <source media="(orientation: portrait)" srcset="media/hero/poster-portrait.webp">
+          <img src="media/hero/poster.webp" alt="The sun rising over the lake, seen from the hotel" width="1280" height="720" fetchpriority="high">
+        </picture>
+        <canvas class="scrub__canvas" aria-hidden="true"></canvas>
+        <div class="scrub__scrim" aria-hidden="true"></div>
+        <div class="scrub__captions">
+          <h1 id="hero-title" class="cap cap--lead" data-in="0" data-out="0.24">Hotel Alba. Twelve rooms facing east over the lake.</h1>
+          <p class="cap" data-in="0.34" data-out="0.62">You see this sunrise from the bed. Breakfast on the terrace from 7:00.</p>
+          <p class="cap" data-in="0.72" data-out="1">Double room with breakfast from 180 € a night.
+            <br><a class="btn" href="#book">Check availability</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="after" id="rooms">
+      <h2>Rooms</h2>
+      <ul class="rooms">
+        <li><b>Double, lake view</b><span>22 m², king bed, balcony</span><span>from 180 € with breakfast</span></li>
+        <li><b>Junior suite</b><span>34 m², corner windows, bath</span><span>from 260 € with breakfast</span></li>
+        <li><b>Single</b><span>16 m², queen bed</span><span>from 130 € with breakfast</span></li>
+      </ul>
+    </section>
+
+    <section class="after book" id="book">
+      <h2>Check availability</h2>
+      <p>Write with your dates and the number of guests. We answer within two hours, 8:00-20:00.</p>
+      <p><a class="btn" href="mailto:book@hotel-alba.example">Email book@hotel-alba.example</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "project": "Hotel Alba (fictional case study)",
+  "revision": "hotel-alba-73d7ff066525",
+  "requirements": [
+    {
+      "id": "R1",
+      "source": "brief.txt#request-1",
+      "expectation": "First screen shows the lake sunrise and says what the hotel is",
+      "route": "/",
+      "entry": "Home > hero",
+      "status": "verified",
+      "checks": [
+        {
+          "layer": "implementation",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "reachability",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "content",
+          "result": "pass",
+          "evidence": [
+            "E1",
+            "E5"
+          ]
+        },
+        {
+          "layer": "outcome",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "Information requirement: reading the first screen is the outcome"
+        },
+        {
+          "layer": "recovery",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "Static content"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "source": "brief.txt#request-2",
+      "expectation": "Double room price with breakfast visible before the booking section",
+      "route": "/",
+      "entry": "Home > hero last caption",
+      "status": "verified",
+      "checks": [
+        {
+          "layer": "implementation",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "reachability",
+          "result": "pass",
+          "evidence": [
+            "E1",
+            "E4"
+          ]
+        },
+        {
+          "layer": "content",
+          "result": "pass",
+          "evidence": [
+            "E1",
+            "E5"
+          ]
+        },
+        {
+          "layer": "outcome",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "Information requirement"
+        },
+        {
+          "layer": "recovery",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "Static content"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "source": "brief.txt#request-3",
+      "expectation": "Booking contact reachable from the hero in one tap",
+      "route": "/#book",
+      "entry": "Hero > Check availability",
+      "status": "verified",
+      "checks": [
+        {
+          "layer": "implementation",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "reachability",
+          "result": "pass",
+          "evidence": [
+            "E1",
+            "E4"
+          ]
+        },
+        {
+          "layer": "content",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "outcome",
+          "result": "pass",
+          "evidence": [
+            "E1",
+            "E3"
+          ]
+        },
+        {
+          "layer": "recovery",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "A mailto link has no failure path on the site"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "source": "brief.txt#request-4",
+      "expectation": "Reduced-motion visitors see the final frame with every line of text",
+      "route": "/",
+      "entry": "Home > hero (prefers-reduced-motion)",
+      "status": "verified",
+      "checks": [
+        {
+          "layer": "implementation",
+          "result": "pass",
+          "evidence": [
+            "E1"
+          ]
+        },
+        {
+          "layer": "reachability",
+          "result": "pass",
+          "evidence": [
+            "E2"
+          ]
+        },
+        {
+          "layer": "content",
+          "result": "pass",
+          "evidence": [
+            "E2"
+          ]
+        },
+        {
+          "layer": "outcome",
+          "result": "pass",
+          "evidence": [
+            "E2"
+          ]
+        },
+        {
+          "layer": "recovery",
+          "result": "not_applicable",
+          "evidence": [],
+          "note": "Static fallback"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "E1",
+      "path": "site/index.html",
+      "sha256": "73d7ff066525b0a1a99e759c2f940303e0ecace34e14b8356016463cc884fea7",
+      "revision": "hotel-alba-73d7ff066525",
+      "kind": "source",
+      "observation": "Final page source: captions, price, booking section, reduced-motion poster"
+    },
+    {
+      "id": "E2",
+      "path": "site/qa-out/report.md",
+      "sha256": "a4535a82152a4080233f042d65481b7c0065d2776dd7b93d64b09e391cb9d060",
+      "revision": "hotel-alba-73d7ff066525",
+      "kind": "receipt",
+      "observation": "scroll-scrub-hero QA report on the final page"
+    },
+    {
+      "id": "E3",
+      "path": "launch-qa/report.md",
+      "sha256": "483ed307393604c2a66f70e35aab1809b97a2b6139e996894b0435a93244ed6d",
+      "revision": "hotel-alba-73d7ff066525",
+      "kind": "receipt",
+      "observation": "launch-qa report at 390/768/1440"
+    },
+    {
+      "id": "E4",
+      "path": "visual-qa/review.md",
+      "sha256": "4e8cae9c2de928299877d3bf77c0597c59ae2802a648bd9e99dba4ab9fd26c7c",
+      "revision": "hotel-alba-73d7ff066525",
+      "kind": "receipt",
+      "observation": "visual-qa measured review"
+    },
+    {
+      "id": "E5",
+      "path": "visual-qa/sheets/phone-sheet-01.png",
+      "sha256": "9665a35c64ec237236e9223d9f9c23b3404a34ee3a395e4f1324cf8a4d31ac97",
+      "revision": "hotel-alba-73d7ff066525",
+      "kind": "screenshot",
+      "observation": "Phone contact sheet, one frame every 0.5 s"
+    }
+  ],
+  "decisions": [
+    {
+      "scope": "Online payment and room inventory stay out of this phase",
+      "status": "approved",
+      "source": "brief.txt#out-of-scope",
+      "violated": false
+    }
+  ]
+}

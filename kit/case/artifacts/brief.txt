@@ -1,0 +1,6 @@
+Fictional brief used for the Studio Kit case study (Hotel Alba does not exist).
+request-1: The first screen shows the sunrise over the lake that guests see from the rooms, and says what the hotel is.
+request-2: The price of a double room with breakfast is visible before the visitor reaches the booking section.
+request-3: A visitor can reach the booking contact from the hero in one tap.
+request-4: Visitors who prefer reduced motion see the final sunrise frame with every line of text.
+out-of-scope: Online payment and room inventory are excluded for this phase.

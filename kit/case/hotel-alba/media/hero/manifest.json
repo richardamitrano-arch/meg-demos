@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "count": 96,
+  "fps": 30.000000,
+  "variants": [
+    { "name": "land-1920", "w": 1920, "h": 1080, "pattern": "land-1920/f_%03d.webp" },
+    { "name": "land-1280", "w": 1280, "h": 720, "pattern": "land-1280/f_%03d.webp" },
+    { "name": "land-640", "w": 640, "h": 360, "pattern": "land-640/f_%03d.webp" },
+    { "name": "port-540", "w": 540, "h": 962, "pattern": "port-540/f_%03d.webp" }
+  ],
+  "poster": { "landscape": "poster.webp", "portrait": "poster-portrait.webp" },
+  "end": { "landscape": "end.webp", "portrait": "end-portrait.webp" },
+  "video": [
+    { "src": "scrub.mp4", "type": "video/mp4; codecs=\"avc1.64001e\"" },
+    { "src": "scrub.webm", "type": "video/webm; codecs=\"vp9\"" }
+  ]
+}
