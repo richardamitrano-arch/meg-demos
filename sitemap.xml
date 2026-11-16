@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://megwebstudio.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://megwebstudio.com/"/>
@@ -13,7 +13,7 @@
   </url>
   <url>
     <loc>https://megwebstudio.com/en/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://megwebstudio.com/"/>
@@ -23,13 +23,25 @@
   </url>
   <url>
     <loc>https://megwebstudio.com/de/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://megwebstudio.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://megwebstudio.com/en/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://megwebstudio.com/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://megwebstudio.com/"/>
+  </url>
+  <url>
+    <loc>https://megwebstudio.com/kit/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://megwebstudio.com/kit/case/hotel-alba/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://megwebstudio.com/meg/termini.html</loc>

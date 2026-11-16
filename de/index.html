@@ -70,6 +70,7 @@ body.rate-on .m-menu{top:88px}
 body.m-open .m-menu{display:block}
 body.m-open{overflow:hidden}
 @media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
+@media(max-width:1000px){.nav-links .nav-kit{display:none}}
 .nav-item{position:relative;display:inline-flex;align-items:center}
 .nav-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:11px;opacity:0;visibility:hidden;transition:opacity .18s ease,visibility .18s ease;z-index:101}
 .nav-item:hover .nav-drop{opacity:1;visibility:visible}
@@ -448,6 +449,7 @@ footer a:hover{color:var(--blue)}
       <a href="#whatsapp">WhatsApp-Automatisierung <span class="nd-p">Care Pro</span></a>
     </div></div></div>
     <a href="#app">App</a>
+    <a class="nav-kit" href="/kit/">Studio Kit</a>
     <div class="nav-item"><a href="#faq">Support</a><div class="nav-drop"><div class="nav-drop-in">
       <div class="nd-h">Wir sind für dich da</div>
       <a href="#faq">Häufige Fragen</a>
@@ -468,6 +470,7 @@ footer a:hover{color:var(--blue)}
   <a href="#rate">Ratenzahlung <span class="nd-p">Klarna · PayPal</span></a>
   <a href="#care">Care <span class="nd-p">ab 49€/Monat</span></a>
   <a href="#app">App</a>
+  <a href="/kit/">Studio Kit <span class="nd-p">Claude Code</span></a>
   <a href="#faq">Support</a>
   <a href="https://pay.megwebstudio.com/portale/login" target="_blank" rel="noopener">Kundenbereich</a>
   <div class="m-lang" style="display:flex;gap:10px;align-items:center;padding:16px 2px 6px"><a href="/" hreflang="it" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px">IT</a><a href="/en/" hreflang="en" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px">EN</a><a href="/de/" hreflang="de" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;background:var(--blue);border-color:var(--blue);color:#fff">DE</a></div>
@@ -835,6 +838,7 @@ m.addEventListener('click',function(e){if(e.target.closest('a')){document.body.c
 <footer><div class="wrap-wide foot-in">
   <span>© MEG Web Studio — Professionelle Websites für lokale Unternehmen</span>
   <span>Via Cantonale 34a, 6928 Manno (TI), Schweiz</span>
+  <span><a href="/kit/">Studio Kit für Claude Code</a></span>
   <span><a href="https://pay.megwebstudio.com/privacy">Datenschutz</a></span>
   <span><a href="/meg/termini.html">AGB</a></span>
 </div></footer>
