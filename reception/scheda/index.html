@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Scheda Reception Voce · MEG Web Studio</title>
+<meta name="description" content="Scheda per attivare Reception Voce: servizi, orari e dati dell'attività.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://megwebstudio.com/reception/scheda/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MEG Web Studio">
+<meta property="og:title" content="Scheda Reception Voce">
+<meta property="og:description" content="Servizi, orari e dati dell'attività per attivare Reception Voce.">
+<meta property="og:image" content="https://megwebstudio.com/assets/logo.png">
+<link rel="icon" href="/assets/logo.png">
+<style>
+:root{--bg:#fff;--bg2:#f5f5f7;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--blue-d:#0058b9;
+--f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Inter",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);line-height:1.5;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:10;height:52px;background:#fff;border-bottom:1px solid rgba(0,0,0,.1)}
+.nav-in{height:52px;display:flex;align-items:center;justify-content:space-between;width:min(720px,calc(100% - 32px));margin:0 auto}
+.logo{font-size:19px;font-weight:600;letter-spacing:-.02em;display:inline-flex;align-items:center;min-height:44px}
+.back{font-size:15px;color:var(--blue);display:inline-flex;align-items:center;min-height:44px}
+main{width:min(720px,calc(100% - 32px));margin:0 auto;padding:36px 0 64px}
+h1{font-size:clamp(30px,6vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.sub{color:var(--muted);font-size:17px;margin-top:10px}
+form{margin-top:26px;display:grid;gap:18px}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+label small{font-weight:400;color:var(--muted);font-size:14px}
+input,textarea,select{font:16px var(--f);padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.riga{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:980px;background:var(--blue);color:#fff;font:17px var(--f);border:0;cursor:pointer;width:100%}
+.btn:hover{background:var(--blue-d)}
+.btn-line{background:transparent;color:var(--blue);border:1px solid var(--line)}
+.btn-line:hover{background:var(--bg2)}
+.azioni{display:grid;gap:10px;margin-top:6px}
+.nota{font-size:14px;color:var(--muted)}
+.esito{font-size:15px;color:#1d7f3a;min-height:22px}
+@media (max-width:560px){.riga{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in"><a class="logo" href="/">MEG Web Studio</a><a class="back" href="/reception/">Reception Voce</a></div></nav>
+<main>
+  <h1>Scheda Reception Voce</h1>
+  <p class="sub">Servono circa 5 minuti. Con questi dati prepariamo calendario, numero e assistente.</p>
+  <form id="scheda" novalidate>
+    <label>Nome dell'attività<small>Come deve dirlo l'assistente al telefono</small><input name="Attività" required autocomplete="organization"></label>
+    <label>Indirizzo<input name="Indirizzo" autocomplete="street-address"></label>
+    <div class="riga">
+      <label>Paese<select name="Paese"><option>Svizzera</option><option>Italia</option></select></label>
+      <label>Numero che chiamano i clienti<input name="Numero dei clienti" type="tel" autocomplete="tel"></label>
+    </div>
+    <div class="riga">
+      <label>Operatore e tipo di linea<small>Es. Swisscom, cellulare</small><input name="Operatore"></label>
+      <label>Email per gli avvisi<input name="Email avvisi" type="email" autocomplete="email" required></label>
+    </div>
+    <label>Servizi con durata e prezzo<small>Uno per riga, es. Taglio uomo, 30 minuti, CHF 35</small><textarea name="Servizi" required></textarea></label>
+    <label>Orari per ogni giorno<small>Es. Mar–Ven 9:00–12:00 e 14:00–18:30; Sab 8:00–16:00</small><textarea name="Orari" required></textarea></label>
+    <label>Chiusure e ferie già decise<input name="Chiusure"></label>
+    <div class="riga">
+      <label>Preavviso minimo<small>Es. almeno 2 ore prima</small><input name="Preavviso"></label>
+      <label>Persone che lavorano insieme<input name="Persone" inputmode="numeric"></label>
+    </div>
+    <label>Pagina privacy del tuo sito<small>Se non hai un sito lascia vuoto: pubblichiamo noi l'informativa</small><input name="Pagina privacy" type="url" inputmode="url"></label>
+    <div class="azioni">
+      <button class="btn" type="submit">Invia la scheda per email</button>
+      <button class="btn btn-line" type="button" id="copia">Copia il testo</button>
+    </div>
+    <p class="esito" id="esito" role="status" aria-live="polite"></p>
+    <p class="nota">La scheda si invia dalla tua email a info@megwebstudio.com. Se non hai un'app email sul telefono, usa «Copia il testo» e incollalo in un messaggio a info@megwebstudio.com.</p>
+  </form>
+</main>
+<script>
+(function(){
+  var f=document.getElementById('scheda'), esito=document.getElementById('esito');
+  function testo(){
+    var righe=[];
+    Array.prototype.forEach.call(f.elements,function(el){
+      if(!el.name) return;
+      righe.push(el.name+': '+(el.value||'').trim());
+    });
+    return righe.join('\n');
+  }
+  function mancanti(){
+    var m=[];
+    Array.prototype.forEach.call(f.elements,function(el){ if(el.required && !(el.value||'').trim()) m.push(el.name); });
+    return m;
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var m=mancanti();
+    if(m.length){ esito.style.color='#b3261e'; esito.textContent='Manca: '+m.join(', ')+'.'; return; }
+    esito.style.color='#1d7f3a'; esito.textContent='Si apre la tua email con la scheda già scritta.';
+    location.href='mailto:info@megwebstudio.com?subject='+encodeURIComponent('Scheda Reception Voce')+'&body='+encodeURIComponent(testo());
+  });
+  document.getElementById('copia').addEventListener('click',function(){
+    var t=testo();
+    function ok(){ esito.style.color='#1d7f3a'; esito.textContent='Testo copiato: incollalo in un messaggio a info@megwebstudio.com.'; }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,function(){ prompt('Copia il testo:',t); }); }
+    else { prompt('Copia il testo:',t); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Reception Voce · MEG Web Studio</title>
-<meta name="description" content="Assistente telefonico AI per la tua attività: risponde quando sei occupato e fissa gli appuntamenti nel tuo calendario. 89 € al mese, attivazione 190 €.">
+<meta name="description" content="Assistente telefonico AI per barbieri, parrucchieri ed estetisti: risponde quando sei occupato e fissa gli appuntamenti. 89 € al mese più 190 €.">
 <link rel="canonical" href="https://megwebstudio.com/reception/">
 <meta name="theme-color" content="#0071e3">
 <meta property="og:type" content="product">
@@ -18,8 +18,13 @@
 {"@context":"https://schema.org","@type":"Service","name":"Reception Voce","serviceType":"Assistente telefonico per appuntamenti",
 "provider":{"@type":"Organization","name":"MEG Web Studio","url":"https://megwebstudio.com/"},
 "areaServed":["IT","CH"],"url":"https://megwebstudio.com/reception/",
-"offers":{"@type":"Offer","price":"89.00","priceCurrency":"EUR","url":"https://megwebstudio.com/reception/",
-"priceSpecification":{"@type":"UnitPriceSpecification","price":"89.00","priceCurrency":"EUR","unitText":"mese"}}}
+"offers":[
+{"@type":"Offer","name":"Abbonamento mensile","price":"89.00","priceCurrency":"EUR","eligibleRegion":"IT","url":"https://megwebstudio.com/reception/",
+"priceSpecification":{"@type":"UnitPriceSpecification","price":"89.00","priceCurrency":"EUR","billingDuration":"P1M","unitText":"mese"}},
+{"@type":"Offer","name":"Attivazione una tantum","price":"190.00","priceCurrency":"EUR","eligibleRegion":"IT","url":"https://megwebstudio.com/reception/"},
+{"@type":"Offer","name":"Abbonamento mensile","price":"109.00","priceCurrency":"CHF","eligibleRegion":"CH","url":"https://megwebstudio.com/reception/",
+"priceSpecification":{"@type":"UnitPriceSpecification","price":"109.00","priceCurrency":"CHF","billingDuration":"P1M","unitText":"mese"}},
+{"@type":"Offer","name":"Attivazione una tantum","price":"249.00","priceCurrency":"CHF","eligibleRegion":"CH","url":"https://megwebstudio.com/reception/"}]}
 </script>
 <style>
 :root{--bg:#fff;--bg2:#f5f5f7;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--blue-d:#0058b9;--max:1040px;
@@ -54,7 +59,8 @@ h2.t{font-size:clamp(32px,4.6vw,52px);font-weight:600;letter-spacing:-.03em;line
 .feat li{background:#fff;border-radius:18px;padding:26px}
 .feat b{display:block;font-size:24px;font-weight:600;letter-spacing:-.02em}
 .feat span{display:block;color:#424245;font-size:16px;margin-top:8px}
-.player{margin-top:28px;background:var(--bg2);border-radius:18px;padding:26px;max-width:640px}
+.player{margin:28px auto 0;background:var(--bg2);border-radius:18px;padding:26px;max-width:640px}
+#ascolta .kicker,#ascolta h2.t,#prezzo .kicker,#domande .kicker{text-align:center}
 .player audio{width:100%;display:block}
 details.tx{margin-top:16px}
 details.tx summary{cursor:pointer;color:var(--blue);font-size:16px;list-style:none;padding:10px 0}
@@ -62,7 +68,12 @@ details.tx summary::-webkit-details-marker{display:none}
 .tx ol{list-style:none;margin-top:12px;font-size:15px;color:#424245}
 .tx li{padding:6px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:10px}
 .tx li b{font-weight:600;color:var(--ink)}
-.pcard{border:2px solid var(--blue);border-radius:18px;padding:34px;background:#fff;max-width:520px;margin-top:28px;display:flex;flex-direction:column}
+.pcard{border:2px solid var(--blue);border-radius:18px;padding:34px;background:#fff;max-width:560px;margin:28px auto 0;display:flex;flex-direction:column}
+.pcard .ch{font-size:15px;color:var(--muted);margin-top:2px}
+.pcard .primo{font-size:15px;color:#424245;margin-top:10px;padding:10px 12px;background:var(--bg2);border-radius:10px}
+.pcard .azioni{display:grid;gap:10px}
+.pcard .cond{font-size:13.5px;color:var(--muted);margin-top:14px;line-height:1.5}
+.pcard .cond a{color:var(--blue)}
 .pcard .n{font-size:21px;font-weight:600}
 .pcard .p{font-size:56px;font-weight:600;letter-spacing:-.03em;margin-top:6px;line-height:1.1}
 .pcard .p small{font-size:17px;font-weight:400;color:var(--muted);letter-spacing:-.01em}
@@ -71,7 +82,7 @@ details.tx summary::-webkit-details-marker{display:none}
 .pcard li{padding:7px 0;font-size:16px;color:#424245}
 .pcard li::before{content:"✓";color:var(--blue);font-weight:600;margin-right:10px}
 .pcard .btn{width:100%}
-.faq{margin-top:28px;max-width:760px}
+.faq{margin:28px auto 0;max-width:760px}
 .faq details{border-top:1px solid var(--line);padding:8px 0}
 .faq details:last-child{border-bottom:1px solid var(--line)}
 .faq summary{cursor:pointer;font-size:19px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:10px 0}
@@ -112,7 +123,7 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var
 <header class="hero"><div class="wrap">
   <p class="eyebrow">Personale AI</p>
   <h1>Reception <span class="grad">Voce</span></h1>
-  <p class="sub">Risponde al telefono quando sei occupato e fissa gli appuntamenti nel tuo calendario.</p>
+  <p class="sub">Risponde al telefono quando sei occupato e fissa gli appuntamenti nel calendario online MEG, incluso.</p>
   <div class="links"><a class="btn" href="#ascolta">Ascolta una telefonata di prova</a><a class="btn btn-line" href="#prezzo">89 € al mese</a></div>
 </div></header>
 
@@ -130,7 +141,7 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var
   <p class="kicker">Ascolta</p>
   <h2 class="t">Telefonata di prova</h2>
   <div class="player">
-    <audio controls preload="none" src="telefonata-prova.m4a" aria-label="Telefonata di prova con Reception Voce"></audio>
+    <audio controls preload="metadata" aria-label="Telefonata di prova con Reception Voce"><source src="telefonata-prova.m4a" type="audio/mp4"><source src="telefonata-prova.mp3" type="audio/mpeg"></audio>
     <p class="fine">Barbiere Demo · cliente simulato · 1 min 38 s</p>
     <details class="tx"><summary>Testo della telefonata</summary>
       <ol>
@@ -158,15 +169,21 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var
     <p class="n">Reception Voce</p>
     <p class="p">89 €<small> al mese</small></p>
     <p class="act">Attivazione 190 € una tantum</p>
+    <p class="ch">In Svizzera: CHF 109 al mese, attivazione CHF 249</p>
+    <p class="primo">Primo pagamento 279 € (attivazione + primo mese), poi 89 € al mese. In Svizzera CHF 358, poi CHF 109 al mese.</p>
     <ul>
-      <li>Numero dell'assistente</li>
-      <li>Calendario online con i tuoi servizi e orari</li>
+      <li>Numero dell'assistente del tuo Paese</li>
+      <li>Calendario online MEG con i tuoi servizi e orari, anche senza un sito MEG</li>
       <li>Avviso per email a ogni appuntamento</li>
       <li>Prova insieme prima di partire</li>
       <li>Testi per l'informativa privacy</li>
       <li>Fino a 2 chiamate insieme</li>
     </ul>
-    <a class="btn" href="mailto:info@megwebstudio.com?subject=Reception%20Voce" data-checkout="reception-voce">Attiva Reception Voce</a>
+    <div class="azioni">
+      <a class="btn" href="https://pay.megwebstudio.com/reception-voce/attiva?paese=IT" data-checkout="reception-voce-IT">Attiva in Italia</a>
+      <a class="btn btn-line" href="https://pay.megwebstudio.com/reception-voce/attiva?paese=CH" data-checkout="reception-voce-CH">Attiva in Svizzera</a>
+    </div>
+    <p class="cond">Abbonamento mensile con addebito automatico fino alla disdetta. Disdici quando vuoi, senza penali, dall'Area Cliente o scrivendo a info@megwebstudio.com. Prezzi senza IVA: MEG non è assoggettata all'IVA svizzera; per le aziende con partita IVA nell'UE si applica l'inversione contabile. Le chiamate inoltrate dal tuo telefono le paga il tuo abbonamento telefonico. <a href="/meg/termini.html">Condizioni di vendita</a></p>
     <p class="fine">Risponde un assistente basato su intelligenza artificiale.</p>
   </div>
 </div></section>
@@ -175,9 +192,12 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var
   <p class="kicker">Domande</p>
   <div class="faq">
     <details><summary>Devo cambiare numero?</summary><p>No. Imposti l'inoltro sul tuo telefono: la chiamata passa all'assistente solo quando sei occupato o non rispondi.</p></details>
+    <details><summary>Uso già un'agenda: come faccio?</summary><p>Il calendario online MEG è incluso. Gli appuntamenti che prendi tu li segni nella tua area MEG, così l'assistente propone solo i posti liberi. Non si collega ad altri gestionali.</p></details>
+    <details><summary>Funziona senza un sito MEG?</summary><p>Sì. Ricevi il calendario online, il numero dell'assistente e l'accesso alla tua area MEG.</p></details>
+    <details><summary>Quanto costa l'inoltro delle chiamate?</summary><p>Lo paga il tuo abbonamento telefonico, come una chiamata verso il numero dell'assistente: un numero svizzero in Svizzera, un numero italiano in Italia. Controlla le condizioni del tuo operatore.</p></details>
     <details><summary>Cosa fa con i dati dei miei clienti?</summary><p>La chiamata non viene registrata. Restano solo i dati dell'appuntamento: nome, telefono, servizio, data e ora.</p></details>
     <details><summary>In che lingua risponde?</summary><p>In italiano.</p></details>
-    <details><summary>Può spostare o annullare un appuntamento?</summary><p>Non ancora. Oggi fissa nuovi appuntamenti e dà informazioni su servizi e prezzi.</p></details>
+    <details><summary>Può spostare o annullare un appuntamento?</summary><p>Non ancora. Oggi fissa nuovi appuntamenti e dà informazioni su servizi e prezzi. Chi deve spostare un appuntamento ti richiama.</p></details>
   </div>
 </div></section>
 
