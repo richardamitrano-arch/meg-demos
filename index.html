@@ -1000,6 +1000,12 @@ body.idf-top:not(.mg-fondo-chiaro){background:#000}
    Condizioni di vendita…). Mentre l'avviso è sullo schermo, sotto il piè di pagina c'è il suo spazio: il piè di pagina
    sale sopra l'avviso. L'altezza dell'avviso (--mg-ck) la scrive 95-avviso.js quando lo mostra */
 body.ck-on footer{padding-bottom:calc(40px + var(--mg-ck,150px) + 16px)}
+
+/* su telefono niente comando «Privacy» sopra il film e sopra il testo delle schede (dal 22/11):
+   l'avviso resta in «Privacy e preferenze», nel menu e in fondo alla pagina. Telefono = largo fino a 600 px (in
+   verticale) o alto fino a 500 px con il dito (in orizzontale); computer e iPad restano come prima */
+@media(max-width:600px),(max-height:500px) and (pointer:coarse){#mg-priv-pill{display:none!important}}
+
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <noscript><style>#vetrina{display:none}</style></noscript>
