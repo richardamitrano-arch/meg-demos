@@ -935,18 +935,21 @@ html.mg-fermo{scroll-behavior:auto}
 .mg-negozi span.storebadge:hover{transform:none}
 
 /* ---------- revisione 1, passo 5 ---------- */
-/* film più corto su telefono e tablet: meno scorrimento a vuoto fra una scheda e la successiva (prima 76, 66 e 84 svh,
-   ora 50, 50 e 64). Fra due schede il telefono resta scoperto abbastanza da far partire la scena del capitolo: la sua
-   fascia centrale è alta il 34% dello schermo, quindi sotto i 45 svh la scena non avrebbe il tempo di partire */
+/* FILM SU TELEFONO E TABLET (dopo la prova su iPhone del 22/11/2026). Le schede passano sopra il telefono fermo. Prima la
+   prima scheda partiva subito sopra il telefono e con il film corto (50 svh fra una scheda e l'altra, meno dell'altezza
+   del telefono) il telefono non restava mai scoperto per intero: su iPhone una scheda gli stava sempre sopra. Ora:
+   - la prima scheda parte sotto il telefono: arrivando al film il telefono si vede tutto, poi la scheda gli sale sopra;
+   - fra una scheda e l'altra c'è l'altezza del telefono più 48 px: il telefono torna intero prima della scheda dopo;
+   - dopo l'ultima scheda il telefono resta fermo e intero finché la scena di WhatsApp ha girato;
+   - chi salta a #film arriva con il telefono sotto le barre.
+   L'altezza del telefono è quella che gli dà 92-film.js: 628 px, o meno se lo schermo è basso (mai meno di 314). */
 @media(max-width:980.98px){
-  .mg-cine .mg-cap{margin-bottom:50vh;margin-bottom:50svh}
+  .mg-film{scroll-margin-top:var(--mg-top)}
+  .mg-cine .mg-capitoli{padding-top:calc((100vh - var(--mg-top) + min(628px,max(314px,100vh - var(--mg-top) - 64px)))/2 + 16px);padding-top:calc((100svh - var(--mg-top) + min(628px,max(314px,100svh - var(--mg-top) - 64px)))/2 + 16px);padding-bottom:calc((100vh - var(--mg-top) + min(628px,max(314px,100vh - var(--mg-top) - 64px)))/2 + 48px);padding-bottom:calc((100svh - var(--mg-top) + min(628px,max(314px,100svh - var(--mg-top) - 64px)))/2 + 48px)}
+  .mg-cine .mg-cap{margin-bottom:calc(min(628px,max(314px,100vh - var(--mg-top) - 64px)) + 48px);margin-bottom:calc(min(628px,max(314px,100svh - var(--mg-top) - 64px)) + 48px)}
   .mg-cine .mg-cap:last-child{margin-bottom:0}
-  .mg-cine .mg-cap>.mg-carta+.mg-carta{margin-top:50vh;margin-top:50svh}
-  .mg-cine .mg-capitoli{padding-bottom:64vh;padding-bottom:64svh}
+  .mg-cine .mg-cap>.mg-carta+.mg-carta{margin-top:calc(min(628px,max(314px,100vh - var(--mg-top) - 64px)) + 48px);margin-top:calc(min(628px,max(314px,100svh - var(--mg-top) - 64px)) + 48px)}
 }
-/* tablet in verticale (schermo alto almeno 1000 px): un po' di spazio in più dopo l'ultima scheda, così il telefono
-   resta fermo finché la scheda di WhatsApp non è passata */
-@media(max-width:980.98px) and (min-height:1000px){.mg-cine .mg-capitoli{padding-bottom:66vh;padding-bottom:66svh}}
 /* l'elenco dei settori ha il suo indirizzo (#settori): chi ci salta arriva con la scheda sotto le barre */
 #settori{scroll-margin-top:calc(var(--mg-top) + 12px)}
 /* «Vai ai settori»: solo dove l'elenco è lontano dal titolo (telefono e tablet, con il telefono fermo in mezzo) */
@@ -970,6 +973,33 @@ body.idf-top:not(.m-open) .nav-ferma:hover{background:rgba(255,255,255,.12)}
 .coupon b{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
 /* due note una sotto l'altra in cima al modulo: stanno vicine */
 .form-nota+.form-nota{margin-top:-8px}
+
+/* FASCIA SOTTO LA BARRA DI SAFARI (iOS 26 e successivi). Safari la colora con il fondo del <body>, oppure con il colore
+   di un elemento fisso o agganciato che tocca il bordo in basso, e in quel caso lo tiene anche dopo: prima di questa
+   correzione la fascia era bianca sulla parte nera, poi dei colori dell'alone del film, poi scura come l'avviso.
+   1. il body segue la pagina: nero finché in fondo allo schermo c'è la parte nera (la classe idf-top c'è dall'apertura),
+      bianco da quando ci arriva il bianco dell'alba (classe mg-fondo-chiaro, messa dallo script in fondo a 94-resto.js);
+   2. due strisce fisse alte 10 px sul bordo in basso, una nera e una bianca: quella accesa comanda la fascia qualunque
+      cosa passi (misurato: 8 px bastano, 4 no). Sono due perché Safari non si accorge di una striscia che cambia
+      colore, ma si accorge quando una sparisce e ne compare un'altra. Stanno sopra a tutto: sotto, le ombre dell'avviso
+      dei cookie e del comando «Privacy» le cadrebbero addosso e la fascia verrebbe grigia. Esistono solo su iPhone in
+      verticale (fino a 600 px di larghezza) con Safari 26 o successivo: la prima condizione vale solo su iOS, la
+      seconda solo da Safari 26. Su iPad a tutto schermo Safari non ha la barra in basso e le strisce si vedrebbero. */
+body.idf-top:not(.mg-fondo-chiaro){background:#000}
+.mg-fascia{display:none}
+@supports (-webkit-touch-callout:none) and (color:contrast-color(red)){@media(max-width:600px){
+  .mg-fascia{position:fixed;left:0;right:0;bottom:0;height:10px;z-index:2147483647;pointer-events:none}
+  .mg-fascia.n{background:#000}
+  .mg-fascia.b{background:#fff;display:block}
+  body.idf-top:not(.mg-fondo-chiaro):not(.m-open) .mg-fascia.n{display:block}
+  body.idf-top:not(.mg-fondo-chiaro):not(.m-open) .mg-fascia.b{display:none}
+  @media print{.mg-fascia{display:none!important}}
+}}
+
+/* in fondo alla pagina l'avviso dei cookie, finché non si preme «Ho capito», copriva il piè di pagina (Privacy,
+   Condizioni di vendita…). Mentre l'avviso è sullo schermo, sotto il piè di pagina c'è il suo spazio: il piè di pagina
+   sale sopra l'avviso. L'altezza dell'avviso (--mg-ck) la scrive 95-avviso.js quando lo mostra */
+body.ck-on footer{padding-bottom:calc(40px + var(--mg-ck,150px) + 16px)}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <noscript><style>#vetrina{display:none}</style></noscript>
@@ -1012,6 +1042,7 @@ body.idf-top:not(.m-open) .nav-ferma:hover{background:rgba(255,255,255,.12)}
 </script>
 </head>
 <body id="top">
+<div class="mg-fascia n" aria-hidden="true"></div><div class="mg-fascia b" aria-hidden="true"></div>
 <a class="mg-salta" href="#contenuto">Salta al contenuto</a>
 <button type="button" class="mg-salta" data-mg-ferma hidden>Ferma le animazioni</button>
 <div class="meg-ratebar">💳 Paga a rate i nostri pacchetti, in modo semplice e flessibile. <a href="#rate">Scopri &rsaquo;</a></div>
@@ -2581,7 +2612,10 @@ body.rate-on #impiegati{--idf2-top:88px}
     /* in fondo al film il telefono comincia a salire con la pagina: finché se ne vedono quasi tre quarti la scena
        dell'ultimo capitolo può ancora partire (lo spazio dopo l'ultima scheda è più corto di prima) */
     var quasi=cine&&r.top<=cima+1&&r.bottom>=cima+palco.offsetHeight*.72;
-    if(coperto||(!largo&&r.top>cima+1))suona(false,true);else if(vede&&(su||quasi))suona(true);
+    /* su telefono la prima scheda parte sotto il telefono (cambi_32): finché non è arrivata lo schermo resta completo e
+       fermo, come sotto la scheda; la scena parte quando la scheda è passata. Vale anche risalendo */
+    var attesa=!largo&&caps.length>0&&caps[0].getBoundingClientRect().top>linea;
+    if(coperto||attesa||(!largo&&r.top>cima+1))suona(false,true);else if(vede&&(su||quasi))suona(true);
   }
   /* il film si dichiara partito solo dopo il primo disegno e dopo aver agganciato il cambio di capitolo. Se qualcosa
      va storto all'avvio, o più avanti mentre si scorre, tornano le schede semplici, che si leggono da sole: mai un
@@ -2718,6 +2752,21 @@ body.rate-on #impiegati{--idf2-top:88px}
     sotto=k;carica();vuole(k);
   });
 })(window,document);
+
+/* FASCIA SOTTO LA BARRA DI SAFARI (iOS 26 e successivi): Safari la colora con il fondo del <body> o con la striscia
+   accesa fra le due «mg-fascia». Qui si dice al foglio di stile quando in fondo allo schermo è arrivato il bianco: è il momento in cui il
+   segnaposto dell'orizzonte dell'alba (lo stesso che fa cambiare le barre in alto) supera il bordo in basso.
+   Non dipende dal motore delle scene: vale anche con «Riduci movimento» e a pagina fermata. */
+(function(w,d){
+  'use strict';
+  var segno=d.getElementById('mg-segno'),b=d.body,chiaro=null;
+  if(!segno||!b)return;
+  function fondo(){
+    var c=segno.getBoundingClientRect().top<(w.innerHeight||d.documentElement.clientHeight);
+    if(c!==chiaro){chiaro=c;b.classList.toggle('mg-fondo-chiaro',c);}
+  }
+  fondo();w.addEventListener('scroll',fondo,{passive:true});w.addEventListener('resize',fondo);
+})(window,document);
 </script>
 <script>
 /* Currency follows the explicit request country; browser locale is only a hint. */
@@ -2806,12 +2855,17 @@ country.addEventListener('change',renderPrices);renderPrices();
        ci arriva senza attraversare tutta la pagina e i campi del modulo */
     if(!bar.parentNode)d.body.insertBefore(bar,dopoSalta());
     d.body.classList.add('ck-on');
+    altezza();
     if(!letto()&&!pill){
       pill=d.createElement('button');pill.type='button';pill.id='mg-priv-pill';pill.setAttribute('data-mg-privacy','');
       pill.setAttribute('aria-label','Privacy e preferenze');pill.textContent='Privacy';
       d.body.insertBefore(pill,dopoSalta());
     }
   }
+  /* l'altezza dell'avviso, per il foglio di stile: mentre l'avviso è sullo schermo, sotto il piè di pagina resta il suo
+     spazio e in fondo alla pagina l'avviso non copre i collegamenti */
+  function altezza(){if(bar&&bar.parentNode)d.documentElement.style.setProperty('--mg-ck',Math.ceil(bar.getBoundingClientRect().height)+'px');}
+  w.addEventListener('resize',altezza);
   /* salva=true: «Ho capito». salva=false: Esc su un avviso aperto a comando (se non era ancora stato letto resta in attesa) */
   function chiudi(salva){
     if(salva){
