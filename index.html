@@ -1037,6 +1037,172 @@ body.idf-top:not(.m-open) nav .nav-links a.blue:focus-visible,nav .nav-links a.b
 .mg-garanzia a{color:var(--blue,#0071e3)}
 @media(max-width:880px){.mg-garanzia{max-width:420px}}
 @media(max-width:600px){.mg-garanzia{margin-top:18px;padding:16px 18px}.mg-garanzia .mg-g-rimborso{font-size:15.5px}}
+/* sezione «Come funziona» degli impiegati del futuro (dal 26/11), copiata dal giro 2 della revisione a tre */
+/* ===== SEZIONE ===== */
+.cf{--cf-blu:#0071e3;--cf-blu-hover:#0058b9;--cf-blu-testo:#0058b9;--cf-grigio:#59595e;
+  background:#f5f5f7;color:#1d1d1f;font-family:var(--f);padding:96px 0 104px;overflow:hidden}
+.cf *{box-sizing:border-box}
+.cf-wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.cf-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.cf-kicker{margin:0 0 10px;text-align:center;font-size:17px;font-weight:600;color:var(--cf-blu-testo)}
+.cf-h2{margin:0 auto;max-width:16em;text-wrap:balance;text-align:center;font-size:clamp(34px,5.2vw,56px);line-height:1.07;font-weight:700;letter-spacing:-.022em}
+.cf-arrivo-top{margin:22px 0 0;text-align:center;font-size:19px;font-weight:600}
+.cf-lead{margin:12px auto 0;max-width:34em;text-align:center;font-size:clamp(18px,2.1vw,21px);line-height:1.45;color:#6e6e73}
+.cf-badge{display:inline-block;margin-right:8px;padding:3px 10px;border-radius:999px;background:#fff;border:1px solid #d2d2d7;
+  font-size:13px;font-weight:600;color:#1d1d1f;vertical-align:2px}
+
+.cf-passi{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cf-passo{background:#fff;border-radius:24px;padding:26px 26px 30px;display:flex;flex-direction:column}
+.cf-ill{display:block;width:100%;height:auto;margin:0 0 18px}
+.cf-passo .cf-n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:#1d1d1f;color:#fff;font-size:17px;font-weight:700;margin:0 0 14px}
+.cf-passo h3{margin:0 0 8px;font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-.012em}
+.cf-passo p{margin:0;font-size:17px;line-height:1.45;color:#424245}
+
+/* telefono e computer */
+.cf-nota{margin:60px 0 0;text-align:center;font-size:14px;color:#6e6e73}
+.cf-schermi{margin:22px auto 0;display:flex;align-items:flex-end;justify-content:center;gap:44px}
+.cf-fig{margin:0}
+.cf-fig figcaption{margin:14px 0 0;text-align:center;font-size:16px;line-height:1.4;color:#1d1d1f}
+.cf-col-tel{flex:0 0 300px;display:flex;flex-direction:column;align-items:center}
+.cf-tel{width:300px;aspect-ratio:300/612;border-radius:50px;background:#1d1d1f;padding:11px;position:relative;margin:0 auto}
+.cf-tel::before{content:"";position:absolute;top:22px;left:50%;width:92px;height:27px;margin-left:-46px;border-radius:14px;background:#000;z-index:3}
+.cf-tel-sch{height:100%;border-radius:40px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.cf-chiamata{padding:58px 16px 12px;text-align:center;border-bottom:1px solid #ececf0}
+.cf-avatar{width:46px;height:46px;margin:0 auto 7px;border-radius:50%;background:var(--cf-blu-testo);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:15px;font-weight:700;letter-spacing:.02em}
+.cf-attivita{margin:0;font-size:16px;font-weight:700}
+.cf-stato{margin:3px 0 0;font-size:12.5px;color:#6e6e73}
+.cf-vista{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.cf-vista:focus-visible{outline:3px solid var(--cf-blu-testo);outline-offset:-3px}
+.cf-chat{list-style:none;margin:0;padding:12px 12px 16px;display:flex;flex-direction:column;gap:7px}
+.cf-bolla{max-width:86%;padding:8px 11px;border-radius:17px;font-size:12.6px;line-height:1.36}
+.cf-ai{align-self:flex-start;background:#f0f0f3;border-bottom-left-radius:5px}
+.cf-cli{align-self:flex-end;background:var(--cf-blu-testo);color:#fff;border-bottom-right-radius:5px}
+.cf-chi{display:block;font-size:10.5px;font-weight:600;color:var(--cf-grigio);margin:0 0 2px}
+.cf-cli .cf-chi{color:#fff}
+.cf-ctrl{margin:16px 0 0;padding:9px 18px;border-radius:999px;border:1px solid #d2d2d7;background:#fff;color:#1d1d1f;
+  font:600 15px/1.2 var(--f);cursor:pointer}
+.cf-ctrl:hover{border-color:#86868b}
+.cf-ctrl:focus-visible{outline:3px solid var(--cf-blu-testo);outline-offset:3px}
+.cf-ctrl[hidden]{display:none}
+
+.cf-fig-pc{flex:0 1 600px;min-width:0}
+.cf-pc{container-type:inline-size}
+.cf-pc-cop{background:#1d1d1f;border-radius:20px 20px 0 0;padding:11px 11px 0}
+.cf-pc-sch{background:#fff;border-radius:9px 9px 0 0;aspect-ratio:16/10.4;overflow:hidden;position:relative;font-size:2.2cqw}
+.cf-pc-base{height:2.6cqw;min-height:9px;margin:0 -5.5%;border-radius:0 0 18px 18px;background:#c7c7cc}
+.cf-pc-base::before{content:"";display:block;width:18%;height:42%;margin:0 auto;border-radius:0 0 9px 9px;background:#aeaeb2}
+.cf-app{display:flex;align-items:center;justify-content:space-between;padding:1.05em 1.5em;border-bottom:1px solid #ececf0}
+.cf-app b{font-size:1.08em}
+.cf-app span{color:#6e6e73;font-size:.86em}
+.cf-giorno{padding:.95em 1.5em .5em;font-weight:700;font-size:1.25em;letter-spacing:-.01em}
+.cf-righe{margin:0 1.5em;border-top:1px solid #ececf0;position:relative}
+.cf-riga{display:flex;align-items:center;height:2.45em;border-bottom:1px solid #f2f2f5;color:#6e6e73;font-size:.86em}
+.cf-riga i{font-style:normal;width:4.2em;flex:0 0 4.2em}
+.cf-blocco{position:absolute;left:4.2em;right:0;border-radius:.7em;padding:.45em .8em;font-size:.86em;line-height:1.25;
+  display:flex;flex-direction:column;justify-content:center}
+.cf-occ{background:#f2f2f5;color:var(--cf-grigio)}
+.cf-nuovo{background:var(--cf-blu-testo);color:#fff;transition:opacity .45s,transform .45s}
+.cf-nuovo b{font-size:1.05em}
+.cf-nuovo small{font-size:.86em}
+.cf-avviso{position:absolute;top:.55em;right:.9em;width:19.5em;background:#fff;border:1px solid #e3e3e8;border-radius:1em;
+  padding:.85em 1em;display:flex;gap:.8em;align-items:flex-start;transition:opacity .45s,transform .45s}
+.cf-avviso svg{flex:0 0 2.1em;width:2.1em;height:2.1em}
+.cf-avviso b{display:block;font-size:.95em}
+.cf-avviso span{display:block;font-size:.86em;color:#424245;line-height:1.35}
+
+/* scheda agenda al posto del portatile sotto i 640 px (testi da almeno 12 px) */
+.cf-agenda-m{display:none;background:#fff;border:1px solid #e3e3e8;border-radius:20px;padding:16px 16px 14px;text-align:left}
+.cf-am-testa{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 12px;font-size:16px}
+.cf-am-testa span{font-size:14px;color:#6e6e73}
+.cf-am-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cf-am-lista li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.35}
+.cf-am-ora{font-weight:600;white-space:nowrap}
+.cf-am-nuovo{background:var(--cf-blu-testo);color:#fff;transition:opacity .45s,transform .45s}
+.cf-am-occ{background:#f2f2f5;color:var(--cf-grigio)}
+.cf-am-email{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;padding:12px;border:1px solid #e3e3e8;border-radius:12px;transition:opacity .45s,transform .45s}
+.cf-am-email svg{flex:0 0 26px;width:26px;height:26px}
+.cf-am-email b{display:block;font-size:14px}
+.cf-am-email span{display:block;font-size:13px;line-height:1.4;color:#424245}
+@media (max-width:639px){
+  .cf-pc{display:none}
+  .cf-agenda-m{display:block}
+  .cf-bolla{font-size:13.5px}
+  .cf-chi{font-size:12px}
+}
+
+/* invito finale: spento finché gli impiegati non si possono comprare (anche se l'attributo manca) */
+.cf-fine{margin:54px auto 0;text-align:center}
+.cf-arrivo{margin:0 0 18px;font-size:17px;color:#424245}
+.cf-btn{display:inline-block;padding:15px 28px;border-radius:999px;background:var(--cf-blu);color:#fff;text-decoration:none;
+  font-size:17px;font-weight:600;transition:background .2s}
+.cf-btn:hover{background:var(--cf-blu-hover)}
+.cf-btn:focus-visible{outline:3px solid var(--cf-blu-testo);outline-offset:3px}
+.cf .cf-acceso{display:none}
+.cf[data-acquisto="acceso"] .cf-acceso{display:block}
+.cf[data-acquisto="acceso"] .cf-spento{display:none}
+
+/* disegni dei tre passi: animazioni brevi (meno di 5 secondi) e solo con lo script */
+.cf-ill text{font-family:var(--f)}
+.cf-barra{transform-box:fill-box;transform-origin:left center}
+.cf-onda{transform-box:fill-box;transform-origin:center;opacity:0}
+.cf-freccia{stroke-dasharray:6 7}
+.cf-js .cf-barra{transform:scaleX(0)}
+.cf-js .cf-spunta,.cf-js .cf-busta,.cf-js .cf-cella{opacity:0}
+.cf-visto .cf-barra{animation:cf-cresci .7s cubic-bezier(.2,.8,.2,1) forwards}
+.cf-visto .cf-b2{animation-delay:.25s}.cf-visto .cf-b3{animation-delay:.5s}
+.cf-visto .cf-spunta{animation:cf-appari .4s .95s forwards}
+.cf-visto .cf-freccia{animation:cf-flusso .9s linear 3}
+.cf-visto .cf-onda{animation:cf-onda 1.8s ease-out 2}
+.cf-visto .cf-o2{animation-delay:.6s}
+.cf-visto .cf-cella{animation:cf-appari .45s .5s forwards}
+.cf-visto .cf-busta{animation:cf-busta .55s 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+
+/* telefonata animata: solo quando parte davvero (classe cf-anima messa dallo script) */
+.cf-anima .cf-bolla:not(.cf-on){display:none}
+.cf-anima .cf-bolla.cf-on{animation:cf-entra .35s ease-out}
+.cf-anima [data-cf="nuovo"]:not(.cf-on){opacity:0;transform:scale(.96)}
+.cf-anima [data-cf="avviso"]:not(.cf-on){opacity:0;transform:translateY(-.6em)}
+.cf-anima .cf-squilla .cf-avatar{animation:cf-squillo 1s ease-in-out infinite}
+
+/* tutto fermo: telefonata in pausa, disegni fuori vista, scheda del browser nascosta */
+.cf-fermo .cf-schermi *,.cf-passi-fuori .cf-ill *,.cf-nascosta *{animation-play-state:paused!important}
+
+@keyframes cf-cresci{to{transform:scaleX(1)}}
+@keyframes cf-appari{to{opacity:1}}
+@keyframes cf-flusso{to{stroke-dashoffset:-26}}
+@keyframes cf-onda{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes cf-busta{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes cf-squillo{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+@keyframes cf-entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+@media (max-width:900px){
+  .cf{padding:72px 0 80px}
+  .cf-passi{grid-template-columns:1fr;gap:16px;margin-top:40px}
+  .cf-passo{padding:20px 22px 24px}
+  .cf-ill{max-width:300px;margin:0 auto 12px}
+  .cf-passo .cf-n{width:30px;height:30px;font-size:15px;margin:0 0 10px}
+  .cf-passo h3{font-size:21px}
+  .cf-passo p{font-size:16px}
+  .cf-nota{margin-top:44px}
+  .cf-schermi{flex-direction:column;align-items:center;gap:36px}
+  .cf-col-tel{flex:none;width:100%}
+  .cf-tel{width:min(282px,100%)}
+  .cf-fig-pc{flex:none;width:100%;max-width:600px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cf *,.cf *::before,.cf *::after{animation:none!important;transition:none!important}
+}
+/* nella home: interlinea e spaziatura delle lettere come nel file approvato (la home ha 1,5 e -0,01 em sul body);
+   titoli dei passi bilanciati, così a 1440 px «te» non resta da solo a capo */
+.cf{line-height:normal;letter-spacing:normal}
+.cf-passo h3{text-wrap:balance}
+/* nella home: la sezione non cambia altezza mentre la telefonata va (i salti dal menu verso «Prezzi» e il modulo
+   la attraversano e finivano spostati di 54-108 px): il posto di «Pausa» è tenuto da subito, e sul telefono il
+   disegno del telefono non si stringe quando le battute sono ancora nascoste (era largo quanto il testo) */
+.cf-js .cf-ctrl[hidden]{display:inline-block;visibility:hidden}
+.cf-fig-tel{width:100%}
 
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
@@ -1795,6 +1961,240 @@ body.rate-on #impiegati{--idf2-top:88px}
 </script>
 
 <div class="mg-alba" id="alba" aria-hidden="true"><div class="mg-orizzonte"><b id="mg-segno"></b></div></div>
+<section class="cf" id="come-funziona" data-acquisto="spento" aria-labelledby="cf-titolo">
+  <div class="cf-wrap">
+    <p class="cf-kicker">Come funziona</p>
+    <h2 class="cf-h2" id="cf-titolo">Il tuo impiegato del futuro,<br>in 3 passi.</h2>
+    <p class="cf-arrivo-top"><span class="cf-badge">In arrivo</span>Reception Voce</p>
+    <p class="cf-lead">È un'intelligenza artificiale: risponderà al telefono della tua attività quando non puoi rispondere e fisserà gli appuntamenti.</p>
+
+    <ol class="cf-passi">
+      <li class="cf-passo">
+        <svg class="cf-ill" viewBox="0 0 240 150" role="img" aria-label="Una scheda con servizi, prezzi e orari">
+          <rect x="34" y="10" width="172" height="130" rx="16" fill="#fff" stroke="#d2d2d7" stroke-width="2"/>
+          <path d="M34 42 h172" stroke="#ececf0" stroke-width="2"/>
+          <text x="52" y="32" font-size="13" font-weight="700" fill="#1d1d1f">La tua scheda</text>
+          <text x="52" y="68" font-size="12.5" fill="#6e6e73">Servizi</text>
+          <rect class="cf-barra" x="104" y="59" width="84" height="11" rx="5.5" fill="#0071e3"/>
+          <text x="52" y="96" font-size="12.5" fill="#6e6e73">Prezzi</text>
+          <rect class="cf-barra cf-b2" x="104" y="87" width="58" height="11" rx="5.5" fill="#0071e3"/>
+          <text x="52" y="124" font-size="12.5" fill="#6e6e73">Orari</text>
+          <rect class="cf-barra cf-b3" x="104" y="115" width="72" height="11" rx="5.5" fill="#0071e3"/>
+          <g class="cf-spunta"><circle cx="196" cy="18" r="15" fill="#1d1d1f"/><path d="M189 18 l5 5 l9 -10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+        </svg>
+        <p class="cf-n">1</p>
+        <h3>Ci dici come lavori</h3>
+        <p>Servizi, prezzi e orari: li scrivi una volta in una scheda.</p>
+      </li>
+      <li class="cf-passo">
+        <svg class="cf-ill" viewBox="0 0 240 150" role="img" aria-label="Il telefono della tua attività inoltrerà la chiamata all'assistente AI">
+          <circle class="cf-onda" cx="58" cy="66" r="40" fill="none" stroke="#0071e3" stroke-width="2"/>
+          <circle class="cf-onda cf-o2" cx="58" cy="66" r="40" fill="none" stroke="#0071e3" stroke-width="2"/>
+          <rect x="34" y="22" width="48" height="88" rx="11" fill="#fff" stroke="#1d1d1f" stroke-width="2.5"/>
+          <rect x="51" y="29" width="14" height="4" rx="2" fill="#1d1d1f"/>
+          <path transform="translate(46 54)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="#1d1d1f" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="58" y="134" font-size="12.5" fill="#6e6e73" text-anchor="middle">Il tuo numero</text>
+          <path class="cf-freccia" d="M92 66 C120 40 140 40 160 60" stroke="#0071e3" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M152 52 l10 9 l-12 4" stroke="#0071e3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="126" y="34" font-size="12.5" fill="#0058b9" text-anchor="middle" font-weight="600">inoltro</text>
+          <circle cx="190" cy="76" r="30" fill="#0071e3"/>
+          <rect x="177" y="68" width="4" height="16" rx="2" fill="#fff"/><rect x="184" y="62" width="4" height="28" rx="2" fill="#fff"/>
+          <rect x="191" y="66" width="4" height="20" rx="2" fill="#fff"/><rect x="198" y="71" width="4" height="10" rx="2" fill="#fff"/>
+          <text x="190" y="134" font-size="12.5" fill="#6e6e73" text-anchor="middle">Assistente AI</text>
+        </svg>
+        <p class="cf-n">2</p>
+        <h3>La colleghiamo insieme a te</h3>
+        <p>Il numero resta il tuo. Imposteremo insieme a te l'inoltro delle chiamate sul tuo telefono e faremo una prova.</p>
+      </li>
+      <li class="cf-passo">
+        <svg class="cf-ill" viewBox="0 0 240 150" role="img" aria-label="L'appuntamento entrerà nel calendario e ti arriverà un'email">
+          <rect x="26" y="12" width="140" height="126" rx="16" fill="#fff" stroke="#d2d2d7" stroke-width="2"/>
+          <path d="M26 42 h140" stroke="#ececf0" stroke-width="2"/>
+          <text x="42" y="32" font-size="13" font-weight="700" fill="#1d1d1f">Agenda</text>
+          <rect x="40" y="54" width="34" height="22" rx="6" fill="#f2f2f5"/><rect x="79" y="54" width="34" height="22" rx="6" fill="#f2f2f5"/><rect x="118" y="54" width="34" height="22" rx="6" fill="#f2f2f5"/>
+          <rect x="40" y="82" width="34" height="22" rx="6" fill="#f2f2f5"/><rect x="79" y="82" width="34" height="22" rx="6" fill="#f2f2f5"/><rect x="118" y="82" width="34" height="22" rx="6" fill="#f2f2f5"/>
+          <rect x="40" y="110" width="34" height="22" rx="6" fill="#f2f2f5"/><rect x="118" y="110" width="34" height="22" rx="6" fill="#f2f2f5"/>
+          <g class="cf-cella"><rect x="79" y="110" width="34" height="22" rx="6" fill="#0071e3"/><path d="M89 121 l4 4 l8 -8" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="cf-busta">
+            <rect x="148" y="70" width="70" height="50" rx="9" fill="#fff" stroke="#1d1d1f" stroke-width="2.5"/>
+            <path d="M150 74 l33 25 l33 -25" stroke="#1d1d1f" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+            <circle cx="216" cy="70" r="9" fill="#0071e3"/>
+          </g>
+        </svg>
+        <p class="cf-n">3</p>
+        <h3>Risponderà e prenoterà per te</h3>
+        <p>Quando non puoi rispondere, risponderà al posto tuo: proporrà gli orari liberi, fisserà l'appuntamento e ti avviserà per email.</p>
+      </li>
+    </ol>
+
+    <p class="cf-nota">Telefonata di prova del 20 novembre · cliente simulata, dati inventati</p>
+    <div class="cf-schermi">
+      <div class="cf-col-tel">
+        <figure class="cf-fig cf-fig-tel">
+          <div class="cf-tel">
+            <div class="cf-tel-sch">
+              <div class="cf-chiamata">
+                <div class="cf-avatar" aria-hidden="true">AI</div>
+                <p class="cf-attivita">Parrucchiere Demo</p>
+                <p class="cf-stato" aria-live="off">Risponde l'assistente AI</p>
+              </div>
+              <div class="cf-vista" tabindex="0" role="region" aria-label="Telefonata di prova, battuta per battuta">
+                <ol class="cf-chat">
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Buongiorno, Parrucchiere Demo. Risponde l'assistente automatico, un'intelligenza artificiale, per fissare appuntamenti. La chiamata è trascritta e gestita anche da fornitori tecnici, informativa sul sito. Come posso aiutarla?</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">Buongiorno, vorrei prenotare un taglio donna per domani mattina.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Le segnalo che domani è sabato 21 novembre. Per il taglio donna ho disponibilità alle 8:30, alle 10:30 o a mezzogiorno. Quale orario preferisce?</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">Va bene il primo orario.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Mi dica nome e cognome, per favore.</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">Maria Rossi.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Mi lasci un numero di telefono, per favore.</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">Il mio numero è <span aria-hidden="true">347 ••• ••••</span><span class="cf-sr">numero oscurato</span>.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Taglio donna, sabato 21 novembre alle 8:30, a nome di Maria Rossi, telefono <span aria-hidden="true">347 ••• ••••</span><span class="cf-sr">numero oscurato</span>. Confermo l'appuntamento?</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">Sì, confermo.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Perfetto, l'appuntamento è fissato: taglio donna, sabato 21 novembre alle 8:30. Posso fare altro per Lei?</span></li>
+                  <li class="cf-bolla cf-cli"><span class="cf-chi">Cliente</span><span class="cf-t">No, grazie. Arrivederci.</span></li>
+                  <li class="cf-bolla cf-ai"><span class="cf-chi">Assistente AI</span><span class="cf-t">Grazie a Lei, arrivederci.</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <figcaption>Al telefono</figcaption>
+        </figure>
+        <button type="button" class="cf-ctrl" hidden>Pausa</button>
+      </div>
+
+      <figure class="cf-fig cf-fig-pc">
+        <div class="cf-pc">
+          <div class="cf-pc-cop">
+            <div class="cf-pc-sch">
+              <div class="cf-app"><b>Agenda</b><span>Parrucchiere Demo</span></div>
+              <div class="cf-giorno">Sabato 21 novembre</div>
+              <div class="cf-righe">
+                <div class="cf-riga"><i>8:30</i></div>
+                <div class="cf-riga"><i>9:00</i></div>
+                <div class="cf-riga"><i>9:30</i></div>
+                <div class="cf-riga"><i>10:00</i></div>
+                <div class="cf-riga"><i>10:30</i></div>
+                <div class="cf-riga"><i>11:00</i></div>
+                <div class="cf-riga"><i>11:30</i></div>
+                <div class="cf-riga"><i>12:00</i></div>
+                <div class="cf-blocco cf-occ" style="top:4.9em;height:4.9em">Occupato</div>
+                <div class="cf-blocco cf-occ" style="top:13.48em;height:3.67em">Occupato</div>
+                <div class="cf-blocco cf-nuovo" data-cf="nuovo" style="top:.06em;height:3.6em"><b>Taglio donna · Maria Rossi</b><small>8:30–9:15 · prenotato al telefono</small></div>
+              </div>
+              <div class="cf-avviso" data-cf="avviso">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="6" width="28" height="20" rx="4" fill="#0058b9"/><path d="M4 9 l12 9 l12 -9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/></svg>
+                <div><b>Esempio di email per te</b><span>Nuovo appuntamento: taglio donna, sabato 21 novembre, 8:30 · Maria Rossi</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="cf-pc-base" aria-hidden="true"></div>
+        </div>
+        <div class="cf-agenda-m">
+          <p class="cf-am-testa"><b>Agenda</b><span>Sabato 21 novembre</span></p>
+          <ul class="cf-am-lista">
+            <li class="cf-am-nuovo" data-cf="nuovo"><span class="cf-am-ora">8:30–9:15</span><span><b>Taglio donna · Maria Rossi</b><br>prenotato al telefono</span></li>
+            <li class="cf-am-occ"><span class="cf-am-ora">9:30–10:30</span><span>Occupato</span></li>
+            <li class="cf-am-occ"><span class="cf-am-ora">11:15–12:00</span><span>Occupato</span></li>
+          </ul>
+          <div class="cf-am-email" data-cf="avviso">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="6" width="28" height="20" rx="4" fill="#0058b9"/><path d="M4 9 l12 9 l12 -9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/></svg>
+            <div><b>Esempio di email per te</b><span>Nuovo appuntamento: taglio donna, sabato 21 novembre, 8:30 · Maria Rossi</span></div>
+          </div>
+        </div>
+        <figcaption>Sabato 21 novembre · Taglio donna · 8:30–9:15</figcaption>
+      </figure>
+    </div>
+
+    <div class="cf-fine">
+      <div class="cf-spento">
+        <p class="cf-arrivo"><span class="cf-badge">In arrivo</span>Non è ancora in vendita: lo stiamo collaudando.</p>
+        <a class="cf-btn" href="mailto:info@megwebstudio.com?subject=Lista%20d%27attesa%20Impiegati%20del%20futuro">Entra nella lista d'attesa</a>
+      </div>
+      <div class="cf-acceso">
+        <a class="cf-btn" href="#reception-voce">Compra gli impiegati del futuro</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var sez=document.getElementById('come-funziona');
+  if(!sez) return;
+  // Con «Riduci movimento», senza IntersectionObserver o senza script non si anima niente:
+  // la telefonata, l'appuntamento e l'email restano già scritti nella pagina.
+  var lento=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // nella home: con la pagina già ferma (tasto «Ferma le animazioni») vale come «Riduci movimento»
+  if(lento || document.documentElement.classList.contains('mg-fermo') || !('IntersectionObserver' in window) || !window.requestAnimationFrame) return;
+  sez.classList.add('cf-js');
+  var passi=sez.querySelector('.cf-passi'), telefono=sez.querySelector('.cf-tel');   // la telefonata corre solo se il telefono si vede
+  var bolle=[].slice.call(sez.querySelectorAll('.cf-bolla'));
+  var vista=sez.querySelector('.cf-vista'), stato=sez.querySelector('.cf-stato'), testa=sez.querySelector('.cf-chiamata');
+  var nuovi=[].slice.call(sez.querySelectorAll('[data-cf="nuovo"]')), avvisi=[].slice.call(sez.querySelectorAll('[data-cf="avviso"]'));
+  var btn=sez.querySelector('.cf-ctrl');
+  var RISPONDE=1300, tempi=[], t=1600;
+  bolle.forEach(function(b){ tempi.push(t); var x=b.querySelector('.cf-t'); t += 650 + Math.min(1700, (x ? x.textContent : b.textContent).length * 16); });
+  var FINE=t, NUOVO=t-2600, AVVISO=t-1900;
+  var fase='pronta', ms=0, ultimo=0, raf=0, inVista=false, pausaUtente=false, mostrate=-1;
+
+  function disegna(){
+    var squilla = ms < RISPONDE;
+    testa.classList.toggle('cf-squilla', squilla);
+    stato.textContent = squilla ? 'Chiamata in arrivo…' : 'Risponde l’assistente AI';
+    var n=0;
+    bolle.forEach(function(b,i){ var on = ms >= tempi[i]; b.classList.toggle('cf-on', on); if(on) n=i+1; });
+    if(n!==mostrate){ mostrate=n; vista.scrollTo({top: vista.scrollHeight, behavior: n>1 ? 'smooth' : 'auto'}); }
+    nuovi.forEach(function(x){ x.classList.toggle('cf-on', ms >= NUOVO); });
+    avvisi.forEach(function(x){ x.classList.toggle('cf-on', ms >= AVVISO); });
+  }
+  function etichetta(){ btn.textContent = fase==='finita' ? 'Rivedi la telefonata' : (fase==='corre' ? 'Pausa' : 'Riprendi'); }
+  function giro(ora){
+    if(fase!=='corre') return;
+    ms += Math.min(100, ora - ultimo); ultimo = ora;
+    if(ms >= FINE){ ms = FINE; disegna(); finisci(); return; }
+    disegna(); raf = requestAnimationFrame(giro);
+  }
+  function corri(){ if(fase==='corre') return; fase='corre'; sez.classList.remove('cf-fermo'); ultimo=performance.now(); etichetta(); raf=requestAnimationFrame(giro); }
+  function sospendi(){ if(fase!=='corre') return; cancelAnimationFrame(raf); fase='ferma'; sez.classList.add('cf-fermo'); etichetta(); }
+  function finisci(){ cancelAnimationFrame(raf); fase='finita'; sez.classList.add('cf-fermo'); testa.classList.remove('cf-squilla'); etichetta(); }
+  function parti(){                                   // dall'inizio: nasconde l'esito solo adesso
+    cancelAnimationFrame(raf); ms=0; mostrate=-1; fase='ferma';
+    sez.classList.add('cf-anima'); btn.hidden=false; disegna(); vista.scrollTop=0; corri();
+  }
+  btn.addEventListener('click', function(){
+    if(fase==='corre'){ pausaUtente=true; sospendi(); }
+    else if(fase==='ferma'){ pausaUtente=false; corri(); }
+    else if(fase==='finita'){ pausaUtente=false; parti(); }
+  });
+  function puoCorrere(){ return inVista && !document.hidden && !pausaUtente; }
+  document.addEventListener('visibilitychange', function(){
+    sez.classList.toggle('cf-nascosta', document.hidden);
+    if(document.hidden) sospendi();
+    else if(fase==='ferma' && puoCorrere()) corri();
+  });
+  var oss=new IntersectionObserver(function(voci){
+    voci.forEach(function(v){
+      if(v.target===passi){
+        sez.classList.toggle('cf-passi-fuori', !v.isIntersecting);
+        if(v.isIntersecting) sez.classList.add('cf-visto');
+        return;
+      }
+      inVista = v.isIntersecting;
+      if(!inVista){ sospendi(); return; }
+      if(fase==='pronta'){ if(!document.hidden) parti(); }
+      else if(fase==='ferma' && puoCorrere()) corri();
+    });
+  }, {threshold:0.2});
+  oss.observe(passi);
+  oss.observe(telefono);
+  // nella home: il tasto «Ferma le animazioni» (e «Riduci movimento» acceso a pagina aperta) porta la telefonata
+  // alla fine, tutta scritta, e ferma i disegni; «Rivedi la telefonata» resta per chi la vuole rivedere
+  document.addEventListener('megferma', function(){
+    cancelAnimationFrame(raf); pausaUtente=true; mostrate=bolle.length;
+    sez.classList.remove('cf-anima','cf-js','cf-visto'); sez.classList.add('cf-fermo');
+    ms=FINE; disegna(); fase='finita'; btn.hidden=false; etichetta();
+  });
+})();
+</script>
 
 <section class="hero mg-siti" id="siti"><div class="wrap">
   <p class="eyebrow" data-entra>MEG Web Studio</p>
