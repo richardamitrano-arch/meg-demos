@@ -1018,6 +1018,14 @@ body.idf-top:not(.m-open) nav .nav-links a.blue:focus-visible,nav .nav-links a.b
    (prima succedeva sotto 350 px) e il nome resta com'era */
 @media(min-width:360px) and (max-width:399px){nav .logo{font-size:17px}.nav-cta{font-size:12px;padding:0 10px}}
 @media(max-width:359px){.nav-cta{display:none}}
+/* pulsanti generici «Compra gli impiegati del futuro» (dal 26/11), verso la Reception Voce. Sul computer il pulsante
+   blu è largo circa 208 px contro 150 di «Ricevi la bozza gratis»: le voci del menu si stringono da 20 a 14 px, così
+   fra il nome «MEG Web Studio» e il menu restano almeno 30 px da 1120 a 1920 px. Sul telefono, fra 360 e 479 px, il
+   pulsante va su due righe («Compra gli impiegati» / «del futuro»), alto come prima e ad almeno 14 px dal nome; da
+   480 px sta su una riga. Sotto 360 px resta nel menu, come prima */
+.nav-links{gap:14px}
+@media(min-width:360px) and (max-width:479px){.nav-cta{white-space:normal;text-align:center;line-height:1.15;height:auto;min-height:34px;padding:3px 8px;max-width:11em}}
+@media(min-width:400px) and (max-width:479px){.nav-cta{padding:3px 12px;max-width:11.6em}}
 /* sotto i prezzi: rimborso e «chi vende» con le parole delle Condizioni di vendita (punti 6 e 1), dal 23/11; largo,
    arrotondato e bordato come le schede dei prezzi sopra (720 px, 420 px sul telefono); spazi che non vanno a capo
    dentro nome, indirizzo e «Condizioni di vendita» */
@@ -1128,7 +1136,7 @@ body.idf-top:not(.m-open) nav .nav-links a.blue:focus-visible,nav .nav-links a.b
     <div class="nav-item"><a href="#faq">Supporto</a><div class="nav-drop"><div class="nav-drop-in">
       <div class="nd-h">Siamo qui per te</div>
       <a href="#faq">Domande frequenti</a>
-      <a href="#richiesta">Ricevi la bozza gratis</a>
+      <a href="#reception-voce">Compra gli impiegati del futuro</a>
       <a href="#whatsapp">Automazione WhatsApp</a>
       <button type="button" class="nd-b" data-mg-privacy hidden>Privacy e preferenze</button>
     </div></div></div>
@@ -1136,9 +1144,9 @@ body.idf-top:not(.m-open) nav .nav-links a.blue:focus-visible,nav .nav-links a.b
     <span class="nav-lang" style="display:inline-flex;align-items:center;gap:7px"><a href="/" hreflang="it" title="Italiano" style="font-weight:600;color:var(--blue);opacity:1">IT</a><span style="color:var(--muted);opacity:.5">·</span><a href="/en/" hreflang="en" title="English">EN</a><span style="color:var(--muted);opacity:.5">·</span><a href="/de/" hreflang="de" title="Deutsch">DE</a></span>
     <button type="button" class="nav-ferma" data-mg-ferma hidden aria-label="Ferma le animazioni" title="Ferma le animazioni"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g class="pa"><rect x="6.5" y="5" width="4" height="14" rx="1.2"/><rect x="13.5" y="5" width="4" height="14" rx="1.2"/></g><path class="pl" d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l11-6.8a.8.8 0 0 0 0-1.4l-11-6.8A.8.8 0 0 0 8 5.2z"/></svg></button>
     <a class="nav-cart" href="#prezzi" title="Confronta i prezzi" aria-label="Confronta i prezzi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="19" cy="20" r="1.4"/><path d="M2 2h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.3L22.5 6H6.2"/></svg></a>
-    <a class="blue" href="#richiesta">Ricevi la bozza gratis</a>
+    <a class="blue" href="#reception-voce">Compra gli impiegati del futuro</a>
   </div>
-  <a class="nav-cta" href="#richiesta">Ricevi la bozza gratis</a>
+  <a class="nav-cta" href="#reception-voce">Compra gli impiegati del futuro</a>
   <button class="nav-burger" id="navBurger" aria-label="Apri il menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
 </div></nav>
 <div class="m-menu" id="mMenu">
@@ -1153,7 +1161,7 @@ body.idf-top:not(.m-open) nav .nav-links a.blue:focus-visible,nav .nav-links a.b
   <a href="#faq">Supporto</a>
   <a href="https://pay.megwebstudio.com/portale/login" target="_blank" rel="noopener">Area Cliente</a>
   <div class="m-lang" style="display:flex;gap:10px;align-items:center;padding:16px 2px 6px"><a href="/" hreflang="it" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;background:var(--blue);border-color:var(--blue);color:#fff">IT</a><a href="/en/" hreflang="en" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px">EN</a><a href="/de/" hreflang="de" style="display:inline-flex;padding:7px 16px;border:1px solid var(--line);border-radius:999px;font-size:13.5px">DE</a></div>
-  <a class="m-cta" href="#richiesta">Ricevi la bozza gratis</a>
+  <a class="m-cta" href="#reception-voce">Compra gli impiegati del futuro</a>
   <div class="m-util"><button type="button" data-mg-privacy hidden>Privacy e preferenze</button><button type="button" data-mg-ferma hidden>Ferma animazioni</button></div>
 </div>
 <script>
